@@ -24,4 +24,14 @@ Vamos lá!
 
 ## Parte 1 - 15 minutos de instalação
 
-Se você está realmente começando do zero, então ter tudo rodando leva um pouco de tempo. Nada disso é difícil.
+Se você está realmente começando do zero, então ter tudo rodando leva um pouco de tempo. Nada disso é difícil. Eu rodo o Windows 8 na minha máquina, então isso pode ser um pouco diferente no Mac, Ubuntu ou qualquer outro sistema *nix, mas é basicamente a mesma coisa em todos os casos.
+
+### PASSO 1 - INSTALANDO NODE.JS
+
+Isso é realmente fácil. Vá para o site do [Node.js](http://nodejs.org/) e clique no grande botão verde *Install*. Ele irá detectar seu sistema operacional (SO) e dar a você o instalador apropriado (se por algum motivo isso não ocorrer, clique no botão de download e pegue o que você precisa). Rode o instalador. É isso, você instalou o Node.js e o, igualmente importante, NPM - Node Package Manager - que permite que você adicione todo tipo de complemento ao Node de forma rápida e fácil.
+
+* **Abra o prompt de comando**
+* **`cd` até o diretório em que você deseja manter suas aplicações de teste**
+
+### PASSO 2 - INSTALANDO O EXPRESS
+
