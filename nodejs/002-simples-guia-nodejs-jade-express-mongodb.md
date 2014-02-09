@@ -35,3 +35,54 @@ Isso é realmente fácil. Vá para o site do [Node.js](http://nodejs.org/) e cli
 
 ### PASSO 2 - INSTALANDO O EXPRESS
 
+Agora que temos o Node rodando, nós precisamos do resto das coisas para criar, realmente, um website que funcione. Para fazer isso, vamos instalar o Express, que é um framework que pega o Node a partir de uma aplicação simples e o transforma em algo que se comporta mais como um servidor web que todos nós usamos (e talvez um pouco mais que isso). Nós precisamos iniciar com o Express, pois iremos utilizar seu *scaffolding* (estrutura) para obter todo o resto que queremos (mais sobre isso em um instante). Então, digite isso:
+
+```sh
+
+$ npm install -g express
+
+```
+
+Isso instala algumas funcionalidades do núcleo do Express junto com a instalação do Node, tornando-o disponível globalmente, então podemos usá-lo em qualquer lugar que quisermos. Você vai ver um monte de texto em seu prompt de comando, vários http 304 e GETs. Tudo bem. O Express está agora instalado e disponível.
+
+## PASSO 3 - CRIANDO UM PROJETO EXPRESS
+
+Vamos usar Express e Jade, mas não o pré-processador CSS Stylus (que as pessoas geralmente usam nesta configuração). Temos que usar o Jade ou outro motor de templates para ter acesso aos dados baseados em Node/Express. Jade não é difícil de se aprender se você já conhece HTML. Apenas lembre-se que você realmente tem que ter atenção a indentação, ou coisas vão sair muito erradas.
+
+De qualquer forma, continue no seu diretório onde está armazenando sua aplicação node e digite isso:
+
+```sh
+
+$ express --sessions nodetest1
+
+```
+
+Aperte enter e veja o que acontece. Irá aparecer algo como isso:
+
+```sh
+
+eo_op:~/estudos/nodejs $ express --sessions nodetest1
+create : nodetest1
+create : nodetest1/package.json
+create : nodetest1/app.js
+create : nodetest1/routes
+create : nodetest1/routes/index.js
+create : nodetest1/routes/user.js
+create : nodetest1/views
+create : nodetest1/views/layout.jade
+create : nodetest1/views/index.jade
+create : nodetest1/public/images
+create : nodetest1/public/javascripts
+create : nodetest1/public
+create : nodetest1/public/stylesheets
+create : nodetest1/public/stylesheets/style.css
+
+install dependencies:
+$ cd nodetest1 && npm install
+
+run the app:
+$ node app
+
+```
+
+PASSO 4 - EDITANDO AS DEPENDÊNCIAS
