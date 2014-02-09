@@ -45,7 +45,7 @@ $ npm install -g express
 
 Isso instala algumas funcionalidades do núcleo do Express junto com a instalação do Node, tornando-o disponível globalmente, então podemos usá-lo em qualquer lugar que quisermos. Você vai ver um monte de texto em seu prompt de comando, vários http 304 e GETs. Tudo bem. O Express está agora instalado e disponível.
 
-## PASSO 3 - CRIANDO UM PROJETO EXPRESS
+### PASSO 3 - CRIANDO UM PROJETO EXPRESS
 
 Vamos usar Express e Jade, mas não o pré-processador CSS Stylus (que as pessoas geralmente usam nesta configuração). Temos que usar o Jade ou outro motor de templates para ter acesso aos dados baseados em Node/Express. Jade não é difícil de se aprender se você já conhece HTML. Apenas lembre-se que você realmente tem que ter atenção a indentação, ou coisas vão sair muito erradas.
 
@@ -85,4 +85,4 @@ $ node app
 
 ```
 
-## PASSO 4 - EDITANDO AS DEPENDÊNCIAS
+### PASSO 4 - EDITANDO AS DEPENDÊNCIAS
