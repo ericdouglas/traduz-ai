@@ -24,3 +24,4 @@ Vamos lá!
 
 ## Parte 1 - 15 minutos de instalação
 
+Se você está realmente começando do zero, então ter tudo rodando leva um pouco de tempo. Nada disso é difícil.
