@@ -82,5 +82,3 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 01. **Aprenda Tudo sobre Handlebars.js Templating JavaScript**
 	* [Original](http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/) e [Tradução](https://github.com/eoop/traduz-ai/blob/master/handlebars/001-aprenda-tudo-sobre-handlebars.md#aprenda-tudo-sobre-handlebarsjs-templating-javascript)
 
-
->>>>>>> 11b9679d8f5c331b6a81801780ac81fc16ab46a1
