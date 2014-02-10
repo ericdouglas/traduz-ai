@@ -22,7 +22,7 @@ Seu aplicativo vai ficar bonito, vai se conectar com um DB (banco de dados), ele
 
 Vamos lá!
 
-## Parte 1 - 15 minutos de instalação
+## PARTE 1 - 15 MINUTOS DE INSTALAÇÃO
 
 Se você está realmente começando do zero, então ter tudo rodando leva um pouco de tempo. Nada disso é difícil. Eu rodo o Windows 8 na minha máquina, então isso pode ser um pouco diferente no Mac, Ubuntu ou qualquer outro sistema *nix, mas é basicamente a mesma coisa em todos os casos.
 
@@ -86,3 +86,74 @@ $ node app
 ```
 
 ### PASSO 4 - EDITANDO AS DEPENDÊNCIAS
+
+Tudo bem, agora que temos uma estrutura básica, mas ainda não terminamos. Você vai notar que a rotina de instalação do Express criou um arquivo chamado package.json em seu diretório `nodetest1`. Abra este arquivo, ele vai parecer com isso:
+
+```json
+
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "*"
+  }
+}
+
+```
+
+Este é um arquivo básico JSON que descreve seu aplicativo e suas dependências. Nós precisamos adicionar algumas coisas a ele. Especificamente, o MongoDB e Monk. Vamos fazer nosso objeto `dependencies` se parecer com isso:
+
+```json
+
+"dependencies": {
+    "express": "3.4.4",
+    "jade": "*",
+    "mongodb": "*",
+    "monk": "*"
+}
+
+```
+
+### PASSO 5 - INSTALAR AS DEPENDÊNCIAS
+
+Agora definimos nossas dependências e estamos prontos para começar. Note que o astericos diz ao NPM "pegue a última versão" quando você roda a instalação, que estamos prestes a fazer.
+
+Volte para seu prompt de comando, `cd` para o diretório *nodetest1* e digite isso:
+
+```sh
+
+$ npm install
+
+```
+
+Será impresso uma tonelada de coisas. Isto por causa que está sendo lido nosso arquivo JSON que acabamos de editar e a instalação de todas as coisas listadas no objeto *dependencies* (sim, incluindo o Express - nós instalamos o material de alto nível usando a flag `-g`, mas ainda temos que instalar algum código que será necessário para este projeto em particular). Uma vez que o NPM percorreu seu caminho, você terá um diretório `node_modules` que contém todas as suas dependências para este tutorial.
+
+Agora você tem uma aplicação em pleno funcionamento e esperando para ser rodada. Vamos testá-la! **Vá para o diretório nodetest1** e digite:
+
+```sh
+
+$ node app.js
+
+```
+
+Aperte enter. Você vai obter isso:
+
+```sh
+
+Express server listening on port 3000
+
+```
+
+Incrível! Abra seu navegador e digite `http://locahost:3000`. Agora você verá a página de boas vindas do Express.
+
+![boas vindas express](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/browsershot1.png)
+
+Você tem agora seu próprio servidor web com Node.js, com a *engine* Express e o pré-processador Jade instalados. Não é tão difícil, né?
+
+## PARTE 2 - OK. LEGAL. VAMOS FAZER O "HELLO WORLD!"
+
