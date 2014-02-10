@@ -157,3 +157,39 @@ Você tem agora seu próprio servidor web com Node.js, com a *engine* Express e 
 
 ## PARTE 2 - OK. LEGAL. VAMOS FAZER O "HELLO WORLD!"
 
+Abra seu editor de texto ou IDE favorita. Eu gosto muito do [Sublime Text](http://www.sublimetext.com/). Vá para o diretório `nodetest1` e abra o arquivo `app.js`. Esse é como o coração da sua app. Não há muitas surpresas lá. Aqui temos uma parte do que você irá ver lá:
+
+```js
+
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var http = require('http');
+var path = require('path');
+
+```
+
+Isso cria muitas variáveis básicas do JavaScript e as liga a certos pacotes, dependências, funcionalidades do Node e rotas. Rotas são como uma espécie de combinação de modelos e controladores nesta configuração - elas direcionam o tráfico e também contém alguma lógica de programação (você pode estabelecer uma arquitetura MVC mais tradicional com o Express se você quiser. Isso está fora do escopo deste artigo). Voltando ao momento onde nós configuramos este projeto, o Express criou todas essas coisas para nós. Vamos ignorar totalmente a rota *user* por agora e trabalhar somente na rota de nível superior (controlado por `nodetest1/routes/index.js`).
+
+`nodetest1/app.js`
+```js
+
+var app = express();
+
+```
+
+Isto é importante, pois configura o Express e atribui nossa variável `app` a ele. A próxima seção usa esta variável para configurar um monte de coisas do Express.
+
+`nodetest1/app.js`
+```js
+
+// todos ambientes
+app.set( 'port', process.env.PORT || 3000 );
+app.set( 'views', path.join( __dirname, 'views' ) );
+app.set( 'view engine', 'jade' );
+app.use( express.favicon() );
+app.use( express.logger( 'dev' ) );
+app.use( express.bodyParser() );
+
+
+```
