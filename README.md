@@ -1,21 +1,11 @@
 ![traduz ai](img/traduz-ai.png)
 
-Com este projeto, tenho como objetivo **traduzir o máximo de artigos** para que os mesmos fiquem disponíveis para todos os desenvolvedores, principalmente os iniciantes que são os que mais sofrem com o problema da falta de conteúdo em português, encontrando uma dupla barreira em relação as linguagens, tanto a escrita/falada, quanto a que quer realmente ser aprendida (linguagem de programação/marcação/etc).
+Com este projeto, temos como objetivo **traduzir o máximo de artigos** para que os mesmos fiquem disponíveis para todos os desenvolvedores, principalmente os iniciantes que são os que mais sofrem com o problema da falta de conteúdo em português, encontrando uma dupla barreira em relação as linguagens, tanto a escrita/falada, quanto a que quer realmente ser aprendida (linguagem de programação/marcação/etc).
 
-Além dos materiais que vou separar para tradução, aceito e ficarei muito agradecido se você puder contribuir através da indicação de novos artigos para as traduções. Caso queira sugerir ou indicar alguma errata, faça isso **[aqui](https://github.com/eoop/traduz-ai/issues)**.
+Além dos materiais que vamos separar para tradução, aceitamos e ficaremos muito agradecidos se você puder contribuir através da indicação de novos artigos para as traduções e/ou com as traduções/revisões. Caso queira indicar alguma errata, faça isso **[aqui](https://github.com/eoop/traduz-ai/issues)**.
 
-Os artigos ficarão separados por categoria para facilitar para todos nós a pesquisa sobre um determinado assunto (mais categorias podem e serão inclusas com o tempo). No índice, terá a frente do nome do assunto o número de artigos já traduzidos sobre o mesmo. Na seção propriamente dita, primeiro colocarei o link original e depois o link da tradução.
+Esperamos que seja de bom proveito este material, para que juntos possamos aprender e crescer! Bons estudos e um forte abraço!
 
-Espero que seja de bom proveito este material, para que juntos possamos aprender e crescer! Bons estudos e um forte abraço!
-
-**OBS:** Tenho um mínimo de conhecimento da língua inglesa, então este trabalho é muito mais baseado na força de vontade e vontade de ajudar do que qualquer outra coisa. Caso haja erros, por favor me avise que irei o mais rápido possível repará-los. 
-
-### por [eo_op](https://github.com/eoop/eo_op)
-
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/br/deed.pt_BR"><img alt="Licença Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/br/88x31.png" /></a><br />Este obra foi licenciado sob uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/br/deed.pt_BR">Creative Commons Atribuição-NãoComercial-CompartilhaIgual 3.0 Brasil</a>.
-
-
----
 
 ### Índice
 
