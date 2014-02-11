@@ -195,3 +195,57 @@ app.use( app.router );
 app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 ```
+
+Isso configura a porta, que diz ao app onde encotrar as views, que engine usar para renderisar estas views (Jade), e chama alguns métodos para deixar as coisas funcionando. Note também que a linha final está dizendo ao Express para servir objetos estáticos no diretório *public*. Por exemplo, as imagens no diretório `../nodetest1/public/images`. Mas elas são acessadas pela url `http://localhost:3000/images`.
+
+**NOTA:** Você vai precisar mudar esta linha:
+
+`app.js`
+```js
+
+app.use( express.bodyParser() );
+
+```
+
+para:
+
+```js
+
+app.use( express.urlencoded() );
+
+```
+
+Em razão de evitar alguns avisos em seu console Node quando você rodar a aplicação. Isto é devido a algumas mudanças futuras bi Express e seus plugins. Se você não fizer esta mudança, sua aplicação vai continuar rodando, mas você irá ver texto sobre futuras *desaprovações* (deprecations) toda vez que você rodar isso.
+
+`app.js`
+```js
+
+// development only
+if ( 'development' == app.get( 'env' ) ) {
+	app.use( express.errorHandler() );
+}
+
+```
+
+Isso permite que você faça alguma checagem de erro durante o desenvolvimento. É importante, mas pela proposta deste tutorial não vamos fazer nada com isso.
+
+`app.js`
+```js
+
+app.get( '/', routes.index );
+app.get( '/users', user.list );
+
+```
+
+Isso diz a app quais rotas usar quando uma URI particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para /routes/user.js - nós vamos chamar a função de lista definida neste arquivo. Ou estaríamos se estivéssemos acessando a página de usuários, mas estamos ignorando-a, lembra?
+
+`app.js`
+```js
+
+http.createServer( app ).listen( app.get( 'port' ), function () {
+	console.log( 'Express server listening on port ' + app.get( 'port' ) );
+} );
+
+```
+
+Por último, mas não menos importante, isso cria nosso servidor http e o lança. Bons tempos!
