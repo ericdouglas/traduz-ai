@@ -322,6 +322,6 @@ Agora, com o servidor reiniciado, navegue até `http://localhost:3000/helloworld
 
 Ok! Agora que temos nossa rota nos levando para nossa view. Vamos fazer alguma modelagem. Eu vou dar um momento para você, caso precise reparar seu cabelo ou maquiagem.
 
-> Nota do tradutor: /\ AUSHDUHASUDHUASHDUAHSUDHAUSHDUHASUDHUASHDUHAASDUHASUHDUHASUdhuashDUHASUDH
+> Nota do tradutor: (Y) AUSHDUHASUDHUASHDUAHSUDHAUSHDUHASUDHUASHD
 
 ## PARTE 3 - CRIANDO NOSSO DB E LENDO ALGO DELE
