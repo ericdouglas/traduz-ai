@@ -298,7 +298,7 @@ block content
 
 ```
 
-Isso é muito simples. Ele usa `extends` o arquivo `layoud.jade` como um template, e então dentro do bloco `content` definido no arquivo layout, ele altera o `header` e o `p` (parágrafo). Note o uso da variável `title` que configuramos acima, em nossa rota index.js. Isso significa que não temos que mudar sempre o texto para mostrar coisas diferentes na página home. Mas vamos mudar um pouco de qualquer forma para:
+Isso é muito simples. Ele usa o `extends` e faz o arquivo `layoud.jade` como um template, e então dentro do bloco `content` definido no arquivo layout, ele altera o `header` e o `p` (parágrafo). Note o uso da variável `title` que configuramos acima, em nossa rota index.js. Isso significa que não temos que mudar sempre o texto para mostrar coisas diferentes na página home. Mas vamos mudar um pouco de qualquer forma para:
 
 ```jade
 
