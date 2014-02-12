@@ -320,7 +320,7 @@ Agora, com o servidor reiniciado, navegue até `http://localhost:3000/helloworld
 
 ![helloworld](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/browsershot2.png)
 
-Ok! Agora que temos nossa rota nos levando para nossa view. Vamos fazer alguma modelagem. **Eu vou dar um momento para você, caso precise reparar seu cabelo ou maquiagem**.
+Ok! Agora temos nossa rota nos levando para nossa view. Vamos fazer alguma modelagem. **Eu vou dar um momento para você, caso precise reparar seu cabelo ou maquiagem**.
 
 > Nota do tradutor: (Y) AUSHDUHASUDHUASHDUAHSUDHAUSHDUHASUDHUASHD
 
