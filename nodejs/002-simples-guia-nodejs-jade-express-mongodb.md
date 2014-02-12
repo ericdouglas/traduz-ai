@@ -237,7 +237,7 @@ app.get( '/users', user.list );
 
 ```
 
-Isso diz a app quais rotas usar quando uma URI particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para /routes/user.js - nós vamos chamar a função de lista definida neste arquivo. Ou estaríamos se estivéssemos acessando a página de usuários, mas estamos ignorando-a, lembra?
+Isso diz a app quais rotas usar quando uma URI particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para `/routes/user.js` - nós vamos chamar a função de lista definida neste arquivo. Ou estaríamos se estivéssemos acessando a página de usuários, mas estamos ignorando-a, lembra?
 
 `app.js`
 ```js
@@ -254,7 +254,7 @@ Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, Wor
 
 ```js
 
-app.get('/helloworld', routes.helloworld);
+app.get( '/helloworld', routes.helloworld );
 
 ```
 
@@ -267,8 +267,8 @@ Aperte `ctrl c` para encerrar o app.js em sua linha de comando, e então reinici
  * GET home page.
  */
 
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+exports.index = function( req, res ){
+  res.render( 'index', { title: 'Express' });
 };
 
 ```
@@ -278,7 +278,7 @@ Muito escasso, certo? Vamos adicionar uma nova página. Minha abordagem preferid
 ```js
 
 exports.helloworld = function ( req, res ) {
-	res.render('helloworld', { title: 'Hello, World!' });
+	res.render( 'helloworld', { title: 'Hello, World!' } );
 };
 
 ```
