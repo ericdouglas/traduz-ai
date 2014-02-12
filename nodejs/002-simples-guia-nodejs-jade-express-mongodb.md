@@ -215,7 +215,7 @@ app.use( express.urlencoded() );
 
 ```
 
-Em razão de evitar alguns avisos em seu console Node quando você rodar a aplicação. Isto é devido a algumas mudanças futuras bi Express e seus plugins. Se você não fizer esta mudança, sua aplicação vai continuar rodando, mas você irá ver texto sobre futuras *desaprovações* (deprecations) toda vez que você rodar isso.
+Em razão de evitar alguns avisos em seu console Node quando você rodar a aplicação. Isto é devido a algumas mudanças futuras do Express e seus plugins. Se você não fizer esta mudança, sua aplicação vai continuar rodando, mas você irá ver texto sobre futuras *desaprovações* (deprecations) toda vez que você rodar isso.
 
 `app.js`
 ```js
