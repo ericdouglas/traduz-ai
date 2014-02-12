@@ -313,3 +313,15 @@ Salve o arquivo, vá para o terminal e encerre sua aplicação `ctrl c`. Agora d
 node app.js
 
 ```
+
+É importante mencionar: mudanças nos templates Jade não necessitam do reinício do servidor, mas basicamente toda vez que você mudar um arquivo `.js`, como `app.js` ou um arquivo de rota, você vai precisar reiniciar para ver as mudanças.
+
+Agora, com o servidor reiniciado, navegue até `http://localhost:3000/helloworld` e divirta-se com o texto completamente estúpido mostrado:
+
+![helloworld](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/browsershot2.png)
+
+Ok! Agora que temos nossa rota nos levando para nossa view. Vamos fazer alguma modelagem. Eu vou dar um momento para você, caso precise reparar seu cabelo ou maquiagem.
+
+> Nota do tradutor: /\ AUSHDUHASUDHUASHDUAHSUDHAUSHDUHASUDHUASHDUHAASDUHASUHDUHASUdhuashDUHASUDH
+
+## PARTE 3 - CRIANDO NOSSO DB E LENDO ALGO DELE
