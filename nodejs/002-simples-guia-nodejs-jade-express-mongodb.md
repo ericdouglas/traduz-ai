@@ -283,7 +283,7 @@ exports.helloworld = function ( req, res ) {
 
 ```
 
-Isso é tudo que temos que fazer para rotear esta URI, mas nós não temos nenhuma para o `res.render` renderizar. É ai que o Jade entra. Abra sua pasta `views`, e então abra o arquivo `index.jade`. Antes de fazer qualquer coisa, **salve este arquivo como `helloworld.jade`**.
+Isso é tudo que temos que fazer para rotear esta URI, mas nós não temos nenhuma página para o `res.render` renderizar. É ai que o Jade entra. Abra sua pasta `views`, e então abra o arquivo `index.jade`. Antes de fazer qualquer coisa, **salve este arquivo como `helloworld.jade`**.
 
 Agora dê uma olhada no código:
 
