@@ -249,3 +249,67 @@ http.createServer( app ).listen( app.get( 'port' ), function () {
 ```
 
 Por último, mas não menos importante, isso cria nosso servidor http e o lança. Bons tempos!
+
+Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URI. Em baixo da seção `app.get()` no arquivo app.js, adicione esta linha:
+
+```js
+
+app.get('/helloworld', routes.helloworld);
+
+```
+
+Aperte `ctrl c` para encerrar o app.js em sua linha de comando, e então reinicie o processo e vá até `http://localhost:3000/helloworld`. Você deve obter um interessante erro do node e uma quebra na linha de comando. Isto porque nós não modificamos nossa rota para manipular esta requisição. Vamos fazer isso! Em seu editor de texto, abra sua pasta *routes*, encontre `index.js` e abra-o. Ele vai se parecer com isso:
+
+`index.js`
+```js
+
+/*
+ * GET home page.
+ */
+
+exports.index = function(req, res){
+  res.render('index', { title: 'Express' });
+};
+
+```
+
+Muito escasso, certo? Vamos adicionar uma nova página. Minha abordagem preferida é adicionar um novo arquivo de rota para o diretório de nível superior, mas nós não criamos um diretório *helloworld* completo nas views, então vamos apenas usar a rota index. No fim do arquivo, adicione este código:
+
+```js
+
+exports.helloworld = function ( req, res ) {
+	res.render('helloworld', { title: 'Hello, World!' });
+};
+
+```
+
+Isso é tudo que temos que fazer para rotear esta URI, mas nós não temos nenhuma para o `res.render` renderizar. É ai que o Jade entra. Abra sua pasta `views`, e então abra o arquivo `index.jade`. Antes de fazer qualquer coisa, **salve este arquivo como `helloworld.jade`**.
+
+Agora dê uma olhada no código:
+
+`helloworld.jade`
+```jade
+
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+
+```
+
+Isso é muito simples. Ele usa `extends` o arquivo `layoud.jade` como um template, e então dentro do bloco `content` definido no arquivo layout, ele altera o `header` e o `p` (parágrafo). Note o uso da variável `title` que configuramos acima, em nossa rota index.js. Isso significa que não temos que mudar sempre o texto para mostrar coisas diferentes na página home. Mas vamos mudar um pouco de qualquer forma para:
+
+```jade
+
+p Hello, World! Welcome to #{title}
+
+```
+
+Salve o arquivo, vá para o terminal e encerre sua aplicação `ctrl c`. Agora digite:
+
+```sh
+
+node app.js
+
+```
