@@ -325,3 +325,12 @@ Ok! Agora temos nossa rota nos levando para nossa view. Vamos fazer alguma model
 > Nota do tradutor: (Y) AUSHDUHASUDHUASHDUAHSUDHAUSHDUHASUDHUASHD
 
 ## PARTE 3 - CRIANDO NOSSO DB E LENDO ALGO DELE
+
+### PASSO 1 - INSTALAR MONGODB
+
+Vamos deixar um pouco nosso editor de texto e ir para nosso terminal. Bem, primeiro vamos para nosso browser, no endereço http://mongodb.org/ e fazer o download do Mongo. Click no link de downloads no menu principal e pegue a versão de produção que se encaixa com seu sistema. Para o Windows 8 com um processador 64-bit, nós vamos usar o "64-bit *2008R2+". Isso irá lhe fornecer um arquivo `.zip`, que você deve descompactar para um diretório temporário. Então você pode criar um diretório no qual o Mongo vai permanecer pra sempre depois de armazenar o Mongo. Você pode usar `c:\monog` ou c:\program files\mongo` ou qualquer outra coisa louca que você quiser. Isso não importa na verdade - O Mongo é bem pequeno, e vamos armazenar nosso banco de dados no nosso diretório `nodetest1`.
+
+De qualquer forma, copie os arquivos da pasta bin dentro do seu diretório temporário para onde você quer que o Mongo fique, e você está pronto. Você instalou o Mongo. Agora vamos fazer isso funcionar.
+
+### PASSO 2 - RODANDO MONGOD e MONGO
+
