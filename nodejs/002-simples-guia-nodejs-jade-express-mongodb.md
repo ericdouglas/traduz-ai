@@ -334,3 +334,32 @@ De qualquer forma, copie os arquivos da pasta bin dentro do seu diretório tempo
 
 ### PASSO 2 - RODANDO MONGOD e MONGO
 
+No seu diretório nodetest1, cria um subdiretório chamado `data`. Então navegue até o diretório em que você colocou seus arquivos do MongoDB. Deste diretório, digite o seguinte:
+
+```sh
+
+mongod --dbpath c:\node\nodetest1\data
+
+```
+
+Você vai ver que o servidor Mongo inicia. Pode demorar um pouco se for a primeira vez, porque ele tem que fazer algumas pre-alocações de espaço e algumas tarefas de limpeza. Uma vez que isso disser "[initandlisten] waiting for connections on port 27017", tudo está feito. Não há nada mais para se fazer; o servidor está rodando. Agora você pode **abrir um segundo terminal**. Navegue novamente até o diretório de instalação do Mongo, e digite:
+
+```sh
+
+mongo
+
+``
+
+Você vai ver algo assim:
+
+```sh
+
+c:\mongo>mongo
+MongoDB shell version: 2.4.5
+connecting to: test
+
+```
+
+Adicionalmente, se você está prestando atenção em sua instância mongod, você vai ver que ele menciona que a conexão foi estabilizada. Tudo certo, você tem o MongoDB funcionando, e conectou a ele com o client. Nós vamos usar o client manualmente para trabalhar no nosso banco de dados, mas não é necessário para rodar o website. Somente o mongod é necessário para isso.
+
+### PASSO 3 - CRIANDO UM BANCO DE DADOS
