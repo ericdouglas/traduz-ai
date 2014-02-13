@@ -348,7 +348,7 @@ Você vai ver que o servidor Mongo inicia. Pode demorar um pouco se for a primei
 
 mongo
 
-``
+```
 
 Você vai ver algo assim:
 
