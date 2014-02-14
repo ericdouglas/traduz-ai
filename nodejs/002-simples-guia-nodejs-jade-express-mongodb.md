@@ -363,3 +363,57 @@ connecting to: test
 Adicionalmente, se você está prestando atenção em sua instância mongod, você vai ver que ele menciona que a conexão foi estabilizada. Tudo certo, você tem o MongoDB funcionando, e conectou a ele com o client. Nós vamos usar o client manualmente para trabalhar no nosso banco de dados, mas não é necessário para rodar o website. Somente o mongod é necessário para isso.
 
 ### PASSO 3 - CRIANDO UM BANCO DE DADOS
+
+Não se preocupe com "connecting to: test"... este é apenas o db padrão decidido pelo MongoDB para ser usado se você não especificar um na linha de comando, o qual não fizemos porque não é importante por agora. Na verdade, ele nem mesmo cria o db "test", a menos que você adicione um registro. Seria totalmente correto trabalhar neste db por agora, mas vamos criar um próprio nós mesmos. No seu console Mongo, digite o seguinte:
+
+```sh
+
+use nodetest1
+
+```
+
+Agora estamos usando o db `nodetest1`. Igualmente ao `test`, nada existe ainda. Para criar o db, temos que adicionar algum dado. Vamos começar fazendo isso diretamente pelo Mongo Client.
+
+### PASSO 4 - ADICIONANDO ALGUNS DADOS
+
+O que mais gosto sobre o MongoDB é que ele usa JSON em sua estrutura, que significa que isso foi instantâneamente familiar para mim. Se você não está acostumando com JSON, você terá que fazer alguma leitura, pois isso está fora do escopo deste tutorial.
+
+Vamos adicionar um registro para nossa coleção. Para a proposta deste tutorial, vamos apenas ter um simples db com nomes de usuários e endereços de e-mail. O formato de nossos dados vão ser dessa forma:
+
+```json
+{
+  "_id" : 1234,
+  "username" : "cwbuecheler",
+  "email" : "cwbuecheler@nospam.com"
+}
+
+```
+
+Você pode criar sua própria atribuição `_id` se você realmente quiser, mas eu acho melhor deixar para o Mongo fazer estas coisas. Isso vai fornecer um identificador único para cada simples entrada do nível superior da sua coleção. Vamos adicionar uma e ver como isso funciona. No seu Mongo client, digite isso:
+
+```sh
+
+db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@tesdomain.com" })
+
+``
+
+Algo importante de se notar aqui: este `db` significa nosso banco de dados, que como mencionado acima, nós definimos como `nodetest1`. A parte `usercollection` é nossa coleção. Note que não existe um passo onde nós criamos a coleção "usercollection". Isso porque a primeira vez que adicionamos isso, ele já irá se auto-criar. Prático. Ok, aperte enter. Assumingo que tudo ocorreu corretamente, você deve ver... nada. Isso não é muito animador, então digite isso:
+
+```sh
+
+db.usercollection.find().pretty()
+
+```
+
+No caso de você estar curioso, o método `.pretty()` nos fornece quebra de linha. Isso vai retornar:
+
+```sh
+
+{
+    "_id" : ObjectId("5202b481d2184d390cbf6eca"),
+    "username" : "testuser1",
+    "email" : "testuser1@testdomain.com"
+}
+
+```
+
