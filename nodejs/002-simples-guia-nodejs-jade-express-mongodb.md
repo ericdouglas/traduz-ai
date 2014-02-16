@@ -416,4 +416,41 @@ No caso de você estar curioso, o método `.pretty()` nos fornece quebra de linh
 }
 
 ```
+Exceto, claro, que seu ObjectID vai ser diferene deste mencionado, pois o Mongo vai gerará-lo automaticamente. Isto é tudo que temos que escrever para o MongoDB a partir do client app, e se você já trabalhou com serviços JSON antes, você provavelmente estará pensando "ó, wow, isso será fácil de implementar na web." ... você está certo!
 
+Uma nota rápida sobre a estrutura do DB: obviamente ao longo da jornada você não vai armazenar nada em nível alto. Existem toneladas de recursos na internate para o projetos de esquema para o MongoDB. Google é seu amigo!
+
+Agora que temos um registro, vamos adicionar um pouco mais. Em seu console Mongo, digite o seguinte:
+
+``sh
+
+newstuff = [{ "username" : "testuser2", "email" : "testuser2@testdomain.com" }, { "username" : "testuser3", "email" : "testuser3@testdomain.com" }]
+db.usercollection.insert(newstuff);
+
+```
+
+Note que, sim, nós passamos um array com múltiplos objetos para nossa coleção. Prático! Outro uso de `db.usercollection.find().pretty()` vai mostrar todos os três registros:
+
+```sh
+
+{
+        "_id" : ObjectId("5202b481d2184d390cbf6eca"),
+        "username" : "testuser1",
+        "email" : "testuser1@testdomain.com"
+}
+{
+        "_id" : ObjectId("5202b49ad2184d390cbf6ecb"),
+        "username" : "testuser2",
+        "email" : "testuser2@testdomain.com"
+}
+{
+        "_id" : ObjectId("5202b49ad2184d390cbf6ecc"),
+        "username" : "testuser3",
+        "email" : "testuser3@testdomain.com"
+}
+
+```
+
+Agora, vamos começar realmente a interagir com o servidor web e o site que configuramos anteiormente.
+
+### PASSO 5 - LIGANDO O MONGO COM O NODE
