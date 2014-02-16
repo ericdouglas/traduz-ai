@@ -395,7 +395,7 @@ Você pode criar sua própria atribuição `_id` se você realmente quiser, mas 
 
 db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@tesdomain.com" })
 
-``
+```
 
 Algo importante de se notar aqui: este `db` significa nosso banco de dados, que como mencionado acima, nós definimos como `nodetest1`. A parte `usercollection` é nossa coleção. Note que não existe um passo onde nós criamos a coleção "usercollection". Isso porque a primeira vez que adicionamos isso, ele já irá se auto-criar. Prático. Ok, aperte enter. Assumingo que tudo ocorreu corretamente, você deve ver... nada. Isso não é muito animador, então digite isso:
 
@@ -422,7 +422,7 @@ Uma nota rápida sobre a estrutura do DB: obviamente ao longo da jornada você n
 
 Agora que temos um registro, vamos adicionar um pouco mais. Em seu console Mongo, digite o seguinte:
 
-``sh
+```sh
 
 newstuff = [{ "username" : "testuser2", "email" : "testuser2@testdomain.com" }, { "username" : "testuser3", "email" : "testuser3@testdomain.com" }]
 db.usercollection.insert(newstuff);
