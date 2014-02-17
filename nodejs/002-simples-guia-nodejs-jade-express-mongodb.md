@@ -454,3 +454,66 @@ Note que, sim, nós passamos um array com múltiplos objetos para nossa coleçã
 Agora, vamos começar realmente a interagir com o servidor web e o site que configuramos anteiormente.
 
 ### PASSO 5 - LIGANDO O MONGO COM O NODE
+
+Aqui é onde a borracha encontra o asfalto. Vamos começar a criar uma página que apenas mostra nossas entradas no DB de forma bem ligeira. Aqui o HTML que vamos gerar:
+
+```html
+
+<ul>
+    <li><a href="mailto:testuser1@testdomain.com">testuser1</a></li>
+    <li><a href="mailto:testuser2@testdomain.com">testuser2</a></li>
+    <li><a href="mailto:testuser3@testdomain.com">testuser3</a></li>
+</ul>
+
+```
+
+Eu sei que isso não é ciência astronáutica, mas esta é a questão. Vamos fazer apenas um simples ler-e-escrever do DB neste tutorial, não tentar fazer um website inteiro. Primeiramentem precisamos adicionar algumas linhas no nosso arquivo principal `app.js` - o coração e a alma da nossa app - em favor de realmente nos conectar-mos a instância MongoDB. Abra o arquivo `app.js` e no topo dele você vai ver:
+
+```js
+
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var http = require('http');
+var path = require('path');
+
+```
+
+Agora adicione estas 3 linhas:
+
+```js
+
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var http = require('http');
+var path = require('path');
+
+// Novo código
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/nodetest1');
+
+```
+
+Estas linhas dizem que nossa app vai conversar com o MongoDB, e vamos usar o Monk para fazer isso, e nosso banco de dados está localizado em `localhost:27017/nodetest1`. Note que 27017 é a porta que sua instância MongoDB deve estar rodando. Se por algum motivo você a mudou, obviamente use esta porta então. Agora olhe para a parte de baixo do arquivo, onde você tem isso:
+
+```js
+
+app.get('/', routes.index);
+app.get('/users', user.list);
+app.get('/helloworld', routes.helloworld);
+
+```
+
+Adicione a seguinte linha no final:
+
+```js
+
+app.get('/userlist', routes.userlist(db));
+
+```
+
+Esta linha diz que quando o usuário navegar para /userlist, nós vamos passar a variável "db" (nosso objeto do banco de dados) para a rota *userlist*. Mas nós NÃO temos uma rota userlist ainda, então vamos criar uma.
+
+### PASSO 6 - PUXANDO DADOS DO MONGO E MOSTRANDO-OS
