@@ -517,3 +517,53 @@ app.get('/userlist', routes.userlist(db));
 Esta linha diz que quando o usuário navegar para /userlist, nós vamos passar a variável "db" (nosso objeto do banco de dados) para a rota *userlist*. Mas nós NÃO temos uma rota userlist ainda, então vamos criar uma.
 
 ### PASSO 6 - PUXANDO DADOS DO MONGO E MOSTRANDO-OS
+
+Abra o arquivo `nodetest1/routes/index.js` em seu editor. Ele tem a rota index, e a rota /helloworld. Vamos adicionar uma terceira:
+
+```js
+
+exports.userlist = function(db) {
+    return function(req, res) {
+        var collection = db.get('usercollection');
+        collection.find({},{},function(e, docs){
+            res.render('userlist', {
+                "userlist" : docs
+            });
+        });
+    };
+};
+
+```
+
+Ok... Isso está ficando bem complicado. Tudo que isso está realmente fazendo, porém, é rodar uma função que envolve para passarmos nossa variável db, e então fazer a página renderizar como os outros dois "exports" neste arquivo de rota. Nós então dizemos em cada coleção que queremos usar ('usercollection') e fazer um `find`, então retornando o resultado como a variável `docs`. Uma vez que temos estes documentos, nós então vamos renderizar uma *userlist* (que vai precisar de um template Jade correspondente), dando isso a esta userlist para que ela possa trabalhar, e passando nosso documento do db como variável.
+
+Vamos agora configurar nosso template Jade. Navegue até `nodetest1/views` e abra `index.jade`. Após isso, **salve imediatamente este arquivo como `userlist.jade`**. Então edite o HTML para se parecer com isso:
+
+```jade
+
+extends layout
+
+block content
+    h1.
+        User List
+
+    ul
+        each user, i in userlist
+            li
+                a(href='mailto:#{user.email}')= user.username
+
+```
+
+Isto está dizendo que vamos receber um conjunto de documentos chamado de userlist do nosso arquivo roteador, e então para entrada (nomeado 'user' durante o loop), vamos pegar o valor 'email' e 'username' do objeto e colocar em nosso html. Nós também temos a contagem - i - útil, mas neste caso nós não precisamos dela.
+
+Tudo está configurado. Salve o arquivo, e vamos reiniciar nosso servidor node. Se lembra de como fazer isso? Vá para o terminal e aperte `ctrl c` para encerrar o processo de `app.js` se ele ainda estiver rodando. Então digite:
+
+```js
+
+$ node app.js
+
+```
+
+Agora abra o seu navegador e vá para `http://localhost:3000/userlist` e maravilhe-se com o resultado.
+
+![hello user](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/browsershot3.png)
