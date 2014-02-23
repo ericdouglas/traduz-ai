@@ -14,7 +14,7 @@ Variáveis tem ou um escopo local ou um escopo global.
 
 ##Variáveis Locais (Escopo Nível-Função [Function-Level])
 	
-Ao contrário da maioria das linguagens de programação, o JavaScript não tem um escopo em nível de bloco (escopo de variável envolvido por chaves); como alternativa, no JavaScript temos escopo por nível-função. Variáveis declaradas dentro de uma função são variáveis locais e são somente acessíveis dentro desta função ou por funções dentro da função. Veja meu post de [Closures](http://javascriptissexy.com/javascript-closures-in-lovely-detail/) para saber mais em como acessar variáveis em funções exteriores a partir de funções interiores.
+Ao contrário da maioria das linguagens de programação, o JavaScript não tem um escopo em nível de bloco (escopo de variável envolvido por chaves); como alternativa, no JavaScript temos escopo por nível-função. Variáveis declaradas dentro de uma função são variáveis locais e são somente acessíveis dentro desta função ou por funções dentro da função. Veja meu post de [Closures](https://github.com/cerebrobr/traduz-ai/blob/master/javascript/004-entenda-closures-no-javaScript-com-facilidade.md) para saber mais em como acessar variáveis em funções exteriores a partir de funções interiores.
 
 Demonstração de Escopo de Nível-Função
 
