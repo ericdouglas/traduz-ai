@@ -44,7 +44,7 @@ Esperamos que seja de bom proveito este material, para que juntos possamos apren
 	* [Original](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/) e [Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/007-entenda-callbacks-js.md)
 
 08. **Introdução sobre o conceito de Promises em Javascript.**
-	* [Original](http://www.promisejs.org/) e [Tradução](http://eoop.github.io/promiseJS.br/)
+	* [Original](http://www.promisejs.org/) e [Tradução](http://cerebrobr.github.io/promiseJS.br)
 
 # AngularJS
 
