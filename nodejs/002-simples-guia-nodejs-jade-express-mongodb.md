@@ -567,3 +567,63 @@ $ node app.js
 Agora abra o seu navegador e vá para `http://localhost:3000/userlist` e maravilhe-se com o resultado.
 
 ![hello user](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/browsershot3.png)
+
+Você está agora puxando dados do DB e mostrando na sua página web. Muito bom!
+
+Há mais uma coisa que eu gostaria muito de cobrir neste tutorial, mas como ele já está tão longo quanto a Bíblia, vou explicar brevemente isso aqui. Você pode facilmente mudar sua *view* userlist de uma página manipulada pelo Express e template Jade para uma boa e velha resposta JSON. Você pode então acessar isso com AJAX e manipular no lado do cliente, com jQuery por exemplo, ao invés de no lado do servidor. Eu não vou me opor se você quiser fazer assim, mas não posso cobrir isso, então vou apenas apontar o caminho para [res.json](http://expressjs.com/api.html#res.json) e dizer "siga por aqui, não é tão difícil".
+
+Vamos acabar com isso.
+
+## PARTE 4 - O SANTO GRAAL - ESCREVENDO NO DB
+
+Escrever no banco de dados não é difícil. Essencialmente nós precisamos configurar uma rota que pega um POST, ao invés de um GET. Nós podemos usar AJAX aqui, e honestamente é minha preferência na maioria das vezes... mas este é realmente um tutorial diferente, então vamos manter uma abordagem de *colocar e mostrar resultados*. Mais uma vez, não tão difícil adaptar essas coisas para funcionarem da maneira que você quer.
+
+### PASSO 1 - CRIE SUA ENTRADA DE DADOS
+
+Vamos passar rapidamente aqui: dois inputs feios e sem estilo mais um botão *submit*. Estilo 1996. Após isso, vamos começar com o `app.get()`; e então dar algo para ser pego. Abra o `app.js` e encontre a parte das chamadas `app.get()`, e adicione isso no final delas:
+
+```js
+
+app.get('/newuser', routes.newuser);
+
+```
+
+Então você vai ter:
+
+```js
+
+app.get('/', routes.index);
+app.get('/users', user.list);
+app.get('/helloworld', routes.helloworld);
+app.get('/userlist', routes.userlist(db));
+
+// New Code
+app.get('/newuser', routes.newuser);
+
+```
+
+Como todas as requisições `app.get`, nós precisamos ajustar a rota para reconhecer o que servir. Abra `routes/index.js` e adicione o seguinte:
+
+```js
+
+exports.newuser = function ( req, res ) {
+	res.render( 'newuser', { title: 'Add New User' } );
+};
+
+```
+
+Agora nós apenas precisamos de um template. Abra `views/index.jade`, salve como `newuser.jade`, e substitua todo o arquivo com este conteúdo:
+
+```jade
+
+extends layout
+
+block content
+	h1= title
+	form#formAddUser( name='adduser', method='post', action='/adduser' )
+		input#inputUserName( type='text', placeholder='username', name='username' )
+		input#inputUserEmail( type='text', placeholder='useremail', name='useremail' )
+		button#btnSubmit( type='submit' ) submit
+
+```
+
