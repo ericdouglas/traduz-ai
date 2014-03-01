@@ -607,7 +607,7 @@ Como todas as requisições `app.get`, nós precisamos ajustar a rota para recon
 ```js
 
 exports.newuser = function ( req, res ) {
-	res.render( 'newuser', { title: 'Add New User' } );
+	 res.render( 'newuser', { title: 'Add New User' } );
 };
 
 ```
@@ -619,11 +619,99 @@ Agora nós apenas precisamos de um template. Abra `views/index.jade`, salve como
 extends layout
 
 block content
-	h1= title
-	form#formAddUser( name='adduser', method='post', action='/adduser' )
-		input#inputUserName( type='text', placeholder='username', name='username' )
-		input#inputUserEmail( type='text', placeholder='useremail', name='useremail' )
-		button#btnSubmit( type='submit' ) submit
+    h1= title
+	      form#formAddUser( name='adduser', method='post', action='/adduser' )
+		    input#inputUserName( type='text', placeholder='username', name='username' )
+		    input#inputUserEmail( type='text', placeholder='useremail', name='useremail' )
+		    button#btnSubmit( type='submit' ) submit
 
 ```
 
+Aqui nós criamos um formulário com o ID "formAddUser" (eu gosto de nomear meus IDs com o tipo de coisa que ele está identificando. É uma peculiaridade pessoal). O *method* é o `post` e a *action* é `adduser`. Bastante simples. Abaixo disso nós definimos nossos dois inputs e nosso botão.
+
+Se você reiniciar o servidor node e ir para `http://localhost:3000/newuser`, você vai ver nosso formulário em toda sua glória.
+
+![form](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/browsershot4.png)
+
+### PASSO 2 - CRIANDO NOSSAS FUNÇÕES DB
+
+Ok, o mesmo processo de antes. Primeiro vamos editar o `app.js`, então nosso arquivo `route`, e então nosso template Jade. Exceto que não existe um template Jade aqui porque nós estamos postando e então encaminhando. Veja abaixo. Vai tudo fazer sentido! Vamos começar: Abra `app.js` e mais uma vez encontre a pilha de chamadas `app.get`:
+
+```js
+
+app.get('/', routes.index);
+app.get('/users', user.list);
+app.get('/helloworld', routes.helloworld);
+app.get('/userlist', routes.userlist(db));
+app.get('/newuser', routes.newuser);
+
+```
+
+Agora adicione o seguinte em baixo desta lista:
+
+```js
+
+app.post('/adduser', routes.adduser(db));
+
+```
+
+Note que isso é um `app.post`, não um `app.get`. Se você quer separar essa parte dos `app.get` com um comentário ou nova linha, eu não vou lhe impedir. Vamos configurar nossa rota.
+
+Volte para `routes/index.js` para criarmos nossa função de inserção. Essa é grande, então eu comentei o código bem cuidadosamente. Aqui está:
+
+```js
+
+exports.adduser = function (db) {
+    return function (req, res) {
+       
+        // Pega os valores do form. Eles dependem do atributo "name"
+        var userName = req.body.username;
+        var userEmail = req.body.useremail;
+
+        // Configura nossa coleção
+        var collection = db.get('usercollection');
+
+        // Envia ao DB
+        collection.insert({
+            "username" : userName,
+            "email" : userEmail
+        }, function (err, doc) {
+            if (err) {
+                // Se isso falhar, retorna um erro
+                res.send("Ocorreu um problema ao adicionar informação ao banco de dados");
+            }
+            else {
+                // Se funcionar, configura o header para a barra de endereço não continuar dizendo /adduser
+                res.location("userlist");
+                // E depois a página de sucesso
+                res.redirect("userlist");
+            }
+        }); 
+    };
+};
+
+```
+
+Obviamente no mundo real você vai querer de uma tonelada a mais de validação, checagem de erros, e coisas do tipo. Você vai querer checar por nomes de usuários e emails duplicados, por exemplo, e também checar se a entrada de email parece com uma legítima. Mas isso vai funcionar por agora. Como você pode ver, adicionando os dados com sucesso ao DB, vamos em seguida retornar o usuário a página *userlist*, onde ele deve ver a nova entrada adicionada.
+
+Existem formas mais suvaes de se fazer isso? Com certeza, porém vamos ficar nessa forma básica por agora. Agora, vamos adicionar alguns dados!
+
+### PASSO 3 - CONECTANDO E ADICIONANDO DADOS AO SEU BANCO DE DADOS
+
+**Assegure-se que o mongod está rodando!** Então volte para seu terminal, encerre o processo do servidor node e volte a rodá-lo, reiniciando-o:
+
+```sh
+
+$ node app.js
+
+```
+
+Assumindo que seu servidor está rodando, e deve estar, retorne para o navegador e vá para `http://localhost:3000/newuser` novamente. Temos nosso empolgante formulário, exatamente como antes, exceto que agora vamos preencher com alguns valores antes de enviarmos ele. Eu coloquei o *username* como "noderocks" e o *email* como "noderocks@rockingnode.com"... você pode colocar o que quiser.
+
+![add user](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/browsershot5.png)
+
+Clique em submit, e veja... voltamos ao `/userlist` e essa é nossa nova entrada!
+
+![new add user](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/browsershot6.png)
+
+Estamos oficialmente lendo e escrevendo a partir do nosso banco de dados MongoDB usando Node.js, Express e Jade. Você é agora o que as crianças chamam de desenvolvedor "full stack" (provavelmente n)
