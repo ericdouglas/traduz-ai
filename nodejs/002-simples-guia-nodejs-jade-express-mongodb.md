@@ -718,7 +718,7 @@ Estamos oficialmente lendo e escrevendo a partir do nosso banco de dados MongoDB
 
 Parabéns. Sério. Se você seguiu todo este caminho, e se realmente prestou atenção no que você fez e não apenas copiou e colou código, você deve ter agora uma compreensão sólida de rotas e views, ler do banco de dados e postar no DB. Isso é **tudo** que você precisa para começar a desenvolver qualquer app que você queira. Eu não sei você, mas acho isso realmente muito legal.
 
-### PARTE 4 - PRÓXIMOS PASSOS
+## PARTE 5 - PRÓXIMOS PASSOS
 
 A partir daqui, existem milhões de diferentes direções que você pode seguir. Você pode checar sobre [Mongoose](http://mongoosejs.com/), que é outro pacote de manipulador Mongo para Node/Express. É maior que o Monk, mas também faz mais coisas. Você pode checar sobre Stylus, o pré-processador CSS que vem com o Express. Você pode pesquisar "Node Express Mongo Tutorial" e ver algumas coisas. Apenas continue explorando e construindo!
 
