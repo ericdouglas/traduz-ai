@@ -714,4 +714,17 @@ Clique em submit, e veja... voltamos ao `/userlist` e essa é nossa nova entrada
 
 ![new add user](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/browsershot6.png)
 
-Estamos oficialmente lendo e escrevendo a partir do nosso banco de dados MongoDB usando Node.js, Express e Jade. Você é agora o que as crianças chamam de desenvolvedor "full stack" (provavelmente n)
+Estamos oficialmente lendo e escrevendo a partir do nosso banco de dados MongoDB usando Node.js, Express e Jade. Você é agora o que as crianças chamam de desenvolvedor "full stack" (provavelmente não um BOM, por enquanto, mas eu não prometi isso).
+
+Parabéns. Sério. Se você seguiu todo este caminho, e se realmente prestou atenção no que você fez e não apenas copiou e colou código, você deve ter agora uma compreensão sólida de rotas e views, ler do banco de dados e postar no DB. Isso é **tudo** que você precisa para começar a desenvolver qualquer app que você queira. Eu não sei você, mas acho isso realmente muito legal.
+
+### PARTE 4 - PRÓXIMOS PASSOS
+
+A partir daqui, existem milhões de diferentes direções que você pode seguir. Você pode checar sobre [Mongoose](http://mongoosejs.com/), que é outro pacote de manipulador Mongo para Node/Express. É maior que o Monk, mas também faz mais coisas. Você pode checar sobre Stylus, o pré-processador CSS que vem com o Express. Você pode pesquisar "Node Express Mongo Tutorial" e ver algumas coisas. Apenas continue explorando e construindo!
+
+Eu espero que este tutorial tenha sido útil. Eu o escrevi porque eu poderia ter usado isso quando comecei, e não consegui encontrar algo parecido com este nível, ou tenha quebrado as coisas em longos, longos, looongos detalhes. Se você chegou até aqui, obrigado por isso!
+
+---
+
+
+Veja o fim do artigo original para ler a lista de agradecimentos e indicações. [Link](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)
