@@ -597,7 +597,7 @@ app.get('/users', user.list);
 app.get('/helloworld', routes.helloworld);
 app.get('/userlist', routes.userlist(db));
 
-// New Code
+// Novo código
 app.get('/newuser', routes.newuser);
 
 ```
@@ -727,4 +727,4 @@ Eu espero que este tutorial tenha sido útil. Eu o escrevi porque eu poderia ter
 ---
 
 
-Veja o fim do artigo original para ler a lista de agradecimentos e indicações. [Link](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)
+**Veja o fim do artigo original para ler a lista de agradecimentos e indicações. [Link](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)**
