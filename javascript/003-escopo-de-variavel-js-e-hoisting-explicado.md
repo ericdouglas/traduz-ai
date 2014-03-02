@@ -63,7 +63,7 @@ function showCelebrityName () {
 
 function showOrdinaryPersonName () {
 	name = "Johnny Evers"; //note a ausência da palavra chave var, 
-tornando esta variável global
+//tornando esta variável global
 	console.log (name);
 }
 
