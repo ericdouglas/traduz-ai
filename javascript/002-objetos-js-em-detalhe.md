@@ -237,7 +237,7 @@ Fruta.prototype.nativaDe = function () {
 }
 ```
 
-E assim é como nós chamamos o construtor Fruta() neste padrão prototípico:
+E assim é como nós chamamos o construtor `Fruta()` neste padrão prototípico:
 
 ```javascript
 var frutaManga = new Fruta();
@@ -279,14 +279,14 @@ console.log(livro[tituloDoLivro]);	// Caminhos para Ir
 console.log(livro["marcador" + 1]);	// Pagina 20
 ``` 
 
-Caso você acesse uma propriedade de um objeto que não exista o resultado retornado será *undefined*.
+Caso você acesse uma propriedade de um objeto que não exista o resultado retornado será `undefined`.
 
 
 ## Propriedades Próprias e Herdadas
 
 Objetos tem propriedades herdadas e propriedades próprias. As próprias foram definidas no próprio objeto, enquanto as propriedades herdadas foram herdadas do objeto protótipo do construtor (outro objeto).
 
-Para saber se uma propriedade existe em um objeto (ou como herança ou como própria), você usa o operador *in*:
+Para saber se uma propriedade existe em um objeto (ou como herança ou como própria), você usa o operador `in`:
 
 ```javascript
 // Crie um novo objeto escola com a propriedade nomeEscola
@@ -304,7 +304,7 @@ console.log("toString" in escola);	// true
 
 ### hasOwnProperty
 
-Para saber se um objeto possui uma propriedade em específico como propriedade própria, você pode usar o método *hasOwnProperty*. Este método é muito útil pois de tempos em tempos você precisa enumerar um objeto e você quer somente as propriedades próprias, e não as herdadas.
+Para saber se um objeto possui uma propriedade em específico como propriedade própria, você pode usar o método `hasOwnProperty`. Este método é muito útil pois de tempos em tempos você precisa enumerar um objeto e você quer somente as propriedades próprias, e não as herdadas.
 
 ```javascript
 // Crie um novo objeto escola com a propriedade nomeEscola
@@ -320,7 +320,7 @@ console.log(escola.hasOwnProperty("toString"));
 
 ### Acessando e Enumerando Propriedades nos Objetos
 
-Para acessar propriedades enumeráveis (próprias e herdadas) nos objetos, você deve usar o loop for/in ou um loop for geral.
+Para acessar propriedades enumeráveis (próprias e herdadas) nos objetos, você deve usar o loop `for/in` ou um loop `for` geral.
 
 ```javascript
 // Crie um novo objeto escola com 3 propriedades: nomeEscola, aprovadoEscola e localEscola
@@ -334,7 +334,7 @@ for (var cadaItem in escola) {
 
 ### Acessando Propriedades Herdadas
 
-Propriedades herdadas de *Object.prototype* não são enumeráveis, então o loop for/in não as mostra. Entretanto, propriedades herdadas que são enumeráveis são reveladas na iteração do loop for/in. Por exemplo:
+Propriedades herdadas de `Object.prototype` não são enumeráveis, então o loop `for/in` não as mostra. Entretanto, propriedades herdadas que são enumeráveis são reveladas na iteração do loop `for/in`. Por exemplo:
 
 ```javascript
 // Use o loop for/in para acessar as propriedades no objeto escola
@@ -344,7 +344,10 @@ for (var cadaItem in escola) {
 
 // Crie uma nova função EnsinoSuperior em que o objeto escola irá herdar dela
 
-/*	NOTA: Como Wilson (um leitor atento) corretamente apontou no seu comentário, a propriedade nivelEnsino não é exatamente herdada pelos objetos que usam o construtor EnsinoSuperior; ao invez disso, a propriedade nivelEnsino é criada como uma nova propriedade em cada objeto que usar o construtor EnsinoSuperior. A razão para que a propriedade não fora herdada é que nós usamos a palavra chave "this" para definir a propriedade
+/*	NOTA: Como Wilson (um leitor atento) corretamente apontou no seu comentário, a propriedade nivelEnsino 
+não é exatamente herdada pelos objetos que usam o construtor EnsinoSuperior; ao invez disso, a propriedade 
+nivelEnsino é criada como uma nova propriedade em cada objeto que usar o construtor EnsinoSuperior. 
+A razão para que a propriedade não fora herdada é que nós usamos a palavra chave "this" para definir a propriedade
 */
 
 function EnsinoSuperior () {
