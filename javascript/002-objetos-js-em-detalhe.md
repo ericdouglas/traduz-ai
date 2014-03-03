@@ -21,7 +21,7 @@ Reiterando: Pense que um objeto é uma lista que contém itens e que cada item (
 O nome das propriedades podem ser uma string ou um número, mas se for um número, ele deve ser acessado com o uso de colchetes. Veja no exemplo abaixo sobre esta notação, onde temos outro exemplo de objetos com números sendo o nome da propriedade.
 
 ```javascript
-var grupoDeIdade = { 30: "criança", 100: "muito velho"};
+var grupoDeIdade = { 30: "criança", 100: "muito velho" };
 
 console.log(grupoDeIdade.30) // Isso vai lançar um erro
 
