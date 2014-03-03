@@ -16,7 +16,7 @@ var meuPrimeiroObjeto = {
 }; 
 ```
 
-Reiterando: Pense que um objeto é uma lista que contém itens e que cada item (uma propriedade) na lista é armazenada por um par nome-valor. Os nomes das propriedades no exemplo acima são primeiroNome e autorFavorito, e os valores para cada um "Richard" e "Conrad".
+Reiterando: Pense que um objeto é uma lista que contém itens e que cada item (uma propriedade) na lista é armazenada por um par nome-valor. Os nomes das propriedades no exemplo acima são `primeiroNome` e `autorFavorito`, e os valores para cada um "Richard" e "Conrad".
 
 O nome das propriedades podem ser uma string ou um número, mas se for um número, ele deve ser acessado com o uso de colchetes. Veja no exemplo abaixo sobre esta notação, onde temos outro exemplo de objetos com números sendo o nome da propriedade.
 
