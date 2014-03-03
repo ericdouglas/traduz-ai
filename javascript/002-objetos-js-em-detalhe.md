@@ -86,7 +86,7 @@ var manga = {
 	cor: "amarelo",
 	forma: "redonda",
 	doce: 8,
-	quantoDoceEuSou: function () {
+	quaoDoceEuSou: function () {
 		console.log("Hmm Hmm Bom!");
 	}
 };
@@ -100,7 +100,7 @@ var manga = new Object();
 manga.cor = "amarelo";
 manga.forma = "redonda";
 manga.doce = 8;
-manga.quantoDoceEuSou = function () {
+manga.quaoDoceEuSou = function () {
 	console.log("Hmm Hmm Bom!");
 }
 ```
