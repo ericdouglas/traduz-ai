@@ -60,7 +60,7 @@ console.log(outraPessoa.name);	// Bryant
 console.log(pessoa.name); // Bryant
 ```
 
-Neste exemplo, nós copiamos o objeto pessoa para outraPessoa, mas por causa do valor em pessoa estar armazenado como uma referência e não como um valor atual, quando nós mudamos a propriedade pessoa.name para "Bryant" a variável outraPessoa refletiu a mudança pois nunca armazenou o uma cópia do valor atual das propriedades de pessoa, somente uma referência.
+Neste exemplo, nós copiamos o objeto `pessoa` para `outraPessoa`, mas por causa do valor em `pessoa` estar armazenado como uma referência e não como um valor atual, quando nós mudamos a propriedade `pessoa.name` para "Bryant" a variável `outraPessoa` refletiu a mudança pois nunca armazenou o uma cópia do valor atual das propriedades de `pessoa`, somente uma referência.
 
 
 ### **Propriedades de Dados têm atributos**
