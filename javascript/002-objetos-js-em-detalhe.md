@@ -47,7 +47,7 @@ console.log(outraPessoa); // Kobe
 console.log(pessoa); // Bryant
 ```
 
-É interessante notarmos que mesmo que pessoa agora tenha como valor "Bryant", a variável `outraPessoa` continua retendo o antigo valor que `pessoa tinha`.
+É interessante notarmos que mesmo que pessoa agora tenha como valor "Bryant", a variável `outraPessoa` continua retendo o antigo valor que `pessoa` tinha.
 
 Compare o dado primitivo salvo-como-valor demonstrado acima, com o salvo-como-referência por objetos:
 
