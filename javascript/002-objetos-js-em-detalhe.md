@@ -4,7 +4,7 @@
 
 O núcleo mais utilizado e mais básico do JavaScript é o Object. O JavaScript tem um tipo complexo de dado, o tipo Object, e tem cinco tipos de dados simples: Number, String, Boolean, Undefined e Null. Note que estes tipos simples (primitivos) de dados são imutáveis, eles não podem ser alterados, enquanto os objetos podem.
 
-### **O que é um Objeto**
+## **O que é um Objeto**
 Um objeto é uma lista não ordenada de tipos primitivos de dados (e as vezes uma referência a outros tipos de dados) que são armazenados em pares nome-valor. Cada item na lista é chamado 'propriedade' (funções são chamadas de 'métodos') e cada nome de propriedade deve ser único e pode ser uma string ou um número.
 
 Aqui um simples objeto:
@@ -34,7 +34,7 @@ console.log(grupoDeIdade["30"]); //criança
 Como um desenvolvedor JavaScript você frequentemente irá usar os tipos de dados Object, na maioria das vezes para armazenar dados e para criar seus próprios métodos e funções.
 
 
-### **Tipos de Dados por Referência e Tipos Primitivos de Dados**
+## **Tipos de Dados por Referência e Tipos Primitivos de Dados**
 Uma das principais diferenças entre os tipos de dados por referência e os tipos primitivos de dados é que os os dados por referência não são armazenados diretamente na variável como um valor primitivo é. Por exemplo:
 
 ```javascript
@@ -63,15 +63,15 @@ console.log(pessoa.name); // Bryant
 Neste exemplo, nós copiamos o objeto `pessoa` para `outraPessoa`, mas por causa do valor em `pessoa` estar armazenado como uma referência e não como um valor atual, quando nós mudamos a propriedade `pessoa.name` para "Bryant" a variável `outraPessoa` refletiu a mudança pois nunca armazenou o uma cópia do valor atual das propriedades de `pessoa`, somente uma referência.
 
 
-### **Propriedades de Dados têm atributos**
-Cada propriedade dos dados (propriedades dos objetos que armazenam dados) não tem somente os pares nome-valor, mas também 3 atributos (os 3 atributos são definidos como true por padrão):
+## **Propriedades de Dados têm atributos**
+Cada propriedade dos dados (propriedades dos objetos que armazenam dados) não tem somente os pares nome-valor, mas também 3 atributos (os 3 atributos são definidos como `true` por padrão):
 
 - **Atributo configurável**: especifica se a propriedade pode ser deletada ou mudada.
 - **Enumerável**: especifica se a propriedade pode ser retornada em um loop for/in. 
 - **Editável**: especifica se a propriedade pode ser alterada.
 
 
-### **Criando Objetos**
+## **Criando Objetos**
 Estes são os dois meios comuns de se criar objetos:
 
 ### 1. **Objetos Literais**
@@ -110,7 +110,7 @@ Mesmo você podendo usar algumas palavras reservadas como `for` para nomear prop
 Objetos podem conter qualquer outro tipo de dados, incluindo Numbers, Arrays e também outros objetos.
 
 
-### **Padrões Práticos para Criação de Objetos**
+## **Padrões Práticos para Criação de Objetos**
 Para simples objetos que podem ser usados somente uma vez na sua aplicação para guardar dados, os dois métodos apresentados acima podem ser suficientes para a criação de objetos.
 
 Imagine que você tenha uma aplicação que mostre frutas e os detalhes sobre cada uma delas. Todas as frutas na sua aplicação tem estas propriedades: cor, forma, doçura, custo e uma função mostrarNome. Isso seria muito tedioso e improdutivo de escrever todo o tempo que você quisesse criar um novo objeto fruta.
@@ -246,15 +246,15 @@ frutaManga.mostrarNome();   // "Fruta Genérica"
 frutaManga.nativaDe();		// "Originária de: USA"
 ```
 
-### Leituras Adicionais
+## Leituras Adicionais
 
 Para uma completa discussão sobre estes dois padrões e uma explicação minunciosa de como cada um funciona e as desvantagens de cada um, leia o capítulo 6 de *Professional JavaScript for Web Developers*. Você também irá aprender qual padrão Zakas recomenda como o melhor para se usar. (Dica: não é nenhum dos dois acima).
 
 
-### **Como Acessar Propriedades em um Objeto**
+## **Como Acessar Propriedades em um Objeto**
 Os dois caminhos primários para acessar as propriedades de um objeto são com a notação com ponto e com a notação com colchete.
 
-#### 1. **Notação com Ponto**
+### 1. **Notação com Ponto**
 
 ```javascript
 // Nós temos usado muito a notação com ponto nos exemplos acima, aqui temos outro exemplo novamente:
@@ -266,7 +266,7 @@ console.log(livro.titulo);	// Caminhos para Ir
 console.log(livro.paginas);	// 280
 ``` 
 
-#### 2. **Notação com Colchete**
+### 2. **Notação com Colchete**
 
 ```javascript
 // Para acessar as propriedades do objeto livro com a notação com colchetes, você deve fazer isso:
@@ -282,7 +282,7 @@ console.log(livro["marcador" + 1]);	// Pagina 20
 Caso você acesse uma propriedade de um objeto que não exista o resultado retornado será *undefined*.
 
 
-### Propriedades Próprias e Herdadas
+## Propriedades Próprias e Herdadas
 
 Objetos tem propriedades herdadas e propriedades próprias. As próprias foram definidas no próprio objeto, enquanto as propriedades herdadas foram herdadas do objeto protótipo do construtor (outro objeto).
 
