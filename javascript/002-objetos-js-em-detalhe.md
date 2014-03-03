@@ -377,9 +377,9 @@ O atributo `prototype` e a propriedade `prototype` de um objeto são conceitos c
 
 ### Deletando Propriedades de um Objeto
 
-Para deletar uma propriedade de um objeto, usamos o operador *delete*. Você não pode deletar propriedades que são herdadas, nem propriedades cujo os atributos estão definidos para configuração. Você deve deletar as propriedades herdadas no objeto protótipo (onde as propriedades foram definidas). Você também não pode deletar propriedades do objeto global, as quais foram declaradas sem a palavra-chave var.
+Para deletar uma propriedade de um objeto, usamos o operador `delete`. Você não pode deletar propriedades que são herdadas, nem propriedades cujo os atributos estão definidos para configuração. Você deve deletar as propriedades herdadas no objeto protótipo (onde as propriedades foram definidas). Você também não pode deletar propriedades do objeto global, as quais foram declaradas sem a palavra-chave `var`.
 
-O operador delete retorna true se a remoção acontecer com sucesso, e, surpreendentemente, ele também retorna true se a propriedade a ser deletada não existe ou se a propriedade não pode ser deletada.
+O operador `delete` retorna `true` se a remoção acontecer com sucesso, e, surpreendentemente, ele também retorna `true` se a propriedade a ser deletada não existe ou se a propriedade não pode ser deletada.
 
 Estes exemplos ilustram isso:
 
@@ -399,7 +399,11 @@ delete listaNatal.toString;		// retorna true, mas toString não foi deletado poi
 // Aqui nós chamamos o método toString e ele funciona muito bem - não foi deletado
 listaNatal.toString();		// "[object Object]"
 
-// Você pode deletar uma propriedade de uma instância se a propriedade é uma propriedade própria dela. Por exemplo, nós podemos deletar a propriedade nivelEnsino do objeto escola que criamos acima, pois a nivelEnsino é definido nesta instância. Nós usamos a palavra-chave "this" para definir a propriedade quando nós declaramos a função EnsinoSuperior. Nós não definimos a propriedade nivelEnsino no protótipo da função EnsinoSuperior
+/* Você pode deletar uma propriedade de uma instância se a propriedade é uma propriedade própria dela. 
+Por exemplo, nós podemos deletar a propriedade nivelEnsino do objeto escola que criamos acima, 
+pois a nivelEnsino é definido nesta instância. Nós usamos a palavra-chave "this" para definir 
+a propriedade quando nós declaramos a função EnsinoSuperior. Nós não definimos a propriedade 
+nivelEnsino no protótipo da função EnsinoSuperior */
 
 console.log(escola.hasOwnProperty("nivelEnsino"));	// true
 
