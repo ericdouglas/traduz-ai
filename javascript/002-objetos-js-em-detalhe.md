@@ -367,12 +367,12 @@ for (var cadaItem in escola) {
 }
 ```
 
-No último exemplo, note que a propriedade nivelEnsino que definimos na função EnsinoSuperior é listada nas propriedades do objeto escola, mesmo nivelEnsino sendo uma propriedade herdada.
+No último exemplo, note que a propriedade `nivelEnsino` que definimos na função `EnsinoSuperior` é listada nas propriedades do objeto `escola`, mesmo `nivelEnsino` sendo uma propriedade herdada.
 
 
 ### Atributo Prototype dos Objetos e Propriedade Prototype
 
-O atributo prototype e a propriedade prototype de um objeto são conceitos criticamente importantes de se entender no JavaScript. Leia meu post [JavaScript Prototype in Plain, Detailed Language](http://javascriptissexy.com/javascript-prototype-in-plain-detailed-language/), para mais informações.
+O atributo `prototype` e a propriedade `prototype` de um objeto são conceitos criticamente importantes de se entender no JavaScript. Leia meu post [Protótipos Javascript em uma Linguagem Simples](https://github.com/cerebrobr/traduz-ai/blob/master/javascript/006-prototipos-javascript-em-uma-linguagem-simples.md#prot%C3%B3tipos-javascript-em-uma-linguagem-simples), para mais informações.
 
 
 ### Deletando Propriedades de um Objeto
