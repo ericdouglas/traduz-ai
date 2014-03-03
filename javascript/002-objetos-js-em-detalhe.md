@@ -436,11 +436,11 @@ console.log(escola.nivelEnsino2);	// Universidade 2
 
 ### Serializar e Desserializar Objetos
 
-Para transferir seus objetos via HTTP ou convertê-los para uma string, você precisa de serializá-los (converter para string); você pode usar a função JSON.stringify para serializar seus objetos. Note que quando usado antes da ECMAScript 5, você deve usar a popular biblioteca json2 (de Douglas Crockford) para obter a função JSON.stringify. Ela é padronizada/nativa na ECMAScript 5.	
+Para transferir seus objetos via HTTP ou convertê-los para uma string, você precisa de serializá-los (converter para string); você pode usar a função `JSON.stringify` para serializar seus objetos. Note que quando usado antes da ECMAScript 5, você deve usar a popular biblioteca json2 (de Douglas Crockford) para obter a função `JSON.stringify`. Ela é padronizada/nativa na ECMAScript 5.	
 
-Para desserializar seu objeto (convertê-lo para um objeto a partir de uma string), você deve usar a função JSON.parse da mesma biblioteca json2. Esta função também é nativa na ECMAScript 5.
+Para desserializar seu objeto (convertê-lo para um objeto a partir de uma string), você deve usar a função `JSON.parse` da mesma biblioteca json2. Esta função também é nativa na ECMAScript 5.
 
-Exemplos de JSON.stringify:
+Exemplos de `JSON.stringify`:
 
 ```javascript
 var listaNatal = { mike:"Livro", jason:"blusa", chelsea:"iPad" }
@@ -459,7 +459,8 @@ JSON.stringify (listaNatal);
 
 /* Exemplos JSON.parse */
 
-// A seguir temos uma string JSON, então não podemos acessar suas propriedades com a notação de pontos (como listaNatal.mike)
+// A seguir temos uma string JSON, então não podemos acessar suas propriedades com 
+// a notação de pontos (como listaNatal.mike)
 var listaNatalString = '{"mike":"Livro","jason":"Blusa","chelsea":"iPad"}';
 
 // Vamos converter para um objeto
