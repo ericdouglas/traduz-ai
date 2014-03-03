@@ -93,7 +93,7 @@ var manga = {
 ```
 
 ### 2. **Objeto Construtor**
-O segundo meio mais comum de criar objetos é com o construtor "Object". Um construtor é uma função usada para inicializar novos objetos, e você usa a palavra-chave `new` para chamar o construtor.
+O segundo meio mais comum de criar objetos é com o construtor `Object`. Um construtor é uma função usada para inicializar novos objetos, e você usa a palavra-chave `new` para chamar o construtor.
 
 ```javascript
 var manga = new Object();
@@ -113,7 +113,7 @@ Objetos podem conter qualquer outro tipo de dados, incluindo Numbers, Arrays e t
 ## **Padrões Práticos para Criação de Objetos**
 Para simples objetos que podem ser usados somente uma vez na sua aplicação para guardar dados, os dois métodos apresentados acima podem ser suficientes para a criação de objetos.
 
-Imagine que você tenha uma aplicação que mostre frutas e os detalhes sobre cada uma delas. Todas as frutas na sua aplicação tem estas propriedades: cor, forma, doçura, custo e uma função mostrarNome. Isso seria muito tedioso e improdutivo de escrever todo o tempo que você quisesse criar um novo objeto fruta.
+Imagine que você tenha uma aplicação que mostre frutas e os detalhes sobre cada uma delas. Todas as frutas na sua aplicação tem estas propriedades: cor, forma, doçura, custo e uma função `mostrarNome`. Isso seria muito tedioso e improdutivo de escrever todo o tempo que você quisesse criar um novo objeto fruta.
 
 ```javascript
 var frutaManga = {
@@ -176,9 +176,9 @@ var frutaAbacaxi = new Fruta ("Marrom", 5, "Abacaxi", ["Estados Unidos"]);
 frutaAbacaxi.mostrarNome();		//Isso é um(a) Abacaxi
 ```
 
-Se você tiver que alterar a função mostrarNome, você somente precisa fazer isso em um local. O padrão encapsula todas as funcionalidades e características das frutas apenas fazendo uma simples função Fruta com herança.
+Se você tiver que alterar a função `mostrarNome`, você somente precisa fazer isso em um local. O padrão encapsula todas as funcionalidades e características das frutas apenas fazendo uma simples função Fruta com herança.
 
-Notas: 
+**Notas**: 
 - Uma propriedade herdada é definida na propriedade *prototype* do objeto. Por exemplo: `algumObjeto.prototype.primeiroNome = "John";`
 
 
