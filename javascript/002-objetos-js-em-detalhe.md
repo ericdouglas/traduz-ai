@@ -196,14 +196,14 @@ var umaManga = new Fruta();
 umaManga.mangaSabor = "algum valor";
 ```
 
-- Para acessar uma propriedade de um objeto, nós podemos usar meuObjeto.nomePropriedade, por exemplo:
+- Para acessar uma propriedade de um objeto, nós podemos usar `meuObjeto.nomePropriedade`, por exemplo:
 
 ```javascript
 console.log(umaManga.mangaSabor);	// "algum valor"
 ```
 
 
-- Para invocar um método de um objeto, nós usamos meuObjeto.nomeDoMetodo(), por exemplo:
+- Para invocar um método de um objeto, nós usamos `meuObjeto.nomeDoMetodo()`, por exemplo:
 
 ```javascript
 // Primeiro vamos adicionar um método
@@ -216,7 +216,7 @@ umaManga.imprimiCoisas();
 
 ### 2. **Padrão Prototípico para Criação de Objetos**
 
-Antes de discutirmos sobre o Padrão Prototípico, você entender sobre protótipos no JavaScript. Se você não conhece, leia este post [JavaScript Prototype in Plain, Detailed Language] (http://javascriptissexy.com/javascript-prototype-in-plain-detailed-language/)
+Antes de discutirmos sobre o Padrão Prototípico, você entender sobre protótipos no JavaScript. Se você não conhece, leia este post [Protótipos Javascript em uma Linguagem Simples](https://github.com/cerebrobr/traduz-ai/blob/master/javascript/006-prototipos-javascript-em-uma-linguagem-simples.md#prot%C3%B3tipos-javascript-em-uma-linguagem-simples)
 
 ```javascript
 function Fruta () {
