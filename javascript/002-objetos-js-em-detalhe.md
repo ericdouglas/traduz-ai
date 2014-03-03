@@ -35,7 +35,7 @@ Como um desenvolvedor JavaScript você frequentemente irá usar os tipos de dado
 
 
 ## **Tipos de Dados por Referência e Tipos Primitivos de Dados**
-Uma das principais diferenças entre os tipos de dados por referência e os tipos primitivos de dados é que os os dados por referência não são armazenados diretamente na variável como um valor primitivo é. Por exemplo:
+Uma das principais diferenças entre os tipos de dados por referência e os tipos primitivos de dados é que os dados por referência não são armazenados diretamente na variável como um valor primitivo é. Por exemplo:
 
 ```javascript
 // O tipo primitivo de dado é armazenado como um valor
