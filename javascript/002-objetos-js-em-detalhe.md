@@ -47,7 +47,7 @@ console.log(outraPessoa); // Kobe
 console.log(pessoa); // Bryant
 ```
 
-É interessante notarmos que mesmo que pessoa agora tenha como valor "Bryant", a variável `outraPessoa` continua retendo o antigo valor que pessoa tinha.
+É interessante notarmos que mesmo que pessoa agora tenha como valor "Bryant", a variável `outraPessoa` continua retendo o antigo valor que `pessoa tinha`.
 
 Compare o dado primitivo salvo-como-valor demonstrado acima, com o salvo-como-referência por objetos:
 
@@ -57,7 +57,7 @@ var outraPessoa = pessoa;
 pessoa.name = "Bryant";
 
 console.log(outraPessoa.name);	// Bryant
-console.log(pessoa.name); 			// Bryant
+console.log(pessoa.name); // Bryant
 ```
 
 Neste exemplo, nós copiamos o objeto pessoa para outraPessoa, mas por causa do valor em pessoa estar armazenado como uma referência e não como um valor atual, quando nós mudamos a propriedade pessoa.name para "Bryant" a variável outraPessoa refletiu a mudança pois nunca armazenou o uma cópia do valor atual das propriedades de pessoa, somente uma referência.
