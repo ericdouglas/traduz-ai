@@ -5,7 +5,7 @@
 O núcleo mais utilizado e mais básico do JavaScript é o Object. O JavaScript tem um tipo complexo de dado, o tipo Object, e tem cinco tipos de dados simples: Number, String, Boolean, Undefined e Null. Note que estes tipos simples (primitivos) de dados são imutáveis, eles não podem ser alterados, enquanto os objetos podem.
 
 ### **O que é um Objeto**
-Um objeto é uma lista não ordenada de tipos primitivos de dados (e as vezes uma referência a outros tipos de dados) que são armazenados em pares nome-valor. Cada item na lista é chamado 'propriedade' (funcções são chamadas de 'métodos') e cada nome de propriedade deve ser único e pode ser uma string ou um número.
+Um objeto é uma lista não ordenada de tipos primitivos de dados (e as vezes uma referência a outros tipos de dados) que são armazenados em pares nome-valor. Cada item na lista é chamado 'propriedade' (funções são chamadas de 'métodos') e cada nome de propriedade deve ser único e pode ser uma string ou um número.
 
 Aqui um simples objeto:
 
