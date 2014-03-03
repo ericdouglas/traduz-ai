@@ -216,7 +216,7 @@ umaManga.imprimiCoisas();
 
 ### 2. **Padrão Prototípico para Criação de Objetos**
 
-Antes de discutirmos sobre o Padrão Prototípico, você entender sobre protótipos no JavaScript. Se você não conhece, leia este post [Protótipos Javascript em uma Linguagem Simples](https://github.com/cerebrobr/traduz-ai/blob/master/javascript/006-prototipos-javascript-em-uma-linguagem-simples.md#prot%C3%B3tipos-javascript-em-uma-linguagem-simples)
+Antes de discutirmos sobre o Padrão Prototípico, você deve entender sobre protótipos no JavaScript. Se você não conhece, leia este post [Protótipos Javascript em uma Linguagem Simples](https://github.com/cerebrobr/traduz-ai/blob/master/javascript/006-prototipos-javascript-em-uma-linguagem-simples.md#prot%C3%B3tipos-javascript-em-uma-linguagem-simples)
 
 ```javascript
 function Fruta () {
