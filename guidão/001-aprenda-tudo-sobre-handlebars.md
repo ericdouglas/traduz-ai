@@ -114,9 +114,9 @@ Abaixo é uma expressão Handlebars com HTML. A variável *nomeCliente* é a pro
 
 A saída vai ser a seguinte (se a variável nomeCliente tiver o valor "Richard"):
 
-Richard
+Name: Richard
 
-Desque que você tenha que passar a expressão Handlebars (com qualquer HTML contido) para a função Handlebars.compile, uma tag `script` é usada para anexar cada template Handlebars quando eles estão na página HTML. Na verdade, a tag `script` não é necessária quando um template está no próprio arquivo HTML, mas é necessário quando o template Handlebars está junto com outro template Handlebars e outro conteúdo HTML.
+Desde que você tenha que passar a expressão Handlebars (com qualquer HTML contido) para a função Handlebars.compile, uma tag `script` é usada para anexar cada template Handlebars quando eles estão na página HTML. Na verdade, a tag `script` não é necessária quando um template está no próprio arquivo HTML, mas é necessário quando o template Handlebars está junto com outro template Handlebars e outro conteúdo HTML.
 
 **- Script Tag**
 
