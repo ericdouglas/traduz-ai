@@ -46,6 +46,10 @@ Esperamos que seja de bom proveito este material, para que juntos possamos apren
 08. **Introdução sobre o conceito de Promises em Javascript.**
 	* [Original](http://www.promisejs.org/) e [Tradução](http://eoop.github.io/promiseJS.br/)
 
+09. **Padrões para códigos HTML e CSS flexíveis e sustentáveis.**
+	* [Original](http://mdo.github.io/code-guide/) e [Tradução](http://diegoeis.github.io/code-guide/)
+
+
 # AngularJS
 
 01. **Guia de Estilos AngularJS**
