@@ -1,0 +1,3 @@
+[submodule "javascript/mdo-code-guide"]
+	path = javascript/mdo-code-guide
+	url = git@github.com:diegoeis/code-guide.git
