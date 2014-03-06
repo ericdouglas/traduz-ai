@@ -13,7 +13,7 @@ Esperamos que seja de bom proveito este material, para que juntos possamos apren
 
 ### Índice
 
-* [JavaScript](#javascript) (08)
+* [JavaScript](#javascript) (09)
 * [AngularJS](#angularjs) (05)
 * [Node.js](#nodejs) (02)
 * [Handlebars](#handlebarsjs) (01)
@@ -45,6 +45,10 @@ Esperamos que seja de bom proveito este material, para que juntos possamos apren
 
 08. **Introdução sobre o conceito de Promises em Javascript.**
 	* [Original](http://www.promisejs.org/) e [Tradução](http://cerebrobr.github.io/promiseJS.br)
+
+09. **Padrões para códigos HTML e CSS flexíveis e sustentáveis.**
+	* [Original](http://mdo.github.io/code-guide/) e [Tradução](http://diegoeis.github.io/code-guide/)
+
 
 # AngularJS
 
