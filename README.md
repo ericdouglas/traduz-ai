@@ -13,7 +13,7 @@ Esperamos que seja de bom proveito este material, para que juntos possamos apren
 
 ### Índice
 
-* [JavaScript](#javascript) (09)
+* [JavaScript](#javascript) (10)
 * [AngularJS](#angularjs) (05)
 * [Node.js](#nodejs) (02)
 * [Handlebars](#handlebarsjs) (01)
@@ -48,6 +48,9 @@ Esperamos que seja de bom proveito este material, para que juntos possamos apren
 
 09. **Padrões para códigos HTML e CSS flexíveis e sustentáveis.**
 	* [Original](http://mdo.github.io/code-guide/) e [Tradução](http://diegoeis.github.io/code-guide/)
+
+10. **Novas funcionalidades do ECMAScript 6.**
+	* [Original](hhttps://github.com/lukehoban/es6features) e [Tradução](https://github.com/cerebrobr/es6features)
 
 
 # AngularJS
