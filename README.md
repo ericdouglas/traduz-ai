@@ -50,7 +50,7 @@ Esperamos que seja de bom proveito este material, para que juntos possamos apren
 	* [Original](http://mdo.github.io/code-guide/) e [Tradução](http://diegoeis.github.io/code-guide/)
 
 10. **Novas funcionalidades do ECMAScript 6.**
-	* [Original](hhttps://github.com/lukehoban/es6features) e [Tradução](https://github.com/cerebrobr/es6features)
+	* [Original](https://github.com/lukehoban/es6features) e [Tradução](https://github.com/cerebrobr/es6features)
 
 
 # AngularJS
