@@ -1,7 +1,7 @@
 ![AngularJS](../img/guia-definitivo-angular.png)
 
-* **Artigo Original**:[Ultimate guide to learning AngularJS in one day](http://toddmotto.com/ultimate-guide-to-learning-angular-js-in-one-day/)
-* **Tradução**:[Eric Douglas](https://github.com/ericdouglas)
+* **Artigo Original**: [Ultimate guide to learning AngularJS in one day](http://toddmotto.com/ultimate-guide-to-learning-angular-js-in-one-day/)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
 ##O que é AngularJS?
 
