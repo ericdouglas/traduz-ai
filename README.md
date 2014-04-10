@@ -13,7 +13,7 @@ Esperamos que seja de bom proveito este material, para que juntos possamos apren
 
 ### Índice
 
-* [JavaScript](#javascript) (09)
+* [JavaScript](#javascript) (07)
 * [AngularJS](#angularjs) (05)
 * [Node.js](#nodejs) (02)
 * [Handlebars](#handlebarsjs) (01)
