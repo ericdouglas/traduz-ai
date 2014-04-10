@@ -43,12 +43,6 @@ Esperamos que seja de bom proveito este material, para que juntos possamos apren
 07. **Entenda Funções Callback no JavaScript e Use-as**
 	* [Original](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/) e [Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/007-entenda-callbacks-js.md)
 
-08. **Introdução sobre o conceito de Promises em Javascript.**
-	* [Original](http://www.promisejs.org/) e [Tradução](http://cerebrobr.github.io/promiseJS.br)
-
-09. **Novas funcionalidades do ECMAScript 6.**
-	* [Original](https://github.com/lukehoban/es6features) e [Tradução](https://github.com/cerebrobr/es6features)
-
 
 # AngularJS
 
