@@ -1,6 +1,7 @@
 # Como aprender Javascript Corretamente! – JavaScript.is (Sexy)
 
-**Artigo original:** [How to Learn JavaScript Properly](http://javascriptissexy.com/how-to-learn-javascript-properly/)
+* **Artigo original**: [How to Learn JavaScript Properly](http://javascriptissexy.com/how-to-learn-javascript-properly/)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
 Dois roteiros separados para aprender javascript corretamente para leitores com diferentes bases de programação:
 
