@@ -1,6 +1,7 @@
 # Aprenda Tudo sobre Handlebars.js Templating JavaScript
 
-### Originalmente postado em [JavaScript.is.Sexy](http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/#Handlebarsjs_with_Backbonejs_jQuery_Emberjs_and_Meteorjs) - 18/02/2013
+* **Artigo Original**: [Handlebars.js Tutorial: Learn Everything About Handlebars.js JavaScript Templating](http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
 **Este é um tutorial sobre Handlebars.js e uma referência ao Handlebars.js** <br><br>
 
