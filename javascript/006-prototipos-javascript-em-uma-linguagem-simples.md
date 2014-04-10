@@ -2,7 +2,10 @@
 
 ![JS Prototype](../img/js-prototype.png)
 
-#### Artigo traduzido. Postado originalmente em [JavaScript.is(Sexy)](http://javascriptissexy.com/javascript-prototype-in-plain-detailed-language/) em 25/01/2013
+#### Artigo traduzido. Postado originalmente em [JavaScript.is(Sexy)]() em 25/01/2013
+
+* ****: [JavaScript Prototype in Plain Language](http://javascriptissexy.com/javascript-prototype-in-plain-detailed-language/)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
 **Protótipo** é um conceito fundamental que todo desenvolvedor JavaScript deve entender, e este post tem o objetivo de explicar o `prototype` JavaScript em uma linguagem simples e detalhada. Se você não entender o `prototype` JavaScript depois de ler este post, por favor coloque suas dúvidas nos comentários abaixo, eu vou pessoalmente responder todas as questões.
 
