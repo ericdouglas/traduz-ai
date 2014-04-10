@@ -1,6 +1,7 @@
 ![callbacks](../img/callback-js.png)
 
-#### Artigo traduzido. Postado originalmente em [JavaScript.is(Sexy)](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them) em 04/03/2013
+* **Artigo Original**: [Understand JavaScript Callback Functions and Use Them](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
 **Aprenda Funções JavaScript de Ordem Superior - Funções Callback**
 
