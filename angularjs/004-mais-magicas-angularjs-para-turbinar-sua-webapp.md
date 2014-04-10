@@ -1,8 +1,9 @@
 # Mais Mágicas do AngularJS para Turbinar sua Webapp
 
-#### Postado originalmente em [yearofmoo.com](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html)
-
 <img src="https://docs.google.com/drawings/d/1-Z1hUfyu3Bdm5urTlwgtSXVbl1-NAyYBYxp3TXJRpfQ/pub?w=958&amp;h=491">
+
+* **Artigo Original**: [More AngularJS Magic to Supercharge your Webapp](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
 ### Abram caminho para outro incrível artigo que abrange mais sobre AngularJS
 
