@@ -1,5 +1,8 @@
 # Entenda Closures no JavaScript com Facilidade
 
+* **Artigo Original**: [Understand JavaScript Closures With Ease](http://javascriptissexy.com/understand-javascript-closures-with-ease/)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
+
 Closures são adoráveis e muito úteis: Eles permitem aos programadores programarem criativamente, expressivamente e concisamente. Eles são usados frequentemente no JavaScript e, não importa seu nível de habilidade no JavaScript, você sem dúvidas irá encontrá-los. Claro, closures podem parecer complexos e além do seu alcance, mas depois que você ler este artigo, os closures vão ser muito mais fáceis de se entender e mais atraentes para serem usados todo os dias quando você programar em JavaScript.
 
 Este é um artigo curto ( e doce =] ) com os detalhes dos closures no JavaScript. Você deve estar familirializado com o [Escopo de Variáveis JavaScript](https://github.com/eoop/traduz-ai/blob/master/javascript/003-escopo-de-variavel-js-e-hoisting-explicado.md#artigo-traduzido-postado-originalmente-em-javascriptissexy-em-31012013) antes de começar essa leitura adicional, porque para se entender closures você deve entender o escopo de variáveis no JavaScript.
