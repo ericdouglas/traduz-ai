@@ -1,6 +1,9 @@
 # Escopo de Variável JavaScript e Hoisting Explicado
 
-#### Artigo traduzido. Postado originalmente em [JavaScript.is(Sexy)](http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/) em 31/01/2013
+#### Artigo traduzido. Postado originalmente em [JavaScript.is(Sexy)]() em 31/01/2013
+
+* **Artigo Original**: [JavaScript Variable Scope and Hoisting Explained](http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
 Neste artigo, nós vamos aprender sobre escopo de variáveis e hoisting (hasteamento) no JavaScript e tudo sobre as idiosscincrasias (pecularidades) de ambos.
 
