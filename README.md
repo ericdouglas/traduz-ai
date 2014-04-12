@@ -2,13 +2,13 @@
 
 ## Objetivo
 
-Com este projeto, temos como objetivo **traduzir o máximo de artigos** para que os mesmos fiquem disponíveis para todos os desenvolvedores, principalmente os iniciantes que são os que mais sofrem com o problema da falta de conteúdo em português, encontrando uma dupla barreira em relação as linguagens, tanto a escrita/falada, quanto a que quer realmente ser aprendida (linguagem de programação/marcação/etc).
+Com este projeto, tenho como objetivo **traduzir o máximo de artigos** para que os mesmos fiquem disponíveis para todos os desenvolvedores, principalmente os iniciantes que são os que mais sofrem com o problema da falta de conteúdo em português, encontrando uma dupla barreira em relação às linguagens, tanto a escrita/falada, quanto a que quer realmente ser aprendida (linguagem de programação/marcação/etc).
 
 ## Como Ajudar
 
-Além dos materiais que vamos separar para tradução, aceitamos e ficaremos muito agradecidos se você puder contribuir através da indicação de novos artigos para as traduções e/ou com as traduções/revisões. Deixe sua contribuição **[aqui](https://github.com/eoop/traduz-ai/issues)**.
+Além dos materiais que separados para tradução, você puder contribuir através da indicação de novos artigos para as traduções e/ou com as traduções/revisões. Deixe sua contribuição **[aqui](https://github.com/eoop/traduz-ai/issues)**.
 
-Esperamos que seja de bom proveito este material, para que juntos possamos aprender e crescer! Bons estudos e um forte abraço!
+Espero que seja de bom proveito este material, para que juntos possamos aprender e crescer! Bons estudos e um forte abraço!
 
 
 ### Índice
