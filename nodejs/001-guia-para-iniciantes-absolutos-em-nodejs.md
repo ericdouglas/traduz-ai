@@ -76,14 +76,14 @@ A primeira coisa que nós precisamos fazer é ler o conteúdo do arquivo.
 var fs = require('fs');
 
 // Leia o conteúdo do arquivo para a memória
-fs.readFile('example-log.txt', function ( err, loData ) {
+fs.readFile('example-log.txt', function ( err, logData ) {
 	
 	// Se um erro ocorrer, será lançada uma
 	// exceção, e a aplicação irá ser encerrada
 	if ( err ) throw err;
 
 	// logData é um Buffer, converta-o para string
-	var text = loData.toString();
+	var text = logData.toString();
 });
 
 ```
