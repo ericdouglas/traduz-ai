@@ -519,3 +519,40 @@ App.factory('someService', ['$filter', function($filter) {
   };
 }]);
 ```
+
+# Mais sobre Diretivas
+Diretivas são comumente fornecidas utilizando um link para um método com a resposta desta diretiva. Contudo existem outras opções quando utilizando diretivas:
+
+```
+App.directive('myDirective', ['$location', function($location) {
+
+  return {
+    restrict : 'ECA', //Element, Comment and Attribute todos são lidos
+    scope : {
+      //estes valores serão separados do escopo passado ao método chamado
+      key : 'value',
+      key2 : 'value2'
+    },
+    compile : function() {
+      return {
+        pre : function() { ... }, //esta função é chamada antes da diretiva ser associado ao DOM
+        post : function() { ... } //esta função é chamada após a diretiva ser associada ao DOM
+      };
+    },
+    link : function(scope, element, attrs, controllerObject) {
+      //isto é o que é normalmente usado e é igual à função compile:post
+    }
+  };
+
+}]);
+```
+Você pode também evitar toda a confusão fornecendo uma função como diretiva. Isto é o mesmo que passar somente uma hash que contém o link.
+```
+App.directive('myDirective', function() {
+  return function($scope, element, attrs, controller) {
+    //pouco código...
+  };
+});
+```
+Tem muito mais sobre diretivas, mas isso cobre cerca de 90% dos casos para quando você for usar elas.
+<a href="http://docs.angularjs.org/guide/directive">Leia mais sobre Diretivas</a>
