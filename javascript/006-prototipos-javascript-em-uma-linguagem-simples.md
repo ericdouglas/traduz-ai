@@ -242,7 +242,7 @@ function People () {
 }
 
 // Define a propriedade "athlete" no protótipo de People 
-// então este "athlete" é acessível por todos os bjetos
+// então este "athlete" é acessível por todos os objetos
 // que usam o construtor People()
 People.prototype.athlete = "Tiger Woods";
 
