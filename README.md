@@ -6,7 +6,7 @@ Com este projeto, tenho como objetivo **traduzir o máximo de artigos** para que
 
 ## Como Ajudar
 
-Além dos materiais que separados para tradução, você puder contribuir através da indicação de novos artigos para as traduções e/ou com as traduções/revisões. Deixe sua contribuição **[aqui](https://github.com/eoop/traduz-ai/issues)**.
+Além dos materiais separados para tradução, você pode contribuir através da indicação de novos artigos para as traduções e/ou com as traduções/revisões. Deixe sua contribuição **[aqui](https://github.com/eoop/traduz-ai/issues)**.
 
 Espero que seja de bom proveito este material, para que juntos possamos aprender e crescer! Bons estudos e um forte abraço!
 

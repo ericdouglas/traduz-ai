@@ -54,8 +54,8 @@ Sempre declare suas variáveis locais antes de usá-las. Na verdade, você deve 
 
 ```javascript
 	
-//Se você não declarar suas variáveis locais com a palavra chave var, 
-elas se tornam parte do escopo global
+// Se você não declarar suas variáveis locais com a palavra chave var, 
+// elas se tornam parte do escopo global
 var name = "Michael Jackson";
 
 function showCelebrityName () {
@@ -64,19 +64,19 @@ function showCelebrityName () {
 
 function showOrdinaryPersonName () {
 	name = "Johnny Evers"; //note a ausência da palavra chave var, 
-//tornando esta variável global
+// tornando esta variável global
 	console.log (name);
 }
 
 showCelebrityName (); //Michael Jackson
 
-//name não é uma variável local, ele simplesmente muda a variável global name
+// name não é uma variável local, ele simplesmente muda a variável global name
 showOrdinaryPersonName (); //Johnny Evers
 
-//A variável global é agora Johnny Evers, não mais Michael Jackson
+// A variável global é agora Johnny Evers, não mais Michael Jackson
 showCelebrityName (); //Johnny Evers
 
-//A solução é declarar sua variável local com a palavra chave var
+// A solução é declarar sua variável local com a palavra chave var
 function showOrdinaryPersonName () {
 	var name = "Johnny Evers"; 
        //Agora name é sempre uma variável local e não irá sobrescrever a variável global

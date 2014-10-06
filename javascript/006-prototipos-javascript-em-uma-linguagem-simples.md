@@ -136,7 +136,7 @@ Estas são duas importantes maneiras em que o `prototype` é usado no JavaScript
 
 **1** . **Propriedade Prototype: Herança baseada em protótipos**
 
-O protótipo é importante no JavaScript porque o JavaScript não tem herança clássica baseada em Classes (como a maioria das linguagens orientadas a objeto têm), e portanto toda herança no JavaScript é possivelmente feita a partir da propriedade `prototype. O JavaScript tem um mecanismo de herança baseado em protótipos. Herança é um paradigma de programação onde objetos (ou Classes em algumas linguagens) podem herdar propriedades e métodos de outros objetos (ou Classes). No JavaScript, você implementa herança com a propriedade `prototype`. Por exemplo, você pode criar uma função Fruit (um objeto, pois todas as funções no JavaScript são objetos) e adicionar propriedades e métodos na propriedade `prototype de Fruit, e todas as instâncias da função Fruit vão herdar todas as propriedades e métodos de Fruit.
+O protótipo é importante no JavaScript porque o JavaScript não tem herança clássica baseada em Classes (como a maioria das linguagens orientadas a objeto têm), e portanto toda herança no JavaScript é possivelmente feita a partir da propriedade `prototype`. O JavaScript tem um mecanismo de herança baseado em protótipos. Herança é um paradigma de programação onde objetos (ou Classes em algumas linguagens) podem herdar propriedades e métodos de outros objetos (ou Classes). No JavaScript, você implementa herança com a propriedade `prototype`. Por exemplo, você pode criar uma função Fruit (um objeto, pois todas as funções no JavaScript são objetos) e adicionar propriedades e métodos na propriedade `prototype` de Fruit, e todas as instâncias da função Fruit vão herdar todas as propriedades e métodos de Fruit.
 
 Demonstração de herança no JavaScript:
 
@@ -242,7 +242,7 @@ function People () {
 }
 
 // Define a propriedade "athlete" no protótipo de People 
-// então este "athlete" é acessível por todos os bjetos
+// então este "athlete" é acessível por todos os objetos
 // que usam o construtor People()
 People.prototype.athlete = "Tiger Woods";
 
