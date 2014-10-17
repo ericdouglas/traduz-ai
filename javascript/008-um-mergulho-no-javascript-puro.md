@@ -241,7 +241,8 @@ removeClass(element, "four");
 
 Para cada um desses métodos, a propriedade `className` seria lida do elemento e depois reescrita, fazendo um com que o navegador tenha que redesenhar a página. Ainda assim, esse não é o caso se quisermos usar os métodos relevantes da funcionalidade `classList`:
 
-```var element = document.querySelector("#test");
+```js
+var element = document.querySelector("#test");
 element.classList.add("two");
 element.classList.remove("four");
 ```
