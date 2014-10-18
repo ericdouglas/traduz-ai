@@ -50,7 +50,7 @@ Até agora, nós passamos funções anônimas como parâmetros para outras funç
 
 ## Como Funções Callback Trabalham?
 
-Pelo de funções serem objetos de primeira classe no JavaScript, nós podemos tratar as funções como objetos, podendo então passar funções como variáveis e retorná-las nas funções e as usar em outras funções. Quando nós passamos uma função callback como um argumento para outra função, estamos passando somente a definição da função. Não estamos executando a função no parâmetro. Nós não estamos passando a função com o par de parênteses de execução como fazemos quando executamos uma função.
+Pelo fato de funções serem objetos de primeira classe no JavaScript, nós podemos tratar as funções como objetos, podendo então passar funções como variáveis e retorná-las nas funções e as usar em outras funções. Quando nós passamos uma função callback como um argumento para outra função, estamos passando somente a definição da função. Não estamos executando a função no parâmetro. Nós não estamos passando a função com o par de parênteses de execução como fazemos quando executamos uma função.
 
 E uma vez que uma função contenha um callback em seu parâmetro como uma definição de função, ela pode executar este callback a qualquer hora. Isso permite que executemos funções callback em qualquer ponto da função que as contém.
 
