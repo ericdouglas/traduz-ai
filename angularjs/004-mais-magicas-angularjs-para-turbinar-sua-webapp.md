@@ -13,20 +13,20 @@ Este artigo vai cobrir mais sobre as **jóias escondidas do AngularJS e introduz
 
 # Tabela de Conteúdo
 
-01. [Sobre este artigo]()
-02. [AngularJS e o Internet Explorer]()
-03. [Data Binding e mudanças de $scope]()
-04. [Escope Raiz e Extendendo Membros do Escopo]()
-05. [$apply, $digest e $$phase]()
-06. [Comunicação entre Serviços e Controladores]()
-07. [Funcionalidades Adicionais dos Controladores e Rotas]()
-08. [Você deve usar Serviços Personalizados](https://github.com/nicholasess/traduz-ai/blob/master/angularjs/004-mais-magicas-angularjs-para-turbinar-sua-webapp.md#voc%C3%AA-deve-usar-servi%C3%A7os-personalizados)
-09. [Show, Hide, Cloak e Init](https://github.com/nicholasess/traduz-ai/blob/master/angularjs/004-mais-magicas-angularjs-para-turbinar-sua-webapp.md#show-hide-cloak-and-init)
-10. [Capturando Erros](https://github.com/nicholasess/traduz-ai/blob/master/angularjs/004-mais-magicas-angularjs-para-turbinar-sua-webapp.md#capturando-erros)
-11. [Mais sobre Loops]()
-12. [Mantendo Controle sobre Path/URL]()
-13. [Filtros e Filtros Personalizados]()
-14. [Mais sobre Diretivas]()
+01. [Sobre este artigo](#sobre-este-artigo)
+02. [AngularJS e o Internet Explorer](#angularjs-e-o-internet-explorer)
+03. [Data Binding e mudanças de $scope](#data-binding-e-mudanças-de-scope)
+04. [Escope Raiz e Extendendo Membros do Escopo](#escopo-raiz-e-extendendo-membros-do-escopo)
+05. [$apply, $digest e $$phase](#apply-digest-e-phase)
+06. [Comunicação entre Serviços e Controladores](#comunicação-entre-serviços-e-controladores)
+07. [Funcionalidades Adicionais dos Controladores e Rotas](#funcionalidades-adicionais-dos-controladores-e-rotas)
+08. [Você deve usar Serviços Personalizados](#você-deve-usar-serviços-personalizados)
+09. [Show, Hide, Cloak e Init](#show-hide-cloak-and-init)
+10. [Capturando Erros](#capturando-erros)
+11. [Mais sobre Loops](#mais-sobre-loops)
+12. [Mantendo Controle sobre Path/URL](#mantendo-controle-sobre-pathurl)
+13. [Filtros e Filtros Personalizados](#filtros-e-filtros-personalizados)
+14. [Mais sobre Diretivas](#mais-sobre-diretivas)
 15. [Formulários e Validação de Formulários]()
 16. [Internacionalização e Localização]()
 17. [Como funcionam as Promises]()
@@ -519,3 +519,40 @@ App.factory('someService', ['$filter', function($filter) {
   };
 }]);
 ```
+
+# Mais sobre Diretivas
+Diretivas são comumente fornecidas utilizando um link para um método com a resposta desta diretiva. Contudo existem outras opções quando utilizando diretivas:
+
+```
+App.directive('myDirective', ['$location', function($location) {
+
+  return {
+    restrict : 'ECA', //Element, Comment and Attribute todos são lidos
+    scope : {
+      //estes valores serão separados do escopo passado ao método chamado
+      key : 'value',
+      key2 : 'value2'
+    },
+    compile : function() {
+      return {
+        pre : function() { ... }, //esta função é chamada antes da diretiva ser associado ao DOM
+        post : function() { ... } //esta função é chamada após a diretiva ser associada ao DOM
+      };
+    },
+    link : function(scope, element, attrs, controllerObject) {
+      //isto é o que é normalmente usado e é igual à função compile:post
+    }
+  };
+
+}]);
+```
+Você pode também evitar toda a confusão fornecendo uma função como diretiva. Isto é o mesmo que passar somente uma hash que contém o link.
+```
+App.directive('myDirective', function() {
+  return function($scope, element, attrs, controller) {
+    //pouco código...
+  };
+});
+```
+Tem muito mais sobre diretivas, mas isso cobre cerca de 90% dos casos para quando você for usar elas.
+<a href="http://docs.angularjs.org/guide/directive">Leia mais sobre Diretivas</a>
