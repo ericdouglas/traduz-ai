@@ -372,7 +372,7 @@ Se você quiser consultar o servidor para mudanças, você pode então configura
 
 <h3>Filters (Filtros)</h3> 
 
-Filtros são usados em conjunto com arrays de dados e também saídas de loops. Se você estiver em um loop de dados e quiser filtrar coisas específicas, você está no lugar certo, você pode também usar os filtros para filtrar o que um usuário escreveu dentro de um input por exemplo. Temos algumas formas de user os filtros, dentro dos Controladores ou como um método definido. Aqui está a utilização por método, que você pode usar globalmente:
+Filtros são usados em conjunto com arrays de dados e também saídas de loops. Se você estiver em um loop de dados e quiser filtrar coisas específicas, você está no lugar certo, você pode também usar os filtros para filtrar o que um usuário escreveu dentro de um input por exemplo. Temos algumas formas de usar os filtros, dentro dos Controladores ou como um método definido. Aqui está a utilização por método, que você pode usar globalmente:
 
 ```javascript
 
