@@ -102,4 +102,18 @@ print_int x;;  (* prints 5 *)
 
 It pretty much looks like a downside than a good feature. But you'll see it's going to save your life.
 
-## Object-oriented Programming cannot save us anymore
+## Programação Orientada a Objetos não pode mais nos salvar
+
+Aquele momento de que teríamos aplicações concorrentes e distribuidas rodando finalmente chegou.
+
+Infelizmente, nós não estamos prontos: nosso "atual" (i.e., mais usado) modelo para concorrência e paralelismo, embora resolva o problema, ainda traz muita complexidade.
+
+Para termos melhores aplicações, precisamos de uma maneira simples e confiável para fazer isto. Você se lembra das features de FP mencionados acima? Pure Functions (Funções Puras) e Immutable State (Estados Imutáveis)? Exatamente. Você pode rodar uma função milhares de vezes em diferentes cores ou máquinas que ainda assim não terá resultados diferentes dos que teve anteriormente. Sendo assim, você pode usar o mesmo código para rodar em 1 core ou em 1k de cores. Podemos ser felizes novamente.
+
+"Mas por que eu não posso continuar usando POO?"
+
+Ao menos para concorrência e paralelismo, POO não pode mais te salvar. Isso porque, POO precisa que haja estados mutáveis. Os métodos dos objetos que você chama, normalmente, é para alterar o estado do objeto em questão ou de outro. E trabalhando com concorrência precisamos adicionar muita complexidade para manter sincornizadas todas as threads que utilizam esses objetos concorrentemente.
+
+Eu não estou aqui para provar que você deve sair do seu paradigma atual para o FP (mesmo que algumas pessoas diriam pra você fazer), mas definitivamente você precisa domina-lo: O Java 8 e C++11 incorporaram as expressões lambda em suas plataformas. Posso afirmar que toda linguagem moderna e ainda mantida vai contar com features de FP em breve. E a maioria delas já tem.
+
+Vale a pena mensionar que você não vai parar de usar estados mutáveis. Nós precisamos para desenvolver funcionalidades com IO e etc, para termos bons softwares. Porém, a idéia principal que FP prove é: use estados mutáveis apenas quando for necessário.
