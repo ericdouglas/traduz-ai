@@ -90,7 +90,7 @@ add2(3) // => 5
 
 Verifique o segundo exemplo de *High-Order Function* novamente. A variável foi *fechada* e é acessível somente para a função retornada.
 
-**Immutable State** means that you can't keep any state at all. In this following code (in OCaml), you can use `x` and `5` interchangeably in your program. `x` will be forever `5`.
+**Immutable State** ou *estado imutável* signifca que você não pode alterar o estado de forma alguma. No seguinte código (em OCaml), você pode usar `x` e `5` alternadamente em seu programa. `x` vai sempre ser `5`.
 
 ```js
 let x = 5;;
@@ -100,6 +100,6 @@ print_int x;;  (* prints 5 *)
 
 ```
 
-It pretty much looks like a downside than a good feature. But you'll see it's going to save your life.
+Isso se parece muito mais com um ponto negativo que uma boa característica, mas você vai ver que isso salvará sua vida.
 
 ## Object-oriented Programming cannot save us anymore
