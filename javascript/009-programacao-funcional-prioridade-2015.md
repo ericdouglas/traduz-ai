@@ -8,14 +8,14 @@ Você provavelmente ouviu expressões como "Clojure", "Scala", "Erlang", ou mesm
 
 Se você já buscou por "Functional Programming" (ou Programação Funcional), verá que não existe nada de novo. A segunda linguagem criada já utilizava isso, apareceu por volta dos anos 50, denominada *Lisp*. Por que então as pessoas estão empolgadas com isso apenas agora? 60 anos depois?!
 
-## At the beginning, Computers were really slow
+## No início, os computadores eram realmente lentos
 
-Believe it or not, Computers were waaay slower than the DOM. No, really. And at that time, there's 2 main mindsets in terms of design and implementation of programming languages:
+Acredite nisso ou não, computadores eram muuuuito mais lentos que o DOM. Não, realmente. E naquele tempo, existiam duas mentalidades principais em termos de arquitetura e implementação de linguagens de programação:
 
-1. Start from the Von Neumann Architecture and add abstraction.
-1. Start from Mathematics and remove abstraction.
+1. Iniciar pela Arquitetura de Von Neumann e adicionar abstração.
+1. Iniciar pela Matemática e remover abstração.
 
-The computers didn't have that much processing power to deal with abstractions from all the way down to evaluate functional programs. So, Lisp ended up being deadly slow and, therefore, not suited for the job. That's when imperative programming started its domination, specially with the raise of C.
+Os computadores não tinham tanto poder de processamento para lidar com abstrações por todo o caminho e avaliaros programas funcionais. Então, Lisp acabou sendo morta lentamente e, portanto, não adequada para o trabalho. Foi quando a programação imperativa começou sua dominação, especialmente com a ascenção do *C*.
 
 ### But Computers has improved a lot
 
