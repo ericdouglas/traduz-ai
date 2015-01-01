@@ -73,7 +73,7 @@ add2(3) // => 5
 
 Ambos os casos são um exemplo de funções de ordem superior, mesmo que você nunca tenha usado algo parecido com isso, provavelmente você já viu algo assim em algum lugar.
 
-**Pure Functions** mean that the function doesn't change any value, it just receives data and output data, just like our beloved functions from Mathematics. That also means that if you'd pass `2` for a function `f` and it returns `10`, it'll always return `10`. Doesn't it matter the environment, threads, or any evaluation order. They don't cause any side-effects in other parts of the program and it's a really powerful concept.
+**Pure Functions** ou *funções puras* signifca que funções não mudam nenhum valor, elas apenas recebem dados e retornam dados, assim como nossas amadas funções da Matemática. Isso também significa que se você passar `2` para uma função `f` e ela retornar `10`, ela sempre irá retornar 10. Não importa o ambiente, threads, ou qualquer ordem de avaliação. Ela não causa nenhum efeito colateral em outras partes do programa e isso é realmente um conceito poderoso.
 
 **Closures** mean that you can save some data inside a function that's only accessible to a specific returning function.
 
