@@ -133,12 +133,14 @@ Muitos podem argumentar que FP tem má legibilidade. Se você vem de um backgrou
 
 Veja esse código a seguir, escrito em Haskell e Javascript (usando estilo imperativo):
 
-```haskell guess :: Int -> [Char]
+```js 
+guess :: Int -> [Char]
 guess 7 = "Much 7 very wow."
 guess x = "Ooops, try again."
 ```
 
-```js function guess(x){
+```js 
+function guess(x){
   if(x == 7){
     return "Much 7 very wow."
   }
@@ -156,7 +158,8 @@ Se o argumento da função guess for igual a 7, retorna **"Much 7 very wow."** o
 
 Pode parecer que não vale a pena usar isso uma vez que você pode simplesmente usar if/else. Mas isso é muito poderoso quando estamos trabalhando com estruturas de dados complexas.
 
-```haskell plus1 :: [Int] -> [Int]
+```js 
+plus1 :: [Int] -> [Int]
 plus1 []      = []
 plus1 (x:xs)  = x + 1 : plus1 xs 
  
