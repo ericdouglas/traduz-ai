@@ -75,7 +75,7 @@ Ambos os casos são um exemplo de funções de ordem superior, mesmo que você n
 
 **Pure Functions** ou *funções puras* signifca que funções não mudam nenhum valor, elas apenas recebem dados e retornam dados, assim como nossas amadas funções da Matemática. Isso também significa que se você passar `2` para uma função `f` e ela retornar `10`, ela sempre irá retornar 10. Não importa o ambiente, threads, ou qualquer ordem de avaliação. Ela não causa nenhum efeito colateral em outras partes do programa e isso é realmente um conceito poderoso.
 
-**Closures** mean that you can save some data inside a function that's only accessible to a specific returning function.
+**Closures** significa que você pode salvar algum dado dentro de uma função que é acessível somente a um retorno específico da função.
 
 ```js
 var add = function(a){
@@ -88,7 +88,7 @@ var add2 = add(2)
 add2(3) // => 5 
 ```
 
-Check out the second example of High-Order Function again, the variable a was enclosed and is only accessible to the returning function.
+Verifique o segundo exemplo de *High-Order Function* novamente. A variável foi *fechada* e é acessível somente para a função retornada.
 
 **Immutable State** means that you can't keep any state at all. In this following code (in OCaml), you can use `x` and `5` interchangeably in your program. `x` will be forever `5`.
 
