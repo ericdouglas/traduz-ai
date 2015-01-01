@@ -37,7 +37,7 @@ Aqui temos uma (não-exaustiva) lista de características da FP:
 
 Você não deve se preocupar com nomes *sofisticados* agora: apenas entenda o que eles significam.
 
-**First-Class Functions** mean that you can store functions into a variable. I believe you already have done something like this in JavaScript:
+**First-Class Functions** ou (funções de primeira classe) significa que você vai armazenar funções dentro de uma variável. Acredito que você já fez algo parecido com isso em JavaScript:
 
 ```js
 var add = function(a, b){
@@ -45,7 +45,7 @@ var add = function(a, b){
 }
 ```
 
-You're just storing an anonymous function, that receives `a` and `b` and returns `a + b`, into a variable named `add`.
+Você está apenas armazenando uma função anônima que recebe `a` e `b`, e retorna `a + b`, dentro de uma variável denominada `add`.
 
 **High-Order Functions** mean that functions can return functions or receive other functions as params.
 
