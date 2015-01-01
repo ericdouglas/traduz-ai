@@ -1,12 +1,12 @@
-# Functional Programming should be your #1 priority for 2015
-## OOP cannot save us from the Cloud Monster anymore.
+# Programação Funcional Deve Ser Sua Prioridade número #1 em 2015
+## OOP não pode mais nos salvar do *Cloud Monster*
 
 * **Artigo Original**: [Functional Programming should be your #1 priority for 2015](https://medium.com/@jugoncalves/functional-programming-should-be-your-1-priority-for-2015-47dd4641d6b9)
-* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas) e [Diogo Beato](https://github.com/diogobeato)
 
-You probably have heard expressions like “Clojure”, “Scala”, “Erlang” or even “Java now has lambdas”. And you might know it has something to do with "Functional Programming". If you’re participating to any Programming Community, this subject probably has popped up already.
+Você provavelmente ouviu expressões como "Clojure", "Scala", "Erlang", ou mesmo "Java agora tem lambdas". E você deve saber que isso tem alguma coisa a ver com "Programação Funcional". Se você participa de qualquer comunidade de programação, esse assunto provavelmente apareceu alguma vez.
 
-If you'd google "Functional Programming", you'll see there's nothing new. The second language ever created already embraces it, it appeared in 50's and was named Lisp. So why the heck people are only excited about it now? Around 60 years later?
+Se você já buscou por "Functional Programming" (ou Programação Funcional), verá que não existe nada de novo. A segunda linguagem criada já utilizava isso, apareceu por volta dos anos 50, denominada *Lisp*. Por que então as pessoas estão empolgadas com isso apenas agora? 60 anos depois?!
 
 ## At the beginning, Computers were really slow
 
