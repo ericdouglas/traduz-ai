@@ -1,43 +1,43 @@
-# Functional Programming should be your #1 priority for 2015
-## OOP cannot save us from the Cloud Monster anymore.
+# Programação Funcional Deve Ser Sua Prioridade número #1 em 2015
+## OOP não pode mais nos salvar do *Cloud Monster*
 
 * **Artigo Original**: [Functional Programming should be your #1 priority for 2015](https://medium.com/@jugoncalves/functional-programming-should-be-your-1-priority-for-2015-47dd4641d6b9)
-* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas) e [Diogo Beato](https://github.com/diogobeato)
 
-You probably have heard expressions like “Clojure”, “Scala”, “Erlang” or even “Java now has lambdas”. And you might know it has something to do with "Functional Programming". If you’re participating to any Programming Community, this subject probably has popped up already.
+Você provavelmente ouviu expressões como "Clojure", "Scala", "Erlang", ou mesmo "Java agora tem lambdas". E você deve saber que isso tem alguma coisa a ver com "Programação Funcional". Se você participa de qualquer comunidade de programação, esse assunto provavelmente apareceu alguma vez.
 
-If you'd google "Functional Programming", you'll see there's nothing new. The second language ever created already embraces it, it appeared in 50's and was named Lisp. So why the heck people are only excited about it now? Around 60 years later?
+Se você já buscou por "Functional Programming" (ou Programação Funcional), verá que não existe nada de novo. A segunda linguagem criada já utilizava isso, apareceu por volta dos anos 50, denominada *Lisp*. Por que então as pessoas estão empolgadas com isso apenas agora? 60 anos depois?!
 
-## At the beginning, Computers were really slow
+## No início, os computadores eram realmente lentos
 
-Believe it or not, Computers were waaay slower than the DOM. No, really. And at that time, there's 2 main mindsets in terms of design and implementation of programming languages:
+Acredite nisso ou não, computadores eram muuuuito mais lentos que o DOM. Não, realmente. E naquele tempo, existiam duas mentalidades principais em termos de arquitetura e implementação de linguagens de programação:
 
-1. Start from the Von Neumann Architecture and add abstraction.
-1. Start from Mathematics and remove abstraction.
+1. Iniciar pela Arquitetura de Von Neumann e adicionar abstração.
+1. Iniciar pela Matemática e remover abstração.
 
-The computers didn't have that much processing power to deal with abstractions from all the way down to evaluate functional programs. So, Lisp ended up being deadly slow and, therefore, not suited for the job. That's when imperative programming started its domination, specially with the raise of C.
+Os computadores não tinham tanto poder de processamento para lidar com abstrações por todo o caminho e avaliaros programas funcionais. Então, Lisp acabou sendo morta lentamente e, portanto, não adequada para o trabalho. Foi quando a programação imperativa começou sua dominação, especialmente com a ascenção do *C*.
 
-### But Computers has improved a lot
+### Mas os Computadores melhoraram muito
 
-Now it's virtually OK to run the most of applications out there without caring so much about which language it has been written in. Finally, functional languages got their second chance.
+Agora é virtualmente possível rodar a maioria das aplicações sem se preocupar muito sobre em qual linguagem ela foi escrita. Finalmente, linguagens funcionais tiveram sua segunda chance.
 
-## Functional Programming 50.5
+## Programação Funcional 50.5
 
-This isn't an introduction to FP at all. At the end of this section, you should be able to have an idea of what FP might be and how to start your journey.
+Isso não é uma introdução a *FP* (*functional programming*). No fim dessa seção, você deverá ter uma ideia o quê *FP* é e como começar sua jornada.
 
-You can understand Functional Programming as programming with functions, which is, in fact, much more literal than you can imagine now. You'll create functions in terms of other functions and compose functions (Do you remember the `f ∘ g` from school? It'll be useful now). That's all.
+Você pode entender Programação Funcional por programação com funções, que é, de fato, muito mais literal do que você pode imaginar agora. Você vai criar funções em termos de outras funções e compor funções (você se lembra `f ∘ g` da escola? Isso vai ser útil agora).
 
-Here's a (non-exhaustive) list of FP features:
+Aqui temos uma (não-exaustiva) lista de características da FP:
 
-1. First-Class Functions
-1. High-Order Functions
-1. Pure Functions
+1. First-Class Functions (funções de primeira classe)
+1. High-Order Functions (funções de ordem superior)
+1. Pure Functions (funções puras)
 1. Closures
-1. Immutable State
+1. Immutable State (estado imutável)
 
-You shouldn't care about *fancy* names right now: Just understand what they mean.
+Você não deve se preocupar com nomes *sofisticados* agora: apenas entenda o que eles significam.
 
-**First-Class Functions** mean that you can store functions into a variable. I believe you already have done something like this in JavaScript:
+**First-Class Functions** ou *funções de primeira classe* significa que você vai armazenar funções dentro de uma variável. Acredito que você já fez algo parecido com isso em JavaScript:
 
 ```js
 var add = function(a, b){
@@ -45,11 +45,11 @@ var add = function(a, b){
 }
 ```
 
-You're just storing an anonymous function, that receives `a` and `b` and returns `a + b`, into a variable named `add`.
+Você está apenas armazenando uma função anônima que recebe `a` e `b`, e retorna `a + b`, dentro de uma variável denominada `add`.
 
-**High-Order Functions** mean that functions can return functions or receive other functions as params.
+**High-Order Functions** ou *funções de ordem superior* significa que funções podem retornar funções ou receber funções como parâmetro.
 
-Again, in JavaScript:
+Novamente, em JavaScript:
 
 ```js
 document.querySelector('#button')
@@ -58,7 +58,7 @@ document.querySelector('#button')
   }) 
 ```
 
-or
+ou
 
 ```js
 var add = function(a){
@@ -71,11 +71,11 @@ var add2 = add(2)
 add2(3) // => 5 
 ```
 
-Both of cases are an example of High-Order Functions, even though you've never coded anything like that, you probably have seen this pattern somewhere else.
+Ambos os casos são um exemplo de funções de ordem superior, mesmo que você nunca tenha usado algo parecido com isso, provavelmente você já viu algo assim em algum lugar.
 
-**Pure Functions** mean that the function doesn't change any value, it just receives data and output data, just like our beloved functions from Mathematics. That also means that if you'd pass `2` for a function `f` and it returns `10`, it'll always return `10`. Doesn't it matter the environment, threads, or any evaluation order. They don't cause any side-effects in other parts of the program and it's a really powerful concept.
+**Pure Functions** ou *funções puras* signifca que funções não mudam nenhum valor, elas apenas recebem dados e retornam dados, assim como nossas amadas funções da Matemática. Isso também significa que se você passar `2` para uma função `f` e ela retornar `10`, ela sempre irá retornar 10. Não importa o ambiente, threads, ou qualquer ordem de avaliação. Ela não causa nenhum efeito colateral em outras partes do programa e isso é realmente um conceito poderoso.
 
-**Closures** mean that you can save some data inside a function that's only accessible to a specific returning function.
+**Closures** significa que você pode salvar algum dado dentro de uma função que é acessível somente a um retorno específico da função.
 
 ```js
 var add = function(a){
@@ -88,9 +88,9 @@ var add2 = add(2)
 add2(3) // => 5 
 ```
 
-Check out the second example of High-Order Function again, the variable a was enclosed and is only accessible to the returning function.
+Verifique o segundo exemplo de *High-Order Function* novamente. A variável foi *fechada* e é acessível somente para a função retornada.
 
-**Immutable State** means that you can't keep any state at all. In this following code (in OCaml), you can use `x` and `5` interchangeably in your program. `x` will be forever `5`.
+**Immutable State** ou *estado imutável* signifca que você não pode alterar o estado de forma alguma. No seguinte código (em OCaml), você pode usar `x` e `5` alternadamente em seu programa. `x` vai sempre ser `5`.
 
 ```js
 let x = 5;;
@@ -100,7 +100,7 @@ print_int x;;  (* prints 5 *)
 
 ```
 
-It pretty much looks like a downside than a good feature. But you'll see it's going to save your life.
+Isso se parece muito mais com um ponto negativo que uma boa característica, mas você vai ver que isso salvará sua vida.
 
 ## Programação Orientada a Objetos não pode mais nos salvar
 
