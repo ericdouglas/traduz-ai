@@ -17,25 +17,25 @@ Acredite nisso ou não, computadores eram muuuuito mais lentos que o DOM. Não, 
 
 Os computadores não tinham tanto poder de processamento para lidar com abstrações por todo o caminho e avaliaros programas funcionais. Então, Lisp acabou sendo morta lentamente e, portanto, não adequada para o trabalho. Foi quando a programação imperativa começou sua dominação, especialmente com a ascenção do *C*.
 
-### But Computers has improved a lot
+### Mas os Computadores melhoraram muito
 
-Now it's virtually OK to run the most of applications out there without caring so much about which language it has been written in. Finally, functional languages got their second chance.
+Agora é virtualmente possível rodar a maioria das aplicações sem se preocupar muito sobre em qual linguagem ela foi escrita. Finalmente, linguagens funcionais tiveram sua segunda chance.
 
-## Functional Programming 50.5
+## Programação Funcional 50.5
 
-This isn't an introduction to FP at all. At the end of this section, you should be able to have an idea of what FP might be and how to start your journey.
+Isso não é uma introdução a *FP* (*functional programming*). No fim dessa seção, você deverá ter uma ideia o quê *FP* é e como começar sua jornada.
 
-You can understand Functional Programming as programming with functions, which is, in fact, much more literal than you can imagine now. You'll create functions in terms of other functions and compose functions (Do you remember the `f ∘ g` from school? It'll be useful now). That's all.
+Você pode entender Programação Funcional por programação com funções, que é, de fato, muito mais literal do que você pode imaginar agora. Você vai criar funções em termos de outras funções e compor funções (você se lembra `f ∘ g` da escola? Isso vai ser útil agora).
 
-Here's a (non-exhaustive) list of FP features:
+Aqui temos uma (não-exaustiva) lista de características da FP:
 
-1. First-Class Functions
-1. High-Order Functions
-1. Pure Functions
+1. First-Class Functions (funções de primeira classe)
+1. High-Order Functions (funções de ordem superior)
+1. Pure Functions (funções puras)
 1. Closures
-1. Immutable State
+1. Immutable State (estado imutável)
 
-You shouldn't care about *fancy* names right now: Just understand what they mean.
+Você não deve se preocupar com nomes *sofisticados* agora: apenas entenda o que eles significam.
 
 **First-Class Functions** mean that you can store functions into a variable. I believe you already have done something like this in JavaScript:
 
