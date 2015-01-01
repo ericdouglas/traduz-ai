@@ -37,7 +37,7 @@ Aqui temos uma (não-exaustiva) lista de características da FP:
 
 Você não deve se preocupar com nomes *sofisticados* agora: apenas entenda o que eles significam.
 
-**First-Class Functions** ou (funções de primeira classe) significa que você vai armazenar funções dentro de uma variável. Acredito que você já fez algo parecido com isso em JavaScript:
+**First-Class Functions** ou *funções de primeira classe* significa que você vai armazenar funções dentro de uma variável. Acredito que você já fez algo parecido com isso em JavaScript:
 
 ```js
 var add = function(a, b){
@@ -47,9 +47,9 @@ var add = function(a, b){
 
 Você está apenas armazenando uma função anônima que recebe `a` e `b`, e retorna `a + b`, dentro de uma variável denominada `add`.
 
-**High-Order Functions** mean that functions can return functions or receive other functions as params.
+**High-Order Functions** ou *funções de ordem superior* significa que funções podem retornar funções ou receber funções como parâmetro.
 
-Again, in JavaScript:
+Novamente, em JavaScript:
 
 ```js
 document.querySelector('#button')
@@ -58,7 +58,7 @@ document.querySelector('#button')
   }) 
 ```
 
-or
+ou
 
 ```js
 var add = function(a){
@@ -71,7 +71,7 @@ var add2 = add(2)
 add2(3) // => 5 
 ```
 
-Both of cases are an example of High-Order Functions, even though you've never coded anything like that, you probably have seen this pattern somewhere else.
+Ambos os casos são um exemplo de funções de ordem superior, mesmo que você nunca tenha usado algo parecido com isso, provavelmente você já viu algo assim em algum lugar.
 
 **Pure Functions** mean that the function doesn't change any value, it just receives data and output data, just like our beloved functions from Mathematics. That also means that if you'd pass `2` for a function `f` and it returns `10`, it'll always return `10`. Doesn't it matter the environment, threads, or any evaluation order. They don't cause any side-effects in other parts of the program and it's a really powerful concept.
 
