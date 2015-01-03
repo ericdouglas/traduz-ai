@@ -113,7 +113,7 @@ Para termos melhores aplicações, precisamos de uma maneira simples e confiáve
 
 Ao menos para concorrência e paralelismo, POO não pode mais te salvar. Isso porque, POO precisa que haja estados mutáveis. Os métodos dos objetos que você chama, normalmente, é para alterar o estado do objeto em questão ou de outro. E trabalhando com concorrência precisamos adicionar muita complexidade para manter sincronizadas todas as threads que utilizam esses objetos concorrentemente ou paralelamente.
 
-Eu não estou aqui para arumentar que você deve sair do seu paradigma atual para o FP (mesmo que [algumas pessoas diriam pra você fazer](https://blog.inf.ed.ac.uk/sapm/2014/03/06/enemy-of-the-state-or-why-oop-is-not-suited-to-large-scale-software/), mas definitivamente você precisa dominá-lo: O Java 8 e C++11 incorporaram as expressões lambda em suas plataformas. Posso afirmar que toda linguagem moderna e ainda mantida vai contar com features de FP em breve. E a maioria delas já tem.
+Eu não estou aqui para argumentar que você deve sair do seu paradigma atual para o FP (mesmo que [algumas pessoas diriam pra você fazer](https://blog.inf.ed.ac.uk/sapm/2014/03/06/enemy-of-the-state-or-why-oop-is-not-suited-to-large-scale-software/), mas definitivamente você precisa dominá-lo: O Java 8 e C++11 incorporaram as expressões lambda em suas plataformas. Posso afirmar que toda linguagem moderna e ainda mantida vai contar com features de FP em breve. E a maioria delas já tem.
 
 Vale a pena mencionar que você não vai parar de usar estados mutáveis. Nós precisamos para desenvolver funcionalidades como IO e etc, para termos bons softwares. Porém, a ideia principal que FP provê é: use estados mutáveis apenas quando for necessário.
 
