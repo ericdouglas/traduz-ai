@@ -15,7 +15,7 @@ Acredite nisso ou não, computadores eram muuuuito mais lentos que o DOM. Não, 
 1. Iniciar pela Arquitetura Von Neumann e adicionar abstração.
 1. Iniciar pela Matemática e remover abstração.
 
-Os computadores não tinham tanto poder de processamento para lidar com abstrações por todo o caminho e executar os programas funcionais. Então, Lisp acabou sendo mortalment lenta e, portanto, não adequada para o trabalho. Foi quando a programação imperativa começou sua dominação, especialmente com a ascenção do *C*.
+Os computadores não tinham tanto poder de processamento para lidar com abstrações por todo o caminho e executar os programas funcionais. Então, Lisp acabou sendo mortalmente lenta, portanto, não adequada para o trabalho. Foi quando a programação imperativa começou sua dominação, especialmente com a ascenção do *C*.
 
 ### Mas os Computadores melhoraram muito
 
