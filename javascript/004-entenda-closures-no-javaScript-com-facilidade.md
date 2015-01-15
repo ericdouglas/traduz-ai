@@ -52,7 +52,7 @@ $(function () {
 ## Regra dos Closures e Efeitos Colaterais
 
 ### 1. Closures tem acesso a variável das funções exteriores mesmo após o retorno da função exterior
-Uma da mais importante e delicada característica dos closures é que a função interior continua tendo acesso as variáveis da função exterior mesmo após ela ter retornado. Sim, você leu corretamente. Quando funções no JavaScript executam, elas usam a mesma cadeia de escopo que estava em vigor quando foram criadas. Isso significa que mesmo depois da função exterior retornar, a função interior continua tendo acesso as variáveis da função exterior. Portanto, você pode chamar a função interior depois em seu programa. Este exemplo demonstra isso:
+Uma da mais importantes e delicadas características dos closures é que a função interior continua tendo acesso as variáveis da função exterior mesmo após ela ter retornado. Sim, você leu corretamente. Quando funções no JavaScript executam, elas usam a mesma cadeia de escopo que estavam em vigor quando foram criadas. Isso significa que mesmo depois da função exterior retornar, a função interior continua tendo acesso as variáveis da função exterior. Portanto, você pode chamar a função interior depois em seu programa. Este exemplo demonstra isso:
 
 ```javascript
 
@@ -135,7 +135,7 @@ console.log(stalloneID.id()); //103
 
 No exemplo anterior, quando a função anônima é chamada, o valor de i é 3 (a contagem do array e então seus incrementos). O número 3 foi adicionado ao uniqueID para criar 103 para TODOS os celebrityID. Então cada posição no array retornado obteve o id = 103, ao invés do valor pretendido 100, 101, 102.
 
-A razão para isso acontecer foi porque, assim como nós discutimos no exemplo anterior, o closure (função anônima neste exemplo) teve acesso a variável da função exemplo por referência, não por valor. Então, igual ao exemplo anteriormente mostrado onde nós acessamos o valor atualizado da variável com o closure, neste exemplo, similarmente acessamos a variável i quando ela foi alterada, depois que a função exterior rodou o loop for inteiro e retorno o último valor, que foi 103.
+A razão para isso acontecer foi porque, assim como nós discutimos no exemplo anterior, o closure (função anônima neste exemplo) teve acesso a variável da função exemplo por referência, não por valor. Então, igual ao exemplo anteriormente mostrado onde nós acessamos o valor atualizado da variável com o closure, neste exemplo, similarmente acessamos a variável `i` quando ela foi alterada, depois que a função exterior rodou o loop `for` inteiro e retorno o último valor, que foi 103.
 
 Para consertar este efeito colateral (bug) nos closures, você pode usar uma **Expressão de Função Imediatamente Invocada** (IIFE - immediately invoked function expression), como no exemplo seguinte:
 
