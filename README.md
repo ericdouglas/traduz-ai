@@ -11,12 +11,16 @@ Além dos materiais separados para tradução, você pode contribuir através da
 Espero que seja de bom proveito este material, para que juntos possamos aprender e crescer! Bons estudos e um forte abraço!
 
 
-### Índice
+### Artigos
 
 * [JavaScript](#javascript) (08)
 * [AngularJS](#angularjs) (05)
 * [Node.js](#nodejs) (02)
 * [Handlebars](#handlebarsjs) (01)
+
+### Séries
+
+* [Você não precisa de jQuery](./series/voce-nao-precisa-de-jquery)
 
 ---
 
