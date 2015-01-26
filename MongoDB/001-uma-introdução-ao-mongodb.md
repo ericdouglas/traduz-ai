@@ -153,8 +153,50 @@ Este é apenas uma visão geral dos tipos de comandos que podem ser feitos. A [d
 
 O MongoDB também possui um ótimo [tutorial](http://try.mongodb.org/) interativo para guia-lo na execução dos comandos acima.
 
+## Usando MongoDB com Node.js
+
+Utilizar o MongoDB local com Node é bem simples. Nós utilizaremos o 'mongooseJS', um package do Node para trabalhar com o MongoDB.
+
+Tudo que você precisa fazer é configurar o mongoose para se conectar a base de dados local. Isso é um processo simples já que nem precisamos de cria a base de dados. Só precisamos nos certificar que a instância do MongoDB foi inicada:
+
+```sh
+
+$ mongod
+
+```
+Nós também daremos ao mongoose um nome para nossa base de dados a ser conectada (ela não precisa ser criada antes já que o mongoose irá criá-la para nós).
+
+Segue uma amostra de código de como criar uma base de dados no Node.
+
+```js
+
+// Requere os packages que precisamos
+
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/nome_base_de_dados');
+
+É isso! A partir do momento em que começarmos a salvar itens em nossa base de dados, esta será criada com o nome de 'nome_base_de_dados'
+
+Para mais informações de como usar o Mongoose com o Node, leia: [Using MongooseJS in Node.js and MongoDB Applications](https://scotch.io/bar-talk/using-mongoosejs-in-node-js-and-mongodb-applications)
 
 
+## Ferramenta GUI: Robomongo
 
+Mesmo que seja fácil de usar o terminal para acessar nossas base de dados MongoDB, exite também uma GUI para aqueles que gostem deste tipo de interface.
 
+Faça o download do [Robomongo](http://robomongo.org/) e o inicie.
+
+Criar uma conexão para nossa base de dados é bem fácil. Basta colocar o endereço como 'localhost' e a porta em 27017. Nomeie sua conexão como quiser.
+https://scotch.io/wp-content/uploads/2014/11/robomongo-connect-local.jpg
+robomongo-connect-local
+![Robomongo](https://scotch.io/wp-content/uploads/2014/11/robomongo-connect-local.jpg)
+
+Uma vez que você conectar, terá acesso a todas as bases de dados e suas respectivas coleções! Agora você tem uma GUI para lidar com operações de base de dados. É possível até abrir o terminal (shell) e utilizar os comandos discutidos acima.
+
+![Robomongo Terminal](https://scotch.io/wp-content/uploads/2014/11/robomongo-local-db.jpg)
+
+## Conclusão
+
+O MongoDB é uma ótima base de dados NoSQL que pode ser configurada rápidamente e usada em qualquer dos seus aplicativos. Em aplicativos que usam Node, é possível iniciar rápidamente e chegar na parte mais divertida do desenvolvimento, a construção do aplicativo!
 
