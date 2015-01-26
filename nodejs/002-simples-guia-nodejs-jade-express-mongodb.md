@@ -63,7 +63,7 @@ De qualquer forma, continue no seu diretório onde está armazenando sua aplica�
 
 ```sh
 
-$ express --sessions nodetest1
+$ express nodetest1
 
 ```
 
@@ -71,7 +71,7 @@ Aperte enter e veja o que acontece. Irá aparecer algo como isso:
 
 ```sh
 
-eo_op:~/estudos/nodejs $ express --sessions nodetest1
+eo_op:~/estudos/nodejs $ express nodetest1
 create : nodetest1
 create : nodetest1/package.json
 create : nodetest1/app.js
@@ -90,8 +90,8 @@ create : nodetest1/public/stylesheets/style.css
 install dependencies:
 $ cd nodetest1 && npm install
 
-run the app:
-$ node app
+run the app (considerando que esta dentro de /nodetest1):
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
@@ -106,12 +106,16 @@ Tudo bem, agora que temos uma estrutura básica, mas ainda não terminamos. Voc�
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node ./bin/www"
   },
   "dependencies": {
-    "express": "3.4.8",
-    "jade": "*"
-  }
+    "body-parser": "~1.10.2",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.1.1",
+    "express": "~4.11.1",
+    "jade": "~1.9.1",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0",
 }
 
 ```
@@ -121,10 +125,16 @@ Este é um arquivo básico JSON que descreve seu aplicativo e suas dependências
 ```json
 
 "dependencies": {
-    "express": "3.4.4",
-    "jade": "*",
+    "body-parser": "~1.10.2",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.1.1",
+    "express": "~4.11.1",
+    "jade": "~1.9.1",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0",
     "mongodb": "*",
     "monk": "*"
+    
 }
 
 ```
