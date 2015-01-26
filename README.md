@@ -16,6 +16,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 * [JavaScript](#javascript) (08)
 * [AngularJS](#angularjs) (05)
 * [Node.js](#nodejs) (02)
+* [MongoDB](#mongodb) (01)
 * [Handlebars](#handlebarsjs) (01)
 
 ---
@@ -50,6 +51,13 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 |---|:---|:---|:---|
 |01.|**Guia Para Absolutos Iniciantes em Node.js**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/nodejs/001-guia-para-iniciantes-absolutos-em-nodejs.md)|[Original](http://blog.modulus.io/absolute-beginners-guide-to-nodejs)|
 |02.|**Guia para um dev. front-end iniciar Com Node.js, Express, Jade e MongoDB**|[Tradução](https://github.com/cerebrobr/traduz-ai/blob/master/nodejs/002-simples-guia-nodejs-jade-express-mongodb.md)|[Original](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)|
+
+# MongoDB
+
+|nº|Artigo|Link para tradução|Link para original|
+|---|:---|:---|:---|
+|01.|**Uma introdução ao MongoDB**|[Tradução](https://github.com/fsbatista/traduz-ai/blob/master/MongoDB/001-uma-introdução-ao-mongodb.md)|[Original](https://scotch.io/tutorials/an-introduction-to-mongodb)|
+
 
 # Handlebars.js
 
