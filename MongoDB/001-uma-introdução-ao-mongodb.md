@@ -13,12 +13,12 @@ Para sabe mais benefícios de se trabalhar com o MongoDB, visite o site [oficial
 
 ##Instalando e utilizando o MongoDB
 
-É possível intalar o MongoDB em seu computador seguindo alguns passos simples:
+É possível instalar o MongoDB em seu computador seguindo alguns passos simples:
 
 1. Realizar os procedimentos de instalação 
-2. Criar um diretório ƒisico onde a base de dados será armazenada
+2. Criar um diretório fisico onde a base de dados será armazenada
 
-E ,simples assim, nós podermos usar o MongoDB localmente!
+Deste modo, de maneira simples, nós podermos usar o MongoDB localmente!
 
 As instruções a seguir são para Mac, o site oficial possui uma documentação ótima para instalação em [Windows](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/) e [Linux](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/).
 
@@ -91,19 +91,19 @@ $ show dbs
 
 O MongoDB não irá criar uma base de dados até que você insira alguma informação na base de dados.
 
-O truque é que você não precisa se preocupar em criar uma base de dados explicitamente! Você pode simplesmente usar a base de dados (mesmo que não a tenha criado ainda), cirar uma coleção e um document (registro) e tudo será criado automáticamente para você!
+O truque é que você não precisa se preocupar em criar uma base de dados explicítamente! Você pode simplesmente usar a base de dados (mesmo que não a tenha criado ainda), criar uma coleção e um documento (registro) e tudo será criado automáticamente para você!
 
 
 Iremos analisar a criação de coleções e documentos na seção de comandos para CRUD (Criar, Ler, Atualizar e Deletar).
 
 
-Mostrar base de dados atual
+Mostrar a base de dados atual:
 ```sh
 
 $ db
 
 ```
-Selecionar uma base de dados
+Selecionar uma base de dados:
 
 
 ```sh
@@ -154,7 +154,7 @@ db.users.remove({});
 db.users.remove({ name: 'Maria' });
 
 ```
-Este é apenas uma visão geral dos tipos de comandos que podem ser feitos. A [documentação](http://docs.mongodb.org/manual/core/crud-introduction/) do MongoDB é bem extensa, o que a torna um ótimo recurso para aqueles que queiram se aprofundar.
+Esta é apenas uma visão geral dos tipos de comandos que podem ser feitos. A [documentação](http://docs.mongodb.org/manual/core/crud-introduction/) do MongoDB é bem extensa, o que a torna um ótimo recurso para aqueles que queiram se aprofundar.
 
 O MongoDB também possui um ótimo [tutorial](http://try.mongodb.org/) interativo para guia-lo na execução dos comandos acima.
 
@@ -162,7 +162,7 @@ O MongoDB também possui um ótimo [tutorial](http://try.mongodb.org/) interativ
 
 Utilizar o MongoDB local com Node é bem simples. Nós utilizaremos o 'mongooseJS', um package do Node para trabalhar com o MongoDB.
 
-Tudo que você precisa fazer é configurar o mongoose para se conectar a base de dados local. Isso é um processo simples já que nem precisamos de cria a base de dados. Só precisamos nos certificar que a instância do MongoDB foi inicada:
+Tudo que você precisa fazer é configurar o mongoose para se conectar a base de dados local. Isso é um processo simples já que nem precisamos de criar a base de dados. Só precisamos nos certificar que a instância do MongoDB foi inicada:
 
 ```sh
 
@@ -180,6 +180,8 @@ Segue uma amostra de código de como criar uma base de dados no Node.
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/nome_base_de_dados');
+
+```
 
 É isso! A partir do momento em que começarmos a salvar itens em nossa base de dados, esta será criada com o nome de 'nome_base_de_dados'
 
