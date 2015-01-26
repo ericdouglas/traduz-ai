@@ -36,3 +36,47 @@ $ brew install mongodb
 ```
 Se voce preferir não usar o Homebrew, é só seguir as [instruções](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/#install-mongodb-manually) no site oficial. 
 
+## Começando a utilizar o MongoDB
+
+Existem dois passos que devem ser seguidos para se utilizar o MongoDB localmente:
+
+
+1. Começar o processo (Iniciar o MongoDB)
+2. Conectar
+
+Parece bem simples, não é? Vamos começar!
+
+
+### Iniciando uma instância do MongoDB
+
+Antes de começarmos a criar e salvar registros em nossa base de dados, nós precisamos iniciar uma instância do MongoDB. Não conseguiremos salvar nada se não iniciarmos esta instância (ou serviço). Basta um comando bem simples para inicia-la:
+
+```sh
+
+$ mongod
+
+```
+Assim que entrarmos com este comando, o MongoDB irá ser iniciado e você deve ver uma mensagem: 'waiting for connections on port 27017' (Esperando por conexões na porta 27017).
+
+![Inicio do MongoDB](https://scotch.io/wp-content/uploads/2014/11/mongo-start.jpg)
+
+
+### Conectando a uma instância do MongoDB
+
+Com nossa instância do MongoDB rodando, agora só precisamos nos conectar a ela. Enquanto  o comando 'mongod' inicia uma instância do MongoDB, o comando 'mongo' se conecta a ela.
+With our MongoDB service running, we just have to connect to it. While mongod starts MongoDB, the command to connect to it is:
+```sh
+$ mongo
+
+```sh
+Agora estamos conectados e podemos enviar commandos ao MongoDB.
+
+![Inicio do MongoDB](https://scotch.io/wp-content/uploads/2014/11/mongo-connect.jpg)
+
+Note que no lado direito, estamos conectados ('connecting to test') e no lado esquerdo nossa conexão foi logada ('1 connection new open'). 
+
+
+
+
+
+
