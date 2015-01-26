@@ -157,17 +157,12 @@ Agora você tem uma aplicação em pleno funcionamento e esperando para ser roda
 
 ```sh
 
-$ node app.js
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
-Aperte enter. Você vai obter isso:
+Aperte enter. E o cursor vai ficar piscando no canto do console.
 
-```sh
-
-Express server listening on port 3000
-
-```
 
 Incrível! Abra seu navegador e digite `http://locahost:3000`. Agora você verá a página de boas vindas do Express.
 
