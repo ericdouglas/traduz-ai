@@ -50,10 +50,10 @@ $ npm install express-generator -g
 Isso instala algumas funcionalidades do núcleo do Express junto com a instalação do Node, tornando-o disponível globalmente, então podemos usá-lo em qualquer lugar que quisermos. Você vai ver um monte de texto em seu prompt de comando, vários http 304 e GETs. Tudo bem. O Express está agora instalado e disponível.
 
 > Vou considerar que o seguite comando deve retorar uma versão igual ou superior
-'''sh
+```sh
 $ express --version
 4.11.1
-'''
+```
 
 ### PASSO 3 - CRIANDO UM PROJETO EXPRESS
 
