@@ -75,6 +75,38 @@ Agora estamos conectados e podemos enviar commandos ao MongoDB.
 
 Note que no lado direito, estamos conectados ('connecting to test') e no lado esquerdo nossa conexão foi logada ('1 connection new open'). 
 
+## Comandos de Base de Dados Comuns
+
+Listar todas as Base de Dados
+
+```sh
+$ show dbs
+
+```
+### Criando uma base de dados
+
+O MongoDB não irá criar uma base de dados até que você insira alguma informação na base de dados.
+
+O truque é que você não precisa se preocupar em criar uma base de dados explicitamente! Você pode simplesmente usar a base de dados (mesmo que não a tenha criado ainda), cirar uma coleção e um document (registro) e tudo será criado automáticamente para você!
+
+
+Iremos analisar a criação de coleções e documentos na seção de comandos para CRUD (Criar, Ler, Atualizar e Deletar).
+
+
+Mostrar base de dados atual
+```sh
+
+$ db
+
+```
+Selecionar uma base de dados
+
+
+```sh
+
+$ use db_name
+
+```
 
 
 
