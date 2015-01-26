@@ -55,7 +55,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 
 |nº|Artigo|Link para tradução|Link para original|
 |---|:---|:---|:---|
-|01.|**Uma introdução ao MongoDB**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/nodejs/001-guia-para-iniciantes-absolutos-em-nodejs.md)|[Original](https://scotch.io/tutorials/an-introduction-to-mongodb)|
+|01.|**Uma introdução ao MongoDB**|[Tradução](https://github.com/fsbatista/traduz-ai/blob/master/MongoDB/001-uma-introdução-ao-mongodb.md)|[Original](https://scotch.io/tutorials/an-introduction-to-mongodb)|
 
 
 # Handlebars.js
