@@ -108,6 +108,52 @@ $ use db_name
 
 ```
 
+## Comandos para CRUD (Criar, Ler, Atualizar e Deletar)
+
+Criar
+```sh
+
+// Salvar um usuário
+
+$ db.users.save({ name: 'Alberto' });
+
+// Salvar vários usuários 
+
+$ db.users.save({ name: 'Alberto'}, { name: 'Maria' });
+
+```
+Ao salvar um documento (registro) na coleção de usuários na base de dados que está sendo utilizada, você criou, com sucesso, tanto a base de dados quanto a coleção (se estas ainda não existiam).
+
+Ler
+
+```sh
+// Mostrar todos os usuários
+
+$ db.users.find();
+
+// Encontrar um usuário específico
+
+$ db.users.find({ name: 'Maria' });
+
+```
+Atualizar
+```sh
+db.users.update({ name: 'Maria' }, { name: 'Maria da Graça' });
+```
+Deletar
+```sh
+// Remover todos
+db.users.remove({});
+
+// Remover um
+db.users.remove({ name: 'Maria' });
+
+```
+Este é apenas uma visão geral dos tipos de comandos que podem ser feitos. A [documentação](http://docs.mongodb.org/manual/core/crud-introduction/) do MongoDB é bem extensa, o que a torna um ótimo recurso para aqueles que queiram se aprofundar.
+
+O MongoDB também possui um ótimo [tutorial](http://try.mongodb.org/) interativo para guia-lo na execução dos comandos acima.
+
+
 
 
 
