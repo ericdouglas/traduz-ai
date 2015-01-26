@@ -86,11 +86,14 @@ create : nodetest1/public/javascripts
 create : nodetest1/public
 create : nodetest1/public/stylesheets
 create : nodetest1/public/stylesheets/style.css
+create : nodetest1/bin
+create : nodetest1/bin/www
 
 install dependencies:
-$ cd nodetest1 && npm install
+$ cd nodetest1 
+$ npm install
 
-run the app (considerando que esta dentro de /nodetest1):
+run the app:
 $ DEBUG=nodetest1 ./bin/www
 
 ```
@@ -155,9 +158,17 @@ Será impresso uma tonelada de coisas. Isto por causa que está sendo lido nosso
 
 Agora você tem uma aplicação em pleno funcionamento e esperando para ser rodada. Vamos testá-la! **Vá para o diretório nodetest1** e digite:
 
+> ( MacOS ou Linux)
 ```sh
 
 $ DEBUG=nodetest1 ./bin/www
+
+```
+
+> (Windows)
+```sh
+
+> set DEBUG=myapp & node .\bin\www
 
 ```
 
