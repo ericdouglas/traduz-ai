@@ -183,17 +183,7 @@ Você tem agora seu próprio servidor web com Node.js, com a *engine* Express e 
 
 ## PARTE 2 - OK. LEGAL. VAMOS FAZER O "HELLO WORLD!"
 
-Abra seu editor de texto ou IDE favorita. Eu gosto muito do [Sublime Text](http://www.sublimetext.com/). Vá para o diretório `nodetest1` e abra o arquivo `app.js`. Esse é como o coração da sua app. Não há muitas surpresas lá. Aqui temos uma parte do que você irá ver lá:
-
-```js
-
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
-
-```
+Abra seu editor de texto ou IDE favorita. Eu gosto muito do [Sublime Text](http://www.sublimetext.com/). Vá para o diretório `nodetest1` e abra o arquivo `app.js`. Esse é como o coração da sua app. 
 
 Isso cria muitas variáveis básicas do JavaScript e as liga a certos pacotes, dependências, funcionalidades do Node e rotas. Rotas são como uma espécie de combinação de modelos e controladores nesta configuração - elas direcionam o tráfico e também contém alguma lógica de programação (você pode estabelecer uma arquitetura MVC mais tradicional com o Express se você quiser. Isso está fora do escopo deste artigo). Voltando ao momento onde nós configuramos este projeto, o Express criou todas essas coisas para nós. Vamos ignorar totalmente a rota *user* por agora e trabalhar somente na rota de nível superior (controlado por `nodetest1/routes/index.js`).
 
@@ -224,31 +214,21 @@ app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 Isso configura a porta, que diz ao app onde encotrar as views, que engine usar para renderisar estas views (Jade), e chama alguns métodos para deixar as coisas funcionando. Note também que a linha final está dizendo ao Express para servir objetos estáticos no diretório *public*. Por exemplo, as imagens no diretório `../nodetest1/public/images`. Mas elas são acessadas pela url `http://localhost:3000/images`.
 
-**NOTA:** Você vai precisar mudar esta linha:
-
-`app.js`
-```js
-
-app.use( express.bodyParser() );
-
-```
-
-para:
-
-```js
-
-app.use( express.urlencoded() );
-
-```
-
 Em razão de evitar alguns avisos em seu console Node quando você rodar a aplicação. Isto é devido a algumas mudanças futuras do Express e seus plugins. Se você não fizer esta mudança, sua aplicação vai continuar rodando, mas você irá ver texto sobre futuras *desaprovações* (deprecations) toda vez que você rodar isso.
 
 `app.js`
 ```js
 
-// development only
-if ( 'development' == app.get( 'env' ) ) {
-	app.use( express.errorHandler() );
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
 }
 
 ```
@@ -258,54 +238,20 @@ Isso permite que você faça alguma checagem de erro durante o desenvolvimento. 
 `app.js`
 ```js
 
-app.get( '/', routes.index );
-app.get( '/users', user.list );
+app.use( '/', routes );
+app.use( '/users', user );
 
 ```
 
-Isso diz a app quais rotas usar quando uma URI particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para `/routes/user.js` - nós vamos chamar a função de lista definida neste arquivo. Ou estaríamos se estivéssemos acessando a página de usuários, mas estamos ignorando-a, lembra?
+Isso diz a app quais rotas usar quando uma URI particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para `/routes/user.js`. 
 
-`app.js`
-```js
-
-http.createServer( app ).listen( app.get( 'port' ), function () {
-	console.log( 'Express server listening on port ' + app.get( 'port' ) );
-} );
-
-```
-
-Por último, mas não menos importante, isso cria nosso servidor http e o lança. Bons tempos!
-
-Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URI. Em baixo da seção `app.get()` no arquivo app.js, adicione esta linha:
+Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URI. Em baixo da seção `router.get();` no arquivo `nodetest1/routes/index.js`, adicione esta linha:
 
 ```js
 
-app.get( '/helloworld', routes.helloworld );
-
-```
-
-Aperte `ctrl c` para encerrar o app.js em sua linha de comando, e então reinicie o processo e vá até `http://localhost:3000/helloworld`. Você deve obter um interessante erro do node e uma quebra na linha de comando. Isto porque nós não modificamos nossa rota para manipular esta requisição. Vamos fazer isso! Em seu editor de texto, abra sua pasta *routes*, encontre `index.js` e abra-o. Ele vai se parecer com isso:
-
-`index.js`
-```js
-
-/*
- * GET home page.
- */
-
-exports.index = function( req, res ){
-  res.render( 'index', { title: 'Express' });
-};
-
-```
-
-Muito escasso, certo? Vamos adicionar uma nova página. Minha abordagem preferida é adicionar um novo arquivo de rota para o diretório de nível superior, mas nós não criamos um diretório *helloworld* completo nas views, então vamos apenas usar a rota index. No fim do arquivo, adicione este código:
-
-```js
-
-exports.helloworld = function ( req, res ) {
-	res.render( 'helloworld', { title: 'Hello, World!' } );
-};
+router.get('/helloworld', function(req, res, next){
+  res.render('helloworld', {title: 'Hello Word'});
+});
 
 ```
 
@@ -332,11 +278,11 @@ p Hello, World! Welcome to #{title}
 
 ```
 
-Salve o arquivo, vá para o terminal e encerre sua aplicação `ctrl c`. Agora digite:
+Salve o arquivo, vá para o terminal e encerre sua aplicação `ctrl c`. Agora digite (iniciar o servidor):
 
 ```sh
 
-node app.js
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
