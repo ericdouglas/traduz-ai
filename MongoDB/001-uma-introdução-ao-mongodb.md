@@ -1,5 +1,8 @@
 # Uma introdução ao MongoDB
 
+* **Artigo Original**: [An Introduction to MongoDB](https://scotch.io/tutorials/an-introduction-to-mongodb)
+* **Tradução**: [Felipe Batista](https://github.com/fsbatista)
+
 O MongoDB se declarou a principal referência em base de dados NoSQL. Com bases em suas estatísticas é dificil argumentar que a tecnologia não é popular.
 
 MongoDB vem sido usado no prestigiado 'MEAN' stack (referência a utlização das tecnologias de desenvolvimento: MongoDB, Angular, Express e Nodejs). Os benefícios de se utilizar uma base de dados documental como esta significa que é possível trabalhar com documentos (registros) com sintaxe semelhante ao JSON em toda a estrutura de um aplicativo.
