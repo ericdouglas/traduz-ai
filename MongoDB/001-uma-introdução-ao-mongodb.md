@@ -205,5 +205,5 @@ Uma vez que você conectar, terá acesso a todas as bases de dados e suas respec
 
 ## Conclusão
 
-O MongoDB é uma ótima base de dados NoSQL que pode ser configurada rápidamente e usada em qualquer dos seus aplicativos. Em aplicativos que usam Node, é possível iniciar rápidamente e chegar na parte mais divertida do desenvolvimento, a construção do aplicativo!
+O MongoDB é uma ótima base de dados NoSQL que pode ser configurada rápidamente e usada em qualquer um dos seus aplicativos. Em aplicativos que usam Node, é possível iniciar e chegar rápidamente a parte mais divertida do desenvolvimento, a construção do aplicativo!
 
