@@ -66,12 +66,13 @@ Assim que entrarmos com este comando, o MongoDB irá ser iniciado e você deve v
 
 ### Conectando a uma instância do MongoDB
 
-Com nossa instância do MongoDB rodando, agora só precisamos nos conectar a ela. Enquanto  o comando 'mongod' inicia uma instância do MongoDB, o comando 'mongo' se conecta a ela.
-With our MongoDB service running, we just have to connect to it. While mongod starts MongoDB, the command to connect to it is:
-```sh
-$ mongo
+Com nossa instância do MongoDB rodando, agora só precisamos nos conectar a ela. Enquanto  o comando 'mongod' inicia uma instância do MongoDB, o comando 'mongo' se conecta a ela:
 
 ```sh
+
+$ mongo
+
+```
 Agora estamos conectados e podemos enviar commandos ao MongoDB.
 
 ![Inicio do MongoDB](https://scotch.io/wp-content/uploads/2014/11/mongo-connect.jpg)
@@ -113,7 +114,7 @@ $ use db_name
 
 ## Comandos para CRUD (Criar, Ler, Atualizar e Deletar)
 
-Criar
+###Criar
 ```sh
 
 // Salvar um usuário
@@ -127,7 +128,7 @@ $ db.users.save({ name: 'Alberto'}, { name: 'Maria' });
 ```
 Ao salvar um documento (registro) na coleção de usuários na base de dados que está sendo utilizada, você criou, com sucesso, tanto a base de dados quanto a coleção (se estas ainda não existiam).
 
-Ler
+###Ler
 
 ```sh
 // Mostrar todos os usuários
@@ -139,11 +140,12 @@ $ db.users.find();
 $ db.users.find({ name: 'Maria' });
 
 ```
-Atualizar
+###Atualizar
+
 ```sh
 db.users.update({ name: 'Maria' }, { name: 'Maria da Graça' });
 ```
-Deletar
+###Deletar
 ```sh
 // Remover todos
 db.users.remove({});
