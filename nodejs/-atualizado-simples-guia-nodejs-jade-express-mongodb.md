@@ -470,15 +470,15 @@ Abra o arquivo `nodetest1/routes/index.js` em seu editor. Ele tem a rota index, 
 
 ```js
 
-exports.userlist = function(db) {
-    return function(req, res) {
-        var collection = db.get('usercollection');
-        collection.find({},{},function(e, docs){
-            res.render('userlist', {
-                "userlist" : docs
-            });
-        });
-    };
+router.dbwrap = function(db){
+  return function get(req, res, next){
+    var collection = db.get('usercollection');
+    collection.find({}, {}, function(e, docs){
+      res.render('userlist', {
+        "userlist": docs
+      });
+    });
+  };
 };
 
 ```
@@ -508,7 +508,7 @@ Tudo está configurado. Salve o arquivo, e vamos reiniciar nosso servidor node. 
 
 ```js
 
-$ node app.js
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
