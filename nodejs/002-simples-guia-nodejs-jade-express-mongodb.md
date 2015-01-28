@@ -419,7 +419,7 @@ No caso de você estar curioso, o método `.pretty()` nos fornece quebra de linh
 ```
 Exceto, claro, que seu ObjectID vai ser diferene deste mencionado, pois o Mongo vai gerará-lo automaticamente. Isto é tudo que temos que escrever para o MongoDB a partir do client app, e se você já trabalhou com serviços JSON antes, você provavelmente estará pensando "ó, wow, isso será fácil de implementar na web." ... você está certo!
 
-Uma nota rápida sobre a estrutura do DB: obviamente ao longo da jornada você não vai armazenar nada em nível alto. Existem toneladas de recursos na internate para o projetos de esquema para o MongoDB. Google é seu amigo!
+Uma nota rápida sobre a estrutura do DB: obviamente ao longo da jornada você não vai armazenar nada em nível alto. Existem toneladas de recursos na internet para o projetos de esquema para o MongoDB. Google é seu amigo!
 
 Agora que temos um registro, vamos adicionar um pouco mais. Em seu console Mongo, digite o seguinte:
 
