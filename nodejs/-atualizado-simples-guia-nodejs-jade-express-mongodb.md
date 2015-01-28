@@ -2,10 +2,13 @@
 
 * **Artigo Original**: [THE DEAD-SIMPLE STEP-BY-STEP GUIDE FOR FRONT-END DEVELOPERS TO GETTING UP AND RUNNING WITH NODE.JS, EXPRESS, JADE, AND MONGODB](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)
 * **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
+* **Atualização** [Alex Aleluia](https://github.com/alexaleluia12)
 
 ### Configure uma Aplicação *Full Stack JavaScript* e a tenha funcionando em 30 minutos. Faça-a conversar com seu banco de dados em outros 30.
 
 > [Você pode encontrar/forkar este tutorial e todo o projeto de exemplo no Github.](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)
+
+> Esta é apenas uma atualização do [tutorial antigo](https://github.com/ericdouglas/traduz-ai/blob/master/nodejs/002-simples-guia-nodejs-jade-express-mongodb.md) para que as coisas realmente funcionem.
 
 ## Introdução
 
@@ -40,11 +43,17 @@ Agora que temos o Node rodando, nós precisamos do resto das coisas para criar, 
 
 ```sh
 
-$ npm install -g express
+$ npm install express-generator -g
 
 ```
 
 Isso instala algumas funcionalidades do núcleo do Express junto com a instalação do Node, tornando-o disponível globalmente, então podemos usá-lo em qualquer lugar que quisermos. Você vai ver um monte de texto em seu prompt de comando, vários http 304 e GETs. Tudo bem. O Express está agora instalado e disponível.
+
+> Vou considerar que o seguite comando deve retorar uma versão igual ou superior
+```sh
+$ express --version
+4.11.1
+```
 
 ### PASSO 3 - CRIANDO UM PROJETO EXPRESS
 
@@ -54,7 +63,7 @@ De qualquer forma, continue no seu diretório onde está armazenando sua aplica�
 
 ```sh
 
-$ express --sessions nodetest1
+$ express nodetest1
 
 ```
 
@@ -62,7 +71,7 @@ Aperte enter e veja o que acontece. Irá aparecer algo como isso:
 
 ```sh
 
-eo_op:~/estudos/nodejs $ express --sessions nodetest1
+eo_op:~/estudos/nodejs $ express nodetest1
 create : nodetest1
 create : nodetest1/package.json
 create : nodetest1/app.js
@@ -77,12 +86,15 @@ create : nodetest1/public/javascripts
 create : nodetest1/public
 create : nodetest1/public/stylesheets
 create : nodetest1/public/stylesheets/style.css
+create : nodetest1/bin
+create : nodetest1/bin/www
 
 install dependencies:
-$ cd nodetest1 && npm install
+$ cd nodetest1 
+$ npm install
 
 run the app:
-$ node app
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
@@ -97,12 +109,16 @@ Tudo bem, agora que temos uma estrutura básica, mas ainda não terminamos. Voc�
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node ./bin/www"
   },
   "dependencies": {
-    "express": "3.4.8",
-    "jade": "*"
-  }
+    "body-parser": "~1.10.2",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.1.1",
+    "express": "~4.11.1",
+    "jade": "~1.9.1",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0",
 }
 
 ```
@@ -112,10 +128,16 @@ Este é um arquivo básico JSON que descreve seu aplicativo e suas dependências
 ```json
 
 "dependencies": {
-    "express": "3.4.4",
-    "jade": "*",
+    "body-parser": "~1.10.2",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.1.1",
+    "express": "~4.11.1",
+    "jade": "~1.9.1",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0",
     "mongodb": "*",
     "monk": "*"
+    
 }
 
 ```
@@ -136,19 +158,22 @@ Será impresso uma tonelada de coisas. Isto por causa que está sendo lido nosso
 
 Agora você tem uma aplicação em pleno funcionamento e esperando para ser rodada. Vamos testá-la! **Vá para o diretório nodetest1** e digite:
 
+> ( MacOS ou Linux)
 ```sh
 
-$ node app.js
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
-Aperte enter. Você vai obter isso:
-
+> (Windows)
 ```sh
 
-Express server listening on port 3000
+> set DEBUG=myapp & node .\bin\www
 
 ```
+
+Aperte enter. E o cursor vai ficar piscando no canto do console.
+
 
 Incrível! Abra seu navegador e digite `http://locahost:3000`. Agora você verá a página de boas vindas do Express.
 
@@ -158,17 +183,7 @@ Você tem agora seu próprio servidor web com Node.js, com a *engine* Express e 
 
 ## PARTE 2 - OK. LEGAL. VAMOS FAZER O "HELLO WORLD!"
 
-Abra seu editor de texto ou IDE favorita. Eu gosto muito do [Sublime Text](http://www.sublimetext.com/). Vá para o diretório `nodetest1` e abra o arquivo `app.js`. Esse é como o coração da sua app. Não há muitas surpresas lá. Aqui temos uma parte do que você irá ver lá:
-
-```js
-
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
-
-```
+Abra seu editor de texto ou IDE favorita. Eu gosto muito do [Sublime Text](http://www.sublimetext.com/). Vá para o diretório `nodetest1` e abra o arquivo `app.js`. Esse é como o coração da sua app. 
 
 Isso cria muitas variáveis básicas do JavaScript e as liga a certos pacotes, dependências, funcionalidades do Node e rotas. Rotas são como uma espécie de combinação de modelos e controladores nesta configuração - elas direcionam o tráfico e também contém alguma lógica de programação (você pode estabelecer uma arquitetura MVC mais tradicional com o Express se você quiser. Isso está fora do escopo deste artigo). Voltando ao momento onde nós configuramos este projeto, o Express criou todas essas coisas para nós. Vamos ignorar totalmente a rota *user* por agora e trabalhar somente na rota de nível superior (controlado por `nodetest1/routes/index.js`).
 
@@ -199,31 +214,21 @@ app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 Isso configura a porta, que diz ao app onde encotrar as views, que engine usar para renderisar estas views (Jade), e chama alguns métodos para deixar as coisas funcionando. Note também que a linha final está dizendo ao Express para servir objetos estáticos no diretório *public*. Por exemplo, as imagens no diretório `../nodetest1/public/images`. Mas elas são acessadas pela url `http://localhost:3000/images`.
 
-**NOTA:** Você vai precisar mudar esta linha:
-
-`app.js`
-```js
-
-app.use( express.bodyParser() );
-
-```
-
-para:
-
-```js
-
-app.use( express.urlencoded() );
-
-```
-
 Em razão de evitar alguns avisos em seu console Node quando você rodar a aplicação. Isto é devido a algumas mudanças futuras do Express e seus plugins. Se você não fizer esta mudança, sua aplicação vai continuar rodando, mas você irá ver texto sobre futuras *desaprovações* (deprecations) toda vez que você rodar isso.
 
 `app.js`
 ```js
 
-// development only
-if ( 'development' == app.get( 'env' ) ) {
-	app.use( express.errorHandler() );
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
 }
 
 ```
@@ -233,54 +238,20 @@ Isso permite que você faça alguma checagem de erro durante o desenvolvimento. 
 `app.js`
 ```js
 
-app.get( '/', routes.index );
-app.get( '/users', user.list );
+app.use( '/', routes );
+app.use( '/users', user );
 
 ```
 
-Isso diz a app quais rotas usar quando uma URI particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para `/routes/user.js` - nós vamos chamar a função de lista definida neste arquivo. Ou estaríamos se estivéssemos acessando a página de usuários, mas estamos ignorando-a, lembra?
+Isso diz a app quais rotas usar quando uma URI particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para `/routes/user.js`. 
 
-`app.js`
-```js
-
-http.createServer( app ).listen( app.get( 'port' ), function () {
-	console.log( 'Express server listening on port ' + app.get( 'port' ) );
-} );
-
-```
-
-Por último, mas não menos importante, isso cria nosso servidor http e o lança. Bons tempos!
-
-Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URI. Em baixo da seção `app.get()` no arquivo app.js, adicione esta linha:
+Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URI. Em baixo da seção `router.get();` no arquivo `nodetest1/routes/index.js`, adicione esta linha:
 
 ```js
 
-app.get( '/helloworld', routes.helloworld );
-
-```
-
-Aperte `ctrl c` para encerrar o app.js em sua linha de comando, e então reinicie o processo e vá até `http://localhost:3000/helloworld`. Você deve obter um interessante erro do node e uma quebra na linha de comando. Isto porque nós não modificamos nossa rota para manipular esta requisição. Vamos fazer isso! Em seu editor de texto, abra sua pasta *routes*, encontre `index.js` e abra-o. Ele vai se parecer com isso:
-
-`index.js`
-```js
-
-/*
- * GET home page.
- */
-
-exports.index = function( req, res ){
-  res.render( 'index', { title: 'Express' });
-};
-
-```
-
-Muito escasso, certo? Vamos adicionar uma nova página. Minha abordagem preferida é adicionar um novo arquivo de rota para o diretório de nível superior, mas nós não criamos um diretório *helloworld* completo nas views, então vamos apenas usar a rota index. No fim do arquivo, adicione este código:
-
-```js
-
-exports.helloworld = function ( req, res ) {
-	res.render( 'helloworld', { title: 'Hello, World!' } );
-};
+router.get('/helloworld', function(req, res, next){
+  res.render('helloworld', {title: 'Hello Word'});
+});
 
 ```
 
@@ -307,11 +278,11 @@ p Hello, World! Welcome to #{title}
 
 ```
 
-Salve o arquivo, vá para o terminal e encerre sua aplicação `ctrl c`. Agora digite:
+Salve o arquivo, vá para o terminal e encerre sua aplicação `ctrl c`. Agora digite (iniciar o servidor):
 
 ```sh
 
-node app.js
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
@@ -329,9 +300,8 @@ Ok! Agora temos nossa rota nos levando para nossa view. Vamos fazer alguma model
 
 ### PASSO 1 - INSTALAR MONGODB
 
-Vamos deixar um pouco nosso editor de texto e ir para nosso terminal. Bem, primeiro vamos para nosso browser, no endereço http://mongodb.org/ e fazer o download do Mongo. Click no link de downloads no menu principal e pegue a versão de produção que se encaixa com seu sistema. Para o Windows 8 com um processador 64-bit, nós vamos usar o "64-bit *2008R2+". Isso irá lhe fornecer um arquivo `.zip`, que você deve descompactar para um diretório temporário. Então você pode criar um diretório no qual o Mongo vai permanecer pra sempre depois de armazenar o Mongo. Você pode usar `c:\mongo` ou `c:\program files\mongo` ou qualquer outra coisa louca que você quiser. Isso não importa na verdade - O Mongo é bem pequeno, e vamos armazenar nosso banco de dados no nosso diretório `nodetest1`.
-
-De qualquer forma, copie os arquivos da pasta bin dentro do seu diretório temporário para onde você quer que o Mongo fique, e você está pronto. Você instalou o Mongo. Agora vamos fazer isso funcionar.
+No site do [mongodb](http://docs.mongodb.org/manual/) 'Installation' esta bem exemplificado como instalar o mongodb no seu
+sistema operacional. Eu surgiro que você siga ele.
 
 ### PASSO 2 - RODANDO MONGOD e MONGO
 
