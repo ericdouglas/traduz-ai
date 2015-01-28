@@ -528,35 +528,14 @@ Escrever no banco de dados não é difícil. Essencialmente nós precisamos conf
 
 ### PASSO 1 - CRIE SUA ENTRADA DE DADOS
 
-Vamos passar rapidamente aqui: dois inputs feios e sem estilo mais um botão *submit*. Estilo 1996. Após isso, vamos começar com o `app.get()`; e então dar algo para ser pego. Abra o `app.js` e encontre a parte das chamadas `app.get()`, e adicione isso no final delas:
+Vamos passar rapidamente aqui: dois inputs feios e sem estilo mais um botão *submit*. Estilo 1996. Após isso, vamos começar com o `app.get()`; e então dar algo para ser pego. Abra o `routes/index.js` e encontre a parte das chamadas `app.get()`, e adicione isso no final delas:
 
 ```js
 
-app.get('/newuser', routes.newuser);
+router.get('/newuser', function(req, res, next){
+  res.render('newuser',  {title: 'Add a new user.'});
+});
 
-```
-
-Então você vai ter:
-
-```js
-
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/helloworld', routes.helloworld);
-app.get('/userlist', routes.userlist(db));
-
-// Novo código
-app.get('/newuser', routes.newuser);
-
-```
-
-Como todas as requisições `app.get`, nós precisamos ajustar a rota para reconhecer o que servir. Abra `routes/index.js` e adicione o seguinte:
-
-```js
-
-exports.newuser = function ( req, res ) {
-	 res.render( 'newuser', { title: 'Add New User' } );
-};
 
 ```
 
@@ -583,60 +562,47 @@ Se você reiniciar o servidor node e ir para `http://localhost:3000/newuser`, vo
 
 ### PASSO 2 - CRIANDO NOSSAS FUNÇÕES DB
 
-Ok, o mesmo processo de antes. Primeiro vamos editar o `app.js`, então nosso arquivo `route`, e então nosso template Jade. Exceto que não existe um template Jade aqui porque nós estamos postando e então encaminhando. Veja abaixo. Vai tudo fazer sentido! Vamos começar: Abra `app.js` e mais uma vez encontre a pilha de chamadas `app.get`:
-
-```js
-
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/helloworld', routes.helloworld);
-app.get('/userlist', routes.userlist(db));
-app.get('/newuser', routes.newuser);
-
-```
+Ok, o mesmo processo de antes. Primeiro vamos editar o `app.js`, então nosso arquivo `route`, e então nosso template Jade. Exceto que não existe um template Jade aqui porque nós estamos postando e então encaminhando. Veja abaixo. Vai tudo fazer sentido! Vamos começar: Abra `app.js` e mais uma vez encontre a pilha de chamadas `app.use`:
 
 Agora adicione o seguinte em baixo desta lista:
 
 ```js
 
-app.post('/adduser', routes.adduser(db));
+app.use('/adduser', routes.adduser(db));
 
 ```
-
-Note que isso é um `app.post`, não um `app.get`. Se você quer separar essa parte dos `app.get` com um comentário ou nova linha, eu não vou lhe impedir. Vamos configurar nossa rota.
 
 Volte para `routes/index.js` para criarmos nossa função de inserção. Essa é grande, então eu comentei o código bem cuidadosamente. Aqui está:
 
 ```js
 
-exports.adduser = function (db) {
-    return function (req, res) {
-       
-        // Pega os valores do form. Eles dependem do atributo "name"
-        var userName = req.body.username;
-        var userEmail = req.body.useremail;
+router.adduser = function(db){
 
-        // Configura nossa coleção
-        var collection = db.get('usercollection');
-
-        // Envia ao DB
-        collection.insert({
-            "username" : userName,
-            "email" : userEmail
-        }, function (err, doc) {
-            if (err) {
-                // Se isso falhar, retorna um erro
-                res.send("Ocorreu um problema ao adicionar informação ao banco de dados");
-            }
-            else {
-                // Se funcionar, configura o header para a barra de endereço não continuar dizendo /adduser
-                res.location("userlist");
-                // E depois a página de sucesso
-                res.redirect("userlist");
-            }
-        }); 
-    };
+  return function post(req, res, next){
+    // Pega os valores do form. Eles dependem do atributo "name"
+    var userName  = req.body.username;
+    var userEmail = req.body.useremail;
+    
+    // Configura nossa coleção
+    db.get('usercollection')
+      .insert( // Envia ao DB
+        {"username": userName,
+         "email": userEmail
+        },
+        function(err, doc){
+          if(err){
+            // Se isso falhar, retorna um erro
+            res.send('Ocoreu um erro ao adicionar a informacao no banco');
+          }else {
+            // Se funcionar, configura o header para a barra de endereço não continuar dizendo /adduser
+            res.location('userlist');
+            // E depois a página de sucesso
+            res.redirect('userlist');
+          }
+        });
+  };
 };
+
 
 ```
 
@@ -650,7 +616,7 @@ Existem formas mais suvaes de se fazer isso? Com certeza, porém vamos ficar nes
 
 ```sh
 
-$ node app.js
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
