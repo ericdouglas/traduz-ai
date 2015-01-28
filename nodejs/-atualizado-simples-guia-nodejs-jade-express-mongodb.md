@@ -245,7 +245,7 @@ app.use( '/users', user );
 
 Isso diz a app quais rotas usar quando uma URI particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para `/routes/user.js`. 
 
-Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URI. Em baixo da seção `router.get();` no arquivo `nodetest1/routes/index.js`, adicione esta linha:
+Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URI. Em baixo da seção `router.get();` no arquivo `nodetest1/routes/index.js`, adicione estas linhas:
 
 ```js
 
@@ -300,35 +300,19 @@ Ok! Agora temos nossa rota nos levando para nossa view. Vamos fazer alguma model
 
 ### PASSO 1 - INSTALAR MONGODB
 
-No site do [mongodb](http://docs.mongodb.org/manual/) 'Installation' esta bem exemplificado como instalar o mongodb no seu
-sistema operacional. Eu surgiro que você siga ele.
+No site do [mongodb](http://docs.mongodb.org/manual/) 'Installation' esta bem exemplificado como instalar o mongodb no seu sistema operacional. Eu surgiro que você siga esses passos.
 
 ### PASSO 2 - RODANDO MONGOD e MONGO
 
-No seu diretório nodetest1, cria um subdiretório chamado `data`. Então navegue até o diretório em que você colocou seus arquivos do MongoDB. Deste diretório, digite o seguinte:
+Continue seguindo documentação do `mongodb` inicie o servidor com 'mongod'
 
+Feito isso o comando 'mongo' deve retornar algo parecido com isso:
 ```sh
 
-mongod --dbpath c:\node\nodetest1\data
-
-```
-
-Você vai ver que o servidor Mongo inicia. Pode demorar um pouco se for a primeira vez, porque ele tem que fazer algumas pre-alocações de espaço e algumas tarefas de limpeza. Uma vez que isso disser "[initandlisten] waiting for connections on port 27017", tudo está feito. Não há nada mais para se fazer; o servidor está rodando. Agora você pode **abrir um segundo terminal**. Navegue novamente até o diretório de instalação do Mongo, e digite:
-
-```sh
-
-mongo
-
-```
-
-Você vai ver algo assim:
-
-```sh
-
-c:\mongo>mongo
-MongoDB shell version: 2.4.5
+$ mongo
+MongoDB shell version: 2.6.7
 connecting to: test
-
+>
 ```
 
 Adicionalmente, se você está prestando atenção em sua instância mongod, você vai ver que ele menciona que a conexão foi estabilizada. Tudo certo, você tem o MongoDB funcionando, e conectou a ele com o client. Nós vamos usar o client manualmente para trabalhar no nosso banco de dados, mas não é necessário para rodar o website. Somente o mongod é necessário para isso.
@@ -339,7 +323,7 @@ Não se preocupe com "connecting to: test"... este é apenas o db padrão decidi
 
 ```sh
 
-use nodetest1
+> use nodetest1
 
 ```
 
@@ -364,11 +348,11 @@ Você pode criar sua própria atribuição `_id` se você realmente quiser, mas 
 
 ```sh
 
-db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@tesdomain.com" })
+> db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@tesdomain.com" })
 
 ```
 
-Algo importante de se notar aqui: este `db` significa nosso banco de dados, que como mencionado acima, nós definimos como `nodetest1`. A parte `usercollection` é nossa coleção. Note que não existe um passo onde nós criamos a coleção "usercollection". Isso porque a primeira vez que adicionamos isso, ele já irá se auto-criar. Prático. Ok, aperte enter. Assumingo que tudo ocorreu corretamente, você deve ver... nada. Isso não é muito animador, então digite isso:
+Algo importante de se notar aqui: este `db` significa nosso banco de dados, que como mencionado acima, nós definimos como `nodetest1`. A parte `usercollection` é nossa coleção. Note que não existe um passo onde nós criamos a coleção "usercollection". Isso porque a primeira vez que adicionamos isso, ele já irá se auto-criar. Prático. Ok, aperte enter. Digite o próximo comando.
 
 ```sh
 
@@ -389,7 +373,7 @@ No caso de você estar curioso, o método `.pretty()` nos fornece quebra de linh
 ```
 Exceto, claro, que seu ObjectID vai ser diferene deste mencionado, pois o Mongo vai gerará-lo automaticamente. Isto é tudo que temos que escrever para o MongoDB a partir do client app, e se você já trabalhou com serviços JSON antes, você provavelmente estará pensando "ó, wow, isso será fácil de implementar na web." ... você está certo!
 
-Uma nota rápida sobre a estrutura do DB: obviamente ao longo da jornada você não vai armazenar nada em nível alto. Existem toneladas de recursos na internate para o projetos de esquema para o MongoDB. Google é seu amigo!
+Uma nota rápida sobre a estrutura do DB: obviamente ao longo da jornada você não vai armazenar nada em nível alto. Existem toneladas de recursos na internet para o projetos de esquema para o MongoDB. Google é seu amigo!
 
 Agora que temos um registro, vamos adicionar um pouco mais. Em seu console Mongo, digite o seguinte:
 
@@ -469,19 +453,12 @@ var db = monk('localhost:27017/nodetest1');
 
 Estas linhas dizem que nossa app vai conversar com o MongoDB, e vamos usar o Monk para fazer isso, e nosso banco de dados está localizado em `localhost:27017/nodetest1`. Note que 27017 é a porta que sua instância MongoDB deve estar rodando. Se por algum motivo você a mudou, obviamente use esta porta então. Agora olhe para a parte de baixo do arquivo, onde você tem isso:
 
-```js
 
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/helloworld', routes.helloworld);
-
-```
-
-Adicione a seguinte linha no final:
+Adicione a seguinte linha em baixo de 'app.use('/', routes);'':
 
 ```js
 
-app.get('/userlist', routes.userlist(db));
+app.use('/userlist', routes.dbwrap(db));
 
 ```
 
