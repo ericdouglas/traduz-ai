@@ -158,14 +158,14 @@ Será impresso uma tonelada de coisas. Isto por causa que está sendo lido nosso
 
 Agora você tem uma aplicação em pleno funcionamento e esperando para ser rodada. Vamos testá-la! **Vá para o diretório nodetest1** e digite:
 
-> ( MacOS ou Linux)
+MacOS ou Linux
 ```sh
 
 $ DEBUG=nodetest1 ./bin/www
 
 ```
 
-> (Windows)
+Windows
 ```sh
 
 $ set DEBUG=myapp & node .\bin\www
