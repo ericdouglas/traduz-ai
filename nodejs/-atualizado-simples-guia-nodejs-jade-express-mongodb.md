@@ -168,7 +168,7 @@ $ DEBUG=nodetest1 ./bin/www
 > (Windows)
 ```sh
 
-> set DEBUG=myapp & node .\bin\www
+$ set DEBUG=myapp & node .\bin\www
 
 ```
 
