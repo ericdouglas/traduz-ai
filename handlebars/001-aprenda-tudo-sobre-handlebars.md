@@ -419,16 +419,180 @@ var theTemplateScript = $("#shoe-template").html();
 $(".shoesNav").append(theTemplate(shoesData)); 
 ```
 
-
-
-
-
 ## Aprenda a sintaxe Handlebars.js
 
+* Expressões Handlebars.js
+
+Vimos acima a expressão Handlebars. Expressões Handlebars são escritas com (chaves duplas no início, seguido do conteúdo a ser avaliado e chaves duplas no final);
+
+```
+<div>{{ Conteúdo vem aqui }}</div>
+```
+
+A variável customerName é a propriedade (a expressão que será avaliada pelo compilador do Handlebars) que será interpolada (os seus valores serão inseridos no lugar) pela função compilada do Handlebars quando ele executa:
+
+```
+<div> Name: {{ customerName }} </div>
+```
+
+* Comentários
+
+Isto é como você adiciona comentários em um template Handlebars:
+
+```
+{{! Tudo dentro desta expressão de comentário não será exibido }}
+```
+
+E você pode usar também comentários HTML, mas eles serão inseridos no código fonte como comentários HTML:
+
+```
+<!-- Comentário HTML que será inserido -->
+```
+
+* Blocos _(block)_
+
+Blocos in Handlebars são expressões que possuem um bloco, são abertos com `{{# }}` e fechados com `{{/ }}`.
+
+Falaremos mais sobre blocos depois com mais detalhes; esta é uma sintaxe para um bloco.
+
+```
+{{#each}}Conteúdo vem aqui. {{/each}}
+```
+
+Aqui é um bloco de if
+
+```
+{{#if algumValorForTrue}}Conteúdo vem aqui.{{/if}}
+```
+
+FALTA TRADUZIR:
+> The words block and helper are sometimes used interchangeably because most built-in helpers are blocks, although there are function helpers and block helpers.
+
+
+* Caminhos (com uso de ponto)
+
+Um caminho no Handlebars é uma pesquisa de propriedades. Se temos uma propriedade _name_ que contém um objeto como:
+
+```javascript
+var objData = {
+	name: {
+		firstName: "Michael", 
+		lastName:"Jackson"}
+	}
+```
+
+Podemos usar caminhos aninhados (utilizando ponto) para pesquisar a propriedade que você quer:
+
+```
+{{name.firstName}}
+```
+
+* Caminho pai
+
+Handlebars também possui caminho pai para pesquisar propriedades em um pai do contexto atual. Com um objeto de dados como:
+
+```javascript
+var shoesData = {
+	groupName: "Celebrities", 
+	users:[
+		{name:{ firstName:"Mike",  lastName:"Alexander" }}, 
+		{name:{ firstName:"John",  lastName:"Waters" }}
+	]
+};
+ 
+// Podemos usar o caminho pai ../ para acessar a propriedade groupName:
+​<script id="shoe-template" type="x-handlebars-template">​
+   {{#users}}​
+    <li>{{name.firstName}} {{name.lastName}} is in the {{../groupName}} group.</li>​
+    {{/users}}
+​</script>
+```
+
+O HTML renderizado será:
+> Mike Alexander is in the Celebrities group.
+> John Waters is in the Celebrities group.
+
+* Contexto
+
+Handlebars se refere ao objeto que você passou a sua função como _contexto_. Ao longo deste artigo, nós usamos "object data" e ás vezes "data" ou "objetc" para se referir ao contexto do objeto. Todas estas palavras são usadas indiferentemente todo o tempo, mas você vai entender sem problemas que nós estamos se referindo ao objeto que está sendo passado dentro da função Handlebars.
+
+* Chaves tripla `{{{ }}}` para não escapar HTML.
+
+Normalmente, você usa chaves dupla `{{ }}` para expressões Handlebars, e por padrão o conteúdo com chaves dupla escapa para "proteger contra problemas de XSS, que são causados por dados maliciosos passados para o servidor como JSON". Isto assegura que código malicioso no HTML não pode ser inserido dentro da página. Mas ás vezes você quer HTML cru. Para isto você pode usar chaves triplas `{{{ }}}`. As chaves triplas fazem com que o Handlebars não escape o HTML contido no conteúdo.
+
+* Parcial (sub-templates)
+
+As vezes você quer renderizar uma sessão de template dentro de um maior. Você usa partials para fazer isso no Handlebars, e a expressão é:
+
+```
+ {{> partialName}}
+```
+
+Vamos adicionar um template parcial ao projeto Handlebars que fizemos anteriormente. Nós vamos adicionar _color_ e _size_ em cada sapato.
+
+Alterações para o `main.js`:
+
+**1** . Substitua os dados do objeto existentes. Nós vamos adicionar propriedades para cor e tamanho:
+
+```javascript
+var shoesData = {
+	allShoes:[
+		{
+			name:"Nike", 
+			price:199.00, 
+			color:"black", 
+			size:10 
+		}, 
+		{
+			name:"Loafers", 
+			price:59.00, 
+			color:"blue", 
+			size:9 
+		}, 
+		{
+			name:"Wing Tip", 
+			price:259.00, 
+			color:"brown", 
+			size:11 
+		}
+	]
+};
+```
+
+**2** . Adicione o código abaixo, antes da linha com o `append` do jQuery:
+
+```javascript
+Handlebars.registerPartial("description", $("#shoe-description").html());
+```
+
+Alterações para a `index.html`:
+
+**1** . Substitua o template `shoe-template` por este:
+
+```javascript
+<script id="shoe-template" type="x-handlebars-template">​
+	{{#each allShoes}}​
+		<li class="shoes">​
+			<span class="shoe-name"> {{name}} - </span> price: {{price}}
+				{{> description}}
+		</li>​
+	{{/each}}
+​</script>
+```
+
+**2** . Adicione este novo template para o *description*, logo abaixo do *shoe-template*:
+
+```javascript
+<script id="shoe-description" type="x-handlebars-template">​
+	​<ul>​
+		<li>{{color}}</li>​
+		<li>{{size}}</li>​
+	​</ul>​
+​</script>
+```
+
+O HTML final deverá mostrar cor e tamanho abaixo de cada item da lista.
+
+É assim que você adiciona um parcial (ou sub-template para o modelo principal).
+
 ## Auxiliares Handlebars.js embutidos (condicionais e loops)
-
-## Auxiliares Personalizados Handlebars.js
-
-## 4 maneiras de carregar/adicionar templates
-
-## Handlebars.js com Backbone.js, jQuery, Ember.js e Meteor.js
