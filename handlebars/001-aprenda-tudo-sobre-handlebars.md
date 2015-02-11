@@ -341,6 +341,88 @@ $(function () {
 
 Se você abrir este arquivo index.html em seu navegador, você deve ver uma simples lista com 3 itens. Isto é como normalmente nós desenvolvemos no front end sem um motor de templates JavaScript.
 
+### Um pequeno projeto Handlebars
+
+Agora vamos refatorar o código acima e usar Handlebars.js como templates.
+
+**1** . Alterações no `index.html`:
+
+Adicione este código logo abaixo do fechamento da tag `ul`.
+
+```javascript
+<script id="shoe-template" type="x-handlebars-template">​
+   {{#each this}}​
+    <li class="shoes">
+    	<a href="/{{name}}">{{name}} -- Price: {{price}} </a>
+	</li>​
+    {{/each}}
+​</script> 
+```
+
+**2** . Alterações no `main.js`:
+
+E aqui está o código javascript refatorado que faz uso do Handlebars. 
+Remova todo o código javascript e troque pelo código abaixo:
+
+- Note que nos livramos da função `updateAllShoes()`.
+- E também note que não existe HTML no javascript, todo o HTML está no HTML.
+
+```javascript
+$(function  () {
+  var shoesData = [
+	  {name:"Nike", price:199.00 }, 
+	  {name:"Loafers", price:59.00 }, 
+	  {name:"Wing Tip", price:259.00 }
+  ];
+
+   // Captura o html do template dentro da tag script
+    var theTemplateScript = $("#shoe-template").html(); 
+​
+   // Compila o template
+   var theTemplate = Handlebars.compile(theTemplateScript); 
+   $(".shoesNav").append(theTemplate(shoesData)); 
+​
+	​// Passamos o objeto shoesData para ser compilado na função do handlebars.
+	// A função irá inserir todos os valores do objeto nos seus devidos lugares no HTML e retorna o HTML como uma string. Então usamos jQuery para adicionar este conteúdo na página.
+});
+```
+
+Quando você atualizar a página `index.html` deverá visualizar o mesmo resultado que foi obtido no exemplo acima sem Handlebars.
+
+O procedimento ilustra um uso muito básico do Handlebars.js. Como você pode ver, usar Handlebars permite nos separar o HTML do Javascript. Isto é ainda mais importante quando nossa aplicação se torna mais complexa; o mais facil será desenvolver templates separados e gerenciá-los de uma forma eficaz. Enquanto que o exemplo sem Handlebars seria complicado de gerenciar quando nossa aplicação tornar-se maior.
+
+
+### A principal diferença entre os dois projetos
+
+Esta é a principal diferença entre o projeto sem Handlebars e o projeto com Handlebars: O projeto sem Handlebars possui uma marcação HTML importante dentro do código Javascript, o que torna mais difícil para gerenciar (criações e atualizações) do HTML.
+
+```javascript
+// Você pode ver o HTML e JS entrelados
+​
+​function updateAllShoes(shoes)  {
+​var theHTMLListOfShoes = "";
+
+shoesData.forEach(function (eachShoe)  {
+ theHTMLListOfShoes += '<li class="shoes">' + '<a href="/' + eachShoe.name.toLowerCase() + '">' + eachShoe.name + ' -- Price: ' + eachShoe.price + '</a></li>';
+    });
+    return theHTMLListOfShoes;
+}
+
+$(".shoesNav").append(updateAllShoes(shoesData));
+```
+
+Enquanto que no projeto com Handlebars, o código Javascript não contém marcação HTML (a marcação HTML é na página HTML; apenas javascript no código javascript):
+
+```javascript
+var theTemplateScript = $("#shoe-template").html();
+​var theTemplate = Handlebars.compile(theTemplateScript); 
+$(".shoesNav").append(theTemplate(shoesData)); 
+```
+
+
+
+
+
 ## Aprenda a sintaxe Handlebars.js
 
 ## Auxiliares Handlebars.js embutidos (condicionais e loops)
