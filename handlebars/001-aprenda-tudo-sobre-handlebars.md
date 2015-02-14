@@ -341,12 +341,472 @@ $(function () {
 
 Se você abrir este arquivo index.html em seu navegador, você deve ver uma simples lista com 3 itens. Isto é como normalmente nós desenvolvemos no front end sem um motor de templates JavaScript.
 
+### Um pequeno projeto Handlebars
+
+Agora vamos refatorar o código acima e usar Handlebars.js como templates.
+
+**1** . Alterações no `index.html`:
+
+Adicione este código logo abaixo do fechamento da tag `ul`.
+
+```javascript
+<script id="shoe-template" type="x-handlebars-template">​
+   {{#each this}}​
+    <li class="shoes">
+    	<a href="/{{name}}">{{name}} -- Price: {{price}} </a>
+	</li>​
+    {{/each}}
+​</script> 
+```
+
+**2** . Alterações no `main.js`:
+
+E aqui está o código javascript refatorado que faz uso do Handlebars. 
+Remova todo o código javascript e troque pelo código abaixo:
+
+- Note que nos livramos da função `updateAllShoes()`.
+- E também note que não existe HTML no javascript, todo o HTML está no HTML.
+
+```javascript
+$(function  () {
+  var shoesData = [
+	  {name:"Nike", price:199.00 }, 
+	  {name:"Loafers", price:59.00 }, 
+	  {name:"Wing Tip", price:259.00 }
+  ];
+
+   // Captura o html do template dentro da tag script
+    var theTemplateScript = $("#shoe-template").html(); 
+​
+   // Compila o template
+   var theTemplate = Handlebars.compile(theTemplateScript); 
+   $(".shoesNav").append(theTemplate(shoesData)); 
+​
+	​// Passamos o objeto shoesData para ser compilado na função do handlebars.
+	// A função irá inserir todos os valores do objeto nos seus devidos lugares no HTML e retorna o HTML como uma string. Então usamos jQuery para adicionar este conteúdo na página.
+});
+```
+
+Quando você atualizar a página `index.html` deverá visualizar o mesmo resultado que foi obtido no exemplo acima sem Handlebars.
+
+O procedimento ilustra um uso muito básico do Handlebars.js. Como você pode ver, usar Handlebars permite nos separar o HTML do Javascript. Isto é ainda mais importante quando nossa aplicação se torna mais complexa; o mais facil será desenvolver templates separados e gerenciá-los de uma forma eficaz. Enquanto que o exemplo sem Handlebars seria complicado de gerenciar quando nossa aplicação tornar-se maior.
+
+
+### A principal diferença entre os dois projetos
+
+Esta é a principal diferença entre o projeto sem Handlebars e o projeto com Handlebars: O projeto sem Handlebars possui uma marcação HTML importante dentro do código Javascript, o que torna mais difícil para gerenciar (criações e atualizações) do HTML.
+
+```javascript
+// Você pode ver o HTML e JS entrelados
+​
+​function updateAllShoes(shoes)  {
+​var theHTMLListOfShoes = "";
+
+shoesData.forEach(function (eachShoe)  {
+ theHTMLListOfShoes += '<li class="shoes">' + '<a href="/' + eachShoe.name.toLowerCase() + '">' + eachShoe.name + ' -- Price: ' + eachShoe.price + '</a></li>';
+    });
+    return theHTMLListOfShoes;
+}
+
+$(".shoesNav").append(updateAllShoes(shoesData));
+```
+
+Enquanto que no projeto com Handlebars, o código Javascript não contém marcação HTML (a marcação HTML é na página HTML; apenas javascript no código javascript):
+
+```javascript
+var theTemplateScript = $("#shoe-template").html();
+​var theTemplate = Handlebars.compile(theTemplateScript); 
+$(".shoesNav").append(theTemplate(shoesData)); 
+```
+
 ## Aprenda a sintaxe Handlebars.js
+
+* Expressões Handlebars.js
+
+Vimos acima a expressão Handlebars. Expressões Handlebars são escritas com (chaves duplas no início, seguido do conteúdo a ser avaliado e chaves duplas no final);
+
+```
+<div>{{ Conteúdo vem aqui }}</div>
+```
+
+A variável customerName é a propriedade (a expressão que será avaliada pelo compilador do Handlebars) que será interpolada (os seus valores serão inseridos no lugar) pela função compilada do Handlebars quando ele executa:
+
+```
+<div> Name: {{ customerName }} </div>
+```
+
+* Comentários
+
+Isto é como você adiciona comentários em um template Handlebars:
+
+```
+{{! Tudo dentro desta expressão de comentário não será exibido }}
+```
+
+E você pode usar também comentários HTML, mas eles serão inseridos no código fonte como comentários HTML:
+
+```
+<!-- Comentário HTML que será inserido -->
+```
+
+* Blocos _(block)_
+
+Blocos in Handlebars são expressões que possuem um bloco, são abertos com `{{# }}` e fechados com `{{/ }}`.
+
+Falaremos mais sobre blocos depois com mais detalhes; esta é uma sintaxe para um bloco.
+
+```
+{{#each}}Conteúdo vem aqui. {{/each}}
+```
+
+Aqui é um bloco de if
+
+```
+{{#if algumValorForTrue}}Conteúdo vem aqui.{{/if}}
+```
+
+FALTA TRADUZIR:
+> The words block and helper are sometimes used interchangeably because most built-in helpers are blocks, although there are function helpers and block helpers.
+
+
+* Caminhos (com uso de ponto)
+
+Um caminho no Handlebars é uma pesquisa de propriedades. Se temos uma propriedade _name_ que contém um objeto como:
+
+```javascript
+var objData = {
+	name: {
+		firstName: "Michael", 
+		lastName:"Jackson"}
+	}
+```
+
+Podemos usar caminhos aninhados (utilizando ponto) para pesquisar a propriedade que você quer:
+
+```
+{{name.firstName}}
+```
+
+* Caminho pai
+
+Handlebars também possui caminho pai para pesquisar propriedades em um pai do contexto atual. Com um objeto de dados como:
+
+```javascript
+var shoesData = {
+	groupName: "Celebrities", 
+	users:[
+		{name:{ firstName:"Mike",  lastName:"Alexander" }}, 
+		{name:{ firstName:"John",  lastName:"Waters" }}
+	]
+};
+ 
+// Podemos usar o caminho pai ../ para acessar a propriedade groupName:
+​<script id="shoe-template" type="x-handlebars-template">​
+   {{#users}}​
+    <li>{{name.firstName}} {{name.lastName}} is in the {{../groupName}} group.</li>​
+    {{/users}}
+​</script>
+```
+
+O HTML renderizado será:
+
+```
+Mike Alexander is in the Celebrities group.
+John Waters is in the Celebrities group.
+```
+
+* Contexto
+
+Handlebars se refere ao objeto que você passou a sua função como _contexto_. Ao longo deste artigo, nós usamos "object data" e ás vezes "data" ou "objetc" para se referir ao contexto do objeto. Todas estas palavras são usadas indiferentemente todo o tempo, mas você vai entender sem problemas que nós estamos se referindo ao objeto que está sendo passado dentro da função Handlebars.
+
+* Chaves tripla `{{{ }}}` para não escapar HTML.
+
+Normalmente, você usa chaves dupla `{{ }}` para expressões Handlebars, e por padrão o conteúdo com chaves dupla escapa para "proteger contra problemas de XSS, que são causados por dados maliciosos passados para o servidor como JSON". Isto assegura que código malicioso no HTML não pode ser inserido dentro da página. Mas ás vezes você quer HTML cru. Para isto você pode usar chaves triplas `{{{ }}}`. As chaves triplas fazem com que o Handlebars não escape o HTML contido no conteúdo.
+
+* Parcial (sub-templates)
+
+As vezes você quer renderizar uma sessão de template dentro de um maior. Você usa partials para fazer isso no Handlebars, e a expressão é:
+
+```
+ {{> partialName}}
+```
+
+Vamos adicionar um template parcial ao projeto Handlebars que fizemos anteriormente. Nós vamos adicionar _color_ e _size_ em cada sapato.
+
+Alterações para o `main.js`:
+
+**1** . Substitua os dados do objeto existentes. Nós vamos adicionar propriedades para cor e tamanho:
+
+```javascript
+var shoesData = {
+	allShoes:[
+		{
+			name:"Nike", 
+			price:199.00, 
+			color:"black", 
+			size:10 
+		}, 
+		{
+			name:"Loafers", 
+			price:59.00, 
+			color:"blue", 
+			size:9 
+		}, 
+		{
+			name:"Wing Tip", 
+			price:259.00, 
+			color:"brown", 
+			size:11 
+		}
+	]
+};
+```
+
+**2** . Adicione o código abaixo, antes da linha com o `append` do jQuery:
+
+```javascript
+Handlebars.registerPartial("description", $("#shoe-description").html());
+```
+
+Alterações para a `index.html`:
+
+**1** . Substitua o template `shoe-template` por este:
+
+```javascript
+<script id="shoe-template" type="x-handlebars-template">​
+	{{#each allShoes}}​
+		<li class="shoes">​
+			<span class="shoe-name"> {{name}} - </span> price: {{price}}
+				{{> description}}
+		</li>​
+	{{/each}}
+​</script>
+```
+
+**2** . Adicione este novo template para o *description*, logo abaixo do *shoe-template*:
+
+```javascript
+<script id="shoe-description" type="x-handlebars-template">​
+	​<ul>​
+		<li>{{color}}</li>​
+		<li>{{size}}</li>​
+	​</ul>​
+​</script>
+```
+
+O HTML final deverá mostrar cor e tamanho abaixo de cada item da lista.
+
+É assim que você adiciona um parcial (ou sub-template para o modelo principal).
 
 ## Auxiliares Handlebars.js embutidos (condicionais e loops)
 
-## Auxiliares Personalizados Handlebars.js
+Como vimos anteriormente Handlebars é um _logic-less_ (possui pouca ou nenhuma lógica embutida nos templates) motor de template. Mas deve haver uma maneira para executar lógica complexa quando usamos os templates. Handlebars fornece esta funcionalidade com os *Auxiliares* (Helpers), que são condicionais e loops para a execução de lógicas simples.
 
-## 4 maneiras de carregar/adicionar templates
+São expressões e blocos lógicos que fornecem a lógica necessária para os templates na página HTML. Você pode adicionar funcionalidade complexa com o seu próprio auxiliar.
 
-## Handlebars.js com Backbone.js, jQuery, Ember.js e Meteor.js
+### Auxiliares embutidos
+
+Os auxiliares embutidos (condicionais e loops) são:
+
+* *each* `{{#each}}`
+
+Vimos este auxiliar anteriormente. Ele permite você iterar sobre um _array_ ou _objeto_ provido em um objeto de dados. Por exemplo, se você possui um _array_ de itens e você gostaria de lista-los na página, você pode fazer isto:
+
+```javascript
+var favoriteFruits = {
+	allFruits:["Tangerine", "Mango", "Banana"]
+};  
+```
+Em seguida nós usamos o bloco `each` dentro da tag script. Note que _this_ está se referindo a cada item do array *allFruits*.
+
+```javascript
+<script id="fruits-template" type="x-handlebars-template">​
+	// Lista de frutas
+   {{#each allFruits}}​
+    <li>{{this}} </li>​
+    {{/each}}
+​</script>
+```
+
+Isto irá resultar no seguinte HTML:
+
+```
+ <li> Tangerine </li>​
+​<li> Mango </li>​
+​<li> Banana </li> 
+```
+
+Também, se o objeto de dados passado para o auxiliar *each* não for um array, o objeto inteiro é o contexto atual e nós usamos a palavra _this_.
+
+Se os dados se parecem com isto:
+
+```javascript
+ var favoriteFruits = {
+	firstName:"Peter", 
+	lastName:"Paul"
+};
+```
+
+Ao contrário disto:
+
+```javascript
+ var favoriteFruits = {
+	customers: {
+		firstName:"Peter", 
+		lastName:"Paul"
+	}
+};
+```
+
+Nós usamos a palavra _this_ como visto aqui:
+
+```javascript
+{{#each this}}​
+	<li>{{firstName}} {{lastName}} </li>​
+{{/each}}
+```
+
+* Propriedades aninhadas com o auxiliar `each`:
+
+Vamos usar as propriedades aninhadas (que nós aprendemos anteriormente) com o auxiliar `each`:
+
+```javascript
+var favoriteFruits = {
+	allFruits:[{
+		fruitName:"Tangerine", 
+		naitiveTo:[{
+			country:"Venezuela"}
+		]},
+		{
+			fruitName:"Mango"
+	}] 
+};
+```
+
+```
+{{#each allFruits}}​
+	<li>{{fruitName}} {{naitiveTo.0.country}} </li>​
+{{/each}}
+```
+
+* Auxiliar *if*: `{{#if}}`
+
+O auxiliar `if` funciona apenas como uma instrução regular, exceto que ele não aceita qualquer lógica condicional. Ele checa se há valores como *verdadeiro*, qualquer valor não vazio ou não nulo e/ou similar. O bloco é apenas renderizado se o `if` for um valor verdadeiro.
+
+Aqui são alguns exemplos:
+
+Nós verificamos para ver se a propriedade `userActive` é verdadeira. Se for, o bloco é renderizado.
+
+```
+<div class="user-data">​
+	{{#if userActive}}​
+		Welcome, {{firstName}}
+	{{/if}}
+​</div>
+```
+
+Um dos desenvolvedores do Handlebars aconselhou: esta é a melhor maneira para checar a propriedade `length` de uma variável, para capturar casos onde um _array_ poderia ser vazio:
+
+```
+<div class="user-data">​
+	{{#if userActive.length}}​
+		Welcome, {{firstName}}
+	{{/if}}
+​</div> 
+```
+
+Como mencionado acima, o auxiliar `if` não avalia lógica condicional, assim nós não podemos fazer isto:
+
+```
+<div class="user-score">​
+	{{#if userScore > 10 }}​
+		Congratulations, {{firstName}}, You did it.
+	{{/if}}
+​</div> 
+```
+
+Nós temos que usar um auxiliar customizado (discutimos isso em breve) para adicionar tal lógica condicional.
+
+* *Else*: `{{else}}`
+
+A sessão `else` (note que isto não é um bloco próprio) é bastante simples, desde que seja sessão de um bloco. Isto pode ser usado com um bloco `if` ou qualquer outro bloco. O conteúdo da sessão `else` é apenas renderizado se expressões forem avaliadas como falso.
+
+Nós verificamos para ver se a propriedade `userLoggedIn` é verdadeira. Se não for, o conteúdo do bloco `else` é renderizado.
+
+```
+<div class="user-data">​
+	{{#if userLoggedIn}}​
+		Welcome, {{firstName}}
+	{{else}}
+		Please Log in.
+	{{/if}}
+​</div>
+```
+
+* Auxiliar *unless*: `{{#unless}}` 
+
+Como uma alternativa para o auxiliar `else`, você usa o auxiliar de bloco `unless`. O conteúdo entre o bloco `unless` apenas é renderizado se a expressão for avaliada como um valor falso. Portanto esta é a melhor maneira se você for querer checar apenas valores falsos:
+
+Nós substituimos o bloco `if` e `else` por apenas o bloco `unless`, para renderizar o conteúdo apenas se a propriedade for avaliada como falso.
+
+Esta expresssão lê: apenas renderiza o conteúdo do bloco se a propriedade `userLoggedIn` for avaliada como falsa.
+
+```
+<div class="user-data">​
+	{{#unless userLoggedIn}}​
+		Please Log in.
+	{{/unless}} 
+​</div>
+```
+
+* *With* helper: `{{#with}}`
+
+O auxiliar `with` permite atingir uma propriedade específica de um objeto. Por exemplo, nós sabemos que o objeto sempre é o contexto atual em um template Handlebars, como nós temos aprendido em algumas sessões anteriores. Mas se você precisa atingir uma propriedade diferente para o contexto atual, você pode usar o auxiliar `with`, assim você poder usar o caminho do pai (../) para fazer isto. Vamos ver o auxiliar `with` em ação:
+
+Se nós temos um objeto de contexto como:
+
+```javascript
+var shoesData = {
+	groupName:"Celebrities", 
+	celebrity:{
+		firstName:"Mike", 
+		lastName:"Alexander" 
+	} 
+};  
+```
+
+Nós podemos usar o bloco `with` para atingir a propriedade *groupName* onde nós precisamos acessar os seus valores: 
+
+```
+<script id="shoe-template" type="x-handlebars-template">​
+	{{groupName}} Group
+		{{#with celebrity}}​
+			<li>{{firstName}} {{lastName}}</li>​
+		{{/with}}
+​</script>
+```
+
+E este é o HTML renderizado:
+
+> Celebrities Group
+> – Mike Alexander
+
+O bloco `with` é provavelmente um que você raramente vai usar.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
