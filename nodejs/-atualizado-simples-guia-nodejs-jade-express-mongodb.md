@@ -18,7 +18,7 @@ Em minha experiência, o "próximo nível" de tutoriais que achamos estão 30 n�
 
 Eu não sou o único, certo?
 
-Bom, boa notícia a todos! Eu li e fiz muitos tutoriais, até que as coisas finalmente funcionaram. Tenho um projeto web rodando que usa Node.js, o framework Express, o pré-processador de HTML chamado Jade e o MongoDB para os dados. Sou capaz de ler e escrever a partid do banco de dados. A partir disso, o céu é o limite.
+Bom, boa notícia a todos! Eu li e fiz muitos tutoriais, até que as coisas finalmente funcionaram. Tenho um projeto web rodando que usa Node.js, o framework Express, o pré-processador de HTML chamado Jade e o MongoDB para os dados. Sou capaz de ler e escrever a partir do banco de dados. A partir disso, o céu é o limite.
 
 Aqui está o acordo: Vou mostrar à você como pegar todas essas coisas e configurá-las. Vou assumir que você é um desenvolvedor front-end que conhece o suficiente de HTML5/CSS3/JavaScript para que eu não tenha que explicá-los.
 
@@ -72,29 +72,29 @@ Aperte enter e veja o que acontece. Irá aparecer algo como isso:
 ```sh
 
 eo_op:~/estudos/nodejs $ express nodetest1
-create : nodetest1
-create : nodetest1/package.json
-create : nodetest1/app.js
-create : nodetest1/routes
-create : nodetest1/routes/index.js
-create : nodetest1/routes/user.js
-create : nodetest1/views
-create : nodetest1/views/layout.jade
-create : nodetest1/views/index.jade
-create : nodetest1/public/images
-create : nodetest1/public/javascripts
-create : nodetest1/public
-create : nodetest1/public/stylesheets
-create : nodetest1/public/stylesheets/style.css
-create : nodetest1/bin
-create : nodetest1/bin/www
+   create : nodetest1
+   create : nodetest1/package.json
+   create : nodetest1/app.js
+   create : nodetest1/public
+   create : nodetest1/public/images
+   create : nodetest1/public/stylesheets
+   create : nodetest1/public/stylesheets/style.css
+   create : nodetest1/routes
+   create : nodetest1/routes/index.js
+   create : nodetest1/routes/users.js
+   create : nodetest1/views
+   create : nodetest1/views/index.jade
+   create : nodetest1/views/layout.jade
+   create : nodetest1/views/error.jade
+   create : nodetest1/bin
+   create : nodetest1/bin/www
+   create : nodetest1/public/javascripts
 
-install dependencies:
-$ cd nodetest1 
-$ npm install
+   install dependencies:
+     $ cd nodetest1 && npm install
 
-run the app:
-$ DEBUG=nodetest1 ./bin/www
+   run the app:
+     $ DEBUG=nodetest1:* ./bin/www
 
 ```
 
@@ -105,8 +105,8 @@ Tudo bem, agora que temos uma estrutura básica, mas ainda não terminamos. Voc�
 ```json
 
 {
-  "name": "application-name",
-  "version": "0.0.1",
+  "name": "nodetest1",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -119,6 +119,7 @@ Tudo bem, agora que temos uma estrutura básica, mas ainda não terminamos. Voc�
     "jade": "~1.9.1",
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0",
+  }
 }
 
 ```
@@ -172,8 +173,16 @@ $ set DEBUG=myapp & node .\bin\www
 
 ```
 
+pelo npm
+```sh
+
+$ npm run-script start
+
+```
+
 Aperte enter. E o cursor vai ficar piscando no canto do console.
 
+Para o servidor: $ Ctrl + c
 
 Incrível! Abra seu navegador e digite `http://locahost:3000`. Agora você verá a página de boas vindas do Express.
 
@@ -199,17 +208,20 @@ Isto é importante, pois configura o Express e atribui nossa variável `app` a e
 `nodetest1/app.js`
 ```js
 
-// todos ambientes
-app.set( 'port', process.env.PORT || 3000 );
-app.set( 'views', path.join( __dirname, 'views' ) );
-app.set( 'view engine', 'jade' );
-app.use( express.favicon() );
-app.use( express.logger( 'dev' ) );
-app.use( express.bodyParser() );
-app.use( express.methodOverride() );
-app.use( app.router );
-app.use( express.static( path.join( __dirname, 'public' ) ) );
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', routes);
+app.use('/users', users); 
 ```
 
 Isso configura a porta, que diz ao app onde encotrar as views, que engine usar para renderisar estas views (Jade), e chama alguns métodos para deixar as coisas funcionando. Note também que a linha final está dizendo ao Express para servir objetos estáticos no diretório *public*. Por exemplo, as imagens no diretório `../nodetest1/public/images`. Mas elas são acessadas pela url `http://localhost:3000/images`.
@@ -243,9 +255,9 @@ app.use( '/users', user );
 
 ```
 
-Isso diz a app quais rotas usar quando uma URI particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para `/routes/user.js`. 
+Isso diz a app quais rotas usar quando uma URL particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para `./routes/user.js`. 
 
-Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URI. Em baixo da seção `router.get();` no arquivo `nodetest1/routes/index.js`, adicione estas linhas:
+Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URL. Em baixo da seção `router.get();` no arquivo `nodetest1/routes/index.js`, adicione estas linhas:
 
 ```js
 
@@ -255,7 +267,7 @@ router.get('/helloworld', function(req, res, next){
 
 ```
 
-Isso é tudo que temos que fazer para rotear esta URI, mas nós não temos nenhuma página para o `res.render` renderizar. É ai que o Jade entra. Abra sua pasta `views`, e então abra o arquivo `index.jade`. Antes de fazer qualquer coisa, **salve este arquivo como `helloworld.jade`**.
+Isso é tudo que temos que fazer para rotear esta URL, mas nós não temos nenhuma página para o `res.render` renderizar. É ai que o Jade entra. Abra sua pasta `views`, e então abra o arquivo `index.jade`. Antes de fazer qualquer coisa, **salve este arquivo como `helloworld.jade`**.
 
 Agora dê uma olhada no código:
 
@@ -265,8 +277,8 @@ Agora dê uma olhada no código:
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
+  h1= title
+  p Welcome to #{title}
 
 ```
 
@@ -427,10 +439,11 @@ Eu sei que isso não é ciência astronáutica, mas esta é a questão. Vamos fa
 ```js
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
 var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser'); 
 
 ```
 
@@ -439,12 +452,13 @@ Agora adicione estas 3 linhas:
 ```js
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
 var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser'); 
 
-// Novo código
+// Novo codigo
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/nodetest1');
@@ -454,7 +468,7 @@ var db = monk('localhost:27017/nodetest1');
 Estas linhas dizem que nossa app vai conversar com o MongoDB, e vamos usar o Monk para fazer isso, e nosso banco de dados está localizado em `localhost:27017/nodetest1`. Note que 27017 é a porta que sua instância MongoDB deve estar rodando. Se por algum motivo você a mudou, obviamente use esta porta então. Agora olhe para a parte de baixo do arquivo, onde você tem isso:
 
 
-Adicione a seguinte linha em baixo de 'app.use('/', routes);'':
+Adicione a seguinte linha em baixo de 'app.use('/', routes);':
 
 ```js
 
@@ -492,13 +506,13 @@ Vamos agora configurar nosso template Jade. Navegue até `nodetest1/views` e abr
 extends layout
 
 block content
-    h1.
-        User List
+  h1.
+    User List
 
-    ul
-        each user, i in userlist
-            li
-                a(href='mailto:#{user.email}')= user.username
+  ul
+    each user, i in userlist
+      li
+        a(href='mailto:#{user.email}')= user.username
 
 ```
 
@@ -546,11 +560,11 @@ Agora nós apenas precisamos de um template. Abra `views/index.jade`, salve como
 extends layout
 
 block content
-    h1= title
-	      form#formAddUser( name='adduser', method='post', action='/adduser' )
-		    input#inputUserName( type='text', placeholder='username', name='username' )
-		    input#inputUserEmail( type='text', placeholder='useremail', name='useremail' )
-		    button#btnSubmit( type='submit' ) submit
+  h1= title
+    form#formAddUser( name='adduser', method='post', action='/adduser' )
+	  input#inputUserName( type='text', placeholder='username', name='username' )
+      input#inputUserEmail( type='text', placeholder='useremail', name='useremail' )
+      button#btnSubmit( type='submit' ) submit
 
 ```
 
@@ -576,30 +590,26 @@ Volte para `routes/index.js` para criarmos nossa função de inserção. Essa é
 
 ```js
 
-router.adduser = function(db){
-
-  return function post(req, res, next){
-    // Pega os valores do form. Eles dependem do atributo "name"
-    var userName  = req.body.username;
+router.adduser = function(db) {
+  return function post(req, res, next) {
+    var userName = req.body.username;
     var userEmail = req.body.useremail;
     
-    // Configura nossa coleção
     db.get('usercollection')
-      .insert( // Envia ao DB
-        {"username": userName,
-         "email": userEmail
+      .insert(
+        {
+          "username": userName,
+          "email": userEmail
         },
-        function(err, doc){
-          if(err){
-            // Se isso falhar, retorna um erro
-            res.send('Ocoreu um erro ao adicionar a informacao no banco');
-          }else {
-            // Se funcionar, configura o header para a barra de endereço não continuar dizendo /adduser
+        function(err, doc) {
+          if (err){
+            res.send('ihsss deu merda');
+          } else {
             res.location('userlist');
-            // E depois a página de sucesso
             res.redirect('userlist');
           }
-        });
+        }
+      );
   };
 };
 
