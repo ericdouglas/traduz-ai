@@ -509,8 +509,11 @@ var shoesData = {
 ```
 
 O HTML renderizado será:
-> Mike Alexander is in the Celebrities group.
-> John Waters is in the Celebrities group.
+
+```
+Mike Alexander is in the Celebrities group.
+John Waters is in the Celebrities group.
+```
 
 * Contexto
 
@@ -596,3 +599,214 @@ O HTML final deverá mostrar cor e tamanho abaixo de cada item da lista.
 É assim que você adiciona um parcial (ou sub-template para o modelo principal).
 
 ## Auxiliares Handlebars.js embutidos (condicionais e loops)
+
+Como vimos anteriormente Handlebars é um _logic-less_ (possui pouca ou nenhuma lógica embutida nos templates) motor de template. Mas deve haver uma maneira para executar lógica complexa quando usamos os templates. Handlebars fornece esta funcionalidade com os *Auxiliares* (Helpers), que são condicionais e loops para a execução de lógicas simples.
+
+São expressões e blocos lógicos que fornecem a lógica necessária para os templates na página HTML. Você pode adicionar funcionalidade complexa com o seu próprio auxiliar.
+
+### Auxiliares embutidos
+
+Os auxiliares embutidos (condicionais e loops) são:
+
+* *each* `{{#each}}`
+
+Vimos este auxiliar anteriormente. Ele permite você iterar sobre um _array_ ou _objeto_ provido em um objeto de dados. Por exemplo, se você possui um _array_ de itens e você gostaria de lista-los na página, você pode fazer isto:
+
+```javascript
+var favoriteFruits = {
+	allFruits:["Tangerine", "Mango", "Banana"]
+};  
+```
+Em seguida nós usamos o bloco `each` dentro da tag script. Note que _this_ está se referindo a cada item do array *allFruits*.
+
+```javascript
+<script id="fruits-template" type="x-handlebars-template">​
+	// Lista de frutas
+   {{#each allFruits}}​
+    <li>{{this}} </li>​
+    {{/each}}
+​</script>
+```
+
+Isto irá resultar no seguinte HTML:
+
+```
+ <li> Tangerine </li>​
+​<li> Mango </li>​
+​<li> Banana </li> 
+```
+
+Também, se o objeto de dados passado para o auxiliar *each* não for um array, o objeto inteiro é o contexto atual e nós usamos a palavra _this_.
+
+Se os dados se parecem com isto:
+
+```javascript
+ var favoriteFruits = {
+	firstName:"Peter", 
+	lastName:"Paul"
+};
+```
+
+Ao contrário disto:
+
+```javascript
+ var favoriteFruits = {
+	customers: {
+		firstName:"Peter", 
+		lastName:"Paul"
+	}
+};
+```
+
+Nós usamos a palavra _this_ como visto aqui:
+
+```javascript
+{{#each this}}​
+	<li>{{firstName}} {{lastName}} </li>​
+{{/each}}
+```
+
+* Propriedades aninhadas com o auxiliar `each`:
+
+Vamos usar as propriedades aninhadas (que nós aprendemos anteriormente) com o auxiliar `each`:
+
+```javascript
+var favoriteFruits = {
+	allFruits:[{
+		fruitName:"Tangerine", 
+		naitiveTo:[{
+			country:"Venezuela"}
+		]},
+		{
+			fruitName:"Mango"
+	}] 
+};
+```
+
+```
+{{#each allFruits}}​
+	<li>{{fruitName}} {{naitiveTo.0.country}} </li>​
+{{/each}}
+```
+
+* Auxiliar *if*: `{{#if}}`
+
+O auxiliar `if` funciona apenas como uma instrução regular, exceto que ele não aceita qualquer lógica condicional. Ele checa se há valores como *verdadeiro*, qualquer valor não vazio ou não nulo e/ou similar. O bloco é apenas renderizado se o `if` for um valor verdadeiro.
+
+Aqui são alguns exemplos:
+
+Nós verificamos para ver se a propriedade `userActive` é verdadeira. Se for, o bloco é renderizado.
+
+```
+<div class="user-data">​
+	{{#if userActive}}​
+		Welcome, {{firstName}}
+	{{/if}}
+​</div>
+```
+
+Um dos desenvolvedores do Handlebars aconselhou: esta é a melhor maneira para checar a propriedade `length` de uma variável, para capturar casos onde um _array_ poderia ser vazio:
+
+```
+<div class="user-data">​
+	{{#if userActive.length}}​
+		Welcome, {{firstName}}
+	{{/if}}
+​</div> 
+```
+
+Como mencionado acima, o auxiliar `if` não avalia lógica condicional, assim nós não podemos fazer isto:
+
+```
+<div class="user-score">​
+	{{#if userScore > 10 }}​
+		Congratulations, {{firstName}}, You did it.
+	{{/if}}
+​</div> 
+```
+
+Nós temos que usar um auxiliar customizado (discutimos isso em breve) para adicionar tal lógica condicional.
+
+* *Else*: `{{else}}`
+
+A sessão `else` (note que isto não é um bloco próprio) é bastante simples, desde que seja sessão de um bloco. Isto pode ser usado com um bloco `if` ou qualquer outro bloco. O conteúdo da sessão `else` é apenas renderizado se expressões forem avaliadas como falso.
+
+Nós verificamos para ver se a propriedade `userLoggedIn` é verdadeira. Se não for, o conteúdo do bloco `else` é renderizado.
+
+```
+<div class="user-data">​
+	{{#if userLoggedIn}}​
+		Welcome, {{firstName}}
+	{{else}}
+		Please Log in.
+	{{/if}}
+​</div>
+```
+
+* Auxiliar *unless*: `{{#unless}}` 
+
+Como uma alternativa para o auxiliar `else`, você usa o auxiliar de bloco `unless`. O conteúdo entre o bloco `unless` apenas é renderizado se a expressão for avaliada como um valor falso. Portanto esta é a melhor maneira se você for querer checar apenas valores falsos:
+
+Nós substituimos o bloco `if` e `else` por apenas o bloco `unless`, para renderizar o conteúdo apenas se a propriedade for avaliada como falso.
+
+Esta expresssão lê: apenas renderiza o conteúdo do bloco se a propriedade `userLoggedIn` for avaliada como falsa.
+
+```
+<div class="user-data">​
+	{{#unless userLoggedIn}}​
+		Please Log in.
+	{{/unless}} 
+​</div>
+```
+
+* *With* helper: `{{#with}}`
+
+O auxiliar `with` permite atingir uma propriedade específica de um objeto. Por exemplo, nós sabemos que o objeto sempre é o contexto atual em um template Handlebars, como nós temos aprendido em algumas sessões anteriores. Mas se você precisa atingir uma propriedade diferente para o contexto atual, você pode usar o auxiliar `with`, assim você poder usar o caminho do pai (../) para fazer isto. Vamos ver o auxiliar `with` em ação:
+
+Se nós temos um objeto de contexto como:
+
+```javascript
+var shoesData = {
+	groupName:"Celebrities", 
+	celebrity:{
+		firstName:"Mike", 
+		lastName:"Alexander" 
+	} 
+};  
+```
+
+Nós podemos usar o bloco `with` para atingir a propriedade *groupName* onde nós precisamos acessar os seus valores: 
+
+```
+<script id="shoe-template" type="x-handlebars-template">​
+	{{groupName}} Group
+		{{#with celebrity}}​
+			<li>{{firstName}} {{lastName}}</li>​
+		{{/with}}
+​</script>
+```
+
+E este é o HTML renderizado:
+
+> Celebrities Group
+> – Mike Alexander
+
+O bloco `with` é provavelmente um que você raramente vai usar.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
