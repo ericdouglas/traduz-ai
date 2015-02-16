@@ -2,10 +2,13 @@
 
 * **Artigo Original**: [THE DEAD-SIMPLE STEP-BY-STEP GUIDE FOR FRONT-END DEVELOPERS TO GETTING UP AND RUNNING WITH NODE.JS, EXPRESS, JADE, AND MONGODB](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)
 * **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
+* **Atualização** [Alex Aleluia](https://github.com/alexaleluia12)
 
 ### Configure uma Aplicação *Full Stack JavaScript* e a tenha funcionando em 30 minutos. Faça-a conversar com seu banco de dados em outros 30.
 
 > [Você pode encontrar/forkar este tutorial e todo o projeto de exemplo no Github.](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)
+
+> Esta é apenas uma atualização do [tutorial antigo](https://github.com/ericdouglas/traduz-ai/blob/master/nodejs/002-simples-guia-nodejs-jade-express-mongodb.md) para que as coisas realmente funcionem.
 
 ## Introdução
 
@@ -15,7 +18,7 @@ Em minha experiência, o "próximo nível" de tutoriais que achamos estão 30 n�
 
 Eu não sou o único, certo?
 
-Bom, boa notícia a todos! Eu li e fiz muitos tutoriais, até que as coisas finalmente funcionaram. Tenho um projeto web rodando que usa Node.js, o framework Express, o pré-processador de HTML chamado Jade e o MongoDB para os dados. Sou capaz de ler e escrever a partid do banco de dados. A partir disso, o céu é o limite.
+Bom, boa notícia a todos! Eu li e fiz muitos tutoriais, até que as coisas finalmente funcionaram. Tenho um projeto web rodando que usa Node.js, o framework Express, o pré-processador de HTML chamado Jade e o MongoDB para os dados. Sou capaz de ler e escrever a partir do banco de dados. A partir disso, o céu é o limite.
 
 Aqui está o acordo: Vou mostrar à você como pegar todas essas coisas e configurá-las. Vou assumir que você é um desenvolvedor front-end que conhece o suficiente de HTML5/CSS3/JavaScript para que eu não tenha que explicá-los.
 
@@ -40,11 +43,17 @@ Agora que temos o Node rodando, nós precisamos do resto das coisas para criar, 
 
 ```sh
 
-$ npm install -g express
+$ npm install express-generator -g
 
 ```
 
 Isso instala algumas funcionalidades do núcleo do Express junto com a instalação do Node, tornando-o disponível globalmente, então podemos usá-lo em qualquer lugar que quisermos. Você vai ver um monte de texto em seu prompt de comando, vários http 304 e GETs. Tudo bem. O Express está agora instalado e disponível.
+
+> Vou considerar que o seguite comando deve retorar uma versão igual ou superior
+```sh
+$ express --version
+4.11.1
+```
 
 ### PASSO 3 - CRIANDO UM PROJETO EXPRESS
 
@@ -54,7 +63,7 @@ De qualquer forma, continue no seu diretório onde está armazenando sua aplica�
 
 ```sh
 
-$ express --sessions nodetest1
+$ express nodetest1
 
 ```
 
@@ -62,27 +71,30 @@ Aperte enter e veja o que acontece. Irá aparecer algo como isso:
 
 ```sh
 
-eo_op:~/estudos/nodejs $ express --sessions nodetest1
-create : nodetest1
-create : nodetest1/package.json
-create : nodetest1/app.js
-create : nodetest1/routes
-create : nodetest1/routes/index.js
-create : nodetest1/routes/user.js
-create : nodetest1/views
-create : nodetest1/views/layout.jade
-create : nodetest1/views/index.jade
-create : nodetest1/public/images
-create : nodetest1/public/javascripts
-create : nodetest1/public
-create : nodetest1/public/stylesheets
-create : nodetest1/public/stylesheets/style.css
+eo_op:~/estudos/nodejs $ express nodetest1
+   create : nodetest1
+   create : nodetest1/package.json
+   create : nodetest1/app.js
+   create : nodetest1/public
+   create : nodetest1/public/images
+   create : nodetest1/public/stylesheets
+   create : nodetest1/public/stylesheets/style.css
+   create : nodetest1/routes
+   create : nodetest1/routes/index.js
+   create : nodetest1/routes/users.js
+   create : nodetest1/views
+   create : nodetest1/views/index.jade
+   create : nodetest1/views/layout.jade
+   create : nodetest1/views/error.jade
+   create : nodetest1/bin
+   create : nodetest1/bin/www
+   create : nodetest1/public/javascripts
 
-install dependencies:
-$ cd nodetest1 && npm install
+   install dependencies:
+     $ cd nodetest1 && npm install
 
-run the app:
-$ node app
+   run the app:
+     $ DEBUG=nodetest1:* ./bin/www
 
 ```
 
@@ -93,15 +105,20 @@ Tudo bem, agora que temos uma estrutura básica, mas ainda não terminamos. Voc�
 ```json
 
 {
-  "name": "application-name",
-  "version": "0.0.1",
+  "name": "nodetest1",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node ./bin/www"
   },
   "dependencies": {
-    "express": "3.4.8",
-    "jade": "*"
+    "body-parser": "~1.10.2",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.1.1",
+    "express": "~4.11.1",
+    "jade": "~1.9.1",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0",
   }
 }
 
@@ -112,10 +129,16 @@ Este é um arquivo básico JSON que descreve seu aplicativo e suas dependências
 ```json
 
 "dependencies": {
-    "express": "3.4.4",
-    "jade": "*",
+    "body-parser": "~1.10.2",
+    "cookie-parser": "~1.3.3",
+    "debug": "~2.1.1",
+    "express": "~4.11.1",
+    "jade": "~1.9.1",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0",
     "mongodb": "*",
     "monk": "*"
+    
 }
 
 ```
@@ -136,19 +159,30 @@ Será impresso uma tonelada de coisas. Isto por causa que está sendo lido nosso
 
 Agora você tem uma aplicação em pleno funcionamento e esperando para ser rodada. Vamos testá-la! **Vá para o diretório nodetest1** e digite:
 
+MacOS ou Linux
 ```sh
 
-$ node app.js
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
-Aperte enter. Você vai obter isso:
-
+Windows
 ```sh
 
-Express server listening on port 3000
+$ set DEBUG=myapp & node .\bin\www
 
 ```
+
+pelo npm
+```sh
+
+$ npm run-script start
+
+```
+
+Aperte enter. E o cursor vai ficar piscando no canto do console.
+
+Para o servidor: $ Ctrl + c
 
 Incrível! Abra seu navegador e digite `http://locahost:3000`. Agora você verá a página de boas vindas do Express.
 
@@ -158,17 +192,7 @@ Você tem agora seu próprio servidor web com Node.js, com a *engine* Express e 
 
 ## PARTE 2 - OK. LEGAL. VAMOS FAZER O "HELLO WORLD!"
 
-Abra seu editor de texto ou IDE favorita. Eu gosto muito do [Sublime Text](http://www.sublimetext.com/). Vá para o diretório `nodetest1` e abra o arquivo `app.js`. Esse é como o coração da sua app. Não há muitas surpresas lá. Aqui temos uma parte do que você irá ver lá:
-
-```js
-
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
-
-```
+Abra seu editor de texto ou IDE favorita. Eu gosto muito do [Sublime Text](http://www.sublimetext.com/). Vá para o diretório `nodetest1` e abra o arquivo `app.js`. Esse é como o coração da sua app. 
 
 Isso cria muitas variáveis básicas do JavaScript e as liga a certos pacotes, dependências, funcionalidades do Node e rotas. Rotas são como uma espécie de combinação de modelos e controladores nesta configuração - elas direcionam o tráfico e também contém alguma lógica de programação (você pode estabelecer uma arquitetura MVC mais tradicional com o Express se você quiser. Isso está fora do escopo deste artigo). Voltando ao momento onde nós configuramos este projeto, o Express criou todas essas coisas para nós. Vamos ignorar totalmente a rota *user* por agora e trabalhar somente na rota de nível superior (controlado por `nodetest1/routes/index.js`).
 
@@ -184,46 +208,39 @@ Isto é importante, pois configura o Express e atribui nossa variável `app` a e
 `nodetest1/app.js`
 ```js
 
-// todos ambientes
-app.set( 'port', process.env.PORT || 3000 );
-app.set( 'views', path.join( __dirname, 'views' ) );
-app.set( 'view engine', 'jade' );
-app.use( express.favicon() );
-app.use( express.logger( 'dev' ) );
-app.use( express.bodyParser() );
-app.use( express.methodOverride() );
-app.use( app.router );
-app.use( express.static( path.join( __dirname, 'public' ) ) );
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', routes);
+app.use('/users', users); 
 ```
 
 Isso configura a porta, que diz ao app onde encotrar as views, que engine usar para renderisar estas views (Jade), e chama alguns métodos para deixar as coisas funcionando. Note também que a linha final está dizendo ao Express para servir objetos estáticos no diretório *public*. Por exemplo, as imagens no diretório `../nodetest1/public/images`. Mas elas são acessadas pela url `http://localhost:3000/images`.
-
-**NOTA:** Você vai precisar mudar esta linha:
-
-`app.js`
-```js
-
-app.use( express.bodyParser() );
-
-```
-
-para:
-
-```js
-
-app.use( express.urlencoded() );
-
-```
 
 Em razão de evitar alguns avisos em seu console Node quando você rodar a aplicação. Isto é devido a algumas mudanças futuras do Express e seus plugins. Se você não fizer esta mudança, sua aplicação vai continuar rodando, mas você irá ver texto sobre futuras *desaprovações* (deprecations) toda vez que você rodar isso.
 
 `app.js`
 ```js
 
-// development only
-if ( 'development' == app.get( 'env' ) ) {
-	app.use( express.errorHandler() );
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
 }
 
 ```
@@ -233,58 +250,24 @@ Isso permite que você faça alguma checagem de erro durante o desenvolvimento. 
 `app.js`
 ```js
 
-app.get( '/', routes.index );
-app.get( '/users', user.list );
+app.use( '/', routes );
+app.use( '/users', user );
 
 ```
 
-Isso diz a app quais rotas usar quando uma URI particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para `/routes/user.js` - nós vamos chamar a função de lista definida neste arquivo. Ou estaríamos se estivéssemos acessando a página de usuários, mas estamos ignorando-a, lembra?
+Isso diz a app quais rotas usar quando uma URL particular é solicitada. Note que a variável "user" está declarada acima, e é mapeada para `./routes/user.js`. 
 
-`app.js`
-```js
-
-http.createServer( app ).listen( app.get( 'port' ), function () {
-	console.log( 'Express server listening on port ' + app.get( 'port' ) );
-} );
-
-```
-
-Por último, mas não menos importante, isso cria nosso servidor http e o lança. Bons tempos!
-
-Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URI. Em baixo da seção `app.get()` no arquivo app.js, adicione esta linha:
+Agora então, vamos fazer algumas coisas. Não vamos fazer apenas um "Hello, World!" na nossa página index. Ao invés disso, vamos usar essa oportunidade para aprender um pouco mais sobre rotas e ver como o Jade trabalha para colocar as páginas em conjunto. Primeiro, vamos adicionar uma linha para manipular uma nova URL. Em baixo da seção `router.get();` no arquivo `nodetest1/routes/index.js`, adicione estas linhas:
 
 ```js
 
-app.get( '/helloworld', routes.helloworld );
+router.get('/helloworld', function(req, res, next){
+  res.render('helloworld', {title: 'Hello Word'});
+});
 
 ```
 
-Aperte `ctrl c` para encerrar o app.js em sua linha de comando, e então reinicie o processo e vá até `http://localhost:3000/helloworld`. Você deve obter um interessante erro do node e uma quebra na linha de comando. Isto porque nós não modificamos nossa rota para manipular esta requisição. Vamos fazer isso! Em seu editor de texto, abra sua pasta *routes*, encontre `index.js` e abra-o. Ele vai se parecer com isso:
-
-`index.js`
-```js
-
-/*
- * GET home page.
- */
-
-exports.index = function( req, res ){
-  res.render( 'index', { title: 'Express' });
-};
-
-```
-
-Muito escasso, certo? Vamos adicionar uma nova página. Minha abordagem preferida é adicionar um novo arquivo de rota para o diretório de nível superior, mas nós não criamos um diretório *helloworld* completo nas views, então vamos apenas usar a rota index. No fim do arquivo, adicione este código:
-
-```js
-
-exports.helloworld = function ( req, res ) {
-	res.render( 'helloworld', { title: 'Hello, World!' } );
-};
-
-```
-
-Isso é tudo que temos que fazer para rotear esta URI, mas nós não temos nenhuma página para o `res.render` renderizar. É ai que o Jade entra. Abra sua pasta `views`, e então abra o arquivo `index.jade`. Antes de fazer qualquer coisa, **salve este arquivo como `helloworld.jade`**.
+Isso é tudo que temos que fazer para rotear esta URL, mas nós não temos nenhuma página para o `res.render` renderizar. É ai que o Jade entra. Abra sua pasta `views`, e então abra o arquivo `index.jade`. Antes de fazer qualquer coisa, **salve este arquivo como `helloworld.jade`**.
 
 Agora dê uma olhada no código:
 
@@ -294,8 +277,8 @@ Agora dê uma olhada no código:
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
+  h1= title
+  p Welcome to #{title}
 
 ```
 
@@ -307,11 +290,11 @@ p Hello, World! Welcome to #{title}
 
 ```
 
-Salve o arquivo, vá para o terminal e encerre sua aplicação `ctrl c`. Agora digite:
+Salve o arquivo, vá para o terminal e encerre sua aplicação `ctrl c`. Agora digite (iniciar o servidor):
 
 ```sh
 
-node app.js
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
@@ -329,36 +312,19 @@ Ok! Agora temos nossa rota nos levando para nossa view. Vamos fazer alguma model
 
 ### PASSO 1 - INSTALAR MONGODB
 
-Vamos deixar um pouco nosso editor de texto e ir para nosso terminal. Bem, primeiro vamos para nosso browser, no endereço http://mongodb.org/ e fazer o download do Mongo. Click no link de downloads no menu principal e pegue a versão de produção que se encaixa com seu sistema. Para o Windows 8 com um processador 64-bit, nós vamos usar o "64-bit *2008R2+". Isso irá lhe fornecer um arquivo `.zip`, que você deve descompactar para um diretório temporário. Então você pode criar um diretório no qual o Mongo vai permanecer pra sempre depois de armazenar o Mongo. Você pode usar `c:\mongo` ou `c:\program files\mongo` ou qualquer outra coisa louca que você quiser. Isso não importa na verdade - O Mongo é bem pequeno, e vamos armazenar nosso banco de dados no nosso diretório `nodetest1`.
-
-De qualquer forma, copie os arquivos da pasta bin dentro do seu diretório temporário para onde você quer que o Mongo fique, e você está pronto. Você instalou o Mongo. Agora vamos fazer isso funcionar.
+No site do [mongodb](http://docs.mongodb.org/manual/) 'Installation' esta bem exemplificado como instalar o mongodb no seu sistema operacional. Eu surgiro que você siga esses passos.
 
 ### PASSO 2 - RODANDO MONGOD e MONGO
 
-No seu diretório nodetest1, cria um subdiretório chamado `data`. Então navegue até o diretório em que você colocou seus arquivos do MongoDB. Deste diretório, digite o seguinte:
+Continue seguindo documentação do `mongodb` inicie o servidor com 'mongod'
 
+Feito isso o comando 'mongo' deve retornar algo parecido com isso:
 ```sh
 
-mongod --dbpath c:\node\nodetest1\data
-
-```
-
-Você vai ver que o servidor Mongo inicia. Pode demorar um pouco se for a primeira vez, porque ele tem que fazer algumas pre-alocações de espaço e algumas tarefas de limpeza. Uma vez que isso disser "[initandlisten] waiting for connections on port 27017", tudo está feito. Não há nada mais para se fazer; o servidor está rodando. Agora você pode **abrir um segundo terminal**. Navegue novamente até o diretório de instalação do Mongo, e digite:
-
-```sh
-
-mongo
-
-```
-
-Você vai ver algo assim:
-
-```sh
-
-c:\mongo>mongo
-MongoDB shell version: 2.4.5
+$ mongo
+MongoDB shell version: 2.6.7
 connecting to: test
-
+>
 ```
 
 Adicionalmente, se você está prestando atenção em sua instância mongod, você vai ver que ele menciona que a conexão foi estabilizada. Tudo certo, você tem o MongoDB funcionando, e conectou a ele com o client. Nós vamos usar o client manualmente para trabalhar no nosso banco de dados, mas não é necessário para rodar o website. Somente o mongod é necessário para isso.
@@ -369,7 +335,7 @@ Não se preocupe com "connecting to: test"... este é apenas o db padrão decidi
 
 ```sh
 
-use nodetest1
+> use nodetest1
 
 ```
 
@@ -394,11 +360,11 @@ Você pode criar sua própria atribuição `_id` se você realmente quiser, mas 
 
 ```sh
 
-db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@tesdomain.com" })
+> db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@tesdomain.com" })
 
 ```
 
-Algo importante de se notar aqui: este `db` significa nosso banco de dados, que como mencionado acima, nós definimos como `nodetest1`. A parte `usercollection` é nossa coleção. Note que não existe um passo onde nós criamos a coleção "usercollection". Isso porque a primeira vez que adicionamos isso, ele já irá se auto-criar. Prático. Ok, aperte enter. Assumingo que tudo ocorreu corretamente, você deve ver... nada. Isso não é muito animador, então digite isso:
+Algo importante de se notar aqui: este `db` significa nosso banco de dados, que como mencionado acima, nós definimos como `nodetest1`. A parte `usercollection` é nossa coleção. Note que não existe um passo onde nós criamos a coleção "usercollection". Isso porque a primeira vez que adicionamos isso, ele já irá se auto-criar. Prático. Ok, aperte enter. Digite o próximo comando.
 
 ```sh
 
@@ -473,10 +439,11 @@ Eu sei que isso não é ciência astronáutica, mas esta é a questão. Vamos fa
 ```js
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
 var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser'); 
 
 ```
 
@@ -485,12 +452,13 @@ Agora adicione estas 3 linhas:
 ```js
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
 var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser'); 
 
-// Novo código
+// Novo codigo
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/nodetest1');
@@ -499,19 +467,12 @@ var db = monk('localhost:27017/nodetest1');
 
 Estas linhas dizem que nossa app vai conversar com o MongoDB, e vamos usar o Monk para fazer isso, e nosso banco de dados está localizado em `localhost:27017/nodetest1`. Note que 27017 é a porta que sua instância MongoDB deve estar rodando. Se por algum motivo você a mudou, obviamente use esta porta então. Agora olhe para a parte de baixo do arquivo, onde você tem isso:
 
-```js
 
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/helloworld', routes.helloworld);
-
-```
-
-Adicione a seguinte linha no final:
+Adicione a seguinte linha em baixo de 'app.use('/', routes);':
 
 ```js
 
-app.get('/userlist', routes.userlist(db));
+app.use('/userlist', routes.dbwrap(db));
 
 ```
 
@@ -523,15 +484,15 @@ Abra o arquivo `nodetest1/routes/index.js` em seu editor. Ele tem a rota index, 
 
 ```js
 
-exports.userlist = function(db) {
-    return function(req, res) {
-        var collection = db.get('usercollection');
-        collection.find({},{},function(e, docs){
-            res.render('userlist', {
-                "userlist" : docs
-            });
-        });
-    };
+router.dbwrap = function(db){
+  return function get(req, res, next){
+    var collection = db.get('usercollection');
+    collection.find({}, {}, function(e, docs){
+      res.render('userlist', {
+        "userlist": docs
+      });
+    });
+  };
 };
 
 ```
@@ -545,13 +506,13 @@ Vamos agora configurar nosso template Jade. Navegue até `nodetest1/views` e abr
 extends layout
 
 block content
-    h1.
-        User List
+  h1.
+    User List
 
-    ul
-        each user, i in userlist
-            li
-                a(href='mailto:#{user.email}')= user.username
+  ul
+    each user, i in userlist
+      li
+        a(href='mailto:#{user.email}')= user.username
 
 ```
 
@@ -561,7 +522,7 @@ Tudo está configurado. Salve o arquivo, e vamos reiniciar nosso servidor node. 
 
 ```js
 
-$ node app.js
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
@@ -581,35 +542,14 @@ Escrever no banco de dados não é difícil. Essencialmente nós precisamos conf
 
 ### PASSO 1 - CRIE SUA ENTRADA DE DADOS
 
-Vamos passar rapidamente aqui: dois inputs feios e sem estilo mais um botão *submit*. Estilo 1996. Após isso, vamos começar com o `app.get()`; e então dar algo para ser pego. Abra o `app.js` e encontre a parte das chamadas `app.get()`, e adicione isso no final delas:
+Vamos passar rapidamente aqui: dois inputs feios e sem estilo mais um botão *submit*. Estilo 1996. Após isso, vamos começar com o `app.get()`; e então dar algo para ser pego. Abra o `routes/index.js` e encontre a parte das chamadas `app.get()`, e adicione isso no final delas:
 
 ```js
 
-app.get('/newuser', routes.newuser);
+router.get('/newuser', function(req, res, next){
+  res.render('newuser',  {title: 'Add a new user.'});
+});
 
-```
-
-Então você vai ter:
-
-```js
-
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/helloworld', routes.helloworld);
-app.get('/userlist', routes.userlist(db));
-
-// Novo código
-app.get('/newuser', routes.newuser);
-
-```
-
-Como todas as requisições `app.get`, nós precisamos ajustar a rota para reconhecer o que servir. Abra `routes/index.js` e adicione o seguinte:
-
-```js
-
-exports.newuser = function ( req, res ) {
-	 res.render( 'newuser', { title: 'Add New User' } );
-};
 
 ```
 
@@ -620,11 +560,11 @@ Agora nós apenas precisamos de um template. Abra `views/index.jade`, salve como
 extends layout
 
 block content
-    h1= title
-	      form#formAddUser( name='adduser', method='post', action='/adduser' )
-		    input#inputUserName( type='text', placeholder='username', name='username' )
-		    input#inputUserEmail( type='text', placeholder='useremail', name='useremail' )
-		    button#btnSubmit( type='submit' ) submit
+  h1= title
+    form#formAddUser( name='adduser', method='post', action='/adduser' )
+	  input#inputUserName( type='text', placeholder='username', name='username' )
+      input#inputUserEmail( type='text', placeholder='useremail', name='useremail' )
+      button#btnSubmit( type='submit' ) submit
 
 ```
 
@@ -636,60 +576,43 @@ Se você reiniciar o servidor node e ir para `http://localhost:3000/newuser`, vo
 
 ### PASSO 2 - CRIANDO NOSSAS FUNÇÕES DB
 
-Ok, o mesmo processo de antes. Primeiro vamos editar o `app.js`, então nosso arquivo `route`, e então nosso template Jade. Exceto que não existe um template Jade aqui porque nós estamos postando e então encaminhando. Veja abaixo. Vai tudo fazer sentido! Vamos começar: Abra `app.js` e mais uma vez encontre a pilha de chamadas `app.get`:
-
-```js
-
-app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/helloworld', routes.helloworld);
-app.get('/userlist', routes.userlist(db));
-app.get('/newuser', routes.newuser);
-
-```
+Ok, o mesmo processo de antes. Primeiro vamos editar o `app.js`, então nosso arquivo `route`, e então nosso template Jade. Exceto que não existe um template Jade aqui porque nós estamos postando e então encaminhando. Veja abaixo. Vai tudo fazer sentido! Vamos começar: Abra `app.js` e mais uma vez encontre a pilha de chamadas `app.use`:
 
 Agora adicione o seguinte em baixo desta lista:
 
 ```js
 
-app.post('/adduser', routes.adduser(db));
+app.use('/adduser', routes.adduser(db));
 
 ```
-
-Note que isso é um `app.post`, não um `app.get`. Se você quer separar essa parte dos `app.get` com um comentário ou nova linha, eu não vou lhe impedir. Vamos configurar nossa rota.
 
 Volte para `routes/index.js` para criarmos nossa função de inserção. Essa é grande, então eu comentei o código bem cuidadosamente. Aqui está:
 
 ```js
 
-exports.adduser = function (db) {
-    return function (req, res) {
-       
-        // Pega os valores do form. Eles dependem do atributo "name"
-        var userName = req.body.username;
-        var userEmail = req.body.useremail;
-
-        // Configura nossa coleção
-        var collection = db.get('usercollection');
-
-        // Envia ao DB
-        collection.insert({
-            "username" : userName,
-            "email" : userEmail
-        }, function (err, doc) {
-            if (err) {
-                // Se isso falhar, retorna um erro
-                res.send("Ocorreu um problema ao adicionar informação ao banco de dados");
-            }
-            else {
-                // Se funcionar, configura o header para a barra de endereço não continuar dizendo /adduser
-                res.location("userlist");
-                // E depois a página de sucesso
-                res.redirect("userlist");
-            }
-        }); 
-    };
+router.adduser = function(db) {
+  return function post(req, res, next) {
+    var userName = req.body.username;
+    var userEmail = req.body.useremail;
+    
+    db.get('usercollection')
+      .insert(
+        {
+          "username": userName,
+          "email": userEmail
+        },
+        function(err, doc) {
+          if (err){
+            res.send('ihsss deu merda');
+          } else {
+            res.location('userlist');
+            res.redirect('userlist');
+          }
+        }
+      );
+  };
 };
+
 
 ```
 
@@ -703,7 +626,7 @@ Existem formas mais suvaes de se fazer isso? Com certeza, porém vamos ficar nes
 
 ```sh
 
-$ node app.js
+$ DEBUG=nodetest1 ./bin/www
 
 ```
 
