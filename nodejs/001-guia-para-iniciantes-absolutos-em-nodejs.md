@@ -1,4 +1,4 @@
-# Guia Para Absolutos Iniciantes em Node.js
+# Guia Definitivo para Iniciantes em Node.js
 
 ![node-baby](../img/node-absolute-begginer.png)
 
