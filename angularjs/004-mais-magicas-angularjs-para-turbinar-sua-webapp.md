@@ -270,17 +270,19 @@ Ctrl.$inject = ['$scope', '$http', 'argument1', 'argument2', 'argument3'];
 
 // aqui é onde a mágica acontece
 App.config(['$routeProvider', function ($routeProvider) {
-	templateUrl: '/path/to/some/template.html',
-	controller: Ctrl,
-	resolve: {
-		argument1: 'someDependency', // esta é uma dependência registrada e trabalha da mesma forma que a injeção de dependências faria dentro de um controlador
-		argument2: function () { return 'some value'; }, // esse é resolvido instantaneamente porque não há nada acontecendo
-		argument3: function () {
-			return $http.get('/path/to/some/url', function (response) {
-				return response.data; // isto é o que retorna como o valor do argument3
-			});
+	$routeProvider.when('/some/page/with/an/:id',{
+		templateUrl: '/path/to/some/template.html',
+		controller: Ctrl,
+		resolve: {
+			argument1: 'someDependency', // esta é uma dependência registrada e trabalha da mesma forma que a injeção de dependências faria dentro de um controlador
+			argument2: function () { return 'some value'; }, // esse é resolvido instantaneamente porque não há nada acontecendo
+			argument3: function () {
+				return $http.get('/path/to/some/url', function (response) {
+					return response.data; // isto é o que retorna como o valor do argument3
+				});
+			}
 		}
-	}
+	});
 }]);
 ```
 
