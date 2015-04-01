@@ -777,7 +777,7 @@ var shoesData = {
 
 Nós podemos usar o bloco `with` para atingir a propriedade *groupName* onde nós precisamos acessar os seus valores: 
 
-```
+```javascript
 <script id="shoe-template" type="x-handlebars-template">​
 	{{groupName}} Group
 		{{#with celebrity}}​
@@ -792,6 +792,116 @@ E este é o HTML renderizado:
 > – Mike Alexander
 
 O bloco `with` é provavelmente um que você raramente vai usar.
+
+
+## Auxiliares Personalizados Handlebars.js
+
+(muito importante e versátil)
+Além dos _helpers_ embutidos que acabamos de discutir, Handlebars nos permite adicionar nosso próprio _helper_ personalizado e isto é ainda mais importante do que os auxiliares embutidos, desde que nós podemos adicionar qualquer tipo de lógica complexa para o _helper_ personalizado. Nós podemos ainda re-criar o _helper_ embutido com o nosso próprio _helper_ personalizado, embora isto seria perca de tempo.
+
+Com _helpers_ customizados, nós podemos adicionar qualquer tipo de lógica Javascript. Nós registramos o _helper_ personalizado antes de todo o resto de código Handlebars JS. _Helpers_ personalizados são criados no código javascript, não dentro do template Handlebars.
+
+Existem dois tipos de _helpers_ personalizados que você pode criar: uma **Função ajudante** customizada é simplesmente um _helper_ que não usa bloco, e um **Bloco ajudante** é um _helper_ com um bloco.
+
+### Função ajudante customizada
+
+Vamos fazer uma simples função ajudante customizada que executa algum condicional lógico, uma vez que nós não usamos condicionais lógicos com o _helper_ embutido.
+
+O objeto de dados:
+
+```javascript
+var contextObj = {score:85, userName:"Mike"};
+```
+
+Primeiro, temos que registrar o _helper_ personalizado com o método `Handlebars.registerHelper`. Este método leva uma string (o nome do _helper_) como um primeiro parâmetro e uma função com qualquer número de parâmetros como um segundo parâmetro.
+
+
+```javascript
+Handlebars.registerHelper('nomeDoMeuHelper', function(theScore) {
+	console.log("Grade: " + theScore);
+	var userGrade = 'C';
+
+	if (theScore >= 90) {
+		return "A";
+	} 
+
+	else if (theScore >= 80 && theScore < 90) {
+		return "B";
+	}
+
+	else if (theScore >= 70 && theScore < 80) {
+		return "C";
+	}
+
+	else {
+		return "D";
+	}
+});
+```
+
+Aqui é o template Handlebars que usa uma função ajudante customizada que nós acabamos de criar:
+
+```javascript
+<script id="shoe-template" type="x-handlebars-template">
+	{{nomeDoMeuHelper score}}
+</script>
+```
+
+O resultado na página HTML é:
+
+B
+
+
+### Blocos ajudantes customizados
+
+Além de uma função ajudante customizada, nós podemos também adicionar blocos ajudantes customizados. Quando nós registramos um bloco ajudante customizado, Handlebars automaticamente adiciona um objeto de opções como o último parâmetro na função de callback. E o objeto de opções possui um método **fn**, um objeto **hash** e um método **inverse**.
+
+O método **options.fn**:
+Leva um objeto (seus dados) como um parâmetro que utiliza como um contexto interno o template do bloco ajudante customizado. Você pode passar qualquer objeto de dados, ou se você quiser usar o mesmo contexto de dados referenciado no template, você pode usar `_this_`.
+
+Um exemplo irá ilustrar melhor. Este é um objeto de dados que estamos usando (vamos resumir toda a pontuação em um array e substituir a pontuação do array com o total de pontuações: 
+
+```javascript
+var contextObj = [
+	{
+		firstName: "Kapil", 
+		lastName:"Manish", 
+		score:[22, 34, 45, 67]
+	}, 
+	{
+		firstName: "Bruce", 
+		lastName:"Kasparov", 
+		score:[10, 34, 67, 90]
+	}
+];
+```
+
+Aqui vamos configurar o template com o _userScore_ bloco ajudante, que definimos abaixo:
+
+```javascript
+<script id="shoe-template" type="x-handlebars-template">
+	{{ #userScore this }}
+	<div> {{firstName}} {{lastName}}, Sua pontuação total é: <strong> {{ score }} </strong></div>
+	{{ /userScore }}
+</script>
+```
+
+Nós registramos o _userScore_ bloco ajudante com `Handlebars.registerHelper`. Note o último ítem no parâmetro é o objeto de opções, que Handlebars inseriu automaticamente e nós usamos ele aqui:
+
+```javascript
+Handlebars.registerHelper('userScore', function(dataObject, options) {
+	var templateWithInterpolatedData = '';
+
+	for (var i = dataObject.length -1; i >= 0; i--) {
+		dataObject[i].score = dataObject[i].score.reduce(function(prev, cur, index, array) {
+			return prev + cur;
+		});
+	}
+});
+```
+
+
+
 
 
 
