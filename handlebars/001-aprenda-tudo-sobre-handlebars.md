@@ -896,13 +896,56 @@ Handlebars.registerHelper('userScore', function(dataObject, options) {
 		dataObject[i].score = dataObject[i].score.reduce(function(prev, cur, index, array) {
 			return prev + cur;
 		});
+
+		// Cada objeto no array de objetos data é interpolado com o método options.fn que processa todo o HTML para o template e insere os valores do objeto nas suas respectivas posições.
+
+		// Apenas para você entender a proposta do método options.fn: ele faz exatamente o que a função handlebars faz, quando nós passamos o objeto data para a função, para recuperar os valores do objeto e inseri-los no template HTML.
+
+		// Sem o objeto options.fn neste exemplo, o objeto em sí (ao invés dos valores interpolados) teria sido retornado.
+
+		templateWithInterpolatedData += options.fn(dataObject[i]);
 	}
+
+	// Nós retornamos a string completa do HTML com todos os valores para o objeto data.
+
+	return templateWithInterpolatedData;
 });
 ```
+E este é o HTML exibido:
 
+Bruce Kasparov, Your Total Score is *201*
+Kapil Manish, Your Total Score is *168*
 
+- Também é importante saber que um bloco ajudante customizado pode ser inserido em qualquer lugar no template, e nós podemos passar qualquer número de parâmetros no template.
 
+O método *options.inverse*:
 
+O método inverso é usado como a sessão de qualquer outra instrução de bloco. Então você usaria *options.fn* para retornar quando a expressão no callback avaliar em um valor _truthy_. Mas você poderia user *options.inverse* quando a expressão avaliar para _falsy_(para renderizar o conteúdo na outra parte do bloco).
+
+O objeto *options.hash*
+
+Expressões Handlebars não levam só strings e variáveis como argumentos, mas você pode passar pares de chave-valor separados por espaço também:
+
+Por exemplo:
+(Note que não há virgula separando o par de chave-valor)
+
+```javascript
+{{#myNewHelper score=30 firstName="Jhonny" lastName="Marco"}}
+	Mostre seu conteúdo HTML aqui.
+{{/myNewHelper}}​
+```
+
+E que a invocação da expressão Handlebars com o par de chave-valor como parâmetro, serão adicionados automaticamente para o objeto hash na função de callback do _helper_. Assim:
+
+```javascript
+Handlebars.registerHelper('myNewHelper', function(dataObject, options) {
+	// JSON.stringify usado para serializar o objeto (para uma string)
+
+	console.log(JSON.stringify(options.hash));
+
+	// O output é: {score: 30, firstName:"Jhonny", lastName:"Marco"}
+});
+```
 
 
 
