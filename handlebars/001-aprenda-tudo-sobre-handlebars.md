@@ -777,7 +777,7 @@ var shoesData = {
 
 Nós podemos usar o bloco `with` para atingir a propriedade *groupName* onde nós precisamos acessar os seus valores: 
 
-```
+```javascript
 <script id="shoe-template" type="x-handlebars-template">​
 	{{groupName}} Group
 		{{#with celebrity}}​
@@ -794,19 +794,326 @@ E este é o HTML renderizado:
 O bloco `with` é provavelmente um que você raramente vai usar.
 
 
+## Auxiliares Personalizados Handlebars.js
+
+(muito importante e versátil)
+Além dos _helpers_ embutidos que acabamos de discutir, Handlebars nos permite adicionar nosso próprio _helper_ personalizado e isto é ainda mais importante do que os auxiliares embutidos, desde que nós podemos adicionar qualquer tipo de lógica complexa para o _helper_ personalizado. Nós podemos ainda re-criar o _helper_ embutido com o nosso próprio _helper_ personalizado, embora isto seria perca de tempo.
+
+Com _helpers_ customizados, nós podemos adicionar qualquer tipo de lógica Javascript. Nós registramos o _helper_ personalizado antes de todo o resto de código Handlebars JS. _Helpers_ personalizados são criados no código javascript, não dentro do template Handlebars.
+
+Existem dois tipos de _helpers_ personalizados que você pode criar: uma **Função ajudante** customizada é simplesmente um _helper_ que não usa bloco, e um **Bloco ajudante** é um _helper_ com um bloco.
+
+### Função ajudante customizada
+
+Vamos fazer uma simples função ajudante customizada que executa algum condicional lógico, uma vez que nós não usamos condicionais lógicos com o _helper_ embutido.
+
+O objeto de dados:
+
+```javascript
+var contextObj = {score:85, userName:"Mike"};
+```
+
+Primeiro, temos que registrar o _helper_ personalizado com o método `Handlebars.registerHelper`. Este método leva uma string (o nome do _helper_) como um primeiro parâmetro e uma função com qualquer número de parâmetros como um segundo parâmetro.
 
 
+```javascript
+Handlebars.registerHelper('nomeDoMeuHelper', function(theScore) {
+	console.log("Grade: " + theScore);
+	var userGrade = 'C';
+
+	if (theScore >= 90) {
+		return "A";
+	} 
+
+	else if (theScore >= 80 && theScore < 90) {
+		return "B";
+	}
+
+	else if (theScore >= 70 && theScore < 80) {
+		return "C";
+	}
+
+	else {
+		return "D";
+	}
+});
+```
+
+Aqui é o template Handlebars que usa uma função ajudante customizada que nós acabamos de criar:
+
+```javascript
+<script id="shoe-template" type="x-handlebars-template">
+	{{nomeDoMeuHelper score}}
+</script>
+```
+
+O resultado na página HTML é:
+
+B
 
 
+### Blocos ajudantes customizados
+
+Além de uma função ajudante customizada, nós podemos também adicionar blocos ajudantes customizados. Quando nós registramos um bloco ajudante customizado, Handlebars automaticamente adiciona um objeto de opções como o último parâmetro na função de callback. E o objeto de opções possui um método **fn**, um objeto **hash** e um método **inverse**.
+
+O método **options.fn**:
+Leva um objeto (seus dados) como um parâmetro que utiliza como um contexto interno o template do bloco ajudante customizado. Você pode passar qualquer objeto de dados, ou se você quiser usar o mesmo contexto de dados referenciado no template, você pode usar `_this_`.
+
+Um exemplo irá ilustrar melhor. Este é um objeto de dados que estamos usando (vamos resumir toda a pontuação em um array e substituir a pontuação do array com o total de pontuações: 
+
+```javascript
+var contextObj = [
+	{
+		firstName: "Kapil", 
+		lastName:"Manish", 
+		score:[22, 34, 45, 67]
+	}, 
+	{
+		firstName: "Bruce", 
+		lastName:"Kasparov", 
+		score:[10, 34, 67, 90]
+	}
+];
+```
+
+Aqui vamos configurar o template com o _userScore_ bloco ajudante, que definimos abaixo:
+
+```javascript
+<script id="shoe-template" type="x-handlebars-template">
+	{{ #userScore this }}
+	<div> {{firstName}} {{lastName}}, Sua pontuação total é: <strong> {{ score }} </strong></div>
+	{{ /userScore }}
+</script>
+```
+
+Nós registramos o _userScore_ bloco ajudante com `Handlebars.registerHelper`. Note o último ítem no parâmetro é o objeto de opções, que Handlebars inseriu automaticamente e nós usamos ele aqui:
+
+```javascript
+Handlebars.registerHelper('userScore', function(dataObject, options) {
+	var templateWithInterpolatedData = '';
+
+	for (var i = dataObject.length -1; i >= 0; i--) {
+		dataObject[i].score = dataObject[i].score.reduce(function(prev, cur, index, array) {
+			return prev + cur;
+		});
+
+		// Cada objeto no array de objetos data é interpolado com o método options.fn que processa todo o HTML para o template e insere os valores do objeto nas suas respectivas posições.
+
+		// Apenas para você entender a proposta do método options.fn: ele faz exatamente o que a função handlebars faz, quando nós passamos o objeto data para a função, para recuperar os valores do objeto e inseri-los no template HTML.
+
+		// Sem o objeto options.fn neste exemplo, o objeto em sí (ao invés dos valores interpolados) teria sido retornado.
+
+		templateWithInterpolatedData += options.fn(dataObject[i]);
+	}
+
+	// Nós retornamos a string completa do HTML com todos os valores para o objeto data.
+
+	return templateWithInterpolatedData;
+});
+```
+E este é o HTML exibido:
+
+Bruce Kasparov, Your Total Score is *201*
+Kapil Manish, Your Total Score is *168*
+
+- Também é importante saber que um bloco ajudante customizado pode ser inserido em qualquer lugar no template, e nós podemos passar qualquer número de parâmetros no template.
+
+O método *options.inverse*:
+
+O método inverso é usado como a sessão de qualquer outra instrução de bloco. Então você usaria *options.fn* para retornar quando a expressão no callback avaliar em um valor _truthy_. Mas você poderia user *options.inverse* quando a expressão avaliar para _falsy_(para renderizar o conteúdo na outra parte do bloco).
+
+O objeto *options.hash*
+
+Expressões Handlebars não levam só strings e variáveis como argumentos, mas você pode passar pares de chave-valor separados por espaço também:
+
+Por exemplo:
+(Note que não há virgula separando o par de chave-valor)
+
+```html
+{{#myNewHelper score=30 firstName="Jhonny" lastName="Marco"}}
+	Mostre seu conteúdo HTML aqui.
+{{/myNewHelper}}​
+```
+
+E que a invocação da expressão Handlebars com o par de chave-valor como parâmetro, serão adicionados automaticamente para o objeto hash na função de callback do _helper_. Assim:
+
+```javascript
+Handlebars.registerHelper('myNewHelper', function(dataObject, options) {
+	// JSON.stringify usado para serializar o objeto (para uma string)
+
+	console.log(JSON.stringify(options.hash));
+
+	// O output é: {score: 30, firstName:"Jhonny", lastName:"Marco"}
+});
+```
+
+### Quatro maneiras para carregar/adicionar templates:
+
+Existem quatro principais maneiras para você adicionar templates Handlebars em suas páginas:
+
+1. *Usar a tag script*
+
+A primeiro e mais simples, na verdade a menos desejável maneira para adicionar templates Handlebars para a página é por adição da tag script, como temos feito ao longo deste tutorial até agora. Você pode adicionar toda a tag script como template, olhe o exemplo abaixo na página HTML:
+
+```javascript
+<script id="shoe-template" type="x-handlebars-template">
+{{#userScore this}}
+	<div>
+		{{firstName}} {{lastName}}, Your total Score is <strong>{{score}}</strong>
+	</div>
+{{/userScore}}
+</script>
+```
+
+*Prós*
+
+- Rápido para usar e configurar, se você tem uma aplicação ou página muito simples.
+- Pouca ou nenhuma curva de aprendizado (tempo para aprender e implementar é insignificante).
 
 
+*Contras*
+
+- Todos os modelos estão em tags de script, o que se torna difícil de manter se você tem muitos templates.
+- Isto pode ser problemático para gerenciar memória de forma eficaz em meio a grandes aplicações, uma vez em que todos os modelos estão sempre na página e você não pode facilmente adicionar ou remover.
+- É difícil criar interfaces com alta capacidade de resposta, com estes templates estáticos que tem um ciclo de vida completo na aplicação.
+- O template não pode ser pré-compilado. Templates pré-compilados são executados consideravelmente mais rápidos do que os modelos que tem que ser compilado no navegador antes de ser renderizado. Assim a incapacidade para pré-compilar o template resultaria em uma latência na sua aplicação.
+- 
 
 
+2. *Usar funções customizadas*
+
+Você pode colocar todos os seus templates em arquivos HTML (sem a tag script) e carrega-los e compilar de uma só vez. Em seguida, você pode adicionar o template compilado para a página sempre que for necessário.
+
+Um [usuário do StackOverflow](http://stackoverflow.com/questions/8366733/external-template-in-underscore), koorchik, criou uma função customizada para lidar com o loading e a compilação de templates de forma concisa, veja abaixo:
+
+*Prós*
+
+- Todo o template pode ser mantido em um arquivo HTML separado, que permite uma fácil manutenção.
+- Sem uma curva de aprendizado para aprender e implementar a função: depois de estudar um pouco a função, você vai entender e estará pronto para usar em poucos minutos.
+- A função é muito leve.
+- Isto é versátil, porque facilita o uso de ambos templates pre-compilados e templates que não tenham sido compilados; e você ainda pode passar templates pré-compilados para a função.
+
+*Contras*
+
+- Nenhuma ainda :), mas sinta-se livre para sugerir qualquer uma nos comentários abaixo.
 
 
+*A função customizada*:
 
+```javascript
+ // Esta é a definição de uma função customizada
 
+ function render(tmpl_name, tmpl_data) {
+	if (!render.tmpl_cache) {
+		render.tmpl_cache = {};
+	}
 
+	if (!render.tmpl_cache[tmpl_name]) {
+		var tmpl_dir = '/static/templates';
+		var tmpl_url = tmpl_dir + '/' + tmpl_name + '.html';
 
+		var tmpl_string;
 
+		$.ajax({
+			url: tmpl_url,
+			method: 'GET', 
+			async: false, 
+			success: function(data) {
+				tmpl_string = data;
+			}
+		});
 
+		render.tmpl_cache[tmpl_name] = _.template(tmpl_string);
+	}
+
+	return render.tmpl_cache[tmpl_name](tmpl_data);
+ }
+```
+
+Isto é como você pode usar funções customizadas para carregar um myTemplate.html; passe um objeto de dados como segundo parâmetro.
+
+```javascript
+var rendered_html = render('myTemplate', {});
+```
+
+3. *Usar AMD e Require.js*
+
+AMD é uma especificação que esboça um mecanismo para carregar módulos e suas dependências de forma assíncrona. Vamos deixar as particularidades e especificações AMD para outro artigo.
+
+Para efeitos de apresentação do template handlebars, a linha abaixo é que nós usamos uma função `define()` para registrar nossos módulos e dependências (incluindo templates) e Require.js (um carregador de arquivo e módulo) irá carregar nossos templates, assim nós podemos atribui-las para uma variável e usá-las em nosso projeto. Mais sobre AMD e Require.js em aplicações Backbone.js depois.
+
+*Prós*
+
+- Com o mecanismo de módulos AMD, seu código vai ser bem organizado.
+- Você pode facilmente e dinamicamente carregar templates de uma forma estruturada.
+- Você pode continuar com todos os templates em arquivos HTML separados para facilitar na manutenção.
+- Desenvolvedores diferentes podem editar ou criar diferentes arquivos de template HTML.
+- Require.js pode concatenar todos os arquivos JS em um único arquivo JS, reduzindo assim o número de requests e tempo de downloads para a aplicação.
+
+*Contras*
+
+- Grande curva de aprendizado: AMD e Require.js possuem uma moderada curva de aprendizado e você poderia provavelmente ter que aprender Backbone.js ou outro framework JS que utilizam estas tecnologias de forma abstrata.
+
+*Exemplo de template Handlebars com AMD e Require.js*:
+
+```javascript
+// A função `define` é parte do mecanismo de carregamento do AMD
+
+define([
+	'jquery',
+	'underscore',
+	'handlebars',
+
+	// Requirejs text plugin carrega as páginas de template HTML
+
+	'text!templates/user_account.html',
+	'text!templates/user_profile.html'],
+	function($, _, Backbone, HandleBars, UserAccount_Template, UserProfile_Template) {
+	
+	// Este são os dois objetos que usaremos
+	userAccountDataObject: {
+		accountNumber:85444, 
+		balance: $120.00
+	},
+	userProfileDataObject: {
+		firstName: ”Michael, 
+		lastName: ”Harrington”
+	},
+
+	// Compilar o template Handlebars que iremos carregar em (user_account.html e user_profile.html) e atribuimos eles para estas duas variáveis
+	userAccount_compiledTemplate: HandleBars.compile(UserAccount_Template),
+	userProfile_compiledTemplate: HandleBars.compile(UserProfile_Template),
+
+	// Esta função vai adicionar o template Handlebars compilado na página
+	render: function() {
+		// Use a função compiladora (userAccount_compiledTemplate) e passe para o contexto (o objeto data). O resultado será a página do template HTML com os valores interpolados do objeto.
+
+		​this.$(".user-account-div").html(this.userAccount_compiledTemplate(userAccountDataObject);
+
+		// Esta função de modelo
+		this.$(".user-profile-div").html(this.userProfile_compiledTemplate(userProfileDataObject);
+	}
+
+	});
+
+```
+
+3. *Pré-compilar os templates*
+
+Com a tag script e os métodos AMD/Require.js de adição de templates para a página, Handlebars compila os templates no lado do cliente e esta é a operação mais custosa para os motores de template javascript.
+
+Para reduzir latência e velocidade na execução da página, Handlebars possui um módulo node.js que pré-compila seus templates. E porque os templates são pré-compilados o tempo de execução é consideravelmente rápido e você apenas inclui um arquivo _runtime_ Handlebars.js na página.
+
+Eu não vou incluir um exemplo de código para mostrar o pré-compilador de templates Handlebars, porque o código vai ser melhor compreendido em um contexto completo da aplição, e nós vamos construir uma aplição completa com Backbone.js e templates pré-compilados Handlebars na parte 2 deste post.
+
+*Prós*
+
+- Como os arquivo de templates pré-compilados estão em Javascript eles podem ser minificados e combinados em um único arquivo javascript para toda a aplicação, incluindo todas as bibliotecas e outros arquivos JS. Isto reduz significativamente o número de requests para o servidor e reduz o tempo de download da aplicação.
+- A aplicação executará consideravelmente mais rápida, porque a operação de compilação foi concluída.
+- Todas as vantagens com o AMD/Require.js, se usado com AMD e Require.js
+
+*Contras*
+
+- O script pré-compilado handlebars é um módulo Node.js, que significa que você precisa ter instalado na sua máquina de desenvolvimento Node.js para pré-compilar os templates.
+- Uma vez que todos os arquivos de templates agora são arquivos JavaScript, os templates não podem ser facilmente editados no servidor, para fazer mudanças rápidas.
+- Fazer alterações nos arquivos, é um processo de duas etapas: você altera o arquivo HTML e então você executa a etapa de pré-compilação para compilar os templates para javascript. No entanto, este último passo pode ser melhorado e automatizado, de modo que detecte as mudanças e pré-compile os templates imediatamente.
