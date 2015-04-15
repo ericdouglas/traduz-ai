@@ -1,7 +1,7 @@
 # Aprenda Tudo sobre Handlebars.js Templating JavaScript
 
 * **Artigo Original**: [Handlebars.js Tutorial: Learn Everything About Handlebars.js JavaScript Templating](http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/)
-* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas) e [Thulio Philipe](https://github.com/thulioph)
 
 **Este é um tutorial sobre Handlebars.js e uma referência ao Handlebars.js** <br><br>
 
