@@ -3,9 +3,12 @@
 * **Artigo original**: [You Don't Need jQuery (anymore)](http://blog.garstasio.com/you-dont-need-jquery/why-not/)
 * **Tradução**: [Gabriel](https://github.com/BielRibeiro)
 
-A **lot** of web developers rely on jQuery. In many circles, jQuery and JavaScript are one in the same it seems. So, why shouldn't you use it? Why should you stop using it? Don't you just need it?
+**Grande parte** dos desenvolvedores web dependem do jQuery. Entre muitos, jQuery e Javascript parecem ser a mesma coisa. Então, por que você não deveria usá-lo? Por que você deveria parar de usar? Você não simplesmente precisa dele?
 
 jQuery makes everything easier. You can't develop a solid web app without it. It's far too difficult to ensure your app will work properly in all browsers without jQuery - the Web API implementation varies wildly between browsers. All the good plug-ins I need depend on jQuery anyway.
+
+Com jQuery tudo fica mais fácil. Você não consegue desenvolver uma web app sólida sem ele. É muito difícil garantir que seu app funcionará corretamente em todos os browsers sem jQuery - A implementação da [Web API](http://en.wikipedia.org/wiki/Web_API) varia muito entre os browsers.
+
 
 I bought into the excuses above, for most of my career. And some of them were even good excuses, at one time. When I took over maintenance and development of [a large cross-browser file upload library](https://github.com/FineUploader) in 2012, [my first instinct was to rewrite it all using jQuery](https://github.com/FineUploader/fine-uploader/issues/326), because that would make my life easier, I thought. The existing user community was against bringing any 3rd-party dependencies into the library, so I was forced to deal with the native browser API instead. You know what? It was a lot easier to toss jQuery to the side than I imagined. I didn't need jQuery, and neither do you.
 
