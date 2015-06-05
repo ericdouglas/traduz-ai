@@ -20,16 +20,16 @@ Eu cai numa armadilha, que muitos desenvolvedores web novos, casuais e amadores 
 2. Aprender sobre a Web API
 3. Aprender jQuery (ou qualquer outro framework/biblioteca que você pode precisar nos projetos)
 
-Many start with #3, and #1 & #2 come much later (or never). If you don't understand what jQuery is actually doing for you, there will be many frustrating days ahead as the leaky abstractions come out of the woodwork, or if you are unable to use jQuery in a future project. This is a trap you must avoid if you want to effectively grow as a web developer.
-
-Alguns começam com o #3 e #1, e o #2 vem somente depois (ou nunca).Se você não entende o que o jQuery na verdade está fazendo por você, 
+Alguns começam com o #3 e #1, e o #2 vem somente depois (ou nunca).Se você não entende o que o jQuery na verdade está fazendo por você, haverão muitos dias frustrantes a frente como ?o aparecimento de abstrações furadas?, ou no caso de você não poder usar jQuery em um projeto futuro. Esta é uma armadilha que você precisa evitar se quiser crescer efetivamente como desenvolvedor web.
 
 ## Suporte Cross-Browser
 
 Uma das razões mais usadas para valorizar o jQuery é a de arrumar a "DOM API quebrada". Este é um ponto válido, mas somente se você estiver trabalhando com o IE7 ou anterior.
-Estamos em 2014, e o suporte a IE7 é raro. A API do DOM não é tão ruim como muitas pessoas a fazem ser. Basic traversal, manipulação, e criação de elementos é consistentemente suportado por todos os browsers modernos.
+Estamos em 2014, e o suporte a IE7 é raro. A API do DOM não é tão ruim como muitas pessoas a fazem ser. ?Travessia básica?, manipulação, e criação de elementos é consistentemente suportado por todos os browsers modernos.
 
 The Web API as a whole is, more or less, quite advanced and capable since IE8. Of course, there are gaps in pre-IE10 browsers and some very old Safari/WebKit implementations, but these gaps can be filled in, as needed, with small, directed libraries. In many cases, such as with cross-browser file upload support, MutationObserver support, or Web Component support, you'll need to pull in libraries other than jQuery. The point is, jQuery isn't a silver bullet, and there's a good chance that you will only ever really need a very small portion of what jQuery provides.
+
+A Web API como um todo, é mais ou menos, bastante avançada e capaz desde o IE8. É claro, existem falhas nos browsers pre-IE10 e algumas implementações muito antigas do Safari/Webkit, mas estas falhas podem ser solucionadas, conforme a necessidade, com bibliotecas pequenas e específicas. Em alguns casos, como com o suporte cross-browser do file upload, suporte a MutationObserver ou suporte a Web Component, você precisará integrar outras bibliotecas fora o jQuery. O ponto é, jQuery não é bala de prata, e existe uma boa chance que você só vai precisar de uma pequena parte do que o jQuery oferece.
 
 ## JavaScript
 
