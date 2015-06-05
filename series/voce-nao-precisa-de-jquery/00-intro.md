@@ -24,9 +24,12 @@ Many start with #3, and #1 & #2 come much later (or never). If you don't underst
 
 Alguns começam com o #3 e #1, e o #2 vem somente depois (ou nunca).
 
-## Cross-Browser Support
+## Suporte Cross-Browser
 
 One of the most touted reasons for pulling in jQuery is to fix the "broken DOM API". This is a valid point, but only if you are working with IE7 or older. It's now 2014, and IE7 support is rare. The DOM API isn't really as bad as many people make it out to be. Basic traversal, manipulation, and creation of elements is straightforward and consistently supported in all modern browsers.
+
+Uma das razões mais usadas para valorizar o jQuery é a de arrumar a "DOM API quebrada". Este é um ponto válido, mas somente se você estiver trabalhando com o IE7 ou anterior.
+Estamos em 2014, e o suporte a IE7 é raro. A API do DOM não é tão ruim como muitas pessoas a fazem ser. Basic traversal, manipulação, e criação de elementos é consistentemente suportado por todos os browsers modernos.
 
 The Web API as a whole is, more or less, quite advanced and capable since IE8. Of course, there are gaps in pre-IE10 browsers and some very old Safari/WebKit implementations, but these gaps can be filled in, as needed, with small, directed libraries. In many cases, such as with cross-browser file upload support, MutationObserver support, or Web Component support, you'll need to pull in libraries other than jQuery. The point is, jQuery isn't a silver bullet, and there's a good chance that you will only ever really need a very small portion of what jQuery provides.
 
