@@ -22,11 +22,9 @@ Eu cai numa armadilha, que muitos desenvolvedores web novos, casuais e amadores 
 
 Many start with #3, and #1 & #2 come much later (or never). If you don't understand what jQuery is actually doing for you, there will be many frustrating days ahead as the leaky abstractions come out of the woodwork, or if you are unable to use jQuery in a future project. This is a trap you must avoid if you want to effectively grow as a web developer.
 
-Alguns começam com o #3 e #1, e o #2 vem somente depois (ou nunca).
+Alguns começam com o #3 e #1, e o #2 vem somente depois (ou nunca).Se você não entende o que o jQuery na verdade está fazendo por você, 
 
 ## Suporte Cross-Browser
-
-One of the most touted reasons for pulling in jQuery is to fix the "broken DOM API". This is a valid point, but only if you are working with IE7 or older. It's now 2014, and IE7 support is rare. The DOM API isn't really as bad as many people make it out to be. Basic traversal, manipulation, and creation of elements is straightforward and consistently supported in all modern browsers.
 
 Uma das razões mais usadas para valorizar o jQuery é a de arrumar a "DOM API quebrada". Este é um ponto válido, mas somente se você estiver trabalhando com o IE7 ou anterior.
 Estamos em 2014, e o suporte a IE7 é raro. A API do DOM não é tão ruim como muitas pessoas a fazem ser. Basic traversal, manipulação, e criação de elementos é consistentemente suportado por todos os browsers modernos.
