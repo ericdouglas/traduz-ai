@@ -5,24 +5,24 @@
 
 **Grande parte** dos desenvolvedores web dependem do jQuery. Entre muitos, jQuery e Javascript parecem ser a mesma coisa. Então, por que você não deveria usá-lo? Por que você deveria parar de usar? Você não simplesmente precisa dele?
 
-jQuery makes everything easier. You can't develop a solid web app without it. It's far too difficult to ensure your app will work properly in all browsers without jQuery - the Web API implementation varies wildly between browsers. All the good plug-ins I need depend on jQuery anyway.
-
 Com jQuery tudo fica mais fácil. Você não consegue desenvolver uma web app sólida sem ele. É muito difícil garantir que seu app funcionará corretamente em todos os browsers sem jQuery - A implementação da [Web API](http://en.wikipedia.org/wiki/Web_API) varia muito entre os browsers.
+Todos os bons plug-ins que eu preciso, dependem do jQuery de qualquer maneira.
 
+Usei estas desculpas acima durante a maior parte da minha carreira. E algumas delas em um momento eram mesmo boas desculpas. Em 2012, quando assumi a manutenção e o desenvolvimento de uma [grande biblioteca de file upload](https://github.com/FineUploader), [meu primeiro instinto foi o de reescrever tudo usando jQuery](https://github.com/FineUploader/fine-uploader/issues/326), porque eu pensei que aquilo facilitaria minha vida. A comunidade de usuários existente foi contra trazer qualquer dependência terceira para a biblioteca, como alternativa eu fui forçado a lidar com a API nativa do browser. E quer saber? Foi mais fácil colocar o jQuery de lado do que eu imaginei. Eu não precisava do jQuery, e nem você.
 
-I bought into the excuses above, for most of my career. And some of them were even good excuses, at one time. When I took over maintenance and development of [a large cross-browser file upload library](https://github.com/FineUploader) in 2012, [my first instinct was to rewrite it all using jQuery](https://github.com/FineUploader/fine-uploader/issues/326), because that would make my life easier, I thought. The existing user community was against bringing any 3rd-party dependencies into the library, so I was forced to deal with the native browser API instead. You know what? It was a lot easier to toss jQuery to the side than I imagined. I didn't need jQuery, and neither do you.
+## A Armadilha
 
-## The Trap
+Há algum tempo atrás, quando eu entrei no mundo do desenvolvimento web, a primeira biblioteca que usei foi o jQuery. Na verdade, nunca me importei em aprender Javascript direito. Eu não tinha a menor idéia de como era a Web API, ou como mexer no DOM precisamente. O jQuery fez tudo por mim. Fui pego por esta enorme lacuna em meu conhecimento quando entrei em um projeto sem jQuery. Eu fui forçado a aprender desenvolvimento web direito, e eu nunca olhei para trás.
 
-A while back, when I entered the world of web development, the first library I used was jQuery. In fact, I didn't even bother to learn proper JavaScript. I didn't have a clue what the Web API looked like, or how to deal with the DOM directly. jQuery did everything for me. This huge gap in my knowledge caught up with me when I ended up on a project without my jQuery crutch. I was forced to learn proper web development, and I never looked back.
+Eu cai numa armadilha, que muitos desenvolvedores web novos, casuais e amadores caem. Se primeiramente eu tivesse tomado o tempo para aprender Javascript e a API disponibilizada pelo browser, eu teria evitado muitos problemas. A sequência correta de eventos é:
 
-I fell into a trap, and this is a trap that many new, occasional, and hobbyist web developers fall into. Had I taken the time to understand JavaScript and the API provided by the browser first, I would have saved myself a lot of trouble. The proper sequence of events is:
-
-1. Learn JavaScript
-2. Learn the Web API
-3. Learn jQuery (or any other framework/library that you may need across projects)
+1. Aprender Javascript
+2. Aprender sobre a Web API
+3. Aprender jQuery (ou qualquer outro framework/biblioteca que você pode precisar nos projetos)
 
 Many start with #3, and #1 & #2 come much later (or never). If you don't understand what jQuery is actually doing for you, there will be many frustrating days ahead as the leaky abstractions come out of the woodwork, or if you are unable to use jQuery in a future project. This is a trap you must avoid if you want to effectively grow as a web developer.
+
+Alguns começam com o #3 e #1, e o #2 vem somente depois (ou nunca).
 
 ## Cross-Browser Support
 
