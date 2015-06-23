@@ -12,7 +12,7 @@ Usei estas desculpas acima durante a maior parte da minha carreira. E algumas de
 
 ## A Armadilha
 
-Há algum tempo atrás, quando entrei no mundo do desenvolvimento web, a primeira biblioteca que usei foi o jQuery. Na verdade, nunca me importei em aprender Javascript direito. Eu não tinha a menor idéia de como era a Web API, ou como mexer no DOM precisamente. O jQuery fez tudo por mim. Fui pego por esta enorme lacuna em meu conhecimento quando entrei em um projeto sem jQuery. Fui forçado a aprender desenvolvimento web direito, e nunca mais olhei para trás.
+Há algum tempo, quando entrei no mundo do desenvolvimento web, a primeira biblioteca que usei foi o jQuery. Na verdade, nunca me importei em aprender Javascript direito. Eu não tinha a menor ideia de como era a Web API, ou como mexer no DOM precisamente. O jQuery fez tudo por mim. Fui pego por esta enorme lacuna em meu conhecimento quando entrei em um projeto sem jQuery. Fui forçado a aprender desenvolvimento web direito, e nunca mais olhei para trás.
 
 Cai numa armadilha que muitos desenvolvedores web novos, casuais e amadores caem. Se primeiramente tivesse gasto meu tempo para aprender Javascript e a API do browser, teria evitado muitos problemas. A sequência correta de estudos é:
 
@@ -25,9 +25,9 @@ Alguns começam com o #3 e #1, e o #2 vem somente depois (ou nunca). Se você n�
 ## Suporte Cross-Browser
 
 Uma das razões mais usadas para valorizar o jQuery é a de arrumar a API fraca do DOM. Este é um ponto válido, mas somente se você estiver trabalhando com o IE7 ou anterior.
-Estamos em 2014, e o suporte a IE7 é raro. A API do DOM não é tão ruim como muitas pessoas a fazem ser. Percorrer, manipular e criar elementos é consistentemente suportado por todos os browsers modernos.
+Estamos em 2014, e o suporte a IE7 é raro. A API do DOM não é tão ruim como muitas pessoas costuman dizer. Percorrer, manipular e criar elementos é consistentemente suportado por todos os browsers modernos.
 
-A Web API como um todo é, mais ou menos, bastante avançada e capaz desde o IE8. É claro, existem falhas nos browsers pré-IE10 e em algumas implementações muito antigas do Safari/Webkit, mas estas falhas podem ser solucionadas, conforme a necessidade, com bibliotecas pequenas e específicas. Em alguns casos, como o suporte cross-browser do file upload, suporte a MutationObserver ou suporte a Web Component, você precisará integrar outras bibliotecas fora o jQuery. O ponto é que jQuery não é bala de prata, e existe uma boa chance de você precisar somente de uma pequena parte do que o jQuery oferece.
+A Web API como um todo é, de certa forma, bastante avançada e capaz desde o IE8. É claro, existem falhas nos browsers pré-IE10 e em algumas implementações muito antigas do Safari/Webkit, mas estas falhas podem ser solucionadas, conforme a necessidade, com bibliotecas pequenas e específicas. Em alguns casos, como o suporte cross-browser do file upload, suporte a MutationObserver ou suporte a Web Component, você precisará integrar outras bibliotecas fora o jQuery. O ponto é que jQuery não é bala de prata, e existe uma boa chance de você precisar somente de uma pequena parte do que o jQuery oferece.
 
 ## JavaScript
 
@@ -36,7 +36,7 @@ Outra razão comum para se usar o jQuery, é a de usar atalhos para a linguagem 
 ## Ok, mas eu preciso mesmo abandonar o jQuery?
 
 Mas é claro que não. Se você se sente confortável com o jQuery, e está familiar o suficiente em como o jQuery faz sua mágica, então continue usando.
-Esta série de posts é sobre como lhe capacitar para usar a Web API e (quando preciso) bibliotecas específicas para resolver problemas em seus web apps sem depender de grandes bibliotecas com multi propósitos que, na sua maioria, nem serão utilizados.
+Esta série de posts é sobre como lhe capacitar para usar a Web API e (quando preciso) bibliotecas específicas para resolver problemas em seus web apps sem depender de grandes bibliotecas com vários propósitos que, na sua maioria, nem serão utilizados.
 
 ## Ok, mas eu devo abandonar o jQuery?
 
