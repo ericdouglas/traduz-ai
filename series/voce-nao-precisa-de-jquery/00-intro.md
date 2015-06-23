@@ -24,24 +24,27 @@ Alguns começam com o #3 e #1, e o #2 vem somente depois (ou nunca). Se você n�
 
 ## Suporte Cross-Browser
 
-Uma das razões mais usadas para valorizar o jQuery é a de arrumar a "DOM API quebrada". Este é um ponto válido, mas somente se você estiver trabalhando com o IE7 ou anterior.
+Uma das razões mais usadas para valorizar o jQuery é a de arrumar a ?"DOM API quebrada"?. Este é um ponto válido, mas somente se você estiver trabalhando com o IE7 ou anterior.
 Estamos em 2014, e o suporte a IE7 é raro. A API do DOM não é tão ruim como muitas pessoas a fazem ser. ?Travessia básica?, manipulação, e criação de elementos é consistentemente suportado por todos os browsers modernos.
 
-The Web API as a whole is, more or less, quite advanced and capable since IE8. Of course, there are gaps in pre-IE10 browsers and some very old Safari/WebKit implementations, but these gaps can be filled in, as needed, with small, directed libraries. In many cases, such as with cross-browser file upload support, MutationObserver support, or Web Component support, you'll need to pull in libraries other than jQuery. The point is, jQuery isn't a silver bullet, and there's a good chance that you will only ever really need a very small portion of what jQuery provides.
-
-A Web API como um todo é, mais ou menos, bastante avançada e capaz desde o IE8. É claro, existem falhas nos browsers pré-IE10 e algumas implementações muito antigas do Safari/Webkit, mas estas falhas podem ser solucionadas, conforme a necessidade, com bibliotecas pequenas e específicas. Em alguns casos, como o suporte cross-browser do file upload, suporte a MutationObserver ou suporte a Web Component, você precisará integrar outras bibliotecas fora o jQuery. O ponto é, jQuery não é bala de prata, e existe uma boa chance de você precisar somente de uma pequena parte do que o jQuery oferece.
+A Web API como um todo é, mais ou menos, bastante avançada e capaz desde o IE8. É claro, existem falhas nos browsers pré-IE10 e em algumas implementações muito antigas do Safari/Webkit, mas estas falhas podem ser solucionadas, conforme a necessidade, com bibliotecas pequenas e específicas. Em alguns casos, como o suporte cross-browser do file upload, suporte a MutationObserver ou suporte a Web Component, você precisará integrar outras bibliotecas fora o jQuery. O ponto é que jQuery não é bala de prata, e existe uma boa chance de você precisar somente de uma pequena parte do que o jQuery oferece.
 
 ## JavaScript
 
-Another common reason to pull in jQuery is to make up for perceived shortcomings in the underlying language itself (JavaScript). This is one of the most frivolous excuses. It's a bit much to pull in a 3rd-party dependency like jQuery simply for a marginally better way to loop over object properties and array elements. In fact, this is completely unnecessary with the existence of forEach and Object.keys() (both available in IE9+). Or perhaps you think $.inArray() is useful? Not since IE9, where Array.prototype.indexOf was made available as part of ES5. There are many more examples, but I'll save those for a future post.
+Outra razão comum para se usar o jQuery, é a de usar atalhos para a linguagem que está por debaixo dos panos (Javascript). Esta é uma das desculpas mais esfarrapadas. É um pouco demais usar uma dependência como o jQuery simplesmente por uma maneira "melhor" de percorrer as propriedades de um objeto ou um array de elementos. Na verdade, isto é completamente desnecessário levando em conta a existência de forEach e Object.keys() (ambos disponíveis em IE9+). Ou talvez você ache que inArray() é útil? Não desde o IE9, onde Array.prototype.indexOf ficou disponível como parte do ES5. Existem muitos exemplos, mas eu vou guardá-los para um próximo post.
 
-## Ok, but do I really need to ditch jQuery?
+## Ok, mas eu preciso mesmo abandonar o jQuery?
 
-No, of course not. If you feel comfortable with jQuery, and you are familiar enough with how jQuery works its magic, then, by all means, keep using it. This series of blog posts is all about empowering you to make use of the Web API and (when needed) directed libraries to solve problems in your web apps without pulling in large monolithic multi-purpose libraries that go mostly unused.
+Mas é claro que não. Se você se sente confortável com o jQuery, e está familiar o suficiente em como o jQuery faz sua mágica, então continue usando.
+Esta série de posts é sobre como lhe capacitar para usar a Web API e (quando preciso) bibliotecas específicas para resolver problemas em seus web apps sem depender de grandes bibliotecas com multi propósitos que, na sua maioria, nem serão utilizados.
 
 ## Ok, but should I really ditch jQuery?
 
-That's entirely up to you. This series is all about revealing the Web API and vanilla JavaScript. If you have to consistently support ancient browsers and jQuery makes your life easier, then maybe not. But, if you have reasonable browser s
+That's entirely up to you. This series is all about revealing the Web API and vanilla JavaScript. If you have to consistently support ancient browsers and jQuery makes your life easier, then maybe not. But, if you have reasonable browser support and/or get satisfaction from writing your own code, by all means, ditch it!
+
+## Ok, mas eu devo abandonar o jQuery?
+
+Isto é com você. Esta série toda é para mostrar a Web API e o vanilla Javascript. A resposta é não se você precisa dar suporte a browsers muito antigos e o jQuery faz sua vida mais fácil. Porém, se você pode suportar versões de browsers mais atuais, e/ou fica feliz em escrever seu próprio código, deixe o jQuery de lado.
 
 ## Coming Up Next
 
