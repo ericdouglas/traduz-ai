@@ -16,9 +16,9 @@ Quantas vezes você viu uma web app ou biblioteca que usa jQuery simplesmente pa
 7. [Descendentes](#descendentes)
 8. [Seletores de Exclusão](#seletores-exclusao)
 9. [Seletores Múltiplos](#seletores-multiplos)
-10.[Ve um padrão?](#padrao)
-11.[Filling in the Gaps](#quero-mais)
-12.[Next in this Series](#proximo)
+10. [Ve um padrão?](#padrao)
+11. [Mas Eu Quero Mais](#quero-mais)
+12. [Próximo](#proximo)
 
 ## <a name="ids"></a>Por ID
 
@@ -283,7 +283,7 @@ window.$ = function(selector) {
 };
 ```
 
-## <a name="quero-mais"></a>But I Want More!
+## <a name="quero-mais"></a>Mas Eu Quero Mais!
 
 For the vast majority of projects, the selectors support baked into the Web API is sufficient. But what if you are unfortunate enough to require IE7 support? In that case, you'll probably need a little help from some third party code.
 
