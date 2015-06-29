@@ -5,7 +5,7 @@
 
 How many times have you seen a web app or library that uses jQuery simply to perform trivial element selection? How many times have you written this: $(#meuElemento')? Or this: $('.meuElemento')? Psst... you don't need jQuery to select elements! It's pretty easy with the plain 'ole DOM API.
 
-Quantas vezes você viu uma web app ou biblioteca que usa jQuery simplesmente para fazer seleções de elementos? Quantas vezes você escreveu isto: ```$(#meuElemento')```? Ou isto: ```$('.meuElemento')```? Psst... Você não precisa de jQuery para selecionar elementos! Isto já é muito fácil simplesmente usando a DOM API.
+Quantas vezes você viu uma web app ou biblioteca que usa jQuery simplesmente para selecionar elementos? Quantas vezes você escreveu isto: ```$(#meuElemento')```? Ou isto: ```$('.meuElemento')```? Psst... Você não precisa de jQuery para selecionar elementos! Isto já é muito fácil simplesmente usando a DOM API.
 
 1. [IDs](#ids)
 2. [Classes CSS](#classes-css)
@@ -17,8 +17,8 @@ Quantas vezes você viu uma web app ou biblioteca que usa jQuery simplesmente pa
 8. [Seletores de Exclusão](#seletores-exclusao)
 9. [Seletores Múltiplos](#seletores-multiplos)
 10.[Ve um padrão?](#padrao)
-11.[Filling in the Gaps](#)
-12.[Next in this Series](#)
+11.[Filling in the Gaps](#quero-mais)
+12.[Next in this Series](#proximo)
 
 ## <a name="ids"></a>Por ID
 
@@ -77,7 +77,7 @@ document.querySelectorAll('.meuElemento');
 
 The first method returns an HTMLCollection https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection and is the most efficient of the two choices http://jsperf.com/getelementsbyclassname-vs-queryselectorall/25. querySelectorAll always returns a NodeList https://developer.mozilla.org/en-US/docs/Web/API/NodeList.
 
-O primeiro método retorna uma [HTMLCollection](https://developer.mozilla.org/pt-BR/docs/Web/API/HTMLCollection)  e é o [mais eficiente entre as duas escolhas   ](http://jsperf.com/getelementsbyclassname-vs-queryselectorall/25). O método querySelectorAll sempre retorna uma [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList).
+O primeiro método retorna uma [HTMLCollection](https://developer.mozilla.org/pt-BR/docs/Web/API/HTMLCollection)  e é o [mais eficiente entre as duas escolhas](http://jsperf.com/getelementsbyclassname-vs-queryselectorall/25). O método querySelectorAll sempre retorna uma [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList).
 
 Again, really simple stuff here. Why bother with jQuery?
 Novamente nada complicado. Por que se preocupar com jQuery?
@@ -113,21 +113,21 @@ Como esperado, querySelectorAll (que retorna uma NodeList) é menos eficiente qu
 
 ## <a name="atributos"></a>Por Atributo
 
-Select all elements with a "data-foo-bar" attribute that contains a value of "algumValor":
+Select all elements with a "data-foo-bar" attribute that contains a value of "qualquerValor":
 
-Seleciona todos os elementos com o atributo "data-foo-bar" que contém o valor de "algumValor":
+Seleciona todos os elementos com o atributo "data-foo-bar" que contém o valor de "qualquerValor":
 
 *jQuery*
 
 ```
-$('[data-foo-bar="algumValor"]');
+$('[data-foo-bar="qualquerValor"]');
 ```
 
 *DOM API*
 
 ```
 // IE 8+
-document.querySelectorAll('[data-foo-bar="algumValor"]');
+document.querySelectorAll('[data-foo-bar="qualquerValor"]');
 ```
 
 Again, the DOM API and jQuery syntax is very similar.
@@ -222,32 +222,34 @@ $('#divPai A');
 document.querySelectorAll('#divPai A');
 ```
 
-## <a name=""></a>Excluding Elements
+## <a name="seletores-exclusao"></a>Excluindo elementos da seleção
 
 Select all ```<div>``` elements, except those with a CSS class of "ignore".
+Seleciona todas ```<div>```'s, exceto aquelas que possuem a classe "ignorar".
 
 *jQuery*
 
 ```
-$('DIV').not('.ignore');
+$('DIV').not('.ignorar');
 ```
 
 ... ou ...
 
 ```
-$('DIV:not(.ignore)');
+$('DIV:not(.ignorar)');
 ```
 
 *DOM API*
 
 ```
 // IE 9+
-document.querySelectorAll('DIV:not(.ignore)');
+document.querySelectorAll('DIV:not(.ignorar)');
 ```
 
-## <a name=""></a>Multiple Selectors
+## <a name="seletores-multiplos"></a>Selecionando múltiplos elementos
 
 Select all ```<div>```, ```<a>``` and ```<script>``` elements.
+Seleciona todos os elementos ```<div>```'s,  ```<a>```'s e ```<script>```'s.
 
 *jQuery*
 
@@ -262,9 +264,11 @@ $(DIV, A, SCRIPT');
 document.querySelectorAll('DIV, A, SCRIPT');
 ```
 
-## <a name=""></a>See a Pattern?
+## <a name="padrao"></a>Consegue ver um padrão?
 
 If we focus exclusively on selector support, and don't need to handle anything older than IE8, seems like we could get pretty far simply by replacing jQuery with this:
+
+Se nosso objetivo for exclusivamente selecionar elementos, e não precisamos dar suporte a nada mais antigo que o IE8, podemos substituir o jQuery de forma bem simples com:
 
 ```
 window.$ = function(selector) {
@@ -279,13 +283,17 @@ window.$ = function(selector) {
 };
 ```
 
-## <a name=""></a>But I Want More!
+## <a name="quero-mais"></a>But I Want More!
 
 For the vast majority of projects, the selectors support baked into the Web API is sufficient. But what if you are unfortunate enough to require IE7 support? In that case, you'll probably need a little help from some third party code.
 
+Para a maioria de projetos, o suporte nativo da WEB API aos seletores é o suficiente. Mas no caso de você ser azarado o suficiente para ter que dar suporte ao IE7, você provavelmente precisará da ajuda de uma dependência externa.
+
 Sure, you could just pull in jQuery, but why use such a large codebase when you only need advanced selector support for now? Instead, try a micro-library that focuses exclusively on element selection. Consider Sizzle http://sizzlejs.com/, which happens to be the selector library that jQuery uses. Selectivizr http://selectivizr.com/ is another very small selector library that brings CSS3 selector support to very old browsers.
 
+Claro, você poderia somente adicionar o jQuery ao projeto. Mas porque usar uma biblioteca tão grande quando você só precisa de suporte a seletores avançados?
+Ao invés disso, tente usar uma micro-biblioteca que foca exclusivamente na seleção de elementos. Considere o [Sizzle](http://sizzlejs.com/), que por acaso é a biblioteca de seletores que o jQuery usa. [Selectivizr](http://selectivizr.com/) é outra biblioteca de seletores bastante pequena, que traz o suporte a seletores CSS3 a browsers antigos.
 
-## <a name=""></a>Próximo Post
+## <a name="proximo"></a>Próximo Post
 
 [DOM Manipulation](http://blog.garstasio.com/you-dont-need-jquery/dom-manipulation/) (Em inglês)
