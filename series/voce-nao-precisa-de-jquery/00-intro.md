@@ -45,3 +45,5 @@ Isto é com você. Esta série toda é para mostrar a Web API e o vanilla Javasc
 ## Próximo Post
 
 [Selecting elements without jQuery.](http://blog.garstasio.com/you-dont-need-jquery/selectors/) (Em inglês)
+
+[Selecionando elementos sem jQuery.](01-seletores.md) (Em português)
