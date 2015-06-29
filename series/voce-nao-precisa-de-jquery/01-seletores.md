@@ -287,7 +287,7 @@ window.$ = function(selector) {
 
 For the vast majority of projects, the selectors support baked into the Web API is sufficient. But what if you are unfortunate enough to require IE7 support? In that case, you'll probably need a little help from some third party code.
 
-Para a maioria de projetos, o suporte nativo da WEB API aos seletores é o suficiente. Mas no caso de você ser azarado o suficiente para ter que dar suporte ao IE7, você provavelmente precisará da ajuda de uma dependência externa.
+Para a maioria dos projetos, o suporte nativo da WEB API aos seletores é o suficiente. Mas no caso de você ser azarado o suficiente para ter que dar suporte ao IE7, você provavelmente precisará da ajuda de uma dependência externa.
 
 Sure, you could just pull in jQuery, but why use such a large codebase when you only need advanced selector support for now? Instead, try a micro-library that focuses exclusively on element selection. Consider Sizzle http://sizzlejs.com/, which happens to be the selector library that jQuery uses. Selectivizr http://selectivizr.com/ is another very small selector library that brings CSS3 selector support to very old browsers.
 
