@@ -76,7 +76,7 @@ Agora que vimos como usar o Handlebars em uma simples aplicação, vamos estudá
 
 ### Como o Handlebars.js Funciona?
 
-Como descrito na introdução: Handlebars.js é um compildar feito em JavaScript que pega qualquer HTML e expressão Handlebars e o compila para uma função JavaScript. Esta função JavaScript derivada então pega um parâmetro, um objeto - seu dado - e retorna uma string HTML com o valor da propriedade do objeto inserida (interpolada) dentro do HTML. Então, você termina com uma string (HTML) que tem o valor a partir da propriedade do objeto inserida nos lugares relevantes, e você insere a string na página.
+Como descrito na introdução: Handlebars.js é um compilador feito em JavaScript que pega qualquer HTML e expressão Handlebars e o compila para uma função JavaScript. Esta função JavaScript derivada então pega um parâmetro, um objeto - seu dado - e retorna uma string HTML com o valor da propriedade do objeto inserida (interpolada) dentro do HTML. Então, você termina com uma string (HTML) que tem o valor a partir da propriedade do objeto inserida nos lugares relevantes, e você insere a string na página.
 
 Isto soa mais complicado do que é, vamos olhar mais de perto.
 
