@@ -6,10 +6,22 @@ Com este projeto, tenho como objetivo **traduzir o máximo de artigos** para que
 
 ## Como Ajudar
 
-Além dos materiais separados para tradução, você pode contribuir através da indicação de novos artigos para as traduções e/ou com as traduções/revisões. Deixe sua contribuição **[aqui](https://github.com/eoop/traduz-ai/issues)**.
+Você pode ajudar de três maneiras:
+* Formatando os textos que você acha que teria relevância para a comunidade
+* Traduzindo os textos que se encontram no repositório de tradução
+* Formatando e traduzindo textos.
 
-Espero que seja de bom proveito este material, para que juntos possamos aprender e crescer! Bons estudos e um forte abraço!
+### Formatando Textos
 
+Por exemplo, se você deseja simplesmente formatar um texto que você acha que tem a agregar ou acrescentar pra comunidade pt-BR, faça um fork do projeto, crie seu branch e adicione na pasta traduz-ai, conforme organização seguida nos projetos já traduzidos, exemplo: **traduz-ai/nodejs/nome-do-texto-formatado.md**
+
+Você deve seguir as regras de [Markdown Github Flavor](https://help.github.com/articles/github-flavored-markdown/).
+
+### Traduzindo
+
+Faça um fork do projeto, crie seu branch com uma breve descrição clara do texto a ser traduzido, copie o arquivo que deseja da pasta traduz-ai, ou, caso não haja, comece você mesmo na pasta raiz de acordo com o conteúdo indicado.
+
+Para ambos os casos, faça o pull request, aguarde uma possível revisão/moderação e seja feliz! :)
 
 ### Artigos
 
@@ -44,7 +56,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 |---|:---|:---|:---|
 |01.|**Guia de Estilos AngularJS**|[Tradução](https://github.com/eoop/angularjs-style-guide/blob/master/README-pt-br.md)|[Original](https://github.com/mgechev/angularjs-style-guide)|
 |02.|**Guia Definitivo para Aprender AngularJS em Um Dia**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/001-guia-definitivo-para-aprender-angularjs.md)|[Original](http://toddmotto.com/ultimate-guide-to-learning-angular-js-in-one-day/)|
-|03.|**Aprenda AngularJS com estes 5 exemplos práticos**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/002-aprenda-angularjs-com-5-exemplos.md)|[Original](http://tutorialzine.com/2013/08/learn-angularjs-5-examples/)| 
+|03.|**Aprenda AngularJS com estes 5 exemplos práticos**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/002-aprenda-angularjs-com-5-exemplos.md)|[Original](http://tutorialzine.com/2013/08/learn-angularjs-5-examples/)|
 |04.|**Use AngularJS para Potencializar sua Aplicação Web**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/003-use-angularjs-para-potencializar-sua-webapp.md#use-angularjs-para-potencializar-suas-aplica%C3%A7%C3%B5es-web)|[Original](http://www.yearofmoo.com/2012/08/use-angularjs-to-power-your-web-application.html)|
 |05.|**Mais mágicas do AngularJS para turbinar sua Webapp**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/004-mais-magicas-angularjs-para-turbinar-sua-webapp.md#mais-m%C3%A1gicas-do-angularjs-para-turbinar-sua-webapp)|[Original](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html)|
 
