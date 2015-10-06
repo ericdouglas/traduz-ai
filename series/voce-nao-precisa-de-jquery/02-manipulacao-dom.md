@@ -1,4 +1,4 @@
-# Selecionando elementos sem jQuery
+# Manipulação do DOM
 
 * **Artigo original**: [DOM Manipulation](http://blog.garstasio.com/you-dont-need-jquery/dom-manipulation/)
 * **Tradução**: [Eric Cristhiano](https://github.com/ericcristhiano)

@@ -265,4 +265,4 @@ Ao invés disso, tente usar uma micro-biblioteca que foca exclusivamente na sele
 
 [DOM Manipulation](http://blog.garstasio.com/you-dont-need-jquery/dom-manipulation/) (Em inglês)
 
-[Selecionando elementos sem jQuery.](01-manipulacao-dom.md) (Em português)
+[Manipulação de elementos no DOM](02-manipulacao-dom.md) (Em português)
