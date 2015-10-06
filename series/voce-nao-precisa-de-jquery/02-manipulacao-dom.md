@@ -15,7 +15,7 @@ Você verá que algumas manipulações no DOM são triviais sem o auxílio do jQ
 7. [Adicionando/removendo/alterando atributos](#adicionando-removendo-alterando-atributos)
 8. [Adicionando e alterando conteúdo](#adicionando-e-alterando-conteudo)
 9. [Adicionando/atualizando estilo dos elementos](#adicionando-atualizando-estilo-dos-elementos)
-10. [Micro-bibliotecas para ajuda?](#micro-bibliotecas-para-ajuda)
+10. [Micro-bibliotecas para ajuda](#micro-bibliotecas-para-ajuda)
 11. [Próximo](#proximo)
 
 ## <a name="criando-elementos"></a>Criando Elementos
