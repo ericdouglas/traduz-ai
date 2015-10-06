@@ -264,3 +264,5 @@ Ao invés disso, tente usar uma micro-biblioteca que foca exclusivamente na sele
 ## <a name="proximo"></a>Próximo Post
 
 [DOM Manipulation](http://blog.garstasio.com/you-dont-need-jquery/dom-manipulation/) (Em inglês)
+
+[Manipulação de elementos no DOM](02-manipulacao-dom.md) (Em português)
