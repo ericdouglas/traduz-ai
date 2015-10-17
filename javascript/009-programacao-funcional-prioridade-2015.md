@@ -4,9 +4,9 @@
 * **Artigo Original**: [Functional Programming should be your #1 priority for 2015](https://medium.com/@jugoncalves/functional-programming-should-be-your-1-priority-for-2015-47dd4641d6b9)
 * **Tradução**: [Eric Douglas](https://github.com/ericdouglas) e [Diogo Beato](https://github.com/diogobeato)
 
-Você provavelmente já ouviu expressões como "Clojure", "Scala", "Erlang", ou mesmo "Java agora tem lambdas". E você deve saber que isso tem alguma coisa a ver com "Programação Funcional". Se você participa de qualquer comunidade de programação, esse assunto provavelmente apareceu alguma vez.
+Você provavelmente já ouviu expressões como "Clojure", "Scala", "Erlang", ou mesmo "Java agora tem *lambdas*". E você deve saber que isso tem alguma coisa a ver com "Programação Funcional". Se você participa de qualquer comunidade de programação, esse assunto provavelmente apareceu alguma vez.
 
-Se você já buscou por "Functional Programming" (ou Programação Funcional), verá que não existe nada de novo. A segunda linguagem criada já utilizava isso, apareceu por volta da década de 50, denominada *Lisp*. Por que então as pessoas estão empolgadas com isso apenas agora? Quase 60 anos depois?!
+Se você já buscou por "Functional Programming" (ou Programação Funcional), viu que não existe nada de novo. A segunda linguagem criada já utilizava isso, apareceu por volta da década de 50, nominada *Lisp*. Por que, então, as pessoas estão empolgadas com isso apenas agora? Quase 60 anos depois!?
 
 ## No início, os computadores eram realmente lentos
 
@@ -17,13 +17,13 @@ Acredite nisso ou não, computadores eram muuuuito mais lentos que o DOM. Não, 
 
 Os computadores não tinham tanto poder de processamento para lidar com abstrações por todo o caminho e executar os programas funcionais. Então, Lisp acabou sendo mortalmente lenta, portanto, não adequada para o trabalho. Foi quando a programação imperativa começou sua dominação, especialmente com a ascenção do *C*.
 
-### Mas os Computadores melhoraram muito
+### Mas os computadores melhoraram muito
 
 Agora é virtualmente possível rodar a maioria das aplicações sem se preocupar muito sobre em qual linguagem foi escrita. Finalmente, linguagens funcionais tiveram sua segunda chance.
 
 ## Programação Funcional 50.5
 
-Isso não é uma introdução a *FP* (*Functional Programming*). No fim dessa seção, você deverá ter uma ideia o quê *FP* é e como começar sua jornada.
+Isso não é uma introdução a *FP* (*Functional Programming*). No fim dessa seção, você deverá ter uma ideia de o que *FP* é e como começar sua jornada.
 
 Você pode entender Programação Funcional por programação com funções, que é, de fato, muito mais literal do que você pode imaginar agora. Você vai criar funções em termos de outras funções e compor funções (Você se lembra `f ∘ g` da escola? Isso vai ser útil agora).
 
@@ -33,11 +33,11 @@ Aqui temos uma (não-exaustiva) lista de características da FP:
 1. High-Order Functions (Funções de Alta Ordem)
 1. Pure Functions (Funções Puras)
 1. Closures
-1. Immutable State (Estado Imutável)
+1. Immutable State (Imutabilidade de Estado)
 
 Você não deve se preocupar com nomes *sofisticados* agora: apenas entenda o que eles significam.
 
-**First-Class Functions** ou *Funções de Primeira Classe* significa que você vai armazenar funções dentro de uma variável. Acredito que você já fez algo parecido com isso em JavaScript:
+**First-Class Functions**, ou *Funções de Primeira Classe*, significa que você vai armazenar funções dentro de uma variável. Acredito que você já fez algo parecido com isso em JavaScript:
 
 ```js
 var add = function(a, b){
@@ -47,7 +47,7 @@ var add = function(a, b){
 
 Você está apenas armazenando uma função anônima que recebe `a` e `b`, e retorna `a + b`, dentro de uma variável denominada `add`.
 
-**High-Order Functions** ou *Funções de Alta Ordem* significa que funções podem retornar funções ou receber funções como parâmetro.
+**High-Order Functions**, ou *Funções de Alta Ordem*, significa que funções podem retornar funções ou receber funções como parâmetro.
 
 Novamente, em JavaScript:
 
@@ -73,7 +73,7 @@ add2(3) // => 5
 
 Ambos os casos são um exemplo de Funções de Alta Ordem, mesmo que você nunca tenha usado algo parecido com isso, provavelmente você já viu algo assim em algum lugar.
 
-**Pure Functions** ou *Funções Puras* signifca que funções não mudam nenhum valor, elas apenas recebem dados e retornam dados, assim como nossas amadas funções da Matemática. Isso também significa que se você passar `2` para uma função `f` e ela retornar `10`, ela sempre irá retornar `10`. Não importa o ambiente, threads, ou qualquer ordem de avaliação. Ela não causa nenhum efeito colateral em outras partes do programa e isso é realmente um conceito poderoso.
+**Pure Functions**, ou *Funções Puras*, significa que funções não mudam nenhum valor, elas apenas recebem dados e retornam dados, assim como nossas amadas funções da Matemática. Isso também significa que, se você passar `2` para uma função `f` e ela retornar `10`, ela sempre irá retornar `10`. Não importa o ambiente, threads, ou qualquer ordem de avaliação. Ela não causa nenhum efeito colateral em outras partes do programa, e isso é realmente um conceito poderoso.
 
 **Closures** significa que você pode salvar algum dado dentro de uma função que é apenas acessível à função de retorno, isto é, a função retornada mantém seu ambiente de execução.
 
@@ -107,13 +107,13 @@ Aquele momento de que teríamos aplicações concorrentes e distribuídas rodand
 
 Infelizmente, nós não estamos prontos: nosso "atual" (i.e., mais usado) modelo para concorrência e paralelismo, embora resolva o problema, ainda traz muita complexidade.
 
-Para termos melhores aplicações, precisamos de uma maneira simples e confiável para fazer isto. Você se lembra das features de FP mencionados acima? Pure Functions (Funções Puras) e Immutable State (Estados Imutáveis)? Exatamente. Você pode rodar uma função milhares de vezes em diferentes *cores* ou máquinas que ainda assim não terá resultados diferentes dos que teve anteriormente. Sendo assim, você pode usar o mesmo código para rodar em 1 *core* ou em 1k de cores. Podemos ser felizes novamente.
+Para termos melhores aplicações, precisamos de uma maneira simples e confiável para fazer isto. Você se lembra das features de FP mencionados acima? *Pure Functions* (Funções Puras) e *Immutable State* (Imutabilidade de Estado)? Exatamente. Você pode rodar uma função milhares de vezes em diferentes *cores* ou máquinas que ainda assim não terá resultados diferentes dos que teve anteriormente. Sendo assim, você pode usar o mesmo código para rodar em 1 *core* ou em 1k de *cores*. Podemos ser felizes novamente.
 
 > "Mas por que eu não posso continuar usando POO?"
 
-Ao menos para concorrência e paralelismo, POO não pode mais te salvar. Isso porque, POO precisa que haja estados mutáveis. Os métodos dos objetos que você chama, normalmente, é para alterar o estado do objeto em questão ou de outro. E trabalhando com concorrência precisamos adicionar muita complexidade para manter sincronizadas todas as threads que utilizam esses objetos concorrentemente ou paralelamente.
+Ao menos para concorrência e paralelismo, POO não pode mais te salvar. Isso porque, POO precisa que haja estados mutáveis. Os métodos dos objetos que você invoca, normalmente, servem para alterar o estado do objeto em questão ou de outro. E, trabalhando com concorrência, precisamos adicionar muita complexidade para mantermos sincronizadas todas as threads que utilizam esses objetos concorrentemente ou paralelamente.
 
-Eu não estou aqui para argumentar que você deve sair do seu paradigma atual para o FP (mesmo que [algumas pessoas diriam pra você fazer](https://blog.inf.ed.ac.uk/sapm/2014/03/06/enemy-of-the-state-or-why-oop-is-not-suited-to-large-scale-software/), mas definitivamente você precisa dominá-lo: O Java 8 e C++11 incorporaram as expressões lambda em suas plataformas. Posso afirmar que toda linguagem moderna e ainda mantida vai contar com features de FP em breve. E a maioria delas já tem.
+Eu não estou aqui para argumentar que você deve sair do seu paradigma atual para o FP (mesmo que [algumas pessoas digam pra você fazer](https://blog.inf.ed.ac.uk/sapm/2014/03/06/enemy-of-the-state-or-why-oop-is-not-suited-to-large-scale-software/), mas definitivamente você precisa dominá-lo: O Java 8 e C++11 incorporaram as expressões lambda em suas plataformas. Posso afirmar que toda linguagem moderna e ainda mantida vai contar com features de FP em breve. E a maioria delas já tem.
 
 Vale a pena mencionar que você não vai parar de usar estados mutáveis. Nós precisamos para desenvolver funcionalidades como IO e etc, para termos bons softwares. Porém, a ideia principal que FP provê é: use estados mutáveis apenas quando for necessário.
 
@@ -125,7 +125,7 @@ Programação Funcional irá te ajudar a escrever melhores programas e raciocina
 
 >"Eu tentei. Mas é muito complexo e tem péssima legibilidade."
 
-Tudo é difícil no começo. Eu tenho certeza que você ralou para aprender a programar e também para aprender POO. Provavelmente começar a fazer algo em POO foi mais fácil do que escrever seu primeiro programa. Principalmente porque você já estava familiarizado com alguns conceitos comuns, como declaração de variáveis e estruturas de repetição como for/while.
+Tudo é difícil no começo. Eu tenho certeza que você ralou para aprender a programar e também para aprender POO. Provavelmente começar a fazer algo em POO foi mais fácil do que escrever seu primeiro programa. Principalmente porque você já estava familiarizado com alguns conceitos comuns, como declaração de variáveis e estruturas de repetição como *for*/*while*.
 
 Para começar com FP, é quase como começar a aprender a programar de novo (dependendo de qual linguagem você escolher, será definitivamente como aprender a programar do zero).
 
@@ -154,7 +154,7 @@ Esse é um programa muito simples que exibe uma mensagem de parabéns quando o u
 
 O que o Haskell está fazendo:
 
-Se o argumento da função `guess` for igual a `7`, retorna **"Much 7 very wow."** ou retorne **“Ooops, try again.”** para qualquer outro valor. E é exatamente o que o código JavaScript está fazendo, mas o Haskell está identificando atravéz de um "padrão" provido pelo programador.
+Se o argumento da função `guess` for igual a `7`, retorna **"Much 7 very wow."** ou retorne **“Ooops, try again.”** para qualquer outro valor. E é exatamente o que o código JavaScript está fazendo, mas o Haskell está identificando através de um "padrão" provido pelo programador.
 
 Pode parecer que não vale a pena usar isso uma vez que você pode simplesmente usar um if/else. Mas isso é muito poderoso quando estamos trabalhando com estruturas de dados complexas.
 
@@ -167,7 +167,7 @@ plus1 (x:xs)  = x + 1 : plus1 xs
 -- > [1,2,3,4]
 ```
 
-No programa acima, **plus1** é uma função que recebe uma lista de Ints e e adiciona `1` para cada elemento da lista. Ele identifica o padrão de uma lista vazia `[]` (e retorna outra lista vazia, já que não há elementos para adicionar `1`) e quando ele identificar o padrão de uma lista com elementos: nomeia o primeiro elemento da lista como **x** e os elementos restantes como **xs**. Então executa a soma e concatena com o retorno da chamada recursiva.
+No programa acima, **plus1** é uma função que recebe uma lista de Ints e e adiciona `1` para cada elemento da lista. Ele identifica o padrão de uma lista vazia `[]` (e retorna outra lista vazia, já que não há elementos para adicionar `1`) e quando ele identificar o padrão de uma lista com elementos: nomeia o primeiro elemento da lista como **x** e os elementos restantes como **xs**. Então, executa a soma e concatena com o retorno da chamada recursiva.
 
 Eu tenho certeza que você passaria por maus bocados tentando reescrever a função `plus1` usando estilo imperativo em duas linhas de código e ainda deixá-lo legível.
  
