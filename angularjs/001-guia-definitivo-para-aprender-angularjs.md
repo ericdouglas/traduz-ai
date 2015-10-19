@@ -583,7 +583,7 @@ Isso irá imprimir o `username`. Agora nós vamos ir além para entender "declar
 
 <h2>Declarative Data-Binding (Ligação de Dados Declarativos)</h2>
 
-A filosofia do Angular é criar HTML dinâmico que seja rico em funcionalidade e faça perfeitamente muitos trabalhos que você nunca experaria no lado do cliente na web. Isto é exatamente o que eles entregam.
+A filosofia do Angular é criar HTML dinâmico que seja rico em funcionalidade e faça perfeitamente muitos trabalhos que você nunca esperaria no lado do cliente na web. Isto é exatamente o que eles entregam.
 
 Vamos imaginar que nós fizemos uma requisição Ajax para pegar uma lista de emails e sua linha Assunto, dados foram enviados e nós queremos renderizá-los no DOM. Ai é onde os queixos caem diante o poder do Angular. Primeiro nós vamos precisar de configurar um Controlador para Emails:
 
@@ -651,7 +651,7 @@ myApp.controller ('MainCtrl', ['$scope', function ($scope) {
 
 ```
 
-<strong>Dica profissional:</strong>É importante pensar sobre deletar dados do Model. Você não está deletando elementos ou outra coisa real relacionada ao DOM, Angular é um framework MVC e vai manusear tudo isto para você com sua "two-way binding" (ligação de duas vias) e o mundo livre de callback, você somente precisa configurar seu código de forma inteligente para deixá-lo responder aos seus dados.
+<strong>Dica profissional:</strong> É importante pensar sobre deletar dados do Model. Você não está deletando elementos ou outra coisa real relacionada ao DOM, Angular é um framework MVC e vai manusear tudo isto para você com sua "two-way binding" (ligação de duas vias) e o mundo livre de callback, você somente precisa configurar seu código de forma inteligente para deixá-lo responder aos seus dados.
 
 Ligar funções ao escopo também ocorre através das Diretivas `ng-*`, agora usaremos a Diretiva `ng-click`:
 
@@ -764,7 +764,7 @@ myApp.config (['$routeProvider', function ($routeProvider) {
 
 ```
 
-Nós podemos então ter `emails.html` simplesmente carregado com nosso HTML que gera nossa lista de email. Você cria uma aplicação muito sofisticada com pouco esfoço neste ponto.
+Nós podemos então ter `emails.html` simplesmente carregado com nosso HTML que gera nossa lista de email. Você cria uma aplicação muito sofisticada com pouco esforço neste ponto.
 
 Há muito mais sobre o serviço `$routeProvider` que é muito valioso de se conhecer, mas isto já irá lhe tirar da inércia. Coisas como interceptadores `$http` que irão disparar eventos quando uma chamada Ajax estiver em andamento, onde podemos mostrar alguns 'spinners' (símbolo de "carregando") enquanto estamos carregando os novos dados.
 
