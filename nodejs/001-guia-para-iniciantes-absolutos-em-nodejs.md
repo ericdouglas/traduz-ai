@@ -179,7 +179,7 @@ $ node my-web-server.js
 
 Você pode ter percebido uma coisa diferente agora. Sua aplicação node.js não fechou. Isto acontece pois você criou um servidor e sua aplicação node vai continuar rodando e respondendo as requisições até que você mesmo mate o processo.
 
-Se você quiser ter um servidor web completo, você terá que fazer este trabalho. Você deve checar o que foi requisitado, ler os arquivos apropriados e enviar o conteúdo de volta. Pessoas já fizeram estr trabalho duro para você.
+Se você quiser ter um servidor web completo, você terá que fazer este trabalho. Você deve checar o que foi requisitado, ler os arquivos apropriados e enviar o conteúdo de volta. Pessoas já fizeram este trabalho duro para você.
 
 ## Fazendo Algo Útil - Express
 
