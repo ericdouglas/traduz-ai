@@ -7,7 +7,7 @@
 
 > Veja uma versão atualizada desse artigo [aqui](https://github.com/ericdouglas/traduz-ai/blob/master/nodejs/-atualizado-simples-guia-nodejs-jade-express-mongodb.md)
 
-Não existe uma escassez de tutoriais para Node.js, mas a maioria deles cobrem usos e casos específicos, ou tópicos que somente aplicáveis se você já tiver um conhecimento prático do Node. Eu vejo vários comentários que se parecem com coisas do tipo: "Eu fiz o download do node, agora o que fazer?" Este tutorial responde esta questão e explica como iniciar bem do princípio.
+Não existe uma escassez de tutoriais para Node.js, mas a maioria deles cobrem casos de uso específicos ou tópicos que são aplicáveis só se você já tiver um conhecimento prático do Node. Eu vejo vários comentários que se parecem com coisas do tipo: "Eu fiz o download do node, agora o que fazer?" Este tutorial responde esta questão e explica como iniciar bem do princípio.
 
 ## O que é Node.js?
 
@@ -32,11 +32,12 @@ undefined
 
 ```
 
-No exemplo acima eu digitei `console.log('Hello World')` dentro do shell e apertei enter. O Node vai então executar o código e nós podemos ver nossa mensagem registrada. Ele também imprimi `undefined` pelo fato de sempre mostrar o valor de retorno de cada comando, e `console.log` não retorna nada.
+No exemplo acima eu digitei `console.log('Hello World')` dentro do shell e apertei enter. O Node vai então executar o código e nós podemos ver nossa mensagem registrada. Ele também imprime `undefined` pelo fato de sempre mostrar o valor de retorno de cada comando, e `console.log` não retorna nada.
 
 A outra forma de rodar o Node é fornecendo a ele um arquivo JavaScript para execução. Isto será na maioria das vezes a maneira como você irá utilizá-lo.
 
 `hello.js`
+
 ```js
 
 console.log('Hello World');
@@ -50,7 +51,7 @@ Hello World
 
 ```
 
-Neste exemplo, eu movi o comando `console.log()` para dentro de um arquivo e então passei este arquivo para o comando node como um argumento. O Node então roda o JavaScript contido neste arquivo e imprimi "Hello World".
+Neste exemplo, eu movi o comando `console.log()` para dentro de um arquivo e então passei este arquivo para o comando node como um argumento. O Node então roda o JavaScript contido neste arquivo e imprime "Hello World".
 
 ## Fazendo Algo Útil
 
@@ -78,19 +79,19 @@ A primeira coisa que nós precisamos fazer é ler o conteúdo do arquivo.
 var fs = require('fs');
 
 // Leia o conteúdo do arquivo para a memória
-fs.readFile('example-log.txt', function ( err, loData ) {
+fs.readFile('example-log.txt', function ( err, logData ) {
 	
 	// Se um erro ocorrer, será lançada uma
 	// exceção, e a aplicação irá ser encerrada
 	if ( err ) throw err;
 
 	// logData é um Buffer, converta-o para string
-	var text = loData.toString();
+	var text = logData.toString();
 });
 
 ```
 
-Felizmente o Node.js faz a entrada e saída (I/O) do arquivo facilmente com o módulo embutido [filesystem](http://nodejs.org/api/fs.html) (`fs`). O módulo `fs` tem uma função chamada [readFIle](http://nodejs.org/api/fs.html#fs_fs_readfile_filename_options_callback) que pega o caminho de um arquivo e um callback. O callback vai ser invocado quando o arquivo for lido por completo. O dado do arquivo vem na forma de um [Buffer](http://nodejs.org/api/buffer.html), que é basicamente um array de bytes. Nós podemos convertê-lo para uma string usando a função [`toString()`](http://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end).
+Felizmente o Node.js faz a entrada e saída (I/O) do arquivo facilmente com o módulo embutido [filesystem](http://nodejs.org/api/fs.html) (`fs`). O módulo `fs` tem uma função chamada [readFile](http://nodejs.org/api/fs.html#fs_fs_readfile_filename_options_callback) que pega o caminho de um arquivo e um callback. O callback vai ser invocado quando o arquivo for lido por completo. O dado do arquivo vem na forma de um [Buffer](http://nodejs.org/api/buffer.html), que é basicamente um array de bytes. Nós podemos convertê-lo para uma string usando a função [`toString()`](http://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end).
 
 Agora vamos adicionar o *parsing* (analisador).
 
@@ -179,7 +180,7 @@ $ node my-web-server.js
 
 Você pode ter percebido uma coisa diferente agora. Sua aplicação node.js não fechou. Isto acontece pois você criou um servidor e sua aplicação node vai continuar rodando e respondendo as requisições até que você mesmo mate o processo.
 
-Se você quiser ter um servidor web completo, você terá que fazer este trabalho. Você deve checar o que foi requisitado, ler os arquivos apropriados e enviar o conteúdo de volta. Pessoas já fizeram estr trabalho duro para você.
+Se você quiser ter um servidor web completo, você terá que fazer este trabalho. Você deve checar o que foi requisitado, ler os arquivos apropriados e enviar o conteúdo de volta. Pessoas já fizeram este trabalho duro para você.
 
 ## Fazendo Algo Útil - Express
 
@@ -192,7 +193,7 @@ $ npm install express
 
 ```
 
-Quando você instala um módulo, ele vai ser colado em uma pasta chamada *node_modules* dentro do diretório da sua aplicação. Você pode agora "require" (requisitar) este módulo como um módulo embutido. Vamos criar um arquivo estático básico usando o Express.
+Quando você instala um módulo, ele vai ser colado em uma pasta chamada *node_modules* dentro do diretório da sua aplicação. Você pode agora requisitar (*require*) este módulo como um módulo embutido. Vamos criar um arquivo estático básico usando o Express.
 
 `my-static-file-server.js`
 ```js
@@ -211,7 +212,7 @@ $ node my-static-file-server.js
 
 ```
 
-Agora você tem um servidor de arquivos estáticos bastante eficiente. Tudo que você colocar dentro da pasta `/public` vai ser requisitado pode agora ser requisitado pelo seu navegador e será mostrado. HTML, imagens, enfim, tudo. Por exemplo, se você colocar uma imagem chamada `my-image.png` dentro da pasta `public`, você pode acessá-la usando seu navegador no endereço `http://localhost:8080/my-image.png`. Claro que o Express tem muito muito outros recursos, mas você pode olhá-los a medida que continua desenvolvendo.
+Agora você tem um servidor de arquivos estáticos bastante eficiente. Tudo que você colocar dentro da pasta `/public` poderá ser requisitado pelo seu navegador e será mostrado. HTML, imagens, enfim, tudo. Por exemplo, se você colocar uma imagem chamada `my-image.png` dentro da pasta `public`, você pode acessá-la usando seu navegador no endereço `http://localhost:8080/my-image.png`. Claro que o Express tem vários outros recursos, mas você pode olhá-los a medida que continua desenvolvendo.
 
 ## NPM
 
@@ -246,7 +247,7 @@ Quando você roda este comando, o npm vai verificar na pasta atual pelo arquivo 
 
 ## Organização do Código
 
-Até agora só usamos um único arquivo, que não é muito sustentável. Na maioria das aplicações, seu código vai ser dividido em vários arquivos. Não nenhuma norma ou organização imposta dizendo para onde os arquivos vão. Isto não é Rails. Não há conceitos de views e controllers acontecendo aqui. Você pode fazer o que quiser.
+Até agora só usamos um único arquivo, que não é muito sustentável. Na maioria das aplicações, seu código vai ser dividido em vários arquivos. Não existe nenhuma norma ou organização imposta dizendo para onde os arquivos vão. Isto não é Rails. Não há conceitos de views e controllers acontecendo aqui. Você pode fazer o que quiser.
 
 Vamos refatorar o script de análise de registros (log parsing). Ele será muito mais testável e manutenível se nós separarmos a lógica de análise (parsing) dentro de um arquivo próprio.
 
@@ -290,7 +291,7 @@ O que eu fiz foi criar um novo arquivo para conter a lógica da análise dos reg
 
 A parte importante para isso é a linha `module.exports`. Isso diz ao Node que você está exportando deste arquivo. Neste caso exportei um construtor, então os usuários podem criar instâncias do meu objeto `Parser`. Você pode exportar qualquer coisa que quiser.
 
-Agora vamos olhar como é importante este arquivo e fazer uso do novo objeto `Parser`.
+Agora vamos ver como importar este arquivo e fazer uso do novo objeto `Parser`.
 
 `my-parser.js`
 ```js
@@ -321,7 +322,7 @@ fs.readFile('example-log.txt', function ( err, logData ) {
 
 ```
 
-Arquivos foram incluídos exatamente como módulos, exceto que você inclui um caminho ao invés de um nome. A extensão `.js` é implícita, então você pode omití-la se quiser.
+Arquivos são incluídos da mesma forma que os módulos, exceto que você inclui um caminho ao invés de um nome. A extensão `.js` é implícita, então você pode omití-la se quiser.
 
 Tendo sido exportado um construtor, é isso que vai ser retornado da declaração `require`. Eu posso agora criar instâncias do meu objeto `Parser` e usá-las.
 
@@ -330,4 +331,3 @@ Tendo sido exportado um construtor, é isso que vai ser retornado da declaraçã
 Esperamos que este tutorial tenha feito a ponte entre a parte de fazer o download do Node.js e construir sua primeira ferramenta. O Node.js é uma tecnologia extremamenta poderosa e flexível que pode resolver uma vastidão de tipos de problemas.
 
 Eu quero que cada um de vocês se lembre que o Node.js é somente limitado pela sua imaginação. As bibliotecas de seu núcleo foram cuidadosamente projetadas para fornecer as peças do quebra-cabeça necessárias para se construir qualquer fotografia. Combine-as com módulos disponíveis no NPM e será incrível o quão rápido você poderá começar a construir aplicações muito complexas e atraentes.
-
