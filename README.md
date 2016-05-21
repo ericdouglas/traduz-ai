@@ -23,6 +23,11 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 
 * [Você não precisa de jQuery](./series/voce-nao-precisa-de-jquery)
 
+### Outros Projetos
+
+ * [You Don't Know JS](https://github.com/cezaraugusto/You-Dont-Know-JS)
+ * [Wisdom of the elePHPant](https://github.com/reginaldojunior/wisdom-of-the-elephant)
+
 ---
 
 # JavaScript
