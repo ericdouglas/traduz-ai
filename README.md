@@ -16,8 +16,9 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 * [JavaScript](#javascript) (08)
 * [AngularJS](#angularjs) (05)
 * [Node.js](#nodejs) (02)
-* [MongoDB](#mongodb) (01)
+* [React](#react) (01)
 * [Handlebars](#handlebarsjs) (01)
+* [MongoDB](#mongodb) (01)
 
 ### Séries
 
@@ -53,6 +54,11 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 |04.|**Use AngularJS para Potencializar sua Aplicação Web**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/003-use-angularjs-para-potencializar-sua-webapp.md#use-angularjs-para-potencializar-suas-aplica%C3%A7%C3%B5es-web)|[Original](http://www.yearofmoo.com/2012/08/use-angularjs-to-power-your-web-application.html)|
 |05.|**Mais mágicas do AngularJS para turbinar sua Webapp**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/004-mais-magicas-angularjs-para-turbinar-sua-webapp.md#mais-m%C3%A1gicas-do-angularjs-para-turbinar-sua-webapp)|[Original](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html)|
 
+# React
+
+|nº|Artigo|Link para tradução|Link para original|
+|---|:---|:---|:---|
+|01.|**Sua Linha do Tempo para Aprender React**|[Tradução](react/01-sua-linha-do-tempo-para-aprender-react.md)|[Original](https://daveceddia.com/timeline-for-learning-react/)|
 
 # Node.js
 
