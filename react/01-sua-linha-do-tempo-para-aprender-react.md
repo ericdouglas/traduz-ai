@@ -50,3 +50,53 @@ Bem, não, não essas coisas. Ou seria algo muito simples ou muito grande para u
 "Protótipos" para o trabalho são especialmente terríveis, pois *você sabe absolutamente* em seu coração que um "protótipo" não vai ser nada do tipo. Isso vai viver muito depois da fase de prototipagem, se fundir com o software lançado, e nunca vai ser jogado fora ou reescrito.
 
 Usando um "protótipo" para o trabalho como um projeto de aprendizagem é problemático pois você começara a pensar sobre o *futuro*. Você sabe que isso vai ser mais do que apenas um protótipo, e ai você se preocupa - isso não deveria ter testes? Tenho que assegurar que a arquitetura vai escalar... Será que terei que refatorar essa confusão mais tarde? E isso não deveria ter testes?
+
+Esse problema específico é o que eu quero enfrentar com meu livro *[Learn Pure React](https://daveceddia.com/learn-pure-react/)* (Aprenda React Puro).
+
+Vou te dar uma ideia: projetos ideais estão entre um "Olá Mundo" e um "Twitter completo".
+
+Crie algumas listas de coisas (lista de afazeres, cervejas, filmes). Aprenda como o fluxo de dados acontece.
+
+Pegue uma interface de usuário grande (Twitter, Reddit, Hacker News, etc) e quebre-a em um pequeno pedaço para reconstruir - divida-a em componentes, construa as partes e renderize-as com dados estáticos.
+
+Você pegou a ideia: pequenos aplicativos descartáveis. Eles **devem ser descartáveis**, caso contrário você vai ficar preso em manutenção e arquitetura, ou algum outro problema que simplesmente não importa por agora.
+
+## Passo 3: Webpack
+
+Ferramentas de build são um grande obstáculo. Configurar o Webpack parece *trabalho pesado*, e é uma mentalidade totalmente diferente da usada para escrever código de interface de usuário.
+
+Eu recomendo [Webpack — The Confusing Parts](https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9#.tbe59m7ep) como uma introdução ao Webpack e sua forma de pensar.
+
+Uma vez entendido o que ele faz (empacota *todo tipo de arquivo*, não apenas JavaScript) - e como ele funciona (*loaders* para cada tipo de arquivo), a parte Webpack da sua vida vai ser muito mais feliz.
+
+## Passo 4: ES6
+
+Agora que você está no passo 4, você tem todos os passos acima como *contexto*. As partes do ES6 que você vai aprender agora vão ajudá-lo a escrever um código mais limpo, melhor e mais rápido. Se você tentar memorizar tudo isso de início, você não iria reter - mas agora, você sabe como tudo isso se encaixa.
+
+Aprenda as partes que você usa mais: *arrow functions*, `let` e `const`, `class`, *destructuring* e `import`.
+
+## Passo 5: Roteamento
+
+Algumas pessoas confundem *React Router* e *Redux* em suas cabeças - eles não estão relacionados ou são dependentes um do outro. Você pode (e deve!) aprender a usar o React Router antes de se aprofundar no Redux.
+
+Nesse ponto você vai ter uma base sólida em "pensar da forma React", e a abordagem baseada em componentes do React Router vai fazer mais sentido do que se você tivesse tentado aprendê-lo no primeiro dia de estudo.
+
+## Passo 6: Redux
+
+Dan Abramov, o criador do Redux, [diz para você](https://github.com/gaearon/react-makes-you-sad) não adicionar Redux muito cedo, e por uma boa razão - é uma dose de complexidade que pode ser desastrosa no começo.
+
+Os conceitos por atrás do Redux são muito simples. Mas existe um salto mental entre entender as partes e saber como aplicá-las em uma aplicação.
+
+Dessa forma, repita o que você fez no passo 2: faça aplicativos descartáveis. Construa vários pequenos experimentos com Redux para de fato internalizar como ele funciona.
+
+## Não faça
+
+Você viu em algum lugar da lista "escolha um projeto padrão (boilerplate)"? **Não**.
+
+Se aprofundar em React escolhendo um dos milhões de projetos boilerplate existentes por ai vai apenas te confundir. Eles incluem cada biblioteca possível, e força uma estrutura de diretórios sobre você - e nada disso é um requisito para aplicações pequenas, ou quando você está começando.
+
+E se você está pensando "Mas Dave, eu não estou fazendo uma aplicação pequena, eu estrou construindo uma aplicação complexa que vai servir milhões de usuários!"... volte e releia a parte sobre protótipos.
+
+## Como encarar essa jornada
+
+É muito para assimilar. É bastante coisa para aprender - mas existe uma progressão lógica. Um pé na frente do outro.
