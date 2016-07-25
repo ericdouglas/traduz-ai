@@ -71,7 +71,7 @@ Uma vez entendido o que ele faz (empacota *todo tipo de arquivo*, não apenas Ja
 
 ## Passo 4: ES6
 
-Agora que você está no passo 4, você tem todos os passos acima como *contexto*. As partes do ES6 que você vai aprender agora vão ajudá-lo a escrever um código mais limpo, melhor e mais rápido. Se você tentar memorizar tudo isso de início, você não iria reter - mas agora, você sabe como tudo isso se encaixa.
+Agora que você está no passo 4, você tem todos os passos acima como *contexto*. As partes do ES6 que você vai aprender agora vão ajudá-lo a escrever um código mais limpo, melhor e mais rápido. Se você tentasse memorizar tudo isso de início, você não iria reter - mas agora, você sabe como tudo isso se encaixa.
 
 Aprenda as partes que você usa mais: *arrow functions*, `let` e `const`, `class`, *destructuring* e `import`.
 
@@ -95,7 +95,7 @@ Você viu em algum lugar da lista "escolha um projeto padrão (boilerplate)"? **
 
 Se aprofundar em React escolhendo um dos milhões de projetos boilerplate existentes por ai vai apenas te confundir. Eles incluem cada biblioteca possível, e força uma estrutura de diretórios sobre você - e nada disso é um requisito para aplicações pequenas, ou quando você está começando.
 
-E se você está pensando "Mas Dave, eu não estou fazendo uma aplicação pequena, eu estrou construindo uma aplicação complexa que vai servir milhões de usuários!"... volte e releia a parte sobre protótipos.
+E se você está pensando "Mas Dave, eu não estou fazendo uma aplicação pequena, eu estou construindo uma aplicação complexa que vai servir milhões de usuários!"... volte e releia a parte sobre protótipos.
 
 ## Como encarar essa jornada
 
