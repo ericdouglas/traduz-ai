@@ -11,27 +11,27 @@ Além dos materiais separados para tradução, você pode contribuir através da
 Espero que seja de bom proveito este material, para que juntos possamos aprender e crescer! Bons estudos e um forte abraço!
 
 
-### Artigos
+## Artigos
 
 * [JavaScript](#javascript) (08)
 * [AngularJS](#angularjs) (05)
 * [Node.js](#nodejs) (02)
-* [React](#react) (01)
+* [React](#react) (02)
 * [Handlebars](#handlebarsjs) (01)
 * [MongoDB](#mongodb) (01)
 
-### Séries
+## Séries
 
 * [Você não precisa de jQuery](./series/voce-nao-precisa-de-jquery)
 
-### Outros Projetos
+## Outros Projetos
 
  * [You Don't Know JS](https://github.com/cezaraugusto/You-Dont-Know-JS)
  * [Wisdom of the elePHPant](https://github.com/reginaldojunior/wisdom-of-the-elephant)
 
 ---
 
-# JavaScript
+## JavaScript
 
 |nº|Artigo|Link para tradução|Link para original|
 |---|:---|:---|:---|
@@ -44,7 +44,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 |07.|**Um Mergulho no JavaScript Puro**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/008-um-mergulho-no-javascript-puro.md)|[Original](http://blog.adtile.me/2014/01/16/a-dive-into-plain-javascript/)|
 |08.|**Programação Funcional Deve Ser Sua Prioridade número #1 em 2015**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/009-programacao-funcional-prioridade-2015.md)|[Original](https://medium.com/@jugoncalves/functional-programming-should-be-your-1-priority-for-2015-47dd4641d6b9)|
 
-# AngularJS
+## AngularJS
 
 |nº|Artigo|Link para tradução|Link para original|
 |---|:---|:---|:---|
@@ -54,27 +54,28 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 |04.|**Use AngularJS para Potencializar sua Aplicação Web**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/003-use-angularjs-para-potencializar-sua-webapp.md#use-angularjs-para-potencializar-suas-aplica%C3%A7%C3%B5es-web)|[Original](http://www.yearofmoo.com/2012/08/use-angularjs-to-power-your-web-application.html)|
 |05.|**Mais mágicas do AngularJS para turbinar sua Webapp**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/004-mais-magicas-angularjs-para-turbinar-sua-webapp.md#mais-m%C3%A1gicas-do-angularjs-para-turbinar-sua-webapp)|[Original](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html)|
 
-# React
+## React
 
 |nº|Artigo|Link para tradução|Link para original|
 |---|:---|:---|:---|
 |01.|**Sua Linha do Tempo para Aprender React**|[Tradução](react/01-sua-linha-do-tempo-para-aprender-react.md)|[Original](https://daveceddia.com/timeline-for-learning-react/)|
+|02.|**Introdução ao React para pessoas que sabem apenas o suficiente de jQuery para sobreviver**|[Tradução](react/02-introducao-ao-react-para-pessoas-que-sabem-apenas-jquery.md)|[Original](http://reactfordesigners.com/labs/reactjs-introduction-for-people-who-know-just-enough-jquery-to-get-by/)|
 
-# Node.js
+## Node.js
 
 |nº|Artigo|Link para tradução|Link para original|
 |---|:---|:---|:---|
 |01.|**Guia Para Absolutos Iniciantes em Node.js**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/nodejs/001-guia-para-iniciantes-absolutos-em-nodejs.md)|[Original](http://blog.modulus.io/absolute-beginners-guide-to-nodejs)|
 |02.|**Guia para um dev. front-end iniciar Com Node.js, Express, Jade e MongoDB**|[Tradução](https://github.com/cerebrobr/traduz-ai/blob/master/nodejs/002-simples-guia-nodejs-jade-express-mongodb.md)|[Original](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)|
 
-# MongoDB
+## MongoDB
 
 |nº|Artigo|Link para tradução|Link para original|
 |---|:---|:---|:---|
 |01.|**Uma introdução ao MongoDB**|[Tradução](https://github.com/fsbatista/traduz-ai/blob/master/MongoDB/001-uma-introdução-ao-mongodb.md)|[Original](https://scotch.io/tutorials/an-introduction-to-mongodb)|
 
 
-# Handlebars.js
+## Handlebars.js
 
 |nº|Artigo|Link para tradução|Link para original|
 |---|:---|:---|:---|
