@@ -31,3 +31,32 @@ Nesse tutorial, eu estou visando o terceiro grupo mencionado: *pessoas que sabem
 Vamos começar!
 
 ## Tempo Estimado: 1 ~ 2 horas
+
+Se você ir realmente rápido (e copiar e colar os exemplos de código ao invés de digitar), este tutorial deve levar em torno de 1 hora. Se você for devagar, ele deve um pouco mais de 2 horas.
+
+### Dúvidas
+
+Se você tiver alguma dúvida, você pode:
+
+- Comentar na caixa de comentários no fim [desta página](http://reactfordesigners.com/labs/reactjs-introduction-for-people-who-know-just-enough-jquery-to-get-by/).
+- Mande-me um e-mail em shu@chibicode.com.
+- Mande um tweet em @chibicode.
+- Crie uma issue [nesse repositório](https://github.com/reactfordesigners/reactfordesigners.github.io/issues).
+
+## Visão geral: Vamos Construir uma "Tweet Box"
+
+Muitos tutorias de React começam explicando como o React funciona ou porque o React é incrível. Meu tutorial não.
+
+Ao invés, vamos já começar criando uma simples interface de usuário (UI), alternando entre implementações jQuery e implementações React, explicando as diferenças durante o caminho. Acredito que você vai pensar mais dessa forma do que apenas digitando os exemplos.
+
+A UI (interface de usuário) que vamos construir vai se parecer a caixa de tweet que você encontra no Twitter. Ela não vai ser exatamente como a caixa de tweet real, mas vai ser muito similar. Espero que você ache isso um exemplo prático.
+
+## Passo 1: Introdução ao JSBin (5 - 10 minutos)
+
+Vamos usar o [JSBin](http://jsbin.com/), um editor online de HTML/CSS/JS que suporta códigos jQuery e React. Você deve estar familiarizado com serviços similares como [CodePen](http://codepen.io/) e [JSFiddle](https://jsfiddle.net/) - eles são todos muito parecidos, então apenas decidi usar o JSBin.
+
+Aqui você encontra um exemplo do JSBin: [link](http://jsbin.com/temaduv/1/edit).
+
+**Tente modificar o HTML na parte esquerda** - mude o texto do botão. Você verá a mudança na direita. É assim que o JSBin funciona.
+
+### Crie uma conta no JSBin
