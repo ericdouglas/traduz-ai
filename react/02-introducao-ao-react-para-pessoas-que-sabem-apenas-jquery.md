@@ -1,5 +1,4 @@
 # Introdução ao React para pessoas que sabem apenas o suficiente de jQuery para sobreviver
-
 * **Artigo original**: [React.js Introduction For People Who Know Just Enough jQuery To Get By](http://reactfordesigners.com/labs/reactjs-introduction-for-people-who-know-just-enough-jquery-to-get-by/)
 * **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
@@ -9,7 +8,6 @@
 Eu também ouvi que React era bom e recentemente passei algum tempo brincando com ele. Agora que estou bastante confortável com React, eu decidi escrever um tutorial sobre esse assunto.
 
 ## Público alvo: Pessoas que sabem apenas o suficiente sobre jQuery para sobreviver
-
 Antes de começar, eu gostaria de esclarecer quem é meu público alvo.
 
 Zed Shaw, o autor da série ["Aprenda a programar da forma difícil"](http://learncodethehardway.org/), recentemente escreveu um ótimo artigo chamado ["Programadores Iniciados vs Iniciantes"](https://zedshaw.com/2015/06/16/early-vs-beginning-coders/). Em seu artigo, Zeg critica educadores de programação que dizem que seus materiais são para "iniciantes", mas que na verdade são totalmente incompreensíveis para a maioria dos "totalmente" iniciantes.
@@ -31,7 +29,6 @@ Nesse tutorial, eu estou visando o terceiro grupo mencionado: *pessoas que sabem
 Vamos começar!
 
 ## Tempo Estimado: 1 ~ 2 horas
-
 Se você ir realmente rápido (e copiar e colar os exemplos de código ao invés de digitar), este tutorial deve levar em torno de 1 hora. Se você for devagar, ele deve um pouco mais de 2 horas.
 
 ### Dúvidas
@@ -44,7 +41,6 @@ Se você tiver alguma dúvida, você pode:
 - Crie uma issue [nesse repositório](https://github.com/reactfordesigners/reactfordesigners.github.io/issues).
 
 ## Visão geral: Vamos Construir uma "Tweet Box"
-
 Muitos tutorias de React começam explicando como o React funciona ou porque o React é incrível. Meu tutorial não.
 
 Ao invés, vamos já começar criando uma simples interface de usuário (UI), alternando entre implementações jQuery e implementações React, explicando as diferenças durante o caminho. Acredito que você vai pensar mais dessa forma do que apenas digitando os exemplos.
@@ -52,7 +48,6 @@ Ao invés, vamos já começar criando uma simples interface de usuário (UI), al
 A UI (interface de usuário) que vamos construir vai se parecer a caixa de tweet que você encontra no Twitter. Ela não vai ser exatamente como a caixa de tweet real, mas vai ser muito similar. Espero que você ache isso um exemplo prático.
 
 ## Passo 1: Introdução ao JSBin (5 - 10 minutos)
-
 Vamos usar o [JSBin](http://jsbin.com/), um editor online de HTML/CSS/JS que suporta códigos jQuery e React. Você deve estar familiarizado com serviços similares como [CodePen](http://codepen.io/) e [JSFiddle](https://jsfiddle.net/) - eles são todos muito parecidos, então apenas decidi usar o JSBin.
 
 Aqui você encontra um exemplo do JSBin: [link](http://jsbin.com/temaduv/1/edit).
@@ -60,3 +55,35 @@ Aqui você encontra um exemplo do JSBin: [link](http://jsbin.com/temaduv/1/edit)
 **Tente modificar o HTML na parte esquerda** - mude o texto do botão. Você verá a mudança na direita. É assim que o JSBin funciona.
 
 ### Crie uma conta no JSBin
+A menos que já tenha uma conta no JSBin, **vá até [o site](http://jsbin.com/)** e crie uma conta. Click em ***Login* ou *Register*** no menu para criar uma conta.
+
+Depois de criar sua conta, você pode **clonar** *JSBins* para sua conta, da mesma forma que você clona repositórios GitHub públicos.
+
+Vamos tentar. Abra [este link](http://jsbin.com/josemi/1/edit?html,output).
+
+Você pode selecionar *"Add library"* no menu para importar bibliotecas CSS/JS.
+
+![Adicionando bibliotecas no JSBin](http://reactfordesigners.com/images/labs/add-library.png)
+
+Tente fazer o seguinte:
+
+- Clicar em *"Add library"* e adicione a última versão do Bootstrap.
+- Adicione as classes `btn btn-primary` em `<button>`.
+
+A saída (aba *Output* no JSBin) deve estar um pouco mais bonita, [dessa forma](http://jsbin.com/cotehe/1/edit?html,output).
+
+### Criando uma Caixa de Tweet
+Você já deve estar bem confortável com o JSBin agora. Certo, vamos criar nossa caixa de tweet. Ainda no mesmo JSBin anterior, **mude o HTML dentro de `<body>` para isso**:
+
+```
+<div class="well clearfix">
+  <textarea class="form-control"></textarea><br/>
+  <button class="btn btn-primary pull-right">Tweet</button>
+</div>
+```
+
+Nós vamos usar classes Bootstrap como `form-control`, `well`, `clearfix`, etc. Elas são apenas para a parte visual, mas são irrelevantes para o tutorial. [Aqui está o resultado](http://jsbin.com/zevezic/1/edit?html,output).
+
+É isso para esse passo! Nada mal hein?!
+
+## Passo 2: Implementando a Primeira Funcionalidade - O Botão "Tweet" Deve Inicialmente Estar Desativado (5 minutos)
