@@ -34,7 +34,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 ## JavaScript
 
 |nº|Artigo|Link para tradução|Link para original|
-|---|:---|:---|:---|
+|:---:|---|:---:|:---:|
 |01|**Como Aprender JavaScript Corretamente**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/001-como-aprender-js-corretamente.md#como-aprender-javascript-corretamente--javascriptis-sexy)|[Original](http://javascriptissexy.com/how-to-learn-javascript-properly/)|
 |02.|**Objetos JavaScript em Detalhe**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/002-objetos-js-em-detalhe.md#objetos-javascript-em-detalhe)|[Original](http://javascriptissexy.com/javascript-objects-in-detail/)|
 |03.|**Escopo de Variável e Hoisting no JavaScript Explicado**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/003-escopo-de-variavel-js-e-hoisting-explicado.md#escopo-de-vari%C3%A1vel-javascript-e-hoisting-explicado)|[Original](http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/)|
@@ -47,7 +47,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 ## AngularJS
 
 |nº|Artigo|Link para tradução|Link para original|
-|---|:---|:---|:---|
+|:---:|---|:---:|:---:|
 |01.|**Guia de Estilos AngularJS**|[Tradução](https://github.com/eoop/angularjs-style-guide/blob/master/README-pt-br.md)|[Original](https://github.com/mgechev/angularjs-style-guide)|
 |02.|**Guia Definitivo para Aprender AngularJS em Um Dia**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/001-guia-definitivo-para-aprender-angularjs.md)|[Original](http://toddmotto.com/ultimate-guide-to-learning-angular-js-in-one-day/)|
 |03.|**Aprenda AngularJS com estes 5 exemplos práticos**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/angularjs/002-aprenda-angularjs-com-5-exemplos.md)|[Original](http://tutorialzine.com/2013/08/learn-angularjs-5-examples/)| 
@@ -57,26 +57,26 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 ## React
 
 |nº|Artigo|Link para tradução|Link para original|
-|---|:---|:---|:---|
+|:---:|---|:---:|:---:|
 |01.|**Sua Linha do Tempo para Aprender React**|[Tradução](react/01-sua-linha-do-tempo-para-aprender-react.md)|[Original](https://daveceddia.com/timeline-for-learning-react/)|
 |02.|**Introdução ao React para pessoas que sabem apenas o suficiente de jQuery para sobreviver**|[Tradução](react/02-introducao-ao-react-para-pessoas-que-sabem-apenas-jquery.md)|[Original](http://reactfordesigners.com/labs/reactjs-introduction-for-people-who-know-just-enough-jquery-to-get-by/)|
 
 ## Node.js
 
 |nº|Artigo|Link para tradução|Link para original|
-|---|:---|:---|:---|
+|:---:|---|:---:|:---:|
 |01.|**Guia Para Absolutos Iniciantes em Node.js**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/nodejs/001-guia-para-iniciantes-absolutos-em-nodejs.md)|[Original](http://blog.modulus.io/absolute-beginners-guide-to-nodejs)|
 |02.|**Guia para um dev. front-end iniciar Com Node.js, Express, Jade e MongoDB**|[Tradução](https://github.com/cerebrobr/traduz-ai/blob/master/nodejs/002-simples-guia-nodejs-jade-express-mongodb.md)|[Original](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)|
 
 ## MongoDB
 
 |nº|Artigo|Link para tradução|Link para original|
-|---|:---|:---|:---|
+|:---:|---|:---:|:---:|
 |01.|**Uma introdução ao MongoDB**|[Tradução](https://github.com/fsbatista/traduz-ai/blob/master/MongoDB/001-uma-introdução-ao-mongodb.md)|[Original](https://scotch.io/tutorials/an-introduction-to-mongodb)|
 
 
 ## Handlebars.js
 
 |nº|Artigo|Link para tradução|Link para original|
-|---|:---|:---|:---|
+|:---:|---|:---:|:---:|
 |01.|**Aprenda Tudo sobre Handlebars.js Templating JavaScript**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/handlebars/001-aprenda-tudo-sobre-handlebars.md#aprenda-tudo-sobre-handlebarsjs-templating-javascript)|[Original](http://javascriptissexy.com/handlebars-js-tutorial-learn-everything-about-handlebars-js-javascript-templating/)|
