@@ -87,3 +87,91 @@ Nós vamos usar classes Bootstrap como `form-control`, `well`, `clearfix`, etc. 
 É isso para esse passo! Nada mal hein?!
 
 ## Passo 2: Implementando a Primeira Funcionalidade - O Botão "Tweet" Deve Inicialmente Estar Desativado (5 minutos)
+Agora é hora de um pouco de JS. Nós vamos implementar primeiro a seguinte funcionalidade:
+
+**Funcionalidade 1**: o botão "Tweet" deve estar inicialmente desativado. Se você digitar algo na caixa de texto, o botão fica ativado.
+
+Para fazer isso funcionar, **prossiga a partir [deste JSBin](http://jsbin.com/wewimu/2/edit?html,js,output), abra a aba JavaScript e adicione o código jQuery a seguir**. Você não precisa de adicionar a biblioteca jQuery porque o Bootstrap, que adicionamos no passo anterior, inclue o jQuery.
+
+```js
+// Desabilita o botão inicialmente
+$("button").prop("disabled", true);
+
+// Quando o valor do textarea  muda...
+$("textarea").on("input", function() {
+  // Se tiver pelo menos um caracter...
+  if ($(this).val().length > 0) {
+    // Ativa o botão.
+    $("button").prop("disabled", false);
+  } else {
+    // Senão, desabilita o botão.
+    $("button").prop("disabled", true);
+  }
+});
+```
+
+### Explicação
+- Eu usei nomes de tag, `button` e `textarea`, como seletores - não existe necessidade de adicionar IDs/classes para esse exemplo trivial.
+- Para habilitar/desabilitar o botão, use `$(...).prop(disabled, ...)`.
+- Para ouvir as mudanças no `textarea`, use o evento `input`, que funciona em navegadores modernos.
+
+Teste digitar algo na caixa de tweet e veja o botão o estado do botão mudar (habilitado/desabilitado).
+
+NÂO PROSSIGA se esse exemplo foi confuso para você - você precisa um pouco de jQuery antes de ir para o React. Existem vários materiais excelentes como [Codecademy](http://www.codecademy.com/en/tracks/jquery), [Treehouse](http://teamtreehouse.com/library/jquery-basics), [Code School](https://www.codeschool.com/courses/try-jquery), e outros.
+
+Agora que essa funcionalidade está completa, vamos tentar reimplementar a mesma coisa usando React. Isso vai levar alguns passos.
+
+## Passo 3: A Caixa de Tweet Usando React.js (5 - 10 minutos)
+Uma das primeiras coisas que você vai notar no React é que você vai escrever marcação no JS, não no HTML.
+
+Deixe-me mostrar o que quero dizer. Aqui está o código React que exibe a mesma caixa de tweet.
+
+### ATENÇÃO! Você não precisa digitar ainda - apenas leia o código.
+
+**HTML**
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="https://fb.me/react-15.1.0.js"></script>
+<script src="https://fb.me/react-dom-15.1.0.js"></script>
+    <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id="container"></div>
+</body>
+</html>
+```
+
+**JSX** 
+```js
+var TweetBox = React.createClass({
+  render: function() {
+    return (
+      <div className="well clearfix">
+        <textarea className="form-control"></textarea>
+        <br/>
+        <button className="btn btn-primary pull-right">Tweet</button>
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <TweetBox />,
+  document.getElementById("container")
+);
+```
+
+Algumas observações:
+
+- Dentro de `return (...)` temos código HTML, não JavaScript. Em React, você vai escrever em uma sintaxe especial chamada JSX, que lhe permite colocar código do tipo HTML dentro do JavaScript.
+- Eu digo código "*tipo*" HTML porque não é idêntico ao HTML. Note que ele usa `className` ao invés de `class` - mas ele é muito parecido, então você vai aprender rápido.
+- Seu navegador não entende JSX, então quando o React processa seu código JSX, ele automaticamente converte a parte HTML dentro do JSX para código JavaScript válido de forma que o navegador possa entendê-lo.
+- O código HTML dentro de `return(...)` é praticamente idêntico ao código HTML do passo 1.
+- Veja que no código HTML acima praticamente não temos marcações além de `<body><div id="container"></div></body>`. Isso é o que eu quero dizer quando falo que **em React, você vai escrever marcação no JavaScript (JSX), não no HTML**.
+
+### Perguntas Frequentemente Feitas & Respostas
