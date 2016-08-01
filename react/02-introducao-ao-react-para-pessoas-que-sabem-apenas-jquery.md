@@ -174,4 +174,14 @@ Algumas observações:
 - O código HTML dentro de `return(...)` é praticamente idêntico ao código HTML do passo 1.
 - Veja que no código HTML acima praticamente não temos marcações além de `<body><div id="container"></div></body>`. Isso é o que eu quero dizer quando falo que **em React, você vai escrever marcação no JavaScript (JSX), não no HTML**.
 
-### Perguntas Frequentemente Feitas & Respostas
+### Perguntas Feitas Frequentemente & Respostas
+- **Pergunta:** O que `React.createClass` e `ReactDOM.render` fazem? Preciso entendê-las agora?
+- **Resposta:** Não se preocupe com isso agora. Basicamente, `React.createClass` cria um pedaço de UI (interface do usuário) com um nome (neste caso, `TweetBox`). Ele posteriormente vai ser anexado ao DOM pelo `ReactDOM.render(<TweetBox />, document.getElementById("container"))` - isso significa que essa UI vai ser adicionada dentro da tag `<div id="container">`. Isso é tudo que você precisa saber por agora.
+
+- **Pergunta:** Preciso de fazer algo especial para escrever JSX na minha máquina local?
+- **Resposta:** Sim, mas isso está fora do escopo deste tutorial - sucintamente, você precisa importar algo chamado *JSX transformer* ([veja aqui como](http://facebook.github.io/react/downloads.html)). Esse passo não é necessário no JSBin. Tudo que você precisa para escrever JSX no JSBin é (1) adicionar a biblioteca React (a sem *addons*) no menu dropdown e (2) selecionar "JSX (React)" no menu dropdown na aba JS.
+
+- **Pergunta:** Não é uma má prática escrever marcação (HTML) e comportamente (JS) no mesmo lugar?
+- **Resposta:** Isso pode ser uma má prática para páginas web simples, mas não necessariamente para grandes aplicações web. Em grandes aplicações web, teremos centenas de partes de UI, cada uma contendo sua própria marcação e comportamento. O código vai ser mais gerenciável se essas marcações e comportamentos permanecerem juntos para cada pedaço de UI, ao contrário de deixar "toda marcação" junta e "todo os comportamentos" juntos. E o React foi projetado para o desenvolvimento de aplicações web grandes. De fato, o React foi criado e é usado pelo Facebook, uma das maiores aplicações web de todos os tempos.
+
+A seguir vou te ensinar como escrever o código React acima passo a passo.
