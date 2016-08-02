@@ -185,3 +185,117 @@ Algumas observações:
 - **Resposta:** Isso pode ser uma má prática para páginas web simples, mas não necessariamente para grandes aplicações web. Em grandes aplicações web, teremos centenas de partes de UI, cada uma contendo sua própria marcação e comportamento. O código vai ser mais gerenciável se essas marcações e comportamentos permanecerem juntos para cada pedaço de UI, ao contrário de deixar "toda marcação" junta e "todo os comportamentos" juntos. E o React foi projetado para o desenvolvimento de aplicações web grandes. De fato, o React foi criado e é usado pelo Facebook, uma das maiores aplicações web de todos os tempos.
 
 A seguir vou te ensinar como escrever o código React acima passo a passo.
+
+## Passo 4: Escrevendo Seu Primeiro Código React (5 - 10 minutos)
+Eu criei um HTML inicial para você. Usando "Add library" (adiciona biblioteca), eu importei o Bootstrap (e removi os arquivos `bootstrap.js` e jQuery) e React (sem *addons*).
+
+**Por favor, tente seguir junto comigo. Para começar, click "Save" para copiar [esse JSBin](http://jsbin.com/notawe/11/edit?html,output) para sua conta.**
+
+**HTML** 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://fb.me/react-15.1.0.js"></script>
+<script src="https://fb.me/react-dom-15.1.0.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id="container"></div>
+</body>
+</html>
+```
+
+Depois de salvar seu JSBin, **abra a aba JavaScript e selecione "JSX (React)":** 
+
+![Abrindo a aba JavaScript - JSX React](http://reactfordesigners.com/images/labs/select-jsx.png)
+
+Agora você está pronto para escrever React. **Tente me acompanhar e digite o seguinte código JavaScript** em seu JSBin.
+
+**JSX**
+```js
+var TweetBox = React.createClass({
+  render: function() {
+  }
+});
+```
+
+Esse é o template para se criar uma parte da UI usando React (nesse caso, uma caixa de Tweet). Isso é tão essencial quanto `$(function() { ... })` no jQuery.
+
+Para realmente construir a UI, precisamos preencher o método `render()`. Por agora, vamos deixá-lo simples com apenas uma tag `div`.
+
+**JSX** 
+```js
+var TweetBox = React.createClass({
+  render: function() {
+    return (
+      <div>
+        Hello World!
+      </div>
+    );
+  }
+});
+```
+
+Como no exemplo acima, **coloque um par de parênteses `(...)` depois de `return`, e escreva a marcação dentro.** 
+
+### Armadilhas do JSX 
+Existe uma coisa que você precisa se lembrar com JSX - no método `render()`, é necessário existir exatamente **uma** tag externa dentro de `return (...)`.
+
+Dessa forma, o código a seguir não vai funcionar porque não existe nenhuma tag externa:
+
+**JSX** 
+```js
+return (
+  Hello World!
+);
+```
+
+O próximo código também não funciona pois existem duas tags `span` externas dentro de `return (...)`:
+
+**JSX** 
+```js
+return (
+  <span>
+    Hello
+  </span>
+  <span>
+    World
+  </span>
+);
+```
+
+Para o exemplo acima, a solução alternativa é criar uma tag extra que envolve as duas tags `span`. Eu apenas usei uma `div` aqui. Esse é um mal necessário quando se usa React.
+
+**JSX** 
+```js
+return (
+  <div>
+    <span>
+      Hello
+    </span>
+    <span>
+      World
+    </span>
+  </div>
+);
+```
+
+### Anexando a UI ao DOM
+Agora precisamos "anexar" a UI ao DOM para vermos o `Hello World`. Para fazer isso, **adicione `ReactDOM.render()` abaixo do código que acabamos de escrever:** 
+
+**JSX** 
+```js
+var TweetBox = React.createClass({
+  ...
+});
+
+ReactDOM.render(
+  <TweetBox />,
+  document.getElementById("container")
+);
+```
+
+
