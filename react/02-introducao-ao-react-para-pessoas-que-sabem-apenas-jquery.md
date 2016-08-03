@@ -298,4 +298,33 @@ ReactDOM.render(
 );
 ```
 
+> **Nota:** a elipse (`...`) no trecho de código indica que uma parte do código foi omitida para maior clareza. Em outras palavras, não toque nessa parte do código, deixe-a como está.
 
+`ReactDOM.render` recebe dois argumentos. O primeiro argumento é o objeto UI, que é `<VariableName />`. O segundo argumento é o objeto DOM (neste caso, `document.getElementById("container")`). Colocados juntos, o código acima renderiza a UI `TweetBox` dentro da `<div id="container">`.
+
+Agora, você deve ver `Hello World` aparecendo no seu JSBin. Parabéns, você escreveu sua primeira interface de usuário (UI) com React!
+
+### Escreva o HTML Correto Para a Tweet Box
+Agora, ao invés de `Hellow World`, nós vamos implementar o HTML para a caixa de tweet. Troque o código dentro de `render()` por este:
+
+**JSX** 
+```js
+return (
+  <div className="well clearfix">
+    <textarea className="form-control"></textarea>
+    <br/>
+    <button className="btn btn-primary pull-right">Tweet</button>
+  </div>
+);
+```
+
+Existem duas coisas que você precisa estar atento:
+
+- **Não use `class`**. Ao invés, use `className`. Isso é devido ao fato do JSX ser traduzido para JS, e `class` é uma palavra reservada na nova versão do JS.
+- **Se você usar `<br>` ao invés de `<br/>`, isso não vai funcionar**. Certifique-se de colocar um `/` em tags "autor fechantes".
+
+Todo o resto deve ser o mesmo com o exemplo jQuery anterior.
+
+Se você digitou tudo corretamente, você vai conseguir ver a caixa de tweet no seu JSBin. **Se nada estiver aparecendo em *ouput*, verifique seu código cuidadosamente, certificando-se que não tem nenhum erro de digitação.** 
+
+É isso para esse passo! [Aqui está o JSBin para essa parte](http://jsbin.com/vajica/10/edit?html,js,output).
