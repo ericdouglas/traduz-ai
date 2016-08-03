@@ -328,3 +328,72 @@ Todo o resto deve ser o mesmo com o exemplo jQuery anterior.
 Se você digitou tudo corretamente, você vai conseguir ver a caixa de tweet no seu JSBin. **Se nada estiver aparecendo em *ouput*, verifique seu código cuidadosamente, certificando-se que não tem nenhum erro de digitação.** 
 
 É isso para esse passo! [Aqui está o JSBin para essa parte](http://jsbin.com/vajica/10/edit?html,js,output).
+
+## Passo 5 - Reimplementando a Primeira Funcionalidade - Botão Tweet Deve Estar Inicialmente Desabilitado - em React (5 - 10 minutos)
+Vamos reimplementar com React a primeira funcionalidade que implementamos usando jQuery:
+
+**Funcionalidade 1:** o botão "Tweet" deve estar inicialmente desabilitado. Quando tiver pelo menos um caracter no campo de texto, o botão "Tweet" deve ficar ativo.
+
+[Aqui está](http://jsbin.com/wewimu/3/edit?html,js,output) o código jQuery que escrevemos:
+
+**HTML** 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div class="well clearfix">
+    <textarea class="form-control"></textarea><br>
+    <button class="btn btn-primary pull-right">Tweet</button>
+  </div>
+</body>
+</html>
+```
+
+**JS** 
+```js
+// Initially disable the button
+$("button").prop("disabled", true);
+
+// When the value of the text area changes...
+$("textarea").on("input", function() {
+  // If there's at least one character...
+  if ($(this).val().length > 0) {
+    // Enable the button.
+    $("button").prop("disabled", false);
+  } else {
+    // Else, disable the button.
+    $("button").prop("disabled", true);
+  }
+});
+```
+
+Vamos ver como fazer isso com React.
+
+**Inicie com o JSBin to passo anterior.**
+
+> **Dica:** já que você não vai tocar no HTML com React, **você pode fechar a aba HTML do JSBIN**, assim você obtém mais espaço na sua tela.
+
+**Primeiro, vamos desativar o botão adicionando `disabled`**.
+
+**JSX** 
+```js
+render: function() {
+  return (
+    ...
+    <button className="..." disabled>Tweet</button>
+    ...
+  );
+}
+```
+
+O botão agora deve estar desabilitado. Note que na nossa implementação jQuery nós escrevemos `$("button").prop("disabled", true);` para desabilitar o botão inicialmente, mas poderíamos ter modificado a tag `button` como feito acima.
+
+Agora, precisamos abilitar o botão quando tiver pelo menos um caracter no campo de texto.
+
+### Manipulando Eventos *Change* (de Alteração)
