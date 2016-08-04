@@ -397,3 +397,59 @@ O botão agora deve estar desabilitado. Note que na nossa implementação jQuery
 Agora, precisamos abilitar o botão quando tiver pelo menos um caracter no campo de texto.
 
 ### Manipulando Eventos *Change* (de Alteração)
+Primeiro, precisamos de esperar até o usuário adicionar algum texto. Na nossa implementação jQuery, escrevemos:
+
+**JS**
+```js
+$("textarea").on("input", function() {
+  ...
+})
+```
+
+Com React, nós escrevemos o manipulador de evento como um **método**. Vamos chamá-lo de `handleChange`:
+
+**JSX**
+```js
+React.createClass({
+  handleChange: function(event) {
+  },
+  render: function() {
+    ...
+  }
+});
+```
+
+Em seguida, nós invocamos esse *handler* (manipulador) quando algum texto for adicionado. Para fazer isso, **modifique a tag `textarea` em `render()` dessa forma:** 
+
+**JSX** 
+```js
+<textarea className="form-control"
+          onChange={this.handleChange}></textarea>
+```
+
+- Nós usamos o evento `input` para o jQuery, mas no React vamos usar `onChange` - você vai aprender como os eventos diferem no JSX do React na documentação do React então não se preocupe muito com isso agora.
+- **Mais importante**, nós usamos a sintaxe `{...}` para incluir qualquer código JavaScript dentro do JSX na parte da sintaxe HTML. Nesse caso, nós queremos passar o manipulador `handleChange`, e adicionamos o prefixo `this.` pois é um método deste objeto da UI.
+- Se você está acostumado com jQuery, isso pode parecer uma má prática, mas não se preocupe. Novamente, um aplicações grandes, o código vai ser mais gerenciável se essas marcações e comportamentos forem deixados juntos para cada parte da UI.
+
+Para termos certeza que o manipulador está sendo chamado, **vamos adicionar um `console.log` dentro do `handleChange`**:
+
+**JSX** 
+```js
+handleChange: function(event) {
+  console.log(event.target.value);
+},
+```
+
+O objeto `event` contém `target`, que é a `textarea`. Nós usamos `.value` para imprimir o valor atual da `textarea`.
+
+**Em seu JSBin, abra a aba `console` para verificar a saída. Depois digite algo na caixa de tweet.** 
+
+![Abra a aba console no jsbin](http://reactfordesigners.com/images/labs/console-tab.png)
+
+Você pode testar isso [nesse JSBin](http://jsbin.com/kohudu/8/edit?js,output).
+
+É isso para esse passo! Nós vamos finalizar essa funcionalidade no próximo passo.
+
+**NOTA: Feche a aba console no JSBin quando você terminar.** Não vamos mais precisar dela.
+
+## Passo 6: Implementando *State* (Estado) (10 - 15 minutos)
