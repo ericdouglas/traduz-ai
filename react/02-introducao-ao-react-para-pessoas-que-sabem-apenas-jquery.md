@@ -453,3 +453,88 @@ Você pode testar isso [nesse JSBin](http://jsbin.com/kohudu/8/edit?js,output).
 **NOTA: Feche a aba console no JSBin quando você terminar.** Não vamos mais precisar dela.
 
 ## Passo 6: Implementando *State* (Estado) (10 - 15 minutos)
+Vou explicar agora uma das maiores diferenças entre código jQuery e código React.
+
+Em jQuery, quando algum evento ocorre, você geralmente altera o DOM (como fizemos anteriormente):
+
+![Estilo jQuery](http://reactfordesigners.com/images/labs/jquery-style-1.png)
+> O manipulador de evento altera o DOM.
+
+Com React, **você não altera o DOM diretamente**. Ao invés, em um *event handler* (manipulador de evento), você modifica algo chamado **"state"** (estado). E isso é feito chamando `this.setState`.
+
+![Estilo Rect](http://reactfordesigners.com/images/labs/react-style-1.png)
+> O manipulador de evento altera o mágico "state" (estado)
+
+Então, toda vez que o estado é atualizado, **`render()` é chamada novamente**. E **dentro de `render()` você pode acessa o estado**.
+
+![Estilo React](http://reactfordesigners.com/images/labs/react-style-2.png)
+> O manipulador de evento altera o estado mágico, e toda vez que o estado mágico é alterado a função `render()` é chamada novamente, e dentro de render você pode atualizar o estado
+
+Essa é a forma que você atualiza a UI em resposta a um evento. Sim isso é confuso, deixe-me explicar usando código.
+
+### Escrevendo o Manipulador de Evento
+**Inicie com o JSBin do passo anterior.** Primeiro, temos que **inicializar o objeto *state*** - sem isso nada vai funcionar.
+
+Para fazer isso, **precisamos escrever um método especial chamado `getInitialState` e ele retorna um objeto JS** , que se torna o estado inicial.
+
+O que vai nesse objeto? **Vamos criar chave simples chamada `text`** e deixar que ela armazene tudo que está dentro da caixa de tweet.
+
+**JSX**
+```js
+var TweetBox = React.createClass({
+  getInitialState: function() {
+    return {
+      text: ""
+    };
+  },
+  handleChange: ...
+  render: ...
+});
+```
+
+**A seguir, vamos modificar o manipulador de evento** para configurar o estado do campo `text` para qualquer coisa que esteja atualmente na caixa de tweet. Para fazer isso, **nós usamos um método especial do React chamado `setState` e passamos o par chave-valor atualizado**.
+
+**JSX**
+```js
+handleChange: function(event) {
+  this.setState({ text: event.target.value });
+},
+```
+
+Agora, vamos verificar se o estado está sendo configurado corretamente escrevendo algum código para debug me `render()`.
+
+Para isso, **simplesmente adicione `this.state.next` próximo do fim de `render()`, e use a sintaxe `{...}`** para chamar o código JS dentro da parte HTML da sintaxe do JSX.
+
+**JSX** 
+```js
+render: function() {
+  return (
+    <div ...>
+      ...
+      <button ...>Tweet</button>
+
+      <br/>
+      {this.state.text}
+    </div>
+  )
+}
+```
+
+**Agora, tente digitar algo na caixa de tweet**. O mesmo texto deve aparecer abaixo do botão.
+
+Você pode testar isso [neste JSBin](http://jsbin.com/yabiqo/10/edit).
+
+Agora o diagrama anterior deve fazer mais sentido para você.
+
+![Estilo React](http://reactfordesigners.com/images/labs/react-style-2.png)
+
+### Removendo o Código de Debug
+Uma vez confirmado que o estado está sendo configurado corretamente, **remova o código de debug que foi adicionado:** 
+
+**JSX** 
+```md
+<strike>`<br/>`</strike>
+<strike>{this.state.text}</strike>
+```
+
+### Habilitando/Desabilitando o Botão
