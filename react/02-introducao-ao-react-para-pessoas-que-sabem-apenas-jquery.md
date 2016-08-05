@@ -533,8 +533,8 @@ Uma vez confirmado que o estado está sendo configurado corretamente, **remova o
 
 **JSX** 
 ```md
-<strike>`<br/>`</strike>
-<strike>{this.state.text}</strike>
+<br/>
+{this.state.text}
 ```
 
 ### Habilitando/Desabilitando o Botão
