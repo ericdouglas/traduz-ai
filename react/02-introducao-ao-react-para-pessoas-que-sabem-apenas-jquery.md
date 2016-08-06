@@ -566,3 +566,41 @@ Novamente, mantenha essa diferença entre o jQuery e o React em mente antes de s
 
 - Em jQuery, você escreve manipuladores de evento que modificam o **DOM**.
 - Em React, você escreve manipuladores de evento que modificam o **estado**. E você vai escrever `render()` para refletir o estado atual.
+
+## Passo 7: Contador de Caracteres Restantes em jQuery (5 minutos)
+A próxima funcionalidade que vamos implementar é o contador de caracteres restantes.
+
+![Contador de caracteres restantes](http://reactfordesigners.com/images/labs/tweet-box-character-count.png)
+
+Aqui está a especificação:
+
+- O contador de caracteres deve mostrar `140 - o número de caracteres digitados`.
+
+**Vamos implementar isso primeiro em jQuery e depois em React.**
+
+Vamos começar a partir da nossa implementação jQuery anterior. Coloque seu código React na espera. **A partir de agora, vou te dar o novo código para começar no início de cada capítulo**, pois estamos alternando entre jQuery e React. Isso significa que depois que você terminar um passo, você pode brincar com o código antes de ir para o próximo passo.
+
+[JSBin com código jQuery do exemplo anterior](http://jsbin.com/wewimu/3/edit?html,js,output).
+
+Primeiro, **adicione o contador de caracteres no HTML usando `span`**.
+
+**HTML**
+```html
+<textarea ...></textarea><br>
+<span>140</span>
+<button ...>Tweet</button>
+```
+
+E **dentro do manipulador do `input` no JS, adicione esse código para atualizar o contador de caracteres**:
+
+**JS**
+```js
+$("textarea").on("input", function() {
+  $("span").text(140 - $(this).val().length);
+  ...
+});
+```
+
+É isso! **Tente digitar na caixa de tweet** e você vai ver o contador de caracteres atualizado. [Aqui está o JSBin](http://jsbin.com/durima/2/edit?html,js,output).
+
+## Passo 8: Contador de Caracteres Restantes em React (5 minutos)
