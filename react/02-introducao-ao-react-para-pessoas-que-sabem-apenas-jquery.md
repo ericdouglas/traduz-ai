@@ -538,3 +538,31 @@ Uma vez confirmado que o estado está sendo configurado corretamente, **remova o
 ```
 
 ### Habilitando/Desabilitando o Botão
+Agora que podemos detectar as mudanças no texto, tudo que resta é habilitar/desabilitar o botão dependendo da inserção do texto.
+
+Usando o estado, podemos usar essa lógica:
+
+- Se `this.state.text.length ===0`, então o botão deve estar desabilitado.
+
+Para fazer isso no React, **adicione o atributo `disabled`, e configure-o com o valor retornado por `this.state.text.length === 0`.** Uma vez que isso é código JS, você precisa de envolvê-lo com `{}`.
+
+**JSX** 
+```js
+<button className="btn btn-primary pull-right"
+        disabled={this.state.text.length === 0}>Tweet</button>
+```
+
+Se você escrever `disabled="true"` ou `disabled="false"` em HTML puro isso não vai funcionar - em HTML puro, você precisa de remover o atributo `disabled` para habilitar o botão. Mas React **não** é HTML puro - ele faz essa mágica por trás das panos:
+
+- Se você fizer `disabled={true}` no JSX, isso é convertido para `<button ... disabled>` em HTML.
+- Se você fizer `disabled={false}` no JSX, o atributo `disabled` é removido da tag `button` no HTML.
+
+Isso funciona para outros atributos booleanos como `checked`. Não está oficialmente documentado por agora (no momento em que escrevo), mas deve ser incluído em breve.
+
+O JSBin resultando [está aqui](http://jsbin.com/lutefu/11/edit).
+
+### Reflexões
+Novamente, mantenha essa diferença entre o jQuery e o React em mente antes de seguir para o próximo passo:
+
+- Em jQuery, você escreve manipuladores de evento que modificam o **DOM**.
+- Em React, você escreve manipuladores de evento que modificam o **estado**. E você vai escrever `render()` para refletir o estado atual.
