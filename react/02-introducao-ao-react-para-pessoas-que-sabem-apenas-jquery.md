@@ -604,3 +604,24 @@ $("textarea").on("input", function() {
 É isso! **Tente digitar na caixa de tweet** e você vai ver o contador de caracteres atualizado. [Aqui está o JSBin](http://jsbin.com/durima/2/edit?html,js,output).
 
 ## Passo 8: Contador de Caracteres Restantes em React (5 minutos)
+Como fazer isso em React? Você deve tentar fazer isso por sua conta. Comece com nossa [implementação anterior em React](http://jsbin.com/lutefu/11/edit).
+
+**Dicas**:
+
+- Não precisa mudar os métodos `getInitialState()` ou `handleChange()`
+- Use `this.state.text.length` no `render()`.
+
+### Resposta:
+
+**Adicione isso depois do `<br/>` no `render()`**:
+
+**JSX**
+```js
+<span>{140 - this.state.text.length}</span>
+```
+
+[Resultado no JSBin.](http://jsbin.com/lizoco/9/edit?html,js,output)
+
+Muito fácil? Em dúvida por que o React é muito melhor que o jQuery? Bom, o próximo passo é mais complexo e é onde o React realmente brilha.
+
+
