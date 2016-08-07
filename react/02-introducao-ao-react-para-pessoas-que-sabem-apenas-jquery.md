@@ -624,4 +624,26 @@ Como fazer isso em React? Você deve tentar fazer isso por sua conta. Comece com
 
 Muito fácil? Em dúvida por que o React é muito melhor que o jQuery? Bom, o próximo passo é mais complexo e é onde o React realmente brilha.
 
+## Passo 9: O Botão "Add Photo" (Adiciona Foto) (5 minutos)
+Como nossa próxima funcionalidade, vamos adicionar o botão *Add Photo* na interface do usuário. Ai é quando as coisas ficam complicadas.
 
+![Botão Add photo](http://reactfordesigners.com/images/labs/tweet-box-add-photo.png)
+
+Entretando, **nós não vamos deixar os usuários fazerem upload de fotos.** Ao invés, isso é o que vamos fazer.
+
+Quando você faz upload de uma foto no Twitter, isso conta contra o número de caracteres que você pode usar. Na minha tentativa, essa ação diminuiu o número restante de caracteres de 140 para 117:
+
+![Caracteres restantes ao adicionar uma foto](http://reactfordesigners.com/images/labs/tweet-box-add-photo-explanation.png)
+
+Aqui está a especificação do que vamos fazer:
+
+- Criar um botão "Add Photo"
+- Clicar nesse botão alterna o estado ON/OFF (ligado/desligado). **Se estiver ON, o botão vai dizer `✓ Photo Added`**.
+- Se o botão estiver ON, **o número de caracteres disponíveis vai diminuir em 23**.
+- Também, se o botão estiver ON, **mesmo que não tenha nenhum texto digitado, o botão "tweet" deverá permanecer ativo**.
+
+[Aqui está a demonstração no JSBin](http://jsbin.com/sanuqi/6/edit). **Tente clicar no botão "Add Photo"** e ver o que acontece ao contador de caracter e ao botão "tweet".
+
+Vamos implementar isso. Primeiro vamos tentar com Jquery.
+
+## Passo 10: O Botão "Add Photo", com jQuery (15 - 20 minutos)
