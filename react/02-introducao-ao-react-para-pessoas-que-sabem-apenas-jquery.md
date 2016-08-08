@@ -647,3 +647,97 @@ Aqui está a especificação do que vamos fazer:
 Vamos implementar isso. Primeiro vamos tentar com Jquery.
 
 ## Passo 10: O Botão "Add Photo", com jQuery (15 - 20 minutos)
+Comece com nossa [implementação jQuery anterior](http://jsbin.com/durima/2/edit?html,js,output).
+
+Vamos alterar o HTML e o JS. Antes, vamos anexar um manipulador ao `$("button")`, mas isso não vai funcionar se tivermos dois botões. **Dessa forma, vamos modificar o HTML assim:**
+
+**HTML**
+```html
+...
+<button class="js-tweet-button btn btn-primary pull-right" disabled>Tweet</button>
+<button class="js-add-photo-button btn btn-default pull-right">Add Photo</button>
+...
+```
+
+Aqui estão as alterações:
+
+- **Adicionado o segundo botão chamado "Add Photo"**.
+- **Adicionadas as classes `js-tweet-button` e `js-add-photo-button` para cada botão.** Elas estão prefixadas com `js-` pois são usadas apenas pelo JS e não pelo CSS.
+- **Adicionado o atributo `disabled` ao botão Tweet**, então você não precisa fazer isso com JS.
+
+Agora, reescreva todo o arquivo JS dessa forma:
+
+**JS**
+```js
+$("textarea").on("input", function() {
+  $("span").text(140 - $(this).val().length);
+
+  if ($(this).val().length > 0) {
+    $(".js-tweet-button").prop("disabled", false);
+  } else {
+    $(".js-tweet-button").prop("disabled", true);
+  }
+});
+```
+
+Aqui estão as mudanças:
+
+- **(Importante) Removido `$("button").prop("disabled", true);` da primeira linha** pois adicionei o atributo `disabled` ao botão Tweet.
+- **Trocado `$("button")` com `$(".js-tweet-button")`** dessa forma podemos distinguí-lo do `.js-add-photo-button`.
+
+
+### Adicionando o Botão
+A seguir, vamos implementar uma das funcionalidades:
+
+- Clicando no botão "Add Photo" alterna o estado ON/OFF. **Se estiver ON, o botão vai dizer `✓ Photo Added`**.
+
+Para fazer isso, **adicione esse código**:
+
+**JS**
+```js
+$("textarea").on("input", function() {
+  ...
+});
+
+$(".js-add-photo-button").on("click", function() {
+  if ($(this).hasClass("is-on")) {
+    $(this)
+      .removeClass("is-on")
+      .text("Add Photo");
+  } else {
+    $(this)
+      .addClass("is-on")
+      .text("✓ Photo Added");
+  }
+});
+```
+
+Usamos a classe `is-on` para rastrear o estado. **Teste para ver se isso funciona** clicando no botão "Add Photo" várias vezes e vendo o texto alternar.
+
+### Diminuindo o Contador de Caracteres
+Agora, vamos implementar essa funcionalidade:
+
+- Se o botão "Add Photo" estiver ON, **o número de caracteres disponíveis vai dimiminuir em 23**.
+
+Para fazer isso, **modifique o manipulador *click* que acabamos de adicionar da seguinte forma**:
+
+**JS**:
+```js
+if ($(this).hasClass("is-on")) {
+  $(this)
+    .removeClass("is-on")
+    .text("Add Photo");
+  $("span").text(140 - $("textarea").val().length);
+} else {
+  $(this)
+    .addClass("is-on")
+    .text("✓ Photo Added");
+  $("span").text(140 - 23 - $("textarea").val().length);
+}
+```
+
+Mudamos o texto em `span` em cada click. Se o botão fica ON, então precisamos subtrair o o tamanho do texto, o que é `140 - 23`. Usamos `140 - 23` para sermos claros - normalmente usaríamos constantes.
+
+**Cheque e veja se tudo funciona** clicando no botão "Add Photo".
+
+### Consertando o Manipulador Input (de entrada)
