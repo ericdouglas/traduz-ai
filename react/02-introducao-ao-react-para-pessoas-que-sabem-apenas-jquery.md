@@ -738,6 +738,85 @@ if ($(this).hasClass("is-on")) {
 
 Mudamos o texto em `span` em cada click. Se o botão fica ON, então precisamos subtrair o o tamanho do texto, o que é `140 - 23`. Usamos `140 - 23` para sermos claros - normalmente usaríamos constantes.
 
-**Cheque e veja se tudo funciona** clicando no botão "Add Photo".
+**Verifique se tudo está funcionando** clicando no botão "Add Photo".
 
 ### Consertando o Manipulador Input (de entrada)
+Entretanto a funcionalidade não está completa - **se você tiver o botão "Add Photo" ON e começar a digitar na área de texto, os caracteres remanescentes ficarão dessincronizados.**
+
+Para consertar isso, **nós também precisamos de atualizar o manipulador de entrada (input) do `textarea`**:
+
+**JS**
+```js
+$("textarea").on("input", function() {
+  if ($(".js-add-photo-button").hasClass("is-on")) {
+    $("span").text(140 - 23 - $(this).val().length);
+  } else {
+    $("span").text(140 - $(this).val().length);
+  }
+
+  if (...) {
+    ...
+});
+```
+
+**Verifique se a funcionalidade está funcionando** clicando no botão "Add Photo" e digitando algum texto.
+
+### Eu sei que isso está levando tempo...
+Mas continue! O código jQuery aqui deve estar confuso, não se preocupe!
+
+### Implementando a Última Funcionalidade
+A última funcionalidade que precisamos implementar é esta:
+
+- Se o botão "Add Photo" está ON, **mesmo se não tiver nenhum texto digitado, o botão Tweet vai ficar ativo**.
+
+Para fazer isso, **nós precisamos modificar o manipulador click do botão "Add Photo"**:
+
+**JS**
+```js
+$(".js-add-photo-button").on("click", function() {
+  if ($(this).hasClass("is-on")) {
+    ...
+    if ($("textarea").val().length === 0) {
+      $(".js-tweet-button").prop("disabled", true);
+    }
+  } else {
+    ...
+    $(".js-tweet-button").prop("disabled", false);
+  }
+});
+```
+
+Aqui a explicação:
+
+- Se o botão "Add Photo" passar de ON para OFF (condição `if`), nós precisamos verificar se não existe texto digitado e se não tiver, desabilitar o botão tweet.
+- Se o botão "Add Photo" passer de OFF par ON (condição `else`), nós sempre ativaremos o botão tweet.
+
+### Novamente, isso está quebrado
+**Nós não terminamos ainda.** Os passos a seguir vão quebrar o código. **Tente repetí-los**:
+
+- Ative o botão "Add Photo".
+- Digite algum texto.
+- Delete todo o texto.
+- O botão "tweet" deveria permanecer ativo porque o botão "Add Photo" está ON, mas isso não é o que ocorre.
+
+Isso significa que nosso manipulador de *input* (entrada) do `textarea` está com alguma lógica faltando. Para consertar isso, **nós precisamos adicionar outra condição na declaração `if` no manipulador de input**.
+
+**JS**
+```js
+$("textarea").on("input", function() {
+  ...
+  if ($(this).val().length > 0 || $(".js-add-photo-button").hasClass("is-on")) {
+    ...
+  } else {
+    ...
+  }
+});
+```
+
+Nós adicionamos o seguinte verificador para ver se o botão está ou não desativado:
+
+- Quando o texto mudar, se o botão "Add Photo" estiver ON, não desabilite o botão tweet.
+
+**Tente os passos acima novamente** e dessa vez o código não vai quebrar.
+
+## Passo 11: Refletindo Sobre o Código jQuery - Por que Tão Confuso? (5 minutos)
