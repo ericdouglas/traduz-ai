@@ -3,7 +3,7 @@
 * **Artigo original**: [JavaScript Objects in Detail](http://javascriptissexy.com/javascript-objects-in-detail/)
 * **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
-O tipo de dado central, o mais fundamental e freqüentemente utilizado, do JavaScript é o tipo Object. O JavaScript tem 1 tipo de dado complexo, o tipo Object, e tem 6 tipos de dados simples: Boolean, Number, String, Symbol, undefined e null. Note que estes tipos de dados simples (primitivos) são imutáveis (não podem ser alterados), enquanto os objetos são mutáveis (podem ser alterados).
+O tipo de dado central, o mais fundamental e frequentemente utilizado, do JavaScript é o tipo Object. O JavaScript tem 1 tipo de dado complexo, o tipo Object, e tem 5 tipos de dados simples: Boolean, Number, String, undefined e null. Note que estes tipos de dados simples (primitivos) são imutáveis (não podem ser alterados), enquanto os objetos são mutáveis (podem ser alterados).
 
 ## **O que é um Objeto**
 Um objeto é uma lista não ordenada de tipos de dados primitivos (e às vezes tipos de dados referência) que são armazenados como uma série de pares nome-valor. Cada item na lista é chamado _propriedade_ (funções são chamadas de _métodos_).
@@ -14,7 +14,7 @@ Considere este simples objeto:
 var meuPrimeiroObjeto = {primeiroNome: "Richard", autorFavorito: "Conrad"};
 ```
 
-Reiterando, pense num objeto como uma lista que contém ítens; e que cada item (uma propriedade ou um método) na lista é armazenado por um par nome-valor. Os nomes das propriedades no exemplo acima são `primeiroNome` e `autorFavorito`; e os valores são "Richard" e "Conrad".
+Reiterando, pense num objeto como uma lista que contém itens; e que cada item (uma propriedade ou um método) na lista é armazenado por um par nome-valor. Os nomes das propriedades no exemplo acima são `primeiroNome` e `autorFavorito`; e os valores são "Richard" e "Conrad".
 
 Os nomes das propriedades podem ser uma string ou um número; mas se o nome da propriedade for um número, ele tem de ser acessado com o uso de colchetes. Mais sobre a notação colchetes mais tarde. Aqui está um outro exemplo de objetos com números sendo o nome da propriedade:
 
@@ -28,7 +28,7 @@ console.log(grupoDeIdade["30"]); // Crianças
 // É melhor evitar usar números como nomes de propriedades.
 ```
 
-Como um desenvolvedor JavaScript você muito freqüentemente irá usar os tipos de dados Object; na maioria das vezes para armazenar dados e para criar os seus próprios métodos e funções.
+Como um desenvolvedor JavaScript você muito frequentemente irá usar os tipos de dados Object; na maioria das vezes para armazenar dados e para criar os seus próprios métodos e funções.
 
 
 ## **Tipo de Dados Referência e Tipos de Dados Primitivos**
@@ -44,7 +44,7 @@ console.log(outraPessoa); // Kobe
 console.log(pessoa); // Bryant
 ```
 
-É interessante notarmos que mesmo embora tenhamos alterado `pessoa` para "Bryant", a variável `outraPessoa` ainda retém o antigo valor que `pessoa` tinha.
+Vale a penar notar que mesmo que tenhamos mudado `pessoa` para "Bryant", a variável `outraPessoa` ainda retém o antigo valor que `pessoa` tinha.
 
 Compare o dado primitivo salvo-como-valor demonstrado acima com o salvo-como-referência por objetos:
 
@@ -82,7 +82,7 @@ O mais comum e, de fato, o jeito mais fácil de se criar objetos é através de 
 // Este é um objeto vazio inicializado usando a notação de objeto literal
 var meusLivros = {};
 
-// Este é um objeto com 4 ítens, novamente usando a forma de objeto literal
+// Este é um objeto com 4 itens, novamente usando a forma de objeto literal
 var manga = {
 	cor: "amarela",
 	forma: "redonda",
@@ -141,7 +141,7 @@ Se você tiver 10 frutas, você vai ter que adicionar o mesmo código 10 vezes. 
 
 Para resolver estes problemas repetitivos, os engenheiros de software inventaram padrões (soluções para tarefas comuns e repetitivas) para fazer o desenvolvimento de aplicações mais eficiente e dinamizado.
 
-Aqui temos 2 padrões comuns para criação de objetos. Se você terminou o curso "Como Aprender JavaScript Corretamente", você viu nas lições em Codecademy que utilizavam este primeiro padrão freqüentemente:
+Aqui temos 2 padrões comuns para criação de objetos. Se você terminou o curso "Como Aprender JavaScript Corretamente", você viu nas lições em Codecademy que utilizavam este primeiro padrão frequentemente:
 
 ### 1. **Padrão Construtor para Criação de Objetos**
 
