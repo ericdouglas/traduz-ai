@@ -820,3 +820,28 @@ Nós adicionamos o seguinte verificador para ver se o botão está ou não desat
 **Tente os passos acima novamente** e dessa vez o código não vai quebrar.
 
 ## Passo 11: Refletindo Sobre o Código jQuery - Por que Tão Confuso? (5 minutos)
+[Aqui está](http://jsbin.com/xupice/2/edit?html,js,output) o resultado final do código HTML e JS do passo anterior.
+
+**Dê uma olhada no código jQuery novamente.** Ele é muito confuso. Ele está bem confuso. Se você for deixar o código dessa forma, você provavelmente terá que colocar alguns comentários para lembrar o que você fez. Existem claros sinais de duplicação, mas você tem que pensar um pouco em como refatorar.
+
+A questão é: **como isso ficou tão feio tão rápido?**
+
+E a resposta tem a ver com o **"jeito jQuery"** de codificar que falamos sobre anteriormente. Relembre este diagrama:
+
+![Estilo jQuery](http://reactfordesigners.com/images/labs/jquery-style-1.png)
+> Manipulador de evento -> Muda o DOM
+
+Isso é simples quando temos apenas 1 evento e 1 DOM. Entretanto, como nós acabamos de ver, **se vários manipuladores de evento estão modificando várias partes do DOM, o código fica feio.**
+
+![Estilo jQuery](http://reactfordesigners.com/images/labs/jquery-style-2.png)
+> Manipulador de evento de TextArea altera vários elementos do DOM - Manipulador de Evento do Botão "Add Photo" altera vários elementos do DOM
+
+Imagine adicionar mais funcionalidades que influenciem no limite de caracteres e no estado do botão tweet. O diagrama acima teria ainda mais setas. E o código ficaria "ingerenciável".
+
+Você pode, em teoria, mitigar isso refatorando o código em funções reutilizáveis. Mas você ainda terá que pensar muito toda vez que for adicionar algo novo.
+
+> Alguém no Hacker News me enviou o [código jQuery refatorado](http://pastebin.com/wbGZZs7U). Muito limpo mas novamente, isso requer algum esforço mental.
+
+Agora, vamos ver como fazer a mesma coisa com React. **Dica: vai ser muito mais simples.**
+
+## Passo 12: O Botão "Add Photo" com React (10-20 minutos)
