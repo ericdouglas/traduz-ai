@@ -5,7 +5,7 @@
 
 Nesta postagem, iremos aprender sobre escopo e hoisting (hasteamento) de variáveis no JavaScript e tudo sobre as idiossincrasias (peculiaridades) de ambos.
 
-É imperativo que nós tenhamos entendimento de como o escopo de variável e o hasteamento de variável funcionam no JavaScript, se quisermos entender bem o JS. Estes conceitos podem parecer óbvios, mas não são. Há algumas importantes sutilezas que nós devemos compreender, se realmente quisermos ser desenvolvedores JavaScript bem sucedidos.
+É imperativo que nós tenhamos entendimento de como o escopo e o hasteamento de variável funcionam no JavaScript, se quisermos entender bem o JS. Estes conceitos podem parecer óbvios, mas não são. Há algumas importantes sutilezas que nós devemos compreender, se realmente quisermos ser desenvolvedores JavaScript bem sucedidos.
 
 ##Escopo de Variáveis
 	
