@@ -845,3 +845,108 @@ Você pode, em teoria, mitigar isso refatorando o código em funções reutiliz�
 Agora, vamos ver como fazer a mesma coisa com React. **Dica: vai ser muito mais simples.**
 
 ## Passo 12: O Botão "Add Photo" com React (10-20 minutos)
+Comece com nossa [implementação prévia em React.](http://jsbin.com/lizoco/9/edit?html,js,output)
+
+### Adicionando o Botão
+Primeiro, vamos adicionar o botão "Add Photo". Modifique o JSX:
+
+**JSX**
+```js
+<button ...>Tweet</button>
+<button className="btn btn-default pull-right">Add Photo</button>
+```
+
+Agora, **vamos adicionar um manipulador de click** a este botão para que o texto mude de `Add Photo` para `✓ Photo Added`. Relembre o jeito React de escrever código:
+
+![Estilo React](http://reactfordesigners.com/images/labs/react-style-2.png)
+> O Manipulador de evento altera o mágico "state", e cada vez que o *state* é alterado, a função `render()` é chamada novamente.
+
+Nós vamos:
+
+1. **Criar uma variável *state*** que vai rastrear se o botão "Add Photo" está ON ou OFF.
+1. **Usar o *state*** em `render()` para decidir se mostramos `Add Photo` ou `✓ Photo Added`.
+1. **Modificar o *state*** no manipulador click.
+
+Para (1), **vamos modificar `getInitialState`** e adicionar um par chave-valor no *state* para rastrear se a foto foi adicionada ou não:
+
+**JSX**
+```js
+getInitialState: function() {
+  return {
+    text: "",
+    photoAdded: false
+  };
+},
+```
+
+Para (2), **vamos modificar a marcação JSX** para o botão "Add Photo". Vamos ter o botão dizendo "Photo Added" se `this.state.photoAdded` for `true`. Podemos usar uma expressão ternária aqui.
+
+**JSX**
+```js
+<button className="btn btn-default pull-right">
+  {this.state.photoAdded ? "✓ Photo Added" : "Add Photo" }
+</button>
+```
+
+Finalmente, para a tarefa (3), **vamos anexar o manipulador click no JSX** assim como fizemos com `textarea`:
+
+**JSX**
+```js
+<button className="btn btn-default pull-right"
+  onClick={this.togglePhoto}>
+  {this.state.photoAdded ? "✓ Photo Added" : "Add Photo" }
+</button>
+```
+
+E **adicionar o método manipulador que reverte `this.state.photoAdded`**:
+
+**JSX**
+```js
+togglePhoto: function(event) {
+  this.setState({ photoAdded: !this.state.photoAdded });
+},
+```
+
+Agora, clicando em `Add Photo` deve fazer o texto alternar. **Teste você mesmo**.
+
+### Diminuindo o Contador de Caracteres
+Vamos agora implementar a nova funcionalidade:
+
+- Se o botão "Add Photo" estiver ON, **o número de caracteres disponíveis deve ser diminuído em 23**.
+
+Atualmente, o número de caracteres disponíveis é mostrado da seguinte maneira em `render()`:
+
+**JSX**
+```js
+<span>{140 - this.state.text.length}</span>
+```
+
+Isso agora depende também de `this.state.photoAdded`, então precisamos de um `if` e `else` aqui.
+
+Entretanto, **no JSX, você não pode escrever `if` ou `else` dentro de um `{...}`**. Você pode usar uma expressão ternária (`a ? b : c`) como fizemos anteriormente, mas isso seria muito longo nesse caso.
+
+Normalmente a forma mais simples nessa situação é refatorar uma condicional em um método. Vamos tentar isso.
+
+**Primeiro, modifique o código acima para usar um método, como este:**
+
+**JSX**
+```js
+<span>{ this.remainingCharacters() }</span>
+```
+
+E defina o método dessa forma:
+
+**JSX**
+```js
+remainingCharacters: function() {
+  if (this.state.photoAdded) {
+    return 140 - 23 - this.state.text.length;
+  } else {
+    return 140 - this.state.text.length;
+  }
+},
+```
+
+Agora, a contagem dos caracteres restantes deve ser atualizada corretamente quando o botão "Add Photo" alternar.
+
+**Dúvida**: 
