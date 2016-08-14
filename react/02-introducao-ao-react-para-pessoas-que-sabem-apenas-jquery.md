@@ -949,4 +949,67 @@ remainingCharacters: function() {
 
 Agora, a contagem dos caracteres restantes deve ser atualizada corretamente quando o botão "Add Photo" alternar.
 
-**Dúvida**: 
+**Dúvida**: Em `render()`, por que `{ this.remainingCharacters() }` tem `()` mas `{ this.handleChange }` e `{ this.togglePhoto }` não?
+
+Boa pergunta. Vamos dar uma olhada em `render()` novamente:
+
+**JSX**
+```js
+render: function() {
+  return (
+    ...
+      <textarea className="..."
+                onChange={ this.handleChange }></textarea>
+      ...
+      <span>{ this.remainingCharacters() }</span>
+      ...
+      <button className="..."
+        onClick={ this.togglePhoto }>
+        ...
+      </button>
+    </div>
+  );
+```
+
+**Resposta:**
+
+- Nós escrevemos o método `remainingCharacters()` para **retornar um número**. Precisamos pegar esse número e colocá-lo entre `<span></span>`, então precisamos **chamar o método `remainingCharacters()`** usando `()`. Por isso temos um `()` em `remainingCharacters()`.
+- Por outro lado, `handleChange` e `togglePhoto` são **manipuladores de evento**. Nós queremos que esses métodos sejam chamados apenas quando o usuário interagir com a interface (mudando o texto ou clicando o botão). Para fazer isso, em `render()`, nós precisamos de escrevê-los sem `()` e atribuí-los a atributos como `onChange` e `onClick`.
+
+### Os Estados do Botão Tweet
+Temos mais uma funcionalidade para implementar:
+
+- Se o botão "Add Photo" estiver ON, **mesmo que nenhum texto tenha sido digitado, o botão Tweet permanecerá ativo.**
+
+Isso é de fato muito fácil de fazer. Anteriormente, a opção `disabled` do botão tweet foi definida assim:
+
+**JSX**
+```js
+<button ... disabled={this.state.text.length === 0}>...</button>
+```
+
+Em outras palavras, o botão tweet era desabilitado se o tamanho do texto fosse 0. **Agora, o botão tweet vai ser desabilitado se:**
+
+- O tamanho do texto for 0 **e**:
+- O botão "Add Photo" estiver OFF.
+
+Então a lógica vai ficar assim:
+
+**JSX**
+```js
+<button ... disabled={this.state.text.length === 0 && !this.state.photoAdded}>...</button>
+```
+
+Ou, você pode simplificar o código acima utilizando `remainingCharacters()`. Se existirem 140 caracteres restantes, isso significa que nenhum texto foi digitado e que o botão "Add Photo" está OFF, então o botão Tweet deve ficar desativado.
+
+**JSX**
+```js
+<button ... disabled={this.remainingCharacters() === 140}>...</button>
+```
+
+É isso! Tente alternar o botão "Add Photo" e verificar se o botão Tweet fica ativado/desativado corretamente.
+
+### Terminamos!
+Isso foi fácil. [Aqui o JSBin com o resultado](http://jsbin.com/fitiha/10/edit?js,output).
+
+## Passo 13: Reflexão Sobre o Código React - Por que tão simples? (5 minutos)
