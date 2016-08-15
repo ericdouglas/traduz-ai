@@ -1013,3 +1013,27 @@ Ou, você pode simplificar o código acima utilizando `remainingCharacters()`. S
 Isso foi fácil. [Aqui o JSBin com o resultado](http://jsbin.com/fitiha/10/edit?js,output).
 
 ## Passo 13: Reflexão Sobre o Código React - Por que tão simples? (5 minutos)
+As mudanças para acomodar o botão "Add Photo" foram mínimas usando React. Sem necessidade de refatorações. Por que aconteceu isso?
+
+Novamente, isso tem a ver com a forma de escrever código UI do React. Em React, manipuladores de evento modificam o "*state*" (estado), e sempre que o estado é alterado, o React automaticamente chamada `render()` para atualizar a UI.
+
+![Estilo React](http://reactfordesigners.com/images/labs/react-style-2.png)
+
+Nesse exemplo em particular, o diagrama agora vai parecer com isso:
+
+![Estilo React para nossa aplicação](http://reactfordesigners.com/images/labs/react-style-3.png)
+> O manipulador de evento textArea modifica o estado, assim como o manipulador de evento do botão "Add Photo". Quando o *state* é modificado, o React automaticamente chamada `render()`
+
+O estado se torna algo intermediário que se situa entre manipuladores de evento e `render()`:
+
+- Manipuladores de evento não precisam de se preocupar com a parte do DOM que será alterada. Eles apenas precisam de definir o *state* (estado).
+- Similarmente, quando você escreve `render()`, tudo que você precisa de se preocupar é qual é o `state` atual.
+
+### Comparando com jQuery
+Você pode imaginar o que aconteceria se a UI recebesse mais funcionalidades. Sem o "*state*" intermediário, teríamos um tempo difícil gerenciando essa complexidade. Isso é o motivo porque você gostaria de usar React ao invés de jQuery para interfaces complexas.
+
+![jQuery versus React](http://reactfordesigners.com/images/labs/jquery-style-vs-react-style.png)
+
+Novamente, **é possível** escrever código jQuery limpo que não parece um macarrão. Mas você tem que definir a estutrura do código por si mesmo e pensar sobre como refatorar o código cada vez que você adicionar uma funcionalidade. O React fornece essa estrutura para você e reduz a sobrecarga cognitiva.
+
+## Passo 14: A Funcionalidade Final - Destacando os Caracteres Excedentes (5 minutos)
