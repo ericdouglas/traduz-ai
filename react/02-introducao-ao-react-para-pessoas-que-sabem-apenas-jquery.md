@@ -1037,3 +1037,31 @@ Você pode imaginar o que aconteceria se a UI recebesse mais funcionalidades. Se
 Novamente, **é possível** escrever código jQuery limpo que não parece um macarrão. Mas você tem que definir a estutrura do código por si mesmo e pensar sobre como refatorar o código cada vez que você adicionar uma funcionalidade. O React fornece essa estrutura para você e reduz a sobrecarga cognitiva.
 
 ## Passo 14: A Funcionalidade Final - Destacando os Caracteres Excedentes (5 minutos)
+A última funcionalidade que vamos implementar é a de **destacar caracteres que estão além do limite.**
+
+![Destacar caracteres excedentes](http://reactfordesigners.com/images/labs/overflow-highlight.png)
+
+Infelizmente, **não vamos destacar o texto dentro da tweet box** pois isso requiriria de nós mudar `textarea` para `contenteditable`, e `contenteditable` é complicado para propósitos ilustrativos.
+
+Ao invés disso, **vamos mostrar uma caixa de alerta** no topo e indicar quais caracteres precisam ser deletados, dessa forma:
+
+![caixa de alerta mostrando caracteres excedentes](http://reactfordesigners.com/images/labs/overflow-highlight-alert.png)
+
+**Para testar, copie a seguinte citação de Steve Jobs:**
+
+> Se você não achou ainda, continue procurando. Não se acomode. Como tudo relacionado ao coração, você vai saber quando achar isso. E, como qualquer grande relacionamento, isso apenas fica melhor e melhor quando os anos passam.
+
+**Cole isso dentro [dessa caixa de tweet](http://jsbin.com/kuveba/9/edit?js,output)**
+
+- Isso deve mostrar uma caixa de alerta com os caracteres excedentes destacados em vermelho.
+- Isso também deve mostrar 10 caracteres anter do ponto de corte, sem nenhum destaque.
+
+Se formos implementar isso com jQuery, nosso código vai ficar ainda mais confuso. Note no diagrama que iremos adicionar mais duas flechas para uma nova funcionalidade.
+
+![Estilo jquery](http://reactfordesigners.com/images/labs/jquery-style-3.png)
+
+**Por isso, não vamos implementar essa funcionalidade com jQuery.** Vamos fazer isso usando React e parar de trabalhar. Vai ser muito simples com React - apenas mais uma flecha no diagrama:
+
+![Estilo React](http://reactfordesigners.com/images/labs/react-style-4.png)
+
+## Passo 15: Destacando Caracteres Excedentes com React (10 - 15 minutos)
