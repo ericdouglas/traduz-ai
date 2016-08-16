@@ -1065,3 +1065,24 @@ Se formos implementar isso com jQuery, nosso código vai ficar ainda mais confus
 ![Estilo React](http://reactfordesigners.com/images/labs/react-style-4.png)
 
 ## Passo 15: Destacando Caracteres Excedentes com React (10 - 15 minutos)
+Comece com nossa [implementação React anterior](http://jsbin.com/fitiha/10/edit?js,output).
+
+Vamos fazer isso passo a passo. Primeiro, **vamos mostrar um simples alerta quando você ultrapassar o limite.** O alerta vai ter algum texto estático.
+
+![Texto estático em alerta](http://reactfordesigners.com/images/labs/overflow-highlight-react-1.png)
+
+Uma vez que vai necessitar de uma condicional, vamos escrever isso em um método separado. **Adicione `{ this.overflowAlert() }` na frente da caixa de texto:**
+
+**JSX**
+```js
+{ this.overflowAlert() }
+<textarea className="form-control"
+          onChange={this.handleChange}></textarea>
+```
+
+Agora, esse método deve retornar:
+
+- **Uma tag `div`** para a caixa de alerta se não tiver nenhum caracter restante.
+- **Nada** (i.e texto vazio) caso contrário.
+
+It turns out that in React....
