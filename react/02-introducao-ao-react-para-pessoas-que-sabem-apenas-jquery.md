@@ -1085,4 +1085,80 @@ Agora, esse método deve retornar:
 - **Uma tag `div`** para a caixa de alerta se não tiver nenhum caracter restante.
 - **Nada** (i.e texto vazio) caso contrário.
 
-It turns out that in React....
+Acontece que com React, **você pode retornar marcação JSX de um método e usar isso em algum outro método,** tudo vai simplesmente funcionar. Em outras palavras, você pode fazer algo como:
+
+**JSX**
+```js
+someMethod: function() {
+  return (
+    <a href="#">Hello World</a>
+  );
+},
+someMethod2: function() {
+  return (
+    <h1>
+      { this.someMethod() }
+    </h1>
+  );
+},
+```
+
+No nosso caso, podemos retornar `( <div> ... </div> )` em uma condicional, e nada na outra. **Então nosso método `overflowAlert` vai se parecer com isso:**
+
+**JSX**
+```js
+overflowAlert: function() {
+  if (this.remainingCharacters() < 0) {
+    return (
+      <div className="alert alert-warning">
+        <strong>Oops! Too Long:</strong>
+      </div>
+    );
+  } else {
+    return "";
+  }
+},
+```
+
+Note que estamos verificando `this.remainingCharacters()` para saber se devemos mostrar o alerta ou não.
+
+**Teste agora digitando 140+ caracteres (ou 117+ com o botão "Add Photo" ON)**. O alerta deve aparecer.
+
+### Mostrando Caracteres Excedentes
+Aqui está o resumo do que vai dentro da mensagem de alerta:
+
+![Conteúdo da mensagem de alerta](http://reactfordesigners.com/images/labs/overflow-highlight-react-2.png)
+
+> Reticências, caracteres 131 ao 140 de `this.state.text`, caracteres 141 em diante de `this.state.text`
+
+- Entre *"Oops! Too Long:"* e o próprio texto existe um simples espaço seguido de três pontos. Eu usei `&nbsp;` aqui quando estamos escrevendo marcação no React, espaços em branco entre as tags são removidos.
+- Depois temos os caracteres entre a posição 131 e 140 (10 no total) de `this.state.text`.
+- Então temos os caracteres restantes destacados em vermelho.
+
+**Vamos escrever isso com JSX. Dentro da condição `if` de `overflowAlert`, vamos criar duas variáveis: `beforeOverflowText` e `overflowText`. Vamos usar o método `.substring()` em `this.state.text`.** 
+
+**JSX** 
+```js
+if (this.remainingCharacters() < 0) {
+  var beforeOverflowText = this.state.text.substring(140 - 10, 140);
+  var overflowText = this.state.text.substring(140);
+
+  return (
+    <div className="alert alert-warning">
+      <strong>Oops! Too Long:</strong>
+      &nbsp;...{beforeOverflowText}
+      <strong className="bg-danger">{overflowText}</strong>
+    </div>
+  );
+}
+```
+
+- Se você fizer `.substring(a, b)`, isso vai retornar uma parte da string iniciando no índice `a` até o índice `b` (não incluso).
+- Se você fizer `.substring(a)`, isso vai retornar todos os caracteres a partir do índice `a`
+- Usamos a classe `bt-danger` para destacar o texto em vermelho.
+
+Copie e cole este texto novamente para ver que o texto é destacado. Estamos quase terminando!
+
+> Se você não achou ainda, continue procurando. Não se acomode. Como tudo relacionado ao coração, você vai saber quando achar isso. E, como qualquer grande relacionamento, isso apenas fica melhor e melhor quando os anos passam.
+
+### What if the “Add Photo” button is ON?
