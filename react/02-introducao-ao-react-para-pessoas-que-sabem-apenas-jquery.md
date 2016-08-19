@@ -1182,3 +1182,16 @@ Agora, tente alterar o estado do botão "Add Photo" enquanto digita algum texto 
 ![Estilo React](http://reactfordesigners.com/images/labs/react-style-4.png)
 
 ## Passo 16: Quais os próximos passos?
+Isso finaliza meu tutorial. Esperançosamente você aprendeu:
+
+- A diferença entre código jQuery vs código React, e
+- Como escrever um código React básico no JSX.
+
+![Estilo jQuery vs Estilo React](http://reactfordesigners.com/images/labs/jquery-style-vs-react-style.png)
+
+### O que aprender a seguir?
+Wes Bos, o cara que escreveu o [tweet](https://twitter.com/wesbos/status/598144948559605760) com a piada que eu referenciei no início desse artigo, fez um tutorial sobre React compreensivo para iniciantes em [ReactForBeginners.com](http://reactforbeginners.com/). Altamente recomendado!
+
+Obrigado por ler, e se você tiver algum feedback/dúvida, mande-me um e-mail em `shu@chibicode.com` ou um tweet [@chibicode](http://twitter.com/chibicode).
+
+Também, obrigado aos meus colegas [Brady Fukumoto](https://twitter.com/Brrr80/status/618897522505838592) por ler o rascunho deste artigo e [Greg Becker](Greg Becker) por fornecer um grande *feedback*. 
