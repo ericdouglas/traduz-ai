@@ -1162,3 +1162,23 @@ Copie e cole este texto novamente para ver que o texto é destacado. Estamos qua
 > Se você não achou ainda, continue procurando. Não se acomode. Como tudo relacionado ao coração, você vai saber quando achar isso. E, como qualquer grande relacionamento, isso apenas fica melhor e melhor quando os anos passam.
 
 ### What if the “Add Photo” button is ON?
+Se o botão "Add Photo" estiver ON (ativo) então o limite de caracteres diminui em 23. **Então `beforeOverflowText` e `overflowText` precisam levar isso em conta:**
+
+**JSX**
+```js
+if (this.state.photoAdded) {
+  var beforeOverflowText = this.state.text.substring(140 - 23 - 10, 140 - 23);
+  var overflowText = this.state.text.substring(140 - 23);
+} else {
+  var beforeOverflowText = this.state.text.substring(140 - 10, 140);
+  var overflowText = this.state.text.substring(140);
+}
+```
+
+Agora, tente alterar o estado do botão "Add Photo" enquanto digita algum texto que é maior que o limite. Isso deve funcionar corretamente. [Aqui o JSBin](http://jsbin.com/kuveba/9/edit?js,output).
+
+É isso! Novamente, você pode ver que as alterações do código foram simples:
+
+![Estilo React](http://reactfordesigners.com/images/labs/react-style-4.png)
+
+## Passo 16: Quais os próximos passos?
