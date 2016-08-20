@@ -19,9 +19,10 @@ Para mim, aprender programação funcional é um pouco como [obter um Thermomix]
 
 - É um preciso um investimento inicial;
 - Você vai começar a dizer para seus amigos e família o quão incrível isso é;
-- Eles começam a se perguntar se você juntou a algum tipo de culto.
+- Eles começam a se perguntar se você se juntou a algum tipo de culto.
 
 Mas isso realmente faz algumas tarefas de uma forma muito mais simples. Isso pode até automatizar certas coisas que de outra forma seriam muito tediosas e gastariam um bom tempo para serem feitas.
 
 ## building blocks
+
 
