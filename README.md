@@ -13,7 +13,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 
 ## Artigos
 
-* [JavaScript](#javascript) (08)
+* [JavaScript](#javascript) (09)
 * [AngularJS](#angularjs) (05)
 * [Node.js](#nodejs) (02)
 * [React](#react) (02)
@@ -39,10 +39,11 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 |02.|**Objetos JavaScript em Detalhe**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/002-objetos-js-em-detalhe.md#objetos-javascript-em-detalhe)|[Original](http://javascriptissexy.com/javascript-objects-in-detail/)|
 |03.|**Escopo de Variável e Hoisting no JavaScript Explicado**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/003-escopo-de-variavel-js-e-hoisting-explicado.md#escopo-de-vari%C3%A1vel-javascript-e-hoisting-explicado)|[Original](http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/)|
 |04.|**Entenda Closures no JavaScript com Facilidade**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/004-entenda-closures-no-javaScript-com-facilidade.md#entenda-closures-no-javascript-com-facilidade)|[Original](http://javascriptissexy.com/understand-javascript-closures-with-ease/)|
-|05|**Protótipos JavaScript em uma Linguagem Simples**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/006-prototipos-javascript-em-uma-linguagem-simples.md#prot%C3%B3tipos-javascript-em-uma-linguagem-simples)|[Original](http://javascriptissexy.com/javascript-prototype-in-plain-detailed-language/)|
-|06.|**Entenda Funções Callback no JavaScript e Use-as**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/007-entenda-callbacks-js.md)|[Original](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/)|
-|07.|**Um Mergulho no JavaScript Puro**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/008-um-mergulho-no-javascript-puro.md)|[Original](http://blog.adtile.me/2014/01/16/a-dive-into-plain-javascript/)|
-|08.|**Programação Funcional Deve Ser Sua Prioridade número #1 em 2015**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/009-programacao-funcional-prioridade-2015.md)|[Original](https://medium.com/@jugoncalves/functional-programming-should-be-your-1-priority-for-2015-47dd4641d6b9)|
+|05|**Protótipos JavaScript em uma Linguagem Simples**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/005-prototipos-javascript-em-uma-linguagem-simples.md#prot%C3%B3tipos-javascript-em-uma-linguagem-simples)|[Original](http://javascriptissexy.com/javascript-prototype-in-plain-detailed-language/)|
+|06.|**Entenda Funções Callback no JavaScript e Use-as**|[Tradução](https://github.com/eoop/traduz-ai/blob/master/javascript/006-entenda-callbacks-js.md)|[Original](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/)|
+|07.|**Um Mergulho no JavaScript Puro**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/007-um-mergulho-no-javascript-puro.md)|[Original](http://blog.adtile.me/2014/01/16/a-dive-into-plain-javascript/)|
+|08.|**Programação Funcional Deve Ser Sua Prioridade número #1 em 2015**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/008-programacao-funcional-prioridade-2015.md)|[Original](https://medium.com/@jugoncalves/functional-programming-should-be-your-1-priority-for-2015-47dd4641d6b9)|
+|09.|**Uma Suave Introdução ao JavaScript Funcional: Parte 1**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/009-uma-suave-introducao-ao-javascript-parte-1.md)|[Original](http://jrsinclair.com/articles/2016/gentle-introduction-to-functional-javascript-intro/)|
 
 ## AngularJS
 
