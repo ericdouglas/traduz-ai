@@ -23,6 +23,70 @@ Para mim, aprender programação funcional é um pouco como [obter um Thermomix]
 
 Mas isso realmente faz algumas tarefas de uma forma muito mais simples. Isso pode até automatizar certas coisas que de outra forma seriam muito tediosas e gastariam um bom tempo para serem feitas.
 
-## building blocks
+## Blocos Fundamentais
+Vamos começar com algumas funcionalidades básicas do JavaScript que tornam a programação "funcional" possível, antes de irmos para porque isso é uma boa ideia. No JavaScript nós temos dois blocos fundamentais: *variáveis* e *funções*. Variáveis são como contêineres que podemos colocar coisas dentro. Você pode criar um assim:
 
+```js
+var myContainer = "Hey everybody! Come see how good I look!";
+```
 
+Isso cria um contêiner chamado `myContainer` e coloca uma *string* nele.
+
+Agora a função, por outro lado, é uma forma de agrupar algumas instruções para que você possa usá-las novamente, ou apenas deixar as coisas organizadas, dessa forma você não vai ficar tentando pensar em tudo de uma vez. Pode-se criar uma função assim:
+
+```js
+function log(someVariable) {
+    console.log(someVariable);
+    return someVariable;
+}
+```
+
+E você pode chamar uma função assim:
+
+```js
+log(myContainer);
+// Hey everybody! Come see how good I look!
+```
+
+Mas, o fato é, se você já viu algum JavaScript anteriormente, então você vai saber que também podemos escrever e chamar nossa função dessa forma:
+
+```js
+var log = function(someVariable) {
+    console.log(someVariable);
+    return someVariable;
+}
+
+log(myContainer);
+// Hey everybody! Come see how good I look!
+```
+
+Vamos olhar para isso cuidadosamente. Quando escrevemos a definição da função dessa forma, parece que criamos uma variável chamada `log` e grudamos uma função nela. E isso é exatamente o que fizemos. Nossa função `log` *é* uma variável; o que significa que podemos fazer as mesmas coisas que fazemos com outras variáveis.
+
+Vamos testar isso. Poderíamos, talvez, passar uma função como um parâmetro para outra função?
+
+```js
+var classyMessage = function() {
+    return "Stay classy San Diego!";
+}
+
+log(classyMessage);
+// [Function]
+```
+
+Bem, não muito útil. Vamos testar de uma forma diferente.
+
+```js
+var doSomething = function(thing) {
+    thing();
+}
+
+var sayBigDeal = function() {
+    var message = "I’m kind of a big deal";
+    log(message);
+}
+
+doSomething(sayBigDeal);
+// I’m kind of a big deal
+```
+
+Isso pode não ser muito excitante para você, mas cientistas da computação ficam bastante animados. This ability to put functions into
