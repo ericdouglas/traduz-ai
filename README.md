@@ -13,7 +13,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 
 ## Artigos
 
-* [JavaScript](#javascript) (09)
+* [JavaScript](#javascript) (10)
 * [AngularJS](#angularjs) (05)
 * [Node.js](#nodejs) (02)
 * [React](#react) (02)
@@ -44,6 +44,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 |07.|**Um Mergulho no JavaScript Puro**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/007-um-mergulho-no-javascript-puro.md)|[Original](http://blog.adtile.me/2014/01/16/a-dive-into-plain-javascript/)|
 |08.|**Programação Funcional Deve Ser Sua Prioridade número #1 em 2015**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/008-programacao-funcional-prioridade-2015.md)|[Original](https://medium.com/@jugoncalves/functional-programming-should-be-your-1-priority-for-2015-47dd4641d6b9)|
 |09.|**Uma Suave Introdução ao JavaScript Funcional: Parte 1**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/009-uma-suave-introducao-ao-javascript-parte-1.md)|[Original](http://jrsinclair.com/articles/2016/gentle-introduction-to-functional-javascript-intro/)|
+|10.|**Uma Suave Introdução ao JavaScript Funcional: Parte 2**|[Tradução](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/010-uma-suave-introducao-ao-javascript-parte-2.md)|[Original](http://jrsinclair.com/articles/2016/gentle-introduction-to-functional-javascript-arrays/)|
 
 ## AngularJS
 
