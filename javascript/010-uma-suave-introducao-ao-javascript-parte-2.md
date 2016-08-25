@@ -80,3 +80,43 @@ colours.forEach(addColour);
 Você pode achar mais informações sobre o método nativo [`forEach` na referência JavaScript da MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 
 ### Map
+Agora, nossa função `forEach` é útil, mas de é de alguma forma limitada. Se a função *callback* que passamos retornar um valor, `forEach` apenas ignora-o. Com um pequeno ajuste, podemos alterar nossa função `forEach` e ela vai nos dar qualquer valor que a função callback retornar. Vamos ter então um novo array com o valor correspondente a cada valor no array original.
+
+Vamos ver um exemplo. Se temos um arrays com IDs, e queremos pegar o elemento correspondente a cada um deles. Em uma solução da forma procedural usaríamos um loop `for`:
+
+```js
+var ids = ['unicorn', 'fairy', 'kitten'];
+var elements = [];
+for (var i = 0; i < ids.length; i = i + 1) {
+    elements[i] = document.getElementById(ids[i]);
+}
+// elements now contains the elements we are after
+```
+
+Novamente, tivemos que dizer ao computador como criar uma variável *index* e incrementá-la - detalhes que realmente não devemos nos preocupar. Vamos refatorar o loop `for` assim como fizemos com `forEach` e colocá-lo numa função chamada `map`:
+
+```js
+var map = function(callback, array) {
+    var newArray = [];
+    for (var i = 0; i < array.length; i = i + 1) {
+        newArray[i] = callback(array[i], i);
+    }
+    return newArray;
+}
+```
+
+A função `map` pega funções pequenas e trivias, tornando-as em funções super-herói - ela multiplica a efetividade da função aplicando-a em um array inteiro apenas com uma chamada.
+
+Assim como `forEach`, `map` é tão útil que implementações modernas do JavaScript a tem como um método nativo para objetos array. Você pode chamar o método nativo da seguinte forma:
+
+```js
+var ids = ['unicorn', 'fairy', 'kitten'];
+var getElement = function(id) {
+  return document.getElementById(id);
+};
+var elements = ids.map(getElement);
+```
+
+Você pode ler mais sobre o método nativo [`map` na referência JavaScript da MDN.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+### Reduce
