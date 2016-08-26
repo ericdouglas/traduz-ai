@@ -120,3 +120,91 @@ var elements = ids.map(getElement);
 Você pode ler mais sobre o método nativo [`map` na referência JavaScript da MDN.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
 ### Reduce
+`map` é muito útil, mas nós podemos fazer uma função ainda mais poderosa se pegarmos um array inteiro e retornar apenas um valor. Isso pode parecer inicialmente um pouco contraintuitivo - como uma função que retorna um valor ao invés de vários é mais *poderosa*? Para descobrir o porquê, temos que primeiro olhar como essa função trabalha.
+
+Para ilustrar, vamos considerar dois problemas similares:
+
+1. Dado um array de números, calcule a some; e
+1. Dado um array de palavras, junte-as com um espaço entre cada palavra.
+
+Isso pode parecer exemplos bobos, triviais - e eles são. Mas tenha paciência comigo, após vermos como a função `reduce` trabalha, nós vamos aplicá-la de formas mais interessantes.
+
+A forma "procedural" de resolver esses problemas é, novamente, com loops `for`:
+
+```js
+// Given an array of numbers, calculate the sum
+var numbers = [1, 3, 5, 7, 9];
+var total = 0;
+for (var i = 0; i < numbers.length; i = i + 1) {
+    total = total + numbers[i];
+}
+// total is 25
+
+// Given an array of words, join them together with a space between each word.
+var words = ['sparkle', 'fairies', 'are', 'amazing'];
+var sentence = '';
+for (i = 0; i < words.length; i++) {
+    sentence = sentence + ' ' + words[i];
+}
+// ' sparkle fairies are amazing'
+```
+
+Essas duas soluções tem muito em comum. Ambas usam um loop `for` para iterar sobre um array; ambas tem uma variável trabalhando ( `total` e `sentence`); e ambas definem o valor trabalhado com um valor inicial.
+
+Vamos refatorar a parte interior de cada loop, e tornar isso em uma função:
+
+```js
+var add = function(a, b) {
+    return a + b;
+}
+
+// Given an array of numbers, calculate the sum
+var numbers = [1, 3, 5, 7, 9];
+var total = 0;
+for (i = 0; i < numbers.length; i = i + 1) {
+    total = add(total, numbers[i]);
+}
+// total is 25
+
+function joinWord(sentence, word) {
+    return sentence + ' ' + word;
+}
+
+// Given an array of words, join them together with a space between each word.
+var words = ['sparkle', 'fairies', 'are', 'amazing'];
+var sentence = '';
+for (i = 0; i < words.length; i++) {
+    sentence = joinWord(sentence, words[i]);
+}
+// 'sparkle fairies are amazing'
+```
+
+Isso é muito mais conciso e o padrão ficou claro. Ambas funções interiores pegam a variável de trabalho como primeiro parâmetro e o elemento atual do array como segundo. Agora que conseguimos ver o padrão de forma mais clara, nós podemos mover os loops `for` para dentro da função:
+
+```js
+var reduce = function(callback, initialValue, array) {
+    var working = initialValue;
+    for (var i = 0; i < array.length; i = i + 1) {
+        working = callback(working, array[i]);
+    }
+    return working;
+};
+```
+
+Agora que temos nossa função `reduce`, vamos usá-la:
+
+```js
+var total = reduce(add, 0, numbers);
+var sentence = reduce(joinWord, '', words);
+```
+
+Assim como `forEach` e `map`, `reduce` também é nativa no padrão JavaScript como um método do objeto Array. Podemos usá-la assim:
+
+```js
+var total = numbers.reduce(add, 0);
+var sentence = words.reduce(joinWord, '');
+```
+
+Você pode ler mais sobre o método nativo [`reduce` na referência JavaScript do MDN.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
+
+## putting it all together
