@@ -207,4 +207,65 @@ var sentence = words.reduce(joinWord, '');
 
 Você pode ler mais sobre o método nativo [`reduce` na referência JavaScript do MDN.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
 
-## putting it all together
+## Juntando Tudo
+Como mencionamos anteriormente, esses são exemplos triviais - as funções `add` e `joinWord` são muito simples - e esse é o ponto na verdade. Funções simples e pequenas são mais fáceis de pensar e testar. Mesmo quando pegamos duas funções pequenas e simples e as combinamos (como `add` e `reduce` por exemplo), o resultado ainda é mais fácil de se imaginar do que uma única função gigante e complicada. Mas, com isso dito, podemos fazer coisas mais interessantes do que adicionar números.
+
+Vamos tentar fazer algo um pouco mais complicado. Começaremos com dados formatados de forma não convencional, e usar as funções `map` e `reduce` para transformar isso em uma lista HTML. Aqui estão nossos dados:
+
+```js
+var ponies = [
+    [
+        ['name', 'Fluttershy'],
+        ['image', 'http://tinyurl.com/gpbnlf6'],
+        ['description', 'Fluttershy is a female Pegasus pony and one of the main characters of My Little Pony Friendship is Magic.']
+    ],
+    [
+        ['name', 'Applejack'],
+        ['image', 'http://tinyurl.com/gkur8a6'],
+        ['description', 'Applejack is a female Earth pony and one of the main characters of My Little Pony Friendship is Magic.']
+    ],
+    [
+        ['name', 'Twilight Sparkle'],
+        ['image', 'http://tinyurl.com/hj877vs'],
+        ['description', 'Twilight Sparkle is the primary main character of My Little Pony Friendship is Magic.']
+    ]
+];
+```
+
+
+Os dados não estão muito arrumados. Seria muito mais claro se os arrays internos fossem objetos bem formatados. Previamente, nós usamos a função `reduce` para calcular simples valores como *strings* e números, mas ninguém disse que o valor retornado por `reduce` tem que ser simples. Nós podemos usar essa função com objetos, arrays ou até mesmo elementos DOM. Vamos criar uma função que recebe um desses arrays internos (como `['name', 'Fluttershy']`) e adiciona esse par chave/valor a um objeto.
+
+```js
+var addToObject = function(obj, arr) {
+    obj[arr[0]] = arr[1];
+    return obj;
+};
+```
+
+Com essa função `addToObject` podemos converter cada "pequeno" array em um objeto:
+
+```js
+var ponyArrayToObject = function(ponyArray) {
+    return reduce(addToObject, {}, ponyArray);
+};
+```
+
+Se usarmos nossa função `map` poderemos converter todo o array em algo mais arrumado:
+
+```js
+var tidyPonies = map(ponyArrayToObject, ponies);
+```
+
+Agora temos um array de pequenos objetos. Com uma pequena ajuda do [pequeno *template engine* de Thomas Fuchs](http://mir.aculo.us/2011/03/09/little-helpers-a-tweet-sized-javascript-templating-engine/), podemos usar `reduce` novamente para converter isso em um fragmento HTML. A função de template pega uma string template e um objeto, e onde ela achar palavras envoltas com chaves (como `{name}` ou `{image}`), ela vai trocá-las com o valor correspondente no objeto. Por exemplo:
+
+```js
+var data = { name: "Fluttershy" };
+t("Hello {name}!", data);
+// "Hello Fluttershy!"
+
+data = { who: "Fluttershy", time: Date.now() };
+t("Hello {name}! It's {time} ms since epoch.", data);
+// "Hello Fluttershy! It's 1454135887369 ms since epoch."
+```
+
+So, if we want to convert a pony object
