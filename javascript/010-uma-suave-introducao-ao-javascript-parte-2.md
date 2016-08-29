@@ -256,7 +256,7 @@ Se usarmos nossa função `map` poderemos converter todo o array em algo mais ar
 var tidyPonies = map(ponyArrayToObject, ponies);
 ```
 
-Agora temos um array de pequenos objetos. Com uma pequena ajuda do [pequeno *template engine* de Thomas Fuchs](http://mir.aculo.us/2011/03/09/little-helpers-a-tweet-sized-javascript-templating-engine/), podemos usar `reduce` novamente para converter isso em um fragmento HTML. A função de template pega uma string template e um objeto, e onde ela achar palavras envoltas com chaves (como `{name}` ou `{image}`), ela vai trocá-las com o valor correspondente no objeto. Por exemplo:
+Agora temos um array de pequenos objetos. Com uma pequena ajuda do [pequeno *template engine* de Thomas Fuchs](http://mir.aculo.us/2011/03/09/little-helpers-a-tweet-sized-javascript-templating-engine/), podemos usar `reduce` novamente para converter isso em um fragmento HTML. A *função template* pega uma string template e um objeto, e onde ela achar palavras envoltas com chaves (como `{name}` ou `{image}`), ela vai trocá-las com o valor correspondente no objeto. Por exemplo:
 
 ```js
 var data = { name: "Fluttershy" };
@@ -268,4 +268,32 @@ t("Hello {name}! It's {time} ms since epoch.", data);
 // "Hello Fluttershy! It's 1454135887369 ms since epoch."
 ```
 
-So, if we want to convert a pony object
+Então se quisermos converter um pequeno objeto em um item de uma lista, podemos fazer algo assim:
+
+```js
+var ponyToListItem = function(pony) {
+    var template = '<li><img src="{image}" alt="{name}"/>' +
+                   '<div><h3>{name}</h3><p>{description}</p>' +
+                   '</div></li>';
+    return t(template, pony);
+};
+```
+
+Isso nos dá uma forma de converter um item individual em HTML, mas para converter todo o array, precisaremos das nossas funções `reduce` e `joinWords`:
+
+```js
+var ponyList = map(ponyToListItem, tidyPonies);
+var html = '<ul>' + reduce(joinWord, '', ponyList) + '</ul>';
+```
+
+Você pode ver o resultado final [aqui](http://jsbin.com/wuzini/edit?html,js,output)
+
+Uma vez que você entenda os padrões onde `map` e `reduce` são adequados, você não vai mais precisar de escrever um loop for da maneira antiga. De fato, é um desafio útil ver se você consegue evitar completamente a escrita de loops for no seu próximo projeto. Depois que você usar `map` e `reduce` algumas vezes, você vai começar a notar ainda mais padrões que podem ser abstraídos. Alguns comuns incluem *[filtrar](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)* e *[arrancar](http://ramdajs.com/docs/#pluck)* valores de um array. Uma vez que esses padrões aparecem regularmente, algumas pessoas criaram bibliotecas de programação funcional, assim você pode reutilizar código para solucionar padrões comuns. Algumas das bibliotecas mais populares são:
+
+- [Ramda](http://ramdajs.com/),
+- [Lodash](https://lodash.com/), e
+- [Underscore](http://underscorejs.org/).
+
+Agora que você viu quão útil é passar funções como variáveis, especialmente quando estamos lidando com listas, você deve ter um grande novo conjunto de técnicas no seu cinto de utildades metafórico. E se você escolher ir embora agora, está tudo bem. Você pode finalizar a leitura e ninguém vai pensar nada de ruim sobre você. Você pode ir e ser um programador bem sucedido e produtivo, e nunca perturbar seus sonhos com as complexidades da *partial application* (aplicação parcial), *currying* e *composition* (composição). Essas coisas não para todo mundo.
+
+Mas, se você estiver afim de um pouco de aventura, você pode continuar lendo e ver quão fundo a toca do coelho vai...
