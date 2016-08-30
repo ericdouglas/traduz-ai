@@ -9,7 +9,7 @@ Essa é a parte 2 de uma série de 4 artigos introduzindo a programação funcio
 
 - [Parte 1: Blocos fundamentais e motivação](009-uma-suave-introducao-ao-javascript-parte-1.md)
 - Parte 2: Trabalhando com Arrays e Listas (esse artigo)
-- Parte 3: Funções para fazer funções
+- [Parte 3: Funções para fazer funções](011-uma-suave-introducao-ao-javascript-parte-3.md)
 - Parte 4: Fazendo isso com estilo
 
 ## Trabalhando com Arrays e Listas
@@ -80,7 +80,7 @@ colours.forEach(addColour);
 Você pode achar mais informações sobre o método nativo [`forEach` na referência JavaScript da MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 
 ### Map
-Agora, nossa função `forEach` é útil, mas de é de alguma forma limitada. Se a função *callback* que passamos retornar um valor, `forEach` apenas ignora-o. Com um pequeno ajuste, podemos alterar nossa função `forEach` e ela vai nos dar qualquer valor que a função callback retornar. Vamos ter então um novo array com o valor correspondente a cada valor no array original.
+Nossa função `forEach` é útil, mas é de alguma forma limitada. Se a função *callback* que passamos retornar um valor, `forEach` apenas ignora-o. Com um pequeno ajuste, podemos alterar nossa função `forEach` e ela vai nos dar qualquer valor que a função callback retornar. Vamos ter então um novo array com o valor correspondente a cada valor no array original.
 
 Vamos ver um exemplo. Se temos um arrays com IDs, e queremos pegar o elemento correspondente a cada um deles. Em uma solução da forma procedural usaríamos um loop `for`:
 
@@ -105,7 +105,7 @@ var map = function(callback, array) {
 }
 ```
 
-A função `map` pega funções pequenas e trivias, tornando-as em funções super-herói - ela multiplica a efetividade da função aplicando-a em um array inteiro apenas com uma chamada.
+A função `map` pega funções pequenas e triviais, tornando-as em funções super-herói - ela multiplica a efetividade da função aplicando-a em um array inteiro apenas com uma chamada.
 
 Assim como `forEach`, `map` é tão útil que implementações modernas do JavaScript a tem como um método nativo para objetos array. Você pode chamar o método nativo da seguinte forma:
 
@@ -124,7 +124,7 @@ Você pode ler mais sobre o método nativo [`map` na referência JavaScript da M
 
 Para ilustrar, vamos considerar dois problemas similares:
 
-1. Dado um array de números, calcule a some; e
+1. Dado um array de números, calcule a soma; e
 1. Dado um array de palavras, junte-as com um espaço entre cada palavra.
 
 Isso pode parecer exemplos bobos, triviais - e eles são. Mas tenha paciência comigo, após vermos como a função `reduce` trabalha, nós vamos aplicá-la de formas mais interessantes.
@@ -256,7 +256,7 @@ Se usarmos nossa função `map` poderemos converter todo o array em algo mais ar
 var tidyPonies = map(ponyArrayToObject, ponies);
 ```
 
-Agora temos um array de pequenos objetos. Com uma pequena ajuda do [pequeno *template engine* de Thomas Fuchs](http://mir.aculo.us/2011/03/09/little-helpers-a-tweet-sized-javascript-templating-engine/), podemos usar `reduce` novamente para converter isso em um fragmento HTML. A *função template* pega uma string template e um objeto, e onde ela achar palavras envoltas com chaves (como `{name}` ou `{image}`), ela vai trocá-las com o valor correspondente no objeto. Por exemplo:
+Agora temos um array de pequenos objetos. Com uma ajuda do [pequeno *template engine* de Thomas Fuchs](http://mir.aculo.us/2011/03/09/little-helpers-a-tweet-sized-javascript-templating-engine/), podemos usar `reduce` novamente para converter isso em um fragmento HTML. A *função template* pega uma string template e um objeto, e onde ela achar palavras envoltas com chaves (como `{name}` ou `{image}`), ela vai trocá-las com o valor correspondente no objeto. Por exemplo:
 
 ```js
 var data = { name: "Fluttershy" };
@@ -288,12 +288,12 @@ var html = '<ul>' + reduce(joinWord, '', ponyList) + '</ul>';
 
 Você pode ver o resultado final [aqui](http://jsbin.com/wuzini/edit?html,js,output)
 
-Uma vez que você entenda os padrões onde `map` e `reduce` são adequados, você não vai mais precisar de escrever um loop for da maneira antiga. De fato, é um desafio útil ver se você consegue evitar completamente a escrita de loops for no seu próximo projeto. Depois que você usar `map` e `reduce` algumas vezes, você vai começar a notar ainda mais padrões que podem ser abstraídos. Alguns comuns incluem *[filtrar](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)* e *[arrancar](http://ramdajs.com/docs/#pluck)* valores de um array. Uma vez que esses padrões aparecem regularmente, algumas pessoas criaram bibliotecas de programação funcional, assim você pode reutilizar código para solucionar padrões comuns. Algumas das bibliotecas mais populares são:
+Uma vez que você entenda os padrões onde `map` e `reduce` são adequados, você não vai mais precisar de escrever um loop `for` da maneira antiga. De fato, é um desafio útil ver se você consegue evitar completamente a escrita de loops `for` no seu próximo projeto. Depois que você usar `map` e `reduce` algumas vezes, você vai começar a notar ainda mais padrões que podem ser abstraídos. Alguns comuns incluem *[filtrar](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)* e *[arrancar](http://ramdajs.com/docs/#pluck)* valores de um array. Uma vez que esses padrões aparecem regularmente, algumas pessoas criaram bibliotecas de programação funcional, assim você pode reutilizar código para solucionar padrões comuns. Algumas das bibliotecas mais populares são:
 
 - [Ramda](http://ramdajs.com/),
 - [Lodash](https://lodash.com/), e
 - [Underscore](http://underscorejs.org/).
 
-Agora que você viu quão útil é passar funções como variáveis, especialmente quando estamos lidando com listas, você deve ter um grande novo conjunto de técnicas no seu cinto de utildades metafórico. E se você escolher ir embora agora, está tudo bem. Você pode finalizar a leitura e ninguém vai pensar nada de ruim sobre você. Você pode ir e ser um programador bem sucedido e produtivo, e nunca perturbar seus sonhos com as complexidades da *partial application* (aplicação parcial), *currying* e *composition* (composição). Essas coisas não para todo mundo.
+Agora que você viu quão útil é passar funções como variáveis, especialmente quando estamos lidando com listas, você deve ter um grande novo conjunto de técnicas no seu cinto de utildades metafórico. E se você escolher ir embora agora, está tudo bem. Você pode finalizar a leitura e ninguém vai pensar nada de ruim sobre você. Você pode ir e ser um programador bem sucedido e produtivo, e nunca perturbar seus sonhos com as complexidades da *partial application* (aplicação parcial), *currying* e *composition* (composição). Essas coisas não são para todo mundo.
 
-Mas, se você estiver afim de um pouco de aventura, você pode continuar lendo e ver quão fundo a toca do coelho vai...
+Mas, se você estiver afim de um pouco de aventura, [você pode continuar lendo e ver quão fundo a toca do coelho vai...](011-uma-suave-introducao-ao-javascript-parte-3.md)
