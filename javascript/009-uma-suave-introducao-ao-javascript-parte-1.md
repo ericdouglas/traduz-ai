@@ -9,7 +9,7 @@ Essa é a parte um de uma série de quatro artigos introduzindo a programação 
 
 - Parte 1: Blocos fundamentais e motivação (esse artigo)
 - [Parte 2: Trabalhando com Arrays e Listas](010-uma-suave-introducao-ao-javascript-parte-2.md)
-- Parte 3: Funções para fazer funções
+- [Parte 3: Funções para fazer funções](011-uma-suave-introducao-ao-javascript-parte-3.md)
 - Parte 4: Fazendo isso com estilo
 
 ## Por que Funcional?
