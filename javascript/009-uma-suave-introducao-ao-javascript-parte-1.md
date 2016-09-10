@@ -13,7 +13,7 @@ Essa é a parte um de uma série de quatro artigos introduzindo a programação 
 - Parte 4: Fazendo isso com estilo
 
 ## Por que Funcional?
-O que é toda essa propaganda sobre JavaScript Funcional? E por que isso é chamado *funcional*? É como se alguém sentasse para escrever JavaScript *dis*funcional ou JavaScript não funcional. Para que isso é bom? Por que você deveria se preocupar?
+O que é toda essa propaganda sobre JavaScript Funcional? E por que isso é chamado *funcional*? Não é como se houvesse alguém que parasse para escrever JavaScript *dis*funcional ou JavaScript que não funciona. Para que isso é bom? Por que você deveria se preocupar?
 
 Para mim, aprender programação funcional é um pouco como [obter um Thermomix](https://www.youtube.com/watch?v=4yr_etbfZtQ&feature=youtu.be):
 
