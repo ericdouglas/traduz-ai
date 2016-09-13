@@ -88,4 +88,48 @@ argsLen('a', 'l', 'i', 'c', 'e');
 //=> 5
 ```
 
-It is often useful to have the
+É geralmente útil ter a variável `arguments` como um array verdadeiro. Nesses casos nós podemos converter a variável `arguments` em um array usando o método nativo de array chamado `slice`. Pelo fato de `arguments` não ser um array de verdade, temos que fazer isso por um caminho alternativo:
+
+```js
+var showArgsAsArray = function() {
+    var args = Array.prototype.slice.call(arguments, 0);
+    console.log(args);
+}
+showArgsAsArray('Tweedledee', 'Tweedledum');
+//=> [ 'Tweedledee', 'Tweedledum' ]
+```
+
+A variável `arguments` é normalmente utilizada para criar funções que podem pegar um número variável de argumentos. Isso vai ser útil depois, como iremos ver.
+
+### *Call* e *Apply*
+Vimos antes que arrays no JavaScript têm alguns métodos nativos como `.map` e `.reduce`. Bom, funções também têm alguns métodos nativos.
+
+A forma comum de chamar uma função é escrevendo parênteses, e qualquer parâmetro depois do nome da função. Por exemplo:
+
+```js
+function twinkleTwinkle(thing) {
+    console.log('Twinkle, twinkle, little ' + thing);
+}
+twinkleTwinkle('bat');
+//=> Twinkle, twinkle, little bat
+```
+
+Um dos métodos nativos das funções é o `call` e ele permite que você chame uma função de outra forma:
+
+```js
+twinkleTwinkle.call(null, 'star');
+//=> Twinkle, twinkle, little star
+```
+
+O primeiro argumento do método `.call` define a quê a variável especial `this` vai se referir dentro da função. Podemos ignorar isso por agora. Quaisquer argumentos depois deste serão passados diretamente para a função.
+
+O método `.apply` é bem parecido com `.call`, exceto que ao invés de passar argumentos individuais um por um, `.apply` permite que você passe um array de argumentos como o segundo parâmetro. Por exemplo:
+
+```js
+twinkleTwinkle.apply(null, ['bat']);
+//=> Twinkle, twinkle, little bat
+```
+
+Ambos esses métodos vão ser úteis quando nós estivermos criando funções que criam outras funções.
+
+### Anonymous Functions
