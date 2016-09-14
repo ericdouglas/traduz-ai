@@ -145,3 +145,15 @@ console.log(doubledArray);
 Funções como essa criadas em tempo de execução são chamadas funções anônimas, uma vez que elas não tem um nome. Elas também são chamadas as vezes de funções lambda.
 
 ## Aplicação Parcial
+Algumas vezes pode ser útil preencher previamente os argumentos de uma função. Por exemplo, imagine que tenhamos feito uma função `addClass()` que pega um nome de classe e um elemento DOM como parâmetros:
+
+```js
+var addClass = function(className, element) {
+    element.className += ' ' + className;
+    return element;
+}
+```
+
+Gostaríamos de usar isso com `map` para adicionar uma classe a vários elementos, mas temos um problema: `map` passa itens do array um por um como o primeiro parâmetro para a função *callback*. Então como vamos dizer a `addClass` qual nome de classe adicionar?
+
+The solution is to create a new function that calls addClass
