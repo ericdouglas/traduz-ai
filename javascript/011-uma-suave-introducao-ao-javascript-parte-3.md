@@ -132,4 +132,16 @@ twinkleTwinkle.apply(null, ['bat']);
 
 Ambos esses métodos vão ser úteis quando nós estivermos criando funções que criam outras funções.
 
-### Anonymous Functions
+### Funções Anônimas
+O JavaScript nos permite criar funções em tempo de execução. Onde quer que tenhamos a possibilidade de criar uma variável, e então fazer algo com essa variável, o JavaScript nos permite adicionar uma definição de função nesse local. Isso é frequentemente usado com `map` e `reduce`, por exemplo:
+
+```js
+var numbers = [1, 2, 3];
+var doubledArray = map(function(x) { return x * 2}, numbers);
+console.log(doubledArray);
+//=> [ 2, 4, 6 ]
+```
+
+Funções como essa criadas em tempo de execução são chamadas funções anônimas, uma vez que elas não tem um nome. Elas também são chamadas as vezes de funções lambda.
+
+## Aplicação Parcial
