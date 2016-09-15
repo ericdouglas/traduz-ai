@@ -156,4 +156,50 @@ var addClass = function(className, element) {
 
 Gostaríamos de usar isso com `map` para adicionar uma classe a vários elementos, mas temos um problema: `map` passa itens do array um por um como o primeiro parâmetro para a função *callback*. Então como vamos dizer a `addClass` qual nome de classe adicionar?
 
-The solution is to create a new function that calls addClass
+A solução é criar uma nova função que chama `addClass` com o nome da classe que queremos:
+
+```js
+var addTweedleClass = function(el) {
+    return addClass('tweedle', el);
+}
+```
+
+Agora temos uma função que recebe apenas um parâmetro. Agora ela está adequada para ser passada para a função `map`:
+
+```js
+var ids = ['DEE', 'DUM'];
+var elements = map(document.getElementById, ids);
+elements = map(addTweedleClass, elements);
+```
+
+Mas se quisermos passar outra classe, temos que criar outra função:
+
+```js
+var addBoyClass = function(el) {
+    return addClass('boy', el);
+}
+```
+
+Nós começamos a nos repetir... então, vamos ver se podemos encontrar alguma abstração para esse padrão. E se tivermos uma função que cria outra função com o primeiro parâmetro preenchido previamente?
+
+```js
+var partialFirstOfTwo = function(fn, param1) {
+    return function(param2) {
+        return fn(param1, param2);
+    }
+}
+```
+
+Note a primeira declaração `return`. Nós criamos uma função que retorna outra função.
+
+```js
+var addTweedleClass = partialFirstOfTwo(addClass, 'tweedle');
+var addBoyClass = partialFirstOfTwo(addClass, 'boy');
+
+var ids = ['DEE', 'DUM'];
+var elements = map(document.getElementById, ids);
+elements = map(addTweedleClass, elements);
+elements = map(addBoyClass, elements);
+```
+
+This works great when we know
