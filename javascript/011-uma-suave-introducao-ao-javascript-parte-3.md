@@ -202,4 +202,47 @@ elements = map(addTweedleClass, elements);
 elements = map(addBoyClass, elements);
 ```
 
-This works great when we know
+Isso funciona bem quando nós sabemos que nossa função recebe exatamente dois parâmetros. Mas e se quisermos fazer a aplicação parcial em uma função que recebe mais de uma variável? Para esses casos precisamos de uma função de aplicação parcial mais generalisada. Vamos fazer uso dos métodos `slice` e `apply` descritos acima:
+
+```js
+var argsToArray = function(args) {
+    return Array.prototype.slice.call(args, 0);
+}
+
+var partial = function() {
+    // Convert the arguments variable to an array 
+    var args = argsToArray(arguments);
+
+    // Grab the function (the first argument). args now contains the remaining args.
+    var fn = args.shift();
+
+    // Return a function that calls fn
+    return function() {
+        var remainingArgs = argsToArray(arguments);
+        return fn.apply(this, args.concat(remainingArgs));
+    }
+}
+```
+
+Agora, os detalhes de *como* essa função funciona não é tão importante como *o que* ela faz. Essa função nos permite aplicar parcialmente qualquer número de variáveis a funções que recebem qualquer número de parâmetros.
+
+```js
+var twinkle = function(noun, wonderAbout) {
+    return 'Twinkle, twinkle, little ' +
+        noun + '\nHow I wonder where you ' +
+        wonderAbout;
+}
+
+var twinkleBat = partial(twinkle, 'bat', 'are at');
+var twinkleStar = partial(twinkle, 'star', 'are');
+
+console.log(twinkleBat());
+// "Twinkle, twinkle, little bat
+// How I wonder where you are at"
+
+console.log(twinkleStar());
+// "Twinkle, twinkle, little star
+// How I wonder where you are"
+```
+
+JavaScript has a built-in method that sort-of works
