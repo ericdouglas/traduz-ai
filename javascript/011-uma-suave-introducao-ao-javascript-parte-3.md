@@ -245,4 +245,20 @@ console.log(twinkleStar());
 // How I wonder where you are"
 ```
 
-JavaScript has a built-in method that sort-of works
+O JavaScript tem um método nativo que meio que funciona como `partial` chamado `bind`. Ele está disponível como um método em todas as funções. O problema é que ele espera que seu primeiro parâmetro seja um objeto que você deseja vincular (*bind*) a variável especial `this`. Isso significa, por exemplo, se você quer aplicar parcialmente algo a `document.getElementById`, você tem que passar `document` como o primeiro parâmetro, dessa forma:
+
+```js
+var getWhiteRabbit = document.getElementById.bind(document, 'white-rabbit');
+var rabbit = getWhiteRabbit();
+```
+
+Na maior parte do tempo porém, nós não precisamos da variável especial `this` (especialmente se estivermos usando um estilo funcional de programação), então podemos apenas passar `null` como o primeiro parâmetro. Por exemplo:
+
+```js
+var twinkleBat = twinkle.bind(null, 'bat', 'are at');
+var twinkleStar = twinkle.bind(null, 'star', 'are');
+```
+
+Você pode ler mais sobre [`.bind` na referência JavaScript do MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind).
+
+### Composição
