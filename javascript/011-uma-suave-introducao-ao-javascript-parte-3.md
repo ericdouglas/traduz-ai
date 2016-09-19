@@ -262,3 +262,53 @@ var twinkleStar = twinkle.bind(null, 'star', 'are');
 Você pode ler mais sobre [`.bind` na referência JavaScript do MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind).
 
 ### Composição
+Falamos no último artigo que programação funcional está relacionada a pegar pequenas, simples funções e uní-las para fazer coisas mais complexas. Aplicação parcial, como vimos acima, é uma ferramenta que torna esse processo mais fácil. Com aplicação parcial nós podemos converter nossa função `addClass` em uma função que podemos usar com `map`. Composição é uma outra ferramenta para combinar simples funções.
+
+A forma mais simples de composição é com duas funções, `a` e `b`, ambas esperando apenas um parâmetro. `Compose` cria uma terceira função, `c`. Chamando `c` com um parâmetro `x` retorna o resultado de chamar `a` com o resultado de chamar `b` com `x`... Que confusão. É muito mais simples de entender vendo um exemplo:
+
+```js
+var composeTwo = function(funcA, funcB) {
+    return function(x) {
+        return funcA(funcB(x));
+    }
+}
+
+var nohow = function(sentence) {
+    return sentence + ', nohow!';
+}
+var contrariwise = function(sentence) {
+    return sentence + ' Contrariwise…';
+}
+
+var statement = 'Not nothin&amp;rsquo;';
+var nohowContrariwise = composeTwo(contrariwise, nohow);
+console.log(nohowContrariwise(statement));
+//=> Not nothin&amp;rsquo;, nohow! Contrariwise…
+```
+
+Isso é muito bom. Podemos fazer muita coisa apenas com `composeTwo`. Mas, se você começar a escrever funções "puras" (vamos discutir isso depois), então você pode encontrar-se precisando juntar mais que duas funções. Para isso iremos precisar de uma função `compose` mais genérica:
+
+```js
+var compose = function() {
+    var args = arguments;
+    var start = args.length - 1;
+    return function() {
+        var i = start;
+        var result = args[start].apply(this, arguments);
+        i = i - 1;
+        while (i >= 0) {
+            result = args[i].call(this, result);
+            i = i - 1;
+        }
+        return result;
+    };
+};
+```
+
+Novamente, *como* isso funciona não é tão importante quanto *o que* você pode fazer com isso. E à primeira vista, `compose` pode não parecer tão incrível. Podemos escrever a função acima dessa forma com `compose`:
+
+```js
+var nohowContrariwise = compose(contrariwise, nohow);
+```
+
+But this doesn’t seem that much more concise
