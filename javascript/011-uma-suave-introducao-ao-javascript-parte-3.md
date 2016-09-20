@@ -311,4 +311,46 @@ Novamente, *como* isso funciona não é tão importante quanto *o que* você pod
 var nohowContrariwise = compose(contrariwise, nohow);
 ```
 
-But this doesn’t seem that much more concise
+Mas isso não parece muito mais conciso do que escrever desta forma:
+
+```js
+var nohowContrariwise = function(x) {
+    return nohow(contrariwise(x));
+}
+```
+
+O real poder da composição se torna claro uma vez que a combinamos com a função `curry`. Mesmo sem o *currying* nós podemos ver que se tivermos uma coleção de pequenas funções utilitárias, nós podemos usar `compose` para fazer nosso código mais claro e mais conciso. Por exemplo, imagine que temos um poema em texto simples:
+
+```js
+var poem = 'Twas brillig, and the slithy toves\n' + 
+    'Did gyre and gimble in the wabe;\n' +
+    'All mimsy were the borogoves,\n' +
+    'And the mome raths outgrabe.';
+```
+
+Esse poema não vai ser mostrado muito bem no navegador, então vamos adicionar algumas quebras de linha. E, enquanto estivermos ai, vamos traduzir *brillig* para algo mais fácil de entender. E então vamos envolver tudo em uma tag parágrafo e em um bloco de citação. Vamos começar criando duas funções bem simples, e construir o resto a partir disso:
+
+```js
+var replace = function(find, replacement, str) {
+    return str.replace(find, replacement);
+}
+
+var wrapWith = function(tag, str) {
+    return '<' + tag + '>' + str + '</' + tag + '>'; 
+}
+
+var addBreaks      = partial(replace, '\n', '<br/>\n');
+var replaceBrillig = partial(replace, 'brillig', 'four o’clock in the afternoon');
+var wrapP          = partial(wrapWith, 'p');
+var wrapBlockquote = partial(wrapWith, 'blockquote');
+
+var modifyPoem = compose(wrapBlockquote, wrapP, addBreaks, replaceBrillig);
+
+console.log(modifyPoem(poem));
+//=> <blockquote><p>Twas four o’clock in the afternoon, and the slithy toves<br/>
+//   Did gyre and gimble in the wabe;<br/>
+//   All mimsy were the borogoves,<br/>
+//   And the mome raths outgrabe.</p></blockquote>
+```
+
+Notice that if you read the arguments to
