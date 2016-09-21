@@ -23,6 +23,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 ## Séries
 
 * [Você não precisa de jQuery](series/voce-nao-precisa-de-jquery)
+* [Então você quer ser um Programador Funcional?](series/entao-voce-quer-ser-um-programador-funcional)
 
 ## Outros Projetos
 
