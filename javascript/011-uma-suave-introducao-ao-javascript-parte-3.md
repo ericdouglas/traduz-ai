@@ -353,4 +353,37 @@ console.log(modifyPoem(poem));
 //   And the mome raths outgrabe.</p></blockquote>
 ```
 
-Notice that if you read the arguments to
+Note que se você ler os argumentos passados para `compose` da esquerda para direita, eles estão na ordem inversa que eles são aplicados. Isso é por causa que `compose` reflete a ordem que eles estaria se tivessem sido escritos como chamadas de funções aninhadas. Algumas pessoas acham isso um pouco confuso, então a maioria das bibliotecas auxiliares fornecem uma forma reversa chamada `pipe` ou `flow`.
+
+Usando uma função `pipe`, poderíamos escrever nossa função `modifyPoem` da seguinte maneira:
+
+```js
+var modifyPoem = pipe(replaceBrillig, addBreaks, wrapP, wrapBlockquote);
+```
+
+### Currying
+Uma limitação de `compose` é que essa função espera que todas as funções passadas recebam apenas um parâmetro. Isso não é um grande problema agora que temos uma função `partial` - podemos converter nossas funções multi-parâmetros para funções que recebem um parâmetro com certa facilidade. Mas isso é um pouco tedioso. `Currying` é como uma aplicação parcial "turbinada".
+
+Os detalhes da função `curry` são um pouco complicados, então vamos ver um exemplo primeiro. Temos uma função `formatName` que coloca o apelido de uma pessoa entre aspas. Essa função recebe três parâmetros. Quando nós chamamos a versão *curried* de `formatName` com menos que três parâmetros, ela retorna uma nova função com os parâmetros passados parcialmente aplicados:
+
+```js
+var formatName = function(first, surname, nickname) {
+    return first + ' “' + nickname + '” ' + surname;
+}
+var formatNameCurried = curry(formatName);
+
+var james = formatNameCurried('James');
+
+console.log(james('Sinclair', 'Mad Hatter'));
+//=> James “Mad Hatter” Sinclair
+
+var jamesS = james('Sinclair')
+
+console.log(jamesS('Dormouse'));
+//=> James “Dormouse” Sinclair
+
+console.log(jamesS('Bandersnatch'));
+//=> James “Bandersnatch” Sinclair
+```
+
+There’s some other things to notice about curried functions
