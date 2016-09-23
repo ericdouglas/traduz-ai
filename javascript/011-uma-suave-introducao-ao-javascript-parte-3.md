@@ -386,4 +386,39 @@ console.log(jamesS('Bandersnatch'));
 //=> James “Bandersnatch” Sinclair
 ```
 
-There’s some other things to notice about curried functions
+Existem outras coisas a serem notadas sobre funções *curried*:
+
+```js
+formatNameCurried('a')('b')('c') === formatNameCurried('a', 'b', 'c'); // true
+formatNameCurried('a', 'b')('c') === formatNameCurried('a')('b', 'c'); // true
+```
+
+Isso é bem conveniente, mas não nos dá muito mais que `partial`. Mas e se, apenas supondo, nós aplicarmos *curry* em todas as funções que fizermos, por padrão. Então, nós poderíamos criar praticamente qualquer função apenas combinando outras funções com composição (e *currying*).
+
+Lembra do nosso exemplo do poema feito anteriormente? E se quisermos envolver as tags de ênfase em volta do texto *"four o’clock in the afternoon"* que nós substituímos?
+
+```js
+var replace = curry(function(find, replacement, str) {
+    var regex = new RegExp(find, 'g');
+    return str.replace(regex, replacement);
+});
+
+var wrapWith = curry(function(tag, str) {
+    return '<' + tag + '>' + str + '</' + tag + '>'; 
+});
+
+var modifyPoem = pipe(
+    replace('brillig', wrapWith('em', 'four o’clock in the afternoon')),
+    replace('\n', '<br/>\n'),
+    wrapWith('p'),
+    wrapWith('blockquote')
+);
+
+console.log(modifyPoem(poem));
+//=> <blockquote><p>Twas <em>four o’clock in the afternoon</em>, and the slithy toves<br/>
+//   Did gyre and gimble in the wabe;<br/>
+//   All mimsy were the borogoves,<br/>
+//   And the mome raths outgrabe.</p></blockquote>
+```
+
+
