@@ -421,4 +421,31 @@ console.log(modifyPoem(poem));
 //   And the mome raths outgrabe.</p></blockquote>
 ```
 
+Note que trocamos `compose` por `pipe`. Não existem mais funções intermediárias, colocamos as funções *curried* diretamente no *pipeline* (encanamento), e elas ainda estão legíveis.
 
+Abaixo temos uma implementação da função `curry` adaptada do livro [JavaScript Allongé](https://leanpub.com/javascript-allonge). Novamente, como ela funciona não é tão importante quanto o que ela faz.
+
+```js
+function curry (fn) {
+    var arity = fn.length;
+  
+    function given (argsSoFar) {
+        return function helper () {
+            var args             = Array.prototype.slice.call(arguments, 0);
+            var updatedArgsSoFar = argsSoFar.concat(args);
+          
+            if (updatedArgsSoFar.length >= arity) {
+                return fn.apply(this, updatedArgsSoFar);
+            }
+            else {
+                return given(updatedArgsSoFar);
+            }
+        }
+    }
+  
+    return given([]);
+}
+```
+
+### Mas por quê?
+Até agora, vimos `partial`, `composo`, `pipe` e `curry` como ferramentas úteis para juntar pequenas, simples funções e criar outras mais complexas. Mas, elas são realmente úteis? O que elas fizeram possível que não era possível antes? Bem, o que elas fazem é abrir um novo estilo de programação. Isso nos permite pensar em problemas de formas diferentes, o que torna certos tipos de problemas muito mais simples de serem resolvidos. Isso também nos ajuda escrever código mais robusto e verificável. Esse será o tópico do próximo artigo, se está curioso, [continue lendo...](012-uma-suave-introducao-ao-javascript-parte-4.md)
