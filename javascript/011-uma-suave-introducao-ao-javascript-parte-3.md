@@ -10,7 +10,7 @@ Essa é a parte 3 de uma série de 4 artigos introduzindo a programação funcio
 - [Parte 1: Blocos fundamentais e motivação](009-uma-suave-introducao-ao-javascript-parte-1.md)
 - [Parte 2: Trabalhando com Arrays e Listas](010-uma-suave-introducao-ao-javascript-parte-2.md)
 - Parte 3: Funções para fazer funções (esse artigo)
-- Parte 4: Fazendo isso com estilo
+- [Parte 4: Fazendo isso com estilo](012-uma-suave-introducao-ao-javascript-parte-4.md)
 
 ## Funções Para Fazer Funções
 No fim do último artigo, eu disse que ir a fundo no caminho funcional não é para todo mundo. Isso é porque além das funções que processam listas, as coisas começam a ficar um pouco estranhas. O que quero dizer é que começamos abstraindo coleções de instruções em funções. Então, começamos a abstrair loops `for` em `map` e `reduce`. O próximo nível de abstração é começar a refatorar padrões de *criação* de funções. Começamos a criar funções para fazer outras funções. Isso pode ser poderoso e elegante, mas começa a se parecer bem menos com o JavaScript que você está acostumado a escrever.

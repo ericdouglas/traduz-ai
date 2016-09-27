@@ -13,7 +13,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 
 ## Artigos
 
-* [JavaScript](#javascript) (11)
+* [JavaScript](#javascript) (12)
 * [AngularJS](#angularjs) (05)
 * [Node.js](#nodejs) (02)
 * [React](#react) (02)
@@ -47,6 +47,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 |09.|**Uma Suave Introdução ao JavaScript Funcional: Parte 1**|[Tradução](javascript/009-uma-suave-introducao-ao-javascript-parte-1.md)|[Original](http://jrsinclair.com/articles/2016/gentle-introduction-to-functional-javascript-intro/)|
 |10.|**Uma Suave Introdução ao JavaScript Funcional: Parte 2**|[Tradução](javascript/010-uma-suave-introducao-ao-javascript-parte-2.md)|[Original](http://jrsinclair.com/articles/2016/gentle-introduction-to-functional-javascript-arrays/)|
 |11.|**Uma Suave Introdução ao JavaScript Funcional: Parte 3**|[Tradução](javascript/011-uma-suave-introducao-ao-javascript-parte-3.md)|[Original](http://jrsinclair.com/articles/2016/gentle-introduction-to-functional-javascript-functions/)|
+|12.|**Uma Suave Introdução ao JavaScript Funcional: Parte 4**|[Tradução](javascript/012-uma-suave-introducao-ao-javascript-parte-4.md)|[Original](http://jrsinclair.com/articles/2016/gentle-introduction-to-functional-javascript-style/)|
 
 ## AngularJS
 
