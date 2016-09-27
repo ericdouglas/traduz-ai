@@ -353,4 +353,99 @@ console.log(modifyPoem(poem));
 //   And the mome raths outgrabe.</p></blockquote>
 ```
 
-Notice that if you read the arguments to
+Note que se você ler os argumentos passados para `compose` da esquerda para direita, eles estão na ordem inversa que eles são aplicados. Isso é por causa que `compose` reflete a ordem que eles estaria se tivessem sido escritos como chamadas de funções aninhadas. Algumas pessoas acham isso um pouco confuso, então a maioria das bibliotecas auxiliares fornecem uma forma reversa chamada `pipe` ou `flow`.
+
+Usando uma função `pipe`, poderíamos escrever nossa função `modifyPoem` da seguinte maneira:
+
+```js
+var modifyPoem = pipe(replaceBrillig, addBreaks, wrapP, wrapBlockquote);
+```
+
+### Currying
+Uma limitação de `compose` é que essa função espera que todas as funções passadas recebam apenas um parâmetro. Isso não é um grande problema agora que temos uma função `partial` - podemos converter nossas funções multi-parâmetros para funções que recebem um parâmetro com certa facilidade. Mas isso é um pouco tedioso. `Currying` é como uma aplicação parcial "turbinada".
+
+Os detalhes da função `curry` são um pouco complicados, então vamos ver um exemplo primeiro. Temos uma função `formatName` que coloca o apelido de uma pessoa entre aspas. Essa função recebe três parâmetros. Quando nós chamamos a versão *curried* de `formatName` com menos que três parâmetros, ela retorna uma nova função com os parâmetros passados parcialmente aplicados:
+
+```js
+var formatName = function(first, surname, nickname) {
+    return first + ' “' + nickname + '” ' + surname;
+}
+var formatNameCurried = curry(formatName);
+
+var james = formatNameCurried('James');
+
+console.log(james('Sinclair', 'Mad Hatter'));
+//=> James “Mad Hatter” Sinclair
+
+var jamesS = james('Sinclair')
+
+console.log(jamesS('Dormouse'));
+//=> James “Dormouse” Sinclair
+
+console.log(jamesS('Bandersnatch'));
+//=> James “Bandersnatch” Sinclair
+```
+
+Existem outras coisas a serem notadas sobre funções *curried*:
+
+```js
+formatNameCurried('a')('b')('c') === formatNameCurried('a', 'b', 'c'); // true
+formatNameCurried('a', 'b')('c') === formatNameCurried('a')('b', 'c'); // true
+```
+
+Isso é bem conveniente, mas não nos dá muito mais que `partial`. Mas e se, apenas supondo, nós aplicarmos *curry* em todas as funções que fizermos, por padrão. Então, nós poderíamos criar praticamente qualquer função apenas combinando outras funções com composição (e *currying*).
+
+Lembra do nosso exemplo do poema feito anteriormente? E se quisermos envolver as tags de ênfase em volta do texto *"four o’clock in the afternoon"* que nós substituímos?
+
+```js
+var replace = curry(function(find, replacement, str) {
+    var regex = new RegExp(find, 'g');
+    return str.replace(regex, replacement);
+});
+
+var wrapWith = curry(function(tag, str) {
+    return '<' + tag + '>' + str + '</' + tag + '>'; 
+});
+
+var modifyPoem = pipe(
+    replace('brillig', wrapWith('em', 'four o’clock in the afternoon')),
+    replace('\n', '<br/>\n'),
+    wrapWith('p'),
+    wrapWith('blockquote')
+);
+
+console.log(modifyPoem(poem));
+//=> <blockquote><p>Twas <em>four o’clock in the afternoon</em>, and the slithy toves<br/>
+//   Did gyre and gimble in the wabe;<br/>
+//   All mimsy were the borogoves,<br/>
+//   And the mome raths outgrabe.</p></blockquote>
+```
+
+Note que trocamos `compose` por `pipe`. Não existem mais funções intermediárias, colocamos as funções *curried* diretamente no *pipeline* (encanamento), e elas ainda estão legíveis.
+
+Abaixo temos uma implementação da função `curry` adaptada do livro [JavaScript Allongé](https://leanpub.com/javascript-allonge). Novamente, como ela funciona não é tão importante quanto o que ela faz.
+
+```js
+function curry (fn) {
+    var arity = fn.length;
+  
+    function given (argsSoFar) {
+        return function helper () {
+            var args             = Array.prototype.slice.call(arguments, 0);
+            var updatedArgsSoFar = argsSoFar.concat(args);
+          
+            if (updatedArgsSoFar.length >= arity) {
+                return fn.apply(this, updatedArgsSoFar);
+            }
+            else {
+                return given(updatedArgsSoFar);
+            }
+        }
+    }
+  
+    return given([]);
+}
+```
+
+### Mas por quê?
+Até agora, vimos `partial`, `composo`, `pipe` e `curry` como ferramentas úteis para juntar pequenas, simples funções e criar outras mais complexas. Mas, elas são realmente úteis? O que elas fizeram possível que não era possível antes? Bem, o que elas fazem é abrir um novo estilo de programação. Isso nos permite pensar em problemas de formas diferentes, o que torna certos tipos de problemas muito mais simples de serem resolvidos. Isso também nos ajuda escrever código mais robusto e verificável. Esse será o tópico do próximo artigo, se está curioso, [continue lendo...](012-uma-suave-introducao-ao-javascript-parte-4.md)
