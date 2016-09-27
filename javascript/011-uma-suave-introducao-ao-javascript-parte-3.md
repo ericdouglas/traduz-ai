@@ -19,7 +19,7 @@ No fim do último artigo, eu disse que ir a fundo no caminho funcional não é p
 Funções para fazer outras funções algumas vezes são chamadas *high order functions* (funções de ordem superior). Porém para entendê-las, precisamos revisitar algumas funcionalidades nativas do JavaScript que tornam as funções de ordem superior possíveis.
 
 ### *Closures* e Escopo
-Uma das coisas mais difíceis para alguém entender no JavaScript é quais variáveis uma função pode "ver". No JavaScript, se você definir uma variável dentro de uma função, ela poderá ser vista fora da função. Por exemplo:
+Uma das coisas mais difíceis para alguém entender no JavaScript é quais variáveis uma função pode "ver". No JavaScript, se você definir uma variável dentro de uma função, ela não poderá ser vista fora da função. Por exemplo:
 
 ```js
 var thing = 'bat';
@@ -38,7 +38,7 @@ log(line);
 // undefined
 ```
 
-Entretando, se nós definirmos uma função dentro de uma função, a função interna pode ver as variáveis da função exterior:
+Entretanto, se nós definirmos uma função dentro de uma função, a função interna pode ver as variáveis da função exterior:
 
 ```js
 var outer = function() {
