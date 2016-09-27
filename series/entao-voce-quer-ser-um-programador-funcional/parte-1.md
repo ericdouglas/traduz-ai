@@ -250,7 +250,8 @@ De volta aos anos 90, eu escrevi uma Game Engine para o [Creature Crunch](https:
 
 Por enquanto chega.
 
-Nas próximas partes deste arigo, eu vou falar sobre Higher-order Functions, Functional Composition, Currying e mais.
+Nas próximas partes deste artigo, eu vou falar sobre Higher-order Functions, Functional Composition, Currying e mais.
 
-A seguir: [Parte 2](https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-2-7005682cec4a) (em inglês)
-
+A seguir:
+[Parte 2](parte-2.md) (em português)
+[Parte 2](https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-2-7005682cec4a) (em inglês)
