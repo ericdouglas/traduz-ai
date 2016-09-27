@@ -10,4 +10,4 @@ Essa é a parte 4 de uma série de 4 artigos sobre introdução a programação 
 - [Parte 1: Blocos fundamentais e motivação](009-uma-suave-introducao-ao-javascript-parte-1.md)
 - [Parte 2: Trabalhando com Arrays e Listas](010-uma-suave-introducao-ao-javascript-parte-2.md)
 - [Parte 3: Funções para fazer funções](011-uma-suave-introducao-ao-javascript-parte-3.md)
-- [Parte 4: Fazendo isso com estilo (esse artigo)
+- Parte 4: Fazendo isso com estilo (esse artigo)
