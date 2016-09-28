@@ -16,7 +16,7 @@ Como programadores, somos preguiçosos. Nós não queremos buildar, testar e faz
 
 Nós estamos sempre tentando descobrir formas de fazer o trabalho uma vez e como podemos reusá-lo para fazer alguma outra coisa.
 
-Reuso de código soa bem mas é díficil de alcançar. Faça o código muito específico e não poderá reusá-lo. Faça-o muito genérico e também pode ser díficil de usá-lo em primeiro lugar.
+Reuso de código soa bem, mas é díficil de alcançar. Faça o código muito específico e não poderá reusá-lo. Faça-o muito genérico e também pode ser díficil de usá-lo logo de cara.
 
 Então o que precisamos é um equilíbrio entre os dois, uma forma de fazer pequenas peças reutilizáveis que podemos usar como blocos de construção para construir funcionalidades mais complexas.
 
@@ -28,10 +28,10 @@ Então como isto funciona? Vamos começar com duas funções Javascript:
 
 ```
 var add10 = function(value) {
-    return value + 10;
+	return value + 10;
 };
 var mult5 = function(value) {
-    return value * 5;
+	return value * 5;
 };
 ```
 
@@ -42,13 +42,13 @@ var add10 = value => value + 10;
 var mult5 = value => value * 5;
 ```
 
-Bem melhor. Agora vamos imaginar que também queremos ter uma função que recebe um valor e adiciona 10 a ele e depois multiplique o resultado por 5. Podemos escrever:
+Bem melhor. Agora vamos imaginar que também queremos ter uma função que recebe um valor , adiciona 10 a ele e depois multiplique o resultado por 5. Podemos escrever:
 
 `var mult5AfterAdd10 = value => 5 * (value + 10)`
 
 Acabamos de usar funções para criar **mult5AfterAdd10**, mas existe uma forma melhor.
 
-Em matemática, **f ∘ g** é uma composição funcional e é lida **"f composta com g"** ou, mais comumente, **"f depois de g"**. Então **(f ∘ g)(x)** é equivalente a chamar **f** depois chamar **g** com **x** ou simplesmente, **f(g(x))**.
+Em matemática, **f ∘ g** é uma composição funcional e é lida **"f composta com g"** ou, mais comumente, **"f depois de g"**. Então **(f ∘ g)(x)** é equivalente a chamar **f** depois de chamar **g** com **x** ou simplesmente, **f(g(x))**.
 
 Em nosso exemplo, temos **mult5 ∘ add10** ou **"mult5 depois de add10"**, por isso o nome da nossa função **mult5AfterAdd10**.
 
@@ -58,16 +58,16 @@ Visto que Javascript não tem Composição de Funções nativamente, vamos ver n
 
 ```
 add10 value =
-    value + 10
+	value + 10
 mult5 value =
-    value * 5
+	value * 5
 mult5AfterAdd10 value =
-    (mult5 << add10) value
+	(mult5 << add10) value
 ```
 
 Usando o operador << infixo é como você *compõe* funções no Elm. Ele nos dá o senso visual de como o dado está fluindo. Primeiro, **value** é passado para **add10** então seus resultados são passados para **mult5**.
 
-Note os parênteses em **mult5AfterAdd10**, **(mult5 << add10)**. Eles estão alí para assegurar que as funções são compostas primeiro antes de se aplicar a **value**.
+Note os parênteses em **mult5AfterAdd10**, **(mult5 << add10)**. Eles estão alí para assegurar que as funções são compostas primeiro antes de aplicar o **value**.
 
 Você pode compor quantas funções quiser desta forma:
 
@@ -88,15 +88,15 @@ Em **mult5AfterAdd10**, você vai perceber que **value** é especificado 2 vezes
 ```
 -- Esta é uma função que espera 1 parâmetro
 mult5AfterAdd10 value =
-    (mult5 << add10) value
+	(mult5 << add10) value
 ```
 
 Mas este parâmetro é desnecessário desde que **add10**, a função mais à direita na composição, espera o mesmo parâmetro. A seguinte versão point-free é equivalente:
 
 ```
--- Esta é uma função que espera 1 parâmetro
+-- Esta também é uma função que espera 1 parâmetro
 mult5AfterAdd10 =
-    (mult5 << add10)
+	(mult5 << add10)
 ```
 
 Existem muitos benefícios em usar a versão point-free.
@@ -113,9 +113,9 @@ Agora, vamos tentar usar estas idéias em um cenário levemente diferente e ver 
 
 ```
 add x y =
-    x + y
+	x + y
 mult5 value =
-    value * 5
+	value * 5
 ```
 
 Como podemos escrever **mult5After10** somente com estas duas funções?
@@ -127,7 +127,7 @@ Ok, se você levou um tempo pensando sobre isto, pode ser que tenha chegado a um
 ```
 -- Está errado !!!!
 mult5AfterAdd10 =
-    (mult5 << add) 10 
+	(mult5 << add) 10 
 ```
 
 Isto não funciona. Por que? Porque **add** recebe 2 parâmetros.
@@ -150,7 +150,7 @@ Isto não é point-free mas eu provavelmente poderia viver com isto. Mas agora n
 
 Assim, pareceria que Composição de Funções tem uma utilidade limitada, desde que não podemos casar estas duas funções. Isto é ruim visto que é algo tão poderoso.
 
-Como resolvemos isto? O que podemos precisar para resolver este problema?
+Como resolvemos isto? O que precisamos para resolver este problema?
 
 Bem, seria muito bom se tívessemos algum jeito de dar a função **add** somente um de seus parâmetros antes do tempo e depois ela pegaria seu segundo parâmetro quando **mult5AfterAdd10** fosse chamada.
 
