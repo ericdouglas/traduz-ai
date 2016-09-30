@@ -121,7 +121,7 @@ twinkleTwinkle.call(null, 'star');
 //=> Twinkle, twinkle, little star
 ```
 
-O primeiro argumento do método `.call` define a quê a variável especial `this` vai se referir dentro da função. Podemos ignorar isso por agora. Quaisquer argumentos depois deste serão passados diretamente para a função.
+O primeiro argumento do método `.call` define a quê a variável especial `this` vai se referir dentro da função. Podemos ignorar isso por agora. Quaisquer argumentos depois desse serão passados diretamente para a função.
 
 O método `.apply` é bem parecido com `.call`, exceto que ao invés de passar argumentos individuais um por um, `.apply` permite que você passe um array de argumentos como o segundo parâmetro. Por exemplo:
 
@@ -164,7 +164,7 @@ var addTweedleClass = function(el) {
 }
 ```
 
-Agora temos uma função que recebe apenas um parâmetro. Agora ela está adequada para ser passada para a função `map`:
+Agora temos uma função que recebe apenas um parâmetro. Agora ela está adequada para ser passada à função `map`:
 
 ```js
 var ids = ['DEE', 'DUM'];
@@ -224,7 +224,7 @@ var partial = function() {
 }
 ```
 
-Agora, os detalhes de *como* essa função funciona não é tão importante como *o que* ela faz. Essa função nos permite aplicar parcialmente qualquer número de variáveis a funções que recebem qualquer número de parâmetros.
+Agora, os detalhes de *como* essa função funciona não é tão importante como *o que* ela faz. Essa função nos permite aplicar parcialmente qualquer número de variáveis em funções que recebem qualquer número de parâmetros.
 
 ```js
 var twinkle = function(noun, wonderAbout) {
@@ -245,14 +245,14 @@ console.log(twinkleStar());
 // How I wonder where you are"
 ```
 
-O JavaScript tem um método nativo que meio que funciona como `partial` chamado `bind`. Ele está disponível como um método em todas as funções. O problema é que ele espera que seu primeiro parâmetro seja um objeto que você deseja vincular (*bind*) a variável especial `this`. Isso significa, por exemplo, se você quer aplicar parcialmente algo a `document.getElementById`, você tem que passar `document` como o primeiro parâmetro, dessa forma:
+O JavaScript tem um método nativo que meio que funciona como `partial` chamado `bind`. Ele está disponível como um método em todas as funções. O problema é que ele espera que seu primeiro parâmetro seja um objeto que você deseja vincular (*bind*) a variável especial `this`. Isso significa, por exemplo, que se você quer aplicar parcialmente algo a `document.getElementById`, você tem que passar `document` como o primeiro parâmetro, dessa forma:
 
 ```js
 var getWhiteRabbit = document.getElementById.bind(document, 'white-rabbit');
 var rabbit = getWhiteRabbit();
 ```
 
-Na maior parte do tempo porém, nós não precisamos da variável especial `this` (especialmente se estivermos usando um estilo funcional de programação), então podemos apenas passar `null` como o primeiro parâmetro. Por exemplo:
+Na maior parte do tempo, porém, nós não precisamos da variável especial `this` (especialmente se estivermos usando um estilo funcional de programação), então podemos apenas passar `null` como o primeiro parâmetro. Por exemplo:
 
 ```js
 var twinkleBat = twinkle.bind(null, 'bat', 'are at');
