@@ -262,7 +262,7 @@ var twinkleStar = twinkle.bind(null, 'star', 'are');
 Você pode ler mais sobre [`.bind` na referência JavaScript do MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind).
 
 ### Composição
-Falamos no último artigo que programação funcional está relacionada a pegar pequenas, simples funções e uní-las para fazer coisas mais complexas. Aplicação parcial, como vimos acima, é uma ferramenta que torna esse processo mais fácil. Com aplicação parcial nós podemos converter nossa função `addClass` em uma função que podemos usar com `map`. Composição é uma outra ferramenta para combinar simples funções.
+Falamos no último artigo que programação funcional está relacionada a pegar pequenas, simples funções e uní-las para fazer coisas mais complexas. Aplicação parcial, como vimos acima, é uma ferramenta que torna esse processo mais fácil. Com a aplicação parcial nós podemos converter nossa função `addClass` em uma função que podemos usar com `map`. Composição é uma outra ferramenta para combinar simples funções.
 
 A forma mais simples de composição é com duas funções, `a` e `b`, ambas esperando apenas um parâmetro. `Compose` cria uma terceira função, `c`. Chamando `c` com um parâmetro `x` retorna o resultado de chamar `a` com o resultado de chamar `b` com `x`... Que confusão. É muito mais simples de entender vendo um exemplo:
 
@@ -305,7 +305,7 @@ var compose = function() {
 };
 ```
 
-Novamente, *como* isso funciona não é tão importante quanto *o que* você pode fazer com isso. E à primeira vista, `compose` pode não parecer tão incrível. Podemos escrever a função acima dessa forma com `compose`:
+Novamente, *como* isso funciona não é tão importante quanto *o que* você pode fazer com isso. E a primeira vista, `compose` pode não parecer tão incrível. Podemos escrever a função acima dessa forma com `compose`:
 
 ```js
 var nohowContrariwise = compose(contrariwise, nohow);
@@ -353,7 +353,7 @@ console.log(modifyPoem(poem));
 //   And the mome raths outgrabe.</p></blockquote>
 ```
 
-Note que se você ler os argumentos passados para `compose` da esquerda para direita, eles estão na ordem inversa que eles são aplicados. Isso é por causa que `compose` reflete a ordem que eles estaria se tivessem sido escritos como chamadas de funções aninhadas. Algumas pessoas acham isso um pouco confuso, então a maioria das bibliotecas auxiliares fornecem uma forma reversa chamada `pipe` ou `flow`.
+Note que se você ler os argumentos passados para `compose` da esquerda para direita, eles estão na ordem inversa que eles são aplicados. Isso é por causa que `compose` reflete a ordem que eles estariam se tivessem sido escritos como chamadas de funções aninhadas. Algumas pessoas acham isso um pouco confuso, então a maioria das bibliotecas auxiliares fornecem uma forma reversa chamada `pipe` ou `flow`.
 
 Usando uma função `pipe`, poderíamos escrever nossa função `modifyPoem` da seguinte maneira:
 
@@ -448,4 +448,4 @@ function curry (fn) {
 ```
 
 ### Mas por quê?
-Até agora, vimos `partial`, `composo`, `pipe` e `curry` como ferramentas úteis para juntar pequenas, simples funções e criar outras mais complexas. Mas, elas são realmente úteis? O que elas fizeram possível que não era possível antes? Bem, o que elas fazem é abrir um novo estilo de programação. Isso nos permite pensar em problemas de formas diferentes, o que torna certos tipos de problemas muito mais simples de serem resolvidos. Isso também nos ajuda escrever código mais robusto e verificável. Esse será o tópico do próximo artigo, se está curioso, [continue lendo...](012-uma-suave-introducao-ao-javascript-parte-4.md)
+Até agora, vimos `partial`, `compose`, `pipe` e `curry` como ferramentas úteis para juntar pequenas, simples funções e criar outras mais complexas. Mas, elas são realmente úteis? O que elas fizeram possível que não era possível antes? Bem, o que elas fazem é abrir um novo estilo de programação. Isso nos permite pensar em problemas de formas diferentes, o que torna certos tipos de problemas muito mais simples de serem resolvidos. Isso também nos ajuda a escrever código mais robusto e verificável. Esse será o tópico do próximo artigo, se está curioso, [continue lendo...](012-uma-suave-introducao-ao-javascript-parte-4.md)
