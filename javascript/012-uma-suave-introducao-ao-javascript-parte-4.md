@@ -23,3 +23,13 @@ Existem duas funcionalidades chave para programação funcional:
 1. Estilo de programação *pointfree* (sem pontos), o que não é *tão* importante mas bom de se entender.
 
 ### Pureza
+Se você ler sobre programação funcional, você eventualmente vai se deparar com o conceito de funções *puras* e *impuras*. Funções puras são funções que preenchem dois critérios:
+
+1. Chamar a função com as mesmas entradas sempre *retorna* as mesmas saídas.
+1. Chamar a função não produz efeitos colaterais: Sem chamadas na rede (*network*); nenhuma leitura ou escrita de arquivos; nenhuma consulta em banco de dados; nenhum elemento DOM modificado; nenhuma modificação de variáveis globais; e nenhuma saída no console. Nada.
+
+Funções impuras deixam programadores funcionais desconfortáveis. Tão desconfortáveis que eles as evitam o máximo possível. O problema com isso é que o grande ponto de escrever programas de computador *são* os efeitos colaterais. Fazer uma chamada na rede e renderizar elementos DOM está no núcleo do que uma aplicação web faz; esse foi o motivo pelo qual o JavaScript foi inventado.
+
+Então o que um aspirante a programador funcional faz? Bom, a chave é que nós não evitamos funções impuras inteiramente, nós apenas damos a elas uma boa quantidade de respeito, e deixá-mos de lidar com elas até que nós absolutamente precisemos. Elaboramos um plano claro e testado para o que queremos fazer *antes* de tentar fazer isso. Como Eric Elliot colocou em [*The Dao of Immutability*](https://medium.com/javascript-scene/the-dao-of-immutability-9f91a70c88cd):
+
+> Separation: Logic is thought. Effects are action
