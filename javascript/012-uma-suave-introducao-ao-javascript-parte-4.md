@@ -32,4 +32,25 @@ Funções impuras deixam programadores funcionais desconfortáveis. Tão desconf
 
 Então o que um aspirante a programador funcional faz? Bom, a chave é que nós não evitamos funções impuras inteiramente, nós apenas damos a elas uma boa quantidade de respeito, e deixá-mos de lidar com elas até que nós absolutamente precisemos. Elaboramos um plano claro e testado para o que queremos fazer *antes* de tentar fazer isso. Como Eric Elliot colocou em [*The Dao of Immutability*](https://medium.com/javascript-scene/the-dao-of-immutability-9f91a70c88cd):
 
-> Separation: Logic is thought. Effects are action
+> **Separação:** Lógica é pensamento. Efeitos são ações. Portanto, o sábio pensa antes de agir, e age somente quando o pensamento está terminado. Se você tentar executar efeitos e lógica ao mesmo tempo, você vai criar efeitos colaterais ocultos que causam *bugs* (problemas) na lógica. Mantenha as funções pequenas. Faça uma coisa de cada vez, e faça isso bem.
+
+Em outras palavras, com programação funcional, nós geralmente trabalhamos a lógica do que estamos tentando fazer primeiro, antes de fazer qualquer coisa que potencialmente tenha efeitos colaterais.
+
+Outra forma de pensar sobre isso é a diferença de usar uma metralhadora e um *rifle sniper*. Com a metralhadora você dispara o máximo de balas possível, contando com o fato que se você continuar atirando, eventualmente você vai acertar algo. Mas você pode também acertar coisas que você não queria. Porém um rifle sniper é direfente. Você escolhe o lugar mais vantajoso, alinha o tiro, toma em conta a velocidade do vento e a distância do alvo. Você pacientemente, metódicamente, cuidadosamente configura todas as coisas e no momento certo, puxa o gatilho. Muito menos munição, e um efeito muito mais preciso.
+
+Então como tornamos nossas funções puras? Vamos ver um exemplo:
+
+```js
+var myGlobalMessage = '{{verb}} me';
+
+var impureInstuction = function(verb) {
+    return myGlobalMessage.replace('{{verb}}', verb);
+}
+
+var eatMe = impureInstruction('Eat');
+//=> 'Eat me'
+var drinkMe = impureInstruction('Drink');
+//=> 'Drink me'
+```
+
+Essa função é impura pois depende da variável global `myGlobalMessage`.
