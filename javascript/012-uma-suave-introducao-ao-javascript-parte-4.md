@@ -43,7 +43,7 @@ Então como tornamos nossas funções puras? Vamos ver um exemplo:
 ```js
 var myGlobalMessage = '{{verb}} me';
 
-var impureInstuction = function(verb) {
+var impureInstruction = function(verb) {
     return myGlobalMessage.replace('{{verb}}', verb);
 }
 
@@ -53,4 +53,46 @@ var drinkMe = impureInstruction('Drink');
 //=> 'Drink me'
 ```
 
-Essa função é impura pois depende da variável global `myGlobalMessage`.
+Essa função é impura pois depende da variável global `myGlobalMessage`. Se a variável mudar, se torna difícil dizer o que `impureInstruction` vai fazer. Uma forma de torná-la pura é mover a variável para dentro:
+
+```js
+var pureInstruction = function (verb) {
+    var message =  '{{verb}} me';
+    return message.replace('{{verb}}', verb);
+}
+```
+
+Essa função agora vai sempre retornar o mesmo resultado dado um mesmo conjunto de entradas. Mas algumas vezes não podemos usar essa ténica. Por exemplo:
+
+```js
+var getHTMLImpure = function(id) {
+    var el = document.getElementById(id);
+    return el.innerHTML;
+}
+```
+
+Essa função é impura pois depende do objeto `document` para acessar o DOM. Se o DOM mudar isso *pode* produzir resultados diferentes. Mas nós não podemos definir `document` dentro de nossa função porque isso é uma API do navegador, mas nós *podemos* passar isso como um parâmetro:
+
+```js
+var getHTML = function(doc, id) {
+    var el = doc.getElementById(id);
+    return el.innerHTML;
+}
+```
+
+Isso pode parecer trivial e sem sentido, mas é uma técnica útil. Imagine você estava tentando fazer um teste unitário nessa função. Normalmente, teríamos que configurar algum tipo de browser para pegar o objeto `document` e poder testar isso. Uma vez que temos o parâmetro `doc`, é fácil passar um objeto *stub* - uma simulação do objeto real - ao invés disso:
+
+```js
+var stubDoc = {
+    getElementById: function(id) {
+        if (id === 'jabberwocky') {
+            return {
+                innerHTML: '<p>Twas brillig…'
+            };
+        }
+    }
+};
+
+assert.equal(getHTML('jabberwocky'), '<p>Twas brillig…');
+//=> test passes
+```
