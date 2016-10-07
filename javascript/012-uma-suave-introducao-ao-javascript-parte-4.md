@@ -96,3 +96,22 @@ var stubDoc = {
 assert.equal(getHTML('jabberwocky'), '<p>Twas brillig…');
 //=> test passes
 ```
+
+Escrever esse *stub* pode parecer um pouco trabalhoso, mas agora podemos testar essa função sem precisar de um navegador. Se quisermos, podemos rodar isso na linha de comando sem um navegador *headless*. E como um bônus, o teste vai rodar muito, muito mais rápido do que um que tenho o objeto `document` inteiro.
+
+Uma outra forma de ter uma função pura é retornar outra função que eventualmente irá fazer algo impuro quando a chamarmos. Isso inicialmente parece um truque sujo, mas é totalmente legítimo. Por exemplo:
+
+```js
+var htmlGetter = function(id) {
+    return function() {
+        var el = document.getElementById(id);
+        return el.innerHTML;
+    }
+}
+```
+
+ A função `htmlGetter` é pura porque rodando-a não acessamos uma variável global - ao invés disso, ela sempre retorna exatamente a mesma função.
+
+ Fazer coisas dessa forma não é muito útil para testes unitários, e isso não remove a impureza completamente - apenas a posterga. E isso não é necessariamente uma coisa ruim. Lembre-se, queremos lidar com toda a lógica previamente nas funções puras e depois puxar o gatilho em quaisquer efeitos colaterais.
+
+### *Pointfree*
