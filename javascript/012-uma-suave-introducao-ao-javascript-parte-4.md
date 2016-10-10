@@ -114,4 +114,32 @@ var htmlGetter = function(id) {
 
  Fazer coisas dessa forma não é muito útil para testes unitários, e isso não remove a impureza completamente - apenas a posterga. E isso não é necessariamente uma coisa ruim. Lembre-se, queremos lidar com toda a lógica previamente nas funções puras e depois puxar o gatilho em quaisquer efeitos colaterais.
 
-### *Pointfree*
+### *Pointfree* (sem pontos)
+Programação *Pointfree* ou programação *tácita* é um estilo particular de programação que funções de ordem superior como `curry` e `compose` tornam possível. Para explicar isso, vamos olhar novamente para o exemplo do poema do último artigo:
+
+> **Nota do tradutor:** Programação tácita, também chamada estilo **point-free** (sem pontos), é um paradigma de programação em que definições de função não identificam os argumentos (ou "pontos") em que elas opearam. Ao invés disso, as definições meramente compõem outras funções, onde essas são combinadores que manipulam os argumentos. [Fonte](https://en.wikipedia.org/wiki/Tacit_programming).
+
+```js
+var poem = 'Twas brillig, and the slithy toves\n' + 
+    'Did gyre and gimble in the wabe;\n' +
+    'All mimsy were the borogoves,\n' +
+    'And the mome raths outgrabe.';
+
+var replace = curry(function(find, replacement, str) {
+    var regex = new RegExp(find, 'g');
+    return str.replace(regex, replacement);
+});
+
+var wrapWith = curry(function(tag, str) {
+    return '<' + tag + '>' + str + '</' + tag + '>'; 
+});
+
+var addBreaks      = replace('\n', '<br/>\n');
+var replaceBrillig = replace('brillig', wrapWith('em', 'four o’clock in the afternoon'));
+var wrapP          = wrapWith('p');
+var wrapBlockquote = wrapWith('blockquote');
+
+var modifyPoem = compose(wrapBlockquote, wrapP, addBreaks, replaceBrillig);
+```
+
+Note que `compose` espera que cada função passada receba exatamente um parâmetro. So, we use curry to change
