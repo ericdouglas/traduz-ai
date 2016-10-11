@@ -142,4 +142,8 @@ var wrapBlockquote = wrapWith('blockquote');
 var modifyPoem = compose(wrapBlockquote, wrapP, addBreaks, replaceBrillig);
 ```
 
-Note que `compose` espera que cada função passada receba exatamente um parâmetro. So, we use curry to change
+Note que `compose` espera que cada função passada receba exatamente um parâmetro. Então, usamos 'curry' para mudar nossas funções multi-parâmetros `replace` e `wrapWith` em funções de um único parâmetro. Note também que fomos um pouco criteriosos com a ordem ordem de nossas funções então `wrapWith`, por exemplo, recebe a *tag* como seu o primeiro parâmetro ao invés do texto para ser envolvido. Se formos cuidadosos dessa forma na maneira como configuramos nossas funções, isso fará a criação de funções por composição fácil.
+
+> **Nota do autor**: A maioria das bibliotecas funcionais (como [Ramda](http://ramdajs.com/)), também incluem utilitários para trabalhar com funções que não tem seus parâmetros em uma ordem conveniente.
+
+Isso se torna tão fácil que você pode escrever *todo* o seu código dessa maneira. Mas note um pequeno efeito colateral: quando definimos a função `modifyPoem` final, nós nunca mencionamos em nenhum lugar que ela recebe um único argumento *string*. E se você olhar para as funções *curried*, `addBreaks`, `replaceBrillig`, `wrapP` e `wrapBlockquote`, nenhuma delas mencionam que recebem apenas uma simples variável *string* também. Isso é programação *pointfree* (sem pontos): starting with a base set of 
