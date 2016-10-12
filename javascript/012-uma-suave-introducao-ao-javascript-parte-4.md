@@ -146,4 +146,10 @@ Note que `compose` espera que cada função passada receba exatamente um parâme
 
 > **Nota do autor**: A maioria das bibliotecas funcionais (como [Ramda](http://ramdajs.com/)), também incluem utilitários para trabalhar com funções que não tem seus parâmetros em uma ordem conveniente.
 
-Isso se torna tão fácil que você pode escrever *todo* o seu código dessa maneira. Mas note um pequeno efeito colateral: quando definimos a função `modifyPoem` final, nós nunca mencionamos em nenhum lugar que ela recebe um único argumento *string*. E se você olhar para as funções *curried*, `addBreaks`, `replaceBrillig`, `wrapP` e `wrapBlockquote`, nenhuma delas mencionam que recebem apenas uma simples variável *string* também. Isso é programação *pointfree* (sem pontos): starting with a base set of 
+Isso se torna tão fácil que você pode escrever *todo* o seu código dessa maneira. Mas note um pequeno efeito colateral: quando definimos a função `modifyPoem` final, nós nunca mencionamos em nenhum lugar que ela recebe um único argumento *string*. E se você olhar para as funções *curried*, `addBreaks`, `replaceBrillig`, `wrapP` e `wrapBlockquote`, nenhuma delas mencionam que recebem apenas uma simples variável *string* também. Isso é programação *pointfree* (sem pontos): começar com um conjunto base de funções utilitárias (como Ramda ou functional.js) e escrever seu código de uma forma que você nunca vai mencionar as variáveis de entrada.
+
+O que isso nos dá? Bom, nada de especial em relação ao próprio código. A coisa inteligente sobre o estilo sem pontos é que ele te força a usa `compose`, `curry`, `pipe`, etc. Por sua vez isso *encoraja fortemente* que você mantenha funções pequenas e simples reunidas de maneira sensata. Em outras palavras, isso é uma limitação autoimposta, como um *haiku* ou um soneto. Nem toda poesia tem que ser escrita dessa forma - e seguir todas as regras não garante um belo poema - mas algumas poesias escritas nesses estilos podem ser incrivelmente belas.
+
+Fazer tudo no estilo sem pontos não é sempre prático. Algumas vezes, isso adiciona complicações desnecessárias em uma função simples. Mas dê uma chance e *tentar* escrever todas as suas funções sem pontos é uma boa maneira de melhor entender a programação funcional.
+
+### Hindley-Milner Type Signatures
