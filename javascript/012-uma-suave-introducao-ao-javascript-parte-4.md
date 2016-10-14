@@ -152,4 +152,23 @@ O que isso nos dá? Bom, nada de especial em relação ao próprio código. A co
 
 Fazer tudo no estilo sem pontos não é sempre prático. Algumas vezes, isso adiciona complicações desnecessárias em uma função simples. Mas dê uma chance e *tentar* escrever todas as suas funções sem pontos é uma boa maneira de melhor entender a programação funcional.
 
-### Hindley-Milner Type Signatures
+### Assinatura de Tipos de Hindley-Milner
+Uma vez que você esteja fazendo tudo "sem pontos" (*pointfree*), isso deixa uma dúvida, como comunicar outros programadores qual tipo de parâmetro eles devem passar para sua função. Para facilitar isso, programadores funcionais desenvolveram uma notação especial para especificar quais tipos de parâmetro uma função recebe, e o que ela retorna. A notação é chamada *assinatura de tipos de Hindley-Milner*. Nós a escrevemos como comentários onde definimos a função. Vamos ver alguns exemplos:
+
+```js
+// instruction :: String -> String
+var instruction = function(verb) {
+    return verb + ' me';
+}
+```
+
+A assinatura de tipo fiz que `instruction` recebe uma *String* como entrada e retorna outra *String*. Por enquanto, tudo bem. E se tivermos uma função que recebe dois parâmetros?
+
+```js
+// wrapWith :: String -> (String -> String)
+var wrapWith = curry(function(tag, str) {
+    return '<' + tag + '>' + str + '</' + tag + '>'; 
+});
+```
+
+Isso é um pouco mais complicado, mas não tão difícil. Essa notação diz que `wrapWith` recebe uma *String* e retorna uma *Função*, e essa função recebe uma *String* e retorna uma *String*. Note that this works because 
