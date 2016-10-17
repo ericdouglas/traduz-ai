@@ -109,7 +109,7 @@ Segundo, é mais fácil de ler e a razão disto é que é menos verboso. Este ex
 
 Até agora vimos como Composição de Funções trabalham e como especificamos nossas funções na notação Point-Free para brevidade, clareza e flexibilidade.
 
-Agora, vamos tentar usar estas idéias em um cenário levemente diferente e ver como sai. Imagine substituir **add10** com **add**:
+Agora, vamos tentar usar estas ideias em um cenário levemente diferente e ver como sai. Imagine substituir **add10** com **add**:
 
 ```
 add x y =
