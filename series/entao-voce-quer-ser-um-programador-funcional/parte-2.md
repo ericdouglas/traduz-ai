@@ -95,7 +95,7 @@ Se nós somente pudéssemos passar uma função como parâmetro...
 
 ### High-Order Functions
 
-Muitas linguagens não suportam passar funçõe como parâmetros. Algumas sim mas elas não facilitam.
+Muitas linguagens não suportam passar funções como parâmetros. Algumas sim mas elas não facilitam.
 
 > Em Programação Funcional, uma função é um cidadão de primeira classe da linguagem. Em outras palavras, uma função é somente outro valor.
 
@@ -220,7 +220,7 @@ Aqui está um exemplo planejado para mostrar o uso de closures:
 
 Neste exemplo, **child** tem acesso as suas variáveis, as variáveis de **parent** e **grandParent**.
 
-A **parent** tem aceso as suas variáveis e as da **grandParent**.
+A **parent** tem acesso as suas variáveis e as da **grandParent**.
 
 A **grandParent** tem acesso somente as suas variáveis.
 
