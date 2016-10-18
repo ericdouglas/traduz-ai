@@ -149,7 +149,7 @@ Você se lembra de quando viu o seguinte trecho de código:
 	var x = 1;
 	x = x + 1;
 
-E quem quer que estive te ensinando falou para você esquecer o que você aprendeu em matemática? Na matemática, **x** nunca pode ser igual a **x + 1**.
+E quem quer que esteve te ensinando falou para você esquecer o que você aprendeu em matemática? Na matemática, **x** nunca pode ser igual a **x + 1**.
 
 Mas em Programação Imperativa, isto significa: Pegue o valor atual de **x** e adicione **1** a ele e guarde o resultado de volta no **x**.
 
@@ -169,7 +169,7 @@ Aqui está um exemplo de variáveis consantes em Elm, uma Linguagem Funcional Pu
 		in
 			x + y + z
 
-Se você não está acostumdo com a sintaxe ML-Style, permita-me explicar. **addOneToSum** é uma função que recebe 2 parâmetros, **y** e **z**.
+Se você não está acostumado com a sintaxe ML-Style, permita-me explicar. **addOneToSum** é uma função que recebe 2 parâmetros, **y** e **z**.
 
 Dentro do bloco **let** é atribuido a **x** o valor **1**, isto é, seu valor será igual a **1** pelo resto de sua vida. Sua vida acaba quando a função é encerrada ou mais precisamente quando o bloco **let** é avaliado.
 

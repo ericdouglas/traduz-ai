@@ -65,7 +65,7 @@ Neste exemplo, nós copiamos o objeto `pessoa` para `outraPessoa`; mas por causa
 Cada propriedade de dados (a propriedade do objeto que armazena dados) não tem somente o par nome-valor, mas também 3 atributos (os 3 atributos são definidos como `true` por padrão):
 
 - **Configurável**: Especifica se acaso a propriedade em si pode ser apagada ou os seus atributos mudados.
-- **Enumerável**: Especifica se a propriedade pode ser retornada em um loop for/in ou do método **Object.keys()**. 
+- **Enumerável**: Especifica se a propriedade pode ser retornada em um loop for/in ou do método **Object.keys()**.
 - **Gravável**: Especifica se o valor associado à propriedade pode ser alterado.
 
 Note que o ECMAScript 5 especifica propriedades acessoras em companhia com as propriedades dados especificadas acima.
@@ -182,7 +182,7 @@ frutaAbacaxi.nativaDe(); // Originária de: Estados Unidos.
 
 Se você tiver que alterar a função `mostrarNome`, você somente precisa fazer isso em um local. O padrão encapsula todas as funcionalidades e características das frutas apenas fazendo uma simples função Fruta com herança.
 
-**Notas**: 
+**Notas**:
 - Uma propriedade herdada é definida na propriedade *prototype* (protótipo) do objeto. Por exemplo: `algumObjeto.prototype.primeiroNome = "Riquinho";`
 
 
@@ -220,7 +220,7 @@ umaManga.imprimirTreco();
 
 ### 2. **Padrão Prototípico para Criação de Objetos**
 
-Antes de discutirmos sobre o Padrão Prototípico, você deve entender sobre protótipos no JavaScript. Se você não conhece, leia esta postagem: [Protótipos Javascript em uma Linguagem Simples](https://github.com/cerebrobr/traduz-ai/blob/master/javascript/006-prototipos-javascript-em-uma-linguagem-simples.md#prot%C3%B3tipos-javascript-em-uma-linguagem-simples)
+Antes de discutirmos sobre o Padrão Prototípico, você deve entender sobre protótipos no JavaScript. Se você não conhece, leia esta postagem: [Protótipos Javascript em uma Linguagem Simples](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/005-prototipos-javascript-em-uma-linguagem-simples.md#prot%C3%B3tipos-javascript-em-uma-linguagem-simples)
 
 ```javascript
 function Fruta() {
@@ -267,7 +267,7 @@ var livro = {título: "Caminhos para Ir", páginas: 280, marcador1: "Página 20"
 // Para acessar as propriedades do objeto livro com a notação com ponto, faça isto:
 console.log(livro.título);	// Caminhos para Ir
 console.log(livro.páginas);	// 280
-``` 
+```
 
 ### 2. **Notação com Colchetes**
 
@@ -280,7 +280,7 @@ console.log(livro["páginas"]);	// 280
 var títuloDoLivro = "título";
 console.log(livro[títuloDoLivro]);	// Caminhos para Ir
 console.log(livro["marcador" + 1]);	// Página 20
-``` 
+```
 
 Caso você acesse uma propriedade dum objeto que não exista, resultar-se-á em `undefined`.
 
@@ -292,7 +292,7 @@ Para descobrir se uma propriedade existe num objeto (seja por herança ou própr
 
 ```javascript
 // Cria um novo objeto escola com uma propriedade nomeEscola
-var escola = { nomeEscola: "MIT" }; 
+var escola = { nomeEscola: "MIT" };
 
 // Imprime true porque nomeEscola é uma propriedade própria do objeto escola
 console.log("nomeEscola" in escola);	// true
@@ -316,7 +316,7 @@ var escola = { nomeEscola: "MIT" };
 // Imprime true porque nomeEscola é um método próprio do objeto escola
 console.log(escola.hasOwnProperty("nomeEscola"));	// true
 
-// Imprime false porque o objeto escola herda o método toString de 
+// Imprime false porque o objeto escola herda o método toString de
 // Object.prototype, portanto toString não é uma propriedade própria do objeto escola
 console.log(escola.hasOwnProperty("toString"));
 ```
@@ -347,9 +347,9 @@ for (var cadaItem in escola) {
 
 // Crie uma nova função EnsinoSuperior em que o objeto escola irá herdar.
 
-/*	NOTA LATERAL: Como Wilson (um leitor atento) corretamente apontou nos comentários abaixo, a propriedade nívelEnsino 
-não é exatamente herdada pelos objetos que usam o construtor EnsinoSuperior; ao invés disso, a propriedade 
-nivelEnsino é criada como uma nova propriedade em cada objeto que usar o construtor EnsinoSuperior. 
+/*	NOTA LATERAL: Como Wilson (um leitor atento) corretamente apontou nos comentários abaixo, a propriedade nívelEnsino
+não é exatamente herdada pelos objetos que usam o construtor EnsinoSuperior; ao invés disso, a propriedade
+nivelEnsino é criada como uma nova propriedade em cada objeto que usar o construtor EnsinoSuperior.
 A razão para que a propriedade não fora herdada é que nós usamos a palavra chave "this" para definir a propriedade
 */
 
@@ -375,7 +375,7 @@ No último exemplo, note que a propriedade `nívelEnsino` que definimos na funç
 
 ### Atributo Prototype dos Objetos e Propriedade Prototype
 
-O atributo `prototype` e a propriedade `prototype` de um objeto são conceitos criticamente importantes de se entender no JavaScript. Leia minha postagem [Protótipos Javascript em uma Linguagem Simples](https://github.com/cerebrobr/traduz-ai/blob/master/javascript/006-prototipos-javascript-em-uma-linguagem-simples.md#prot%C3%B3tipos-javascript-em-uma-linguagem-simples), para mais informações.
+O atributo `prototype` e a propriedade `prototype` de um objeto são conceitos criticamente importantes de se entender no JavaScript. Leia minha postagem [Protótipos Javascript em uma Linguagem Simples](https://github.com/ericdouglas/traduz-ai/blob/master/javascript/005-prototipos-javascript-em-uma-linguagem-simples.md#prot%C3%B3tipos-javascript-em-uma-linguagem-simples), para mais informações.
 
 
 ### Apagando Propriedades de um Objeto
@@ -402,10 +402,10 @@ delete listaNatal.toString;		// retorna true, mas toString não foi apagado pois
 // Aqui nós chamamos o método toString e ele funciona muito bem - não foi apagado
 listaNatal.toString();		// "[object Object]"
 
-/* Você pode apagar uma propriedade de uma instância se a propriedade for uma propriedade própria dela. 
-Por exemplo, nós podemos apagar a propriedade nívelEnsino do objeto escola que criamos acima, 
-pois a nívelEnsino é definido na instância: Nós usamos a palavra-chave "this" para definir 
-a propriedade quando nós declaramos a função EnsinoSuperior. Nós não definimos a propriedade 
+/* Você pode apagar uma propriedade de uma instância se a propriedade for uma propriedade própria dela.
+Por exemplo, nós podemos apagar a propriedade nívelEnsino do objeto escola que criamos acima,
+pois a nívelEnsino é definido na instância: Nós usamos a palavra-chave "this" para definir
+a propriedade quando nós declaramos a função EnsinoSuperior. Nós não definimos a propriedade
 nívelEnsino no protótipo da função EnsinoSuperior */
 
 console.log(escola.hasOwnProperty("nívelEnsino"));	// true
@@ -441,7 +441,7 @@ console.log(escola.nívelEnsino2);	// Universidade 2
 
 ### Serializar e Desserializar Objetos
 
-Para transferir os seus objetos via HTTP ou doutra forma convertê-los para uma string, você necessitará de serializá-los (converter para string); você pode usar a função `JSON.stringify` para serializar os seus objetos. Note que antes do ECMAScript 5, você tinha que usar a popular biblioteca json2 (de Douglas Crockford) para obter a função `JSON.stringify`. Ela está agora padronizada/nativa no ECMAScript 5.	
+Para transferir os seus objetos via HTTP ou doutra forma convertê-los para uma string, você necessitará de serializá-los (converter para string); você pode usar a função `JSON.stringify` para serializar os seus objetos. Note que antes do ECMAScript 5, você tinha que usar a popular biblioteca json2 (de Douglas Crockford) para obter a função `JSON.stringify`. Ela está agora padronizada/nativa no ECMAScript 5.
 
 Para desserializar o seu objeto (convertê-lo para um objeto a partir de uma string), você usa a função `JSON.parse` da mesma biblioteca json2. Esta função também está padronizada/nativa no ECMAScript 5.
 
@@ -455,7 +455,7 @@ JSON.stringify(listaNatal);
 
 // Para imprimir o objeto stringificado com formatação, adicione null e 4 como parâmetros:
 JSON.stringify(listaNatal, null, 4);
-/* 
+/*
 "{
     "mike": "livro",
     "jason": "suéter",
@@ -465,7 +465,7 @@ JSON.stringify(listaNatal, null, 4);
 
 /* Exemplos JSON.parse */
 
-// A seguir temos uma string JSON, então não podemos acessar suas propriedades com 
+// A seguir temos uma string JSON, então não podemos acessar suas propriedades com
 // a notação de pontos (como listaNatal.mike)
 var listaNatalString = '{"mike": "livro", "jason": "suéter", "chelsea": "iPad"}';
 
