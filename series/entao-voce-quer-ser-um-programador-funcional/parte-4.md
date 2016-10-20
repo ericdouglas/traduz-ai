@@ -11,6 +11,33 @@ Parte anterior:
 [Parte 3](https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-3-1b0fd14eb1a7#.zffq7cklj) (em inglês)
 
 ### Currying
+Se você se lembra da [Parte 3](parte-3.md), a razão pela qual tivemos problemas compondo **mult5** e **add** (in) é porque **mult5** recebia 1 parâmetro e **add** recebia 2.
+
+Podemos resolver este problema facilmente restringindo todas as funções a receber somente 1 parâmetro.
+
+Acredite em mim, isto não é tão ruim quanto parece.
+
+Simplesmente escrevemos uma função add que usa 2 parâmetros mas recebe somente 1 por vez. **Curried functions** nos permite fazer isto.
+
+> Uma Curried function é uma função que recebe somente 1 parâmetro por vez.
+
+Isto vai permitir que passemos para **add** seu primeiro parâmetro antes de compormos ela com **mult5**.
+Então quando **mult5AfterAdd10** é chamada, **add** receberá seu segundo parâmetro.
+
+Em Javascript, podemos realizar isto reescrevendo *add**:
+
+`var add = x => y => x + y`
+
+Esta versão de *add** é uma função que recebe um parâmetro agora e então recebe outro depois.
+
+Em detalhes, a função *add** recebe um único parâmetro **x**, e retorna uma **função** que recebe somente 1 parâmetro **y**, que acabará retornando o **resultado da adição entre x e y**.
+
+Agora podemos usar esta versão de **add** para construir uma versão funcional de **mult5AfterAdd10**:
+
+```
+var compose = (f, g) => x => f(g(x));
+var mult5AfterAdd10 = compose(mult5, add(10));
+```
 
 ### Meu cérebro!!!
 
