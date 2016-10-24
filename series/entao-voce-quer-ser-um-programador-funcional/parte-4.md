@@ -39,6 +39,32 @@ var compose = (f, g) => x => f(g(x));
 var mult5AfterAdd10 = compose(mult5, add(10));
 ```
 
+A função *compose* recebe 2 parâmetros, **f** e **g**. Então retorna uma função que recebe 1 parâmetro, **x**, que quando chamada aplicará **f** após **g** de **x**.
+
+Então, o que fizemos exatamente? Bem, nós convertemos nossa antiga função **add** simples em uma versão *curried*. isto torna **add** mais flexível agora que o primeiro parâmetro, 10, pode ser passado na frente e o parâmetro final será passado quando **mult5AfterAdd10** é chamada.
+
+Neste ponto, você deve estar pensando em como reescrever a função add em Elm. Acontece que você não precisa. Em Elm e outras linguagens funcionais, toda função é automaticamente *curried*.
+
+Então a função **add** continua a mesma:
+
+```
+add x y =
+    x + y
+```
+
+É assim que **mult5AfterAdd10** deveria ter sido escrito na [Parte 3](https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-3-1b0fd14eb1a7#.zffq7cklj):
+
+```
+mult5AfterAdd10 =
+    (mult5 << add 10)
+```
+
+Sintaticamente falando, Elm supera linguagens imperativas como Javascript porque é otimizada para coisas funcionais como currying e composição.
+
+### Currying e Refatoração
+
+
+
 ### Meu cérebro!!!
 
 Por enquanto chega.
