@@ -171,4 +171,39 @@ var wrapWith = curry(function(tag, str) {
 });
 ```
 
-Isso é um pouco mais complicado, mas não tão difícil. Essa notação diz que `wrapWith` recebe uma *String* e retorna uma *Função*, e essa função recebe uma *String* e retorna uma *String*. Note that this works because 
+Isso é um pouco mais complicado, mas não tão difícil. Essa notação diz que `wrapWith` recebe uma *String* e retorna uma *Função*, e essa função recebe uma *String* e retorna uma *String*. Note que isso funciona porque nós aplicamos *curry* na função. Quando estivermos usando esse estilo, está assumidoque você vai sempre usar *curry* em todas suas funções.
+
+E algo com três parâmetros ao invés de dois? Uma forma de escrever isso seria:
+
+```js
+// replace :: String -> (String -> (String -> String))
+var replace = curry(function(find, replacement, str) {
+    var regex = new RegExp(find, 'g');
+    return str.replace(regex, replacement);
+});
+```
+
+Agora temos uma função que retorna uma função que retorna uma função que retorna uma *string*. Isso ainda faz sentido, mas porque sempre assumimos que tudo está sendo *curried*, tendemos a remover os parênteses:
+
+```js
+// replace :: String -> String -> String -> String
+```
+
+E se tivermos um parâmetro de um tipo diferente:
+
+```js
+// formatDollars :: Number -> String
+var formatDollars = replace('${{number}}', '{{number}}');
+
+formatDollars(100);
+//=> $100
+```
+
+Aqui temos uma função sem pontos (*pointfree*), e se torna claro porque as assinaturas de tipos são úteis. Essa pega um número e retorna uma *string*. E se tivéssemos um array?
+
+```js
+// sum :: [Number] -> Number
+var sum = reduce(add, 0);
+```
+
+This one takes an array of numbers
