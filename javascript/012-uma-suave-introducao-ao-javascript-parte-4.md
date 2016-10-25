@@ -206,4 +206,29 @@ Aqui temos uma função sem pontos (*pointfree*), e se torna claro porque as ass
 var sum = reduce(add, 0);
 ```
 
-This one takes an array of numbers
+Esse recebe um array de números e retorna um número (assumindo que aplicamos *curry* na função `reduce` do segundo artigo).
+
+Alguns exemplos finais:
+
+```js
+// identity :: a -> a
+var identity = function(x) { return x };
+
+// map :: (a -> b) -> [a] -> [b]
+var map = curry(function(callback, array) {
+    return array.map(callback);
+});
+```
+
+A função `identity` acima recebe um parâmetro de um tipo e retorna uma variável do mesmo tipo. A função `map` por outro lado, recebe uma função que recebe uma variável do tipo *a* e retorna uma variável do tipo *b*. Depois então pega um array de valores, todos do tipo *a* e retorna um array de valores, todos do tipo *b*.
+
+Você verá que bibliotecas como [Ramda](http://ramdajs.com/), por exemplo, usam essa notação para documentar todas as funções da biblioteca.
+
+### Indo Mais Fundo
+Nós mal arranhamos a superfície da programação funcional. Mas entendendo funções de primeira classe, aplicação parcial e composição nos dá os blocos básicos para irmos muito mais longe. Se você estiver interessado em ler mais, há uma lista de links úteis abaixo:
+
+- [Can Your Programming Language do This?](http://www.joelonsoftware.com/items/2006/08/01.html) by Joel Spolsky
+- [The Dao of Immutability](https://medium.com/javascript-scene/the-dao-of-immutability-9f91a70c88cd) by Eric Elliot
+- [Why Ramda?](http://fr.umio.us/why-ramda/), by Scott Sauyet
+- [Professor Frisby’s Mostly Adequate Guide to Functional Programming](https://github.com/MostlyAdequate/mostly-adequate-guide) by Brian Lonsdorf
+- [JavaScript Allongé](https://leanpub.com/javascriptallongesix/read) by Reg “raganwald” Braithwaite
