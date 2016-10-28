@@ -5,7 +5,7 @@
 
 > *Escrito por James Sinclair em 11 de Fevereiro de 2016* 
 
-Essa é a parte 4 de uma série de 4 artigos sobre introdução a programação funcional no JavaScript. No último artigo vamos ver sobre *high-order functions* (funções de ordem superior): funções para criar funções. Neste artigo, nós discutimos como usar essas novas ferramentas com estilo. 
+Essa é a parte 4 de uma série de 4 artigos sobre introdução a programação funcional no JavaScript. No último artigo vamos ver sobre *high-order functions* (funções de ordem superior): funções para criar funções. Nesse artigo, nós discutimos como usar essas novas ferramentas com estilo. 
 
 - [Parte 1: Blocos fundamentais e motivação](009-uma-suave-introducao-ao-javascript-parte-1.md)
 - [Parte 2: Trabalhando com Arrays e Listas](010-uma-suave-introducao-ao-javascript-parte-2.md)
@@ -13,30 +13,30 @@ Essa é a parte 4 de uma série de 4 artigos sobre introdução a programação 
 - Parte 4: Fazendo isso com estilo (esse artigo)
 
 ## Fazendo Isso Com Estilo
-No artigo anterior vimos sobre `partial`, `compoese`, `curry`, `pipe`, e também como podemos usá-las para juntar pequenas, simples funções e criar outras grandes e complicadas. Mas o que isso faz pra gente? Vale a pena se importar quando já estamos escrevendo código perfeitamente válido?
+No artigo anterior vimos sobre `partial`, `compose`, `curry`, `pipe`, e também como podemos usá-las para juntar pequenas, simples funções e criar outras grandes e complicadas. Mas o que isso faz pra gente? Vale a pena se importar quando já estamos escrevendo código perfeitamente válido?
 
 Parte da resposta é que sempre é útil ter mais ferramentas disponíveis para realizar o trabalho - desde que você saiba como usá-las - e programação funcional certamente nos dá um conjunto útil de ferramentas para escrever JavaScript. Mas eu penso que há mais do que isso. Programação Funcional nos abre um diferente *estilo* de programação. Isso por sua vez nos permite conceitualizar problemas e soluções de formas diferentes.
 
 Existem duas funcionalidades chave para programação funcional:
 
 1. Escrever funções puras, o que é importante se você deseja testar programação funcional; e
-1. Estilo de programação *pointfree* (sem pontos), o que não é *tão* importante mas bom de se entender.
+1. Estilo de programação *pointfree* (sem pontos), o que não é *tão* importante mas é bom de se entender.
 
 ### Pureza
-Se você ler sobre programação funcional, você eventualmente vai se deparar com o conceito de funções *puras* e *impuras*. Funções puras são funções que preenchem dois critérios:
+Se você ler sobre programação funcional, você irá se deparar com o conceito de funções *puras* e *impuras*. Funções puras são funções que preenchem dois critérios:
 
 1. Chamar a função com as mesmas entradas sempre *retorna* as mesmas saídas.
 1. Chamar a função não produz efeitos colaterais: Sem chamadas na rede (*network*); nenhuma leitura ou escrita de arquivos; nenhuma consulta em banco de dados; nenhum elemento DOM modificado; nenhuma modificação de variáveis globais; e nenhuma saída no console. Nada.
 
 Funções impuras deixam programadores funcionais desconfortáveis. Tão desconfortáveis que eles as evitam o máximo possível. O problema com isso é que o grande ponto de escrever programas de computador *são* os efeitos colaterais. Fazer uma chamada na rede e renderizar elementos DOM está no núcleo do que uma aplicação web faz; esse foi o motivo pelo qual o JavaScript foi inventado.
 
-Então o que um aspirante a programador funcional faz? Bom, a chave é que nós não evitamos funções impuras inteiramente, nós apenas damos a elas uma boa quantidade de respeito, e deixá-mos de lidar com elas até que nós absolutamente precisemos. Elaboramos um plano claro e testado para o que queremos fazer *antes* de tentar fazer isso. Como Eric Elliot colocou em [*The Dao of Immutability*](https://medium.com/javascript-scene/the-dao-of-immutability-9f91a70c88cd):
+Então o que um aspirante a programador funcional faz? Bom, a chave é que nós não evitamos funções impuras inteiramente, nós apenas damos a elas uma boa quantidade de respeito, e deixamos de lidar com elas até que nós absolutamente precisemos. Elaboramos um plano claro e testado para o que queremos fazer *antes* de tentar fazer isso. Como Eric Elliot colocou em [*The Dao of Immutability*](https://medium.com/javascript-scene/the-dao-of-immutability-9f91a70c88cd):
 
 > **Separação:** Lógica é pensamento. Efeitos são ações. Portanto, o sábio pensa antes de agir, e age somente quando o pensamento está terminado. Se você tentar executar efeitos e lógica ao mesmo tempo, você vai criar efeitos colaterais ocultos que causam *bugs* (problemas) na lógica. Mantenha as funções pequenas. Faça uma coisa de cada vez, e faça isso bem.
 
 Em outras palavras, com programação funcional, nós geralmente trabalhamos a lógica do que estamos tentando fazer primeiro, antes de fazer qualquer coisa que potencialmente tenha efeitos colaterais.
 
-Outra forma de pensar sobre isso é a diferença de usar uma metralhadora e um *rifle sniper*. Com a metralhadora você dispara o máximo de balas possível, contando com o fato que se você continuar atirando, eventualmente você vai acertar algo. Mas você pode também acertar coisas que você não queria. Porém um rifle sniper é direfente. Você escolhe o lugar mais vantajoso, alinha o tiro, toma em conta a velocidade do vento e a distância do alvo. Você pacientemente, metódicamente, cuidadosamente configura todas as coisas e no momento certo, puxa o gatilho. Muito menos munição, e um efeito muito mais preciso.
+Outra forma de pensar sobre isso é a diferença de usar uma metralhadora e um *rifle sniper*. Com a metralhadora você dispara o máximo de balas possível, contando com o fato que se você continuar atirando, eventualmente você vai acertar algo. Mas você pode também acertar coisas que você não queria. Porém um rifle sniper é direfente. Você escolhe o lugar mais vantajoso, alinha o tiro, toma em conta a velocidade do vento e a distância do alvo. Você pacientemente, metodicamente, cuidadosamente configura todas as coisas e no momento certo, puxa o gatilho. Muito menos munição, e um efeito muito mais preciso.
 
 Então como tornamos nossas funções puras? Vamos ver um exemplo:
 
@@ -97,7 +97,7 @@ assert.equal(getHTML('jabberwocky'), '<p>Twas brillig…');
 //=> test passes
 ```
 
-Escrever esse *stub* pode parecer um pouco trabalhoso, mas agora podemos testar essa função sem precisar de um navegador. Se quisermos, podemos rodar isso na linha de comando sem um navegador *headless*. E como um bônus, o teste vai rodar muito, muito mais rápido do que um que tenho o objeto `document` inteiro.
+Escrever esse *stub* pode parecer um pouco trabalhoso, mas agora podemos testar essa função sem precisar de um navegador. Se quisermos, podemos rodar isso na linha de comando sem um navegador *headless*. E como um bônus, o teste vai rodar muito, muito mais rápido do que um que tenha o objeto `document` inteiro.
 
 Uma outra forma de ter uma função pura é retornar outra função que eventualmente irá fazer algo impuro quando a chamarmos. Isso inicialmente parece um truque sujo, mas é totalmente legítimo. Por exemplo:
 
