@@ -117,7 +117,7 @@ var htmlGetter = function(id) {
 ### *Pointfree* (sem pontos)
 Programação *Pointfree* ou programação *tácita* é um estilo particular de programação que funções de ordem superior como `curry` e `compose` tornam possível. Para explicar isso, vamos olhar novamente para o exemplo do poema do último artigo:
 
-> **Nota do tradutor:** Programação tácita, também chamada estilo **point-free** (sem pontos), é um paradigma de programação em que definições de função não identificam os argumentos (ou "pontos") em que elas opearam. Ao invés disso, as definições meramente compõem outras funções, onde essas são combinadores que manipulam os argumentos. [Fonte](https://en.wikipedia.org/wiki/Tacit_programming).
+> **Nota do tradutor:** Programação tácita, também chamada estilo **point-free** (sem pontos), é um paradigma de programação em que definições de função não identificam os argumentos (ou "pontos") em que elas operam. Ao invés disso, as definições meramente compõem outras funções, onde essas são combinadores que manipulam os argumentos. [Fonte](https://en.wikipedia.org/wiki/Tacit_programming).
 
 ```js
 var poem = 'Twas brillig, and the slithy toves\n' + 
@@ -142,15 +142,15 @@ var wrapBlockquote = wrapWith('blockquote');
 var modifyPoem = compose(wrapBlockquote, wrapP, addBreaks, replaceBrillig);
 ```
 
-Note que `compose` espera que cada função passada receba exatamente um parâmetro. Então, usamos 'curry' para mudar nossas funções multi-parâmetros `replace` e `wrapWith` em funções de um único parâmetro. Note também que fomos um pouco criteriosos com a ordem ordem de nossas funções então `wrapWith`, por exemplo, recebe a *tag* como seu o primeiro parâmetro ao invés do texto para ser envolvido. Se formos cuidadosos dessa forma na maneira como configuramos nossas funções, isso fará a criação de funções por composição fácil.
+Note que `compose` espera que cada função passada receba exatamente um parâmetro. Então, usamos 'curry' para mudar nossas funções multi-parâmetros `replace` e `wrapWith` em funções de um único parâmetro. Note também que fomos um pouco criteriosos com a ordem de nossas funções, então `wrapWith`, por exemplo, recebe a *tag* como seu primeiro parâmetro ao invés do texto para ser envolvido. Se formos cuidadosos dessa forma na maneira como configuramos nossas funções, isso fará a criação de funções por composição fácil.
 
 > **Nota do autor**: A maioria das bibliotecas funcionais (como [Ramda](http://ramdajs.com/)), também incluem utilitários para trabalhar com funções que não tem seus parâmetros em uma ordem conveniente.
 
-Isso se torna tão fácil que você pode escrever *todo* o seu código dessa maneira. Mas note um pequeno efeito colateral: quando definimos a função `modifyPoem` final, nós nunca mencionamos em nenhum lugar que ela recebe um único argumento *string*. E se você olhar para as funções *curried*, `addBreaks`, `replaceBrillig`, `wrapP` e `wrapBlockquote`, nenhuma delas mencionam que recebem apenas uma simples variável *string* também. Isso é programação *pointfree* (sem pontos): começar com um conjunto base de funções utilitárias (como Ramda ou functional.js) e escrever seu código de uma forma que você nunca vai mencionar as variáveis de entrada.
+Isso se torna tão fácil que você pode escrever *todo* o seu código dessa maneira. Mas note um pequeno efeito colateral: quando definimos a função `modifyPoem` final, nós nunca mencionamos em nenhum lugar que ela recebe um único argumento *string*. E se você olhar para as funções *curried*, `addBreaks`, `replaceBrillig`, `wrapP` e `wrapBlockquote`, nenhuma delas mencionam que recebem também apenas uma simples variável *string*. Isso é programação *pointfree* (sem pontos): começar com um conjunto base de funções utilitárias (como Ramda ou functional.js) e escrever seu código de uma forma que você nunca vai mencionar as variáveis de entrada.
 
-O que isso nos dá? Bom, nada de especial em relação ao próprio código. A coisa inteligente sobre o estilo sem pontos é que ele te força a usa `compose`, `curry`, `pipe`, etc. Por sua vez isso *encoraja fortemente* que você mantenha funções pequenas e simples reunidas de maneira sensata. Em outras palavras, isso é uma limitação autoimposta, como um *haiku* ou um soneto. Nem toda poesia tem que ser escrita dessa forma - e seguir todas as regras não garante um belo poema - mas algumas poesias escritas nesses estilos podem ser incrivelmente belas.
+O que isso nos dá? Bom, nada de especial em relação ao próprio código. A coisa inteligente sobre o estilo sem pontos é que ele te força a usar `compose`, `curry`, `pipe`, etc. Por sua vez, isso *encoraja fortemente* que você mantenha funções pequenas e simples reunidas de maneira sensata. Em outras palavras, isso é uma limitação autoimposta, como um *haiku* ou um soneto. Nem toda poesia tem que ser escrita dessa forma - e seguir todas as regras não garante um belo poema - mas algumas poesias escritas nesses estilos podem ser incrivelmente belas.
 
-Fazer tudo no estilo sem pontos não é sempre prático. Algumas vezes, isso adiciona complicações desnecessárias em uma função simples. Mas dê uma chance e *tentar* escrever todas as suas funções sem pontos é uma boa maneira de melhor entender a programação funcional.
+Fazer tudo no estilo sem pontos não é sempre prático. Algumas vezes, isso adiciona complicações desnecessárias em uma função simples. Mas dar uma chance e *tentar* escrever todas as suas funções sem pontos é uma boa maneira de entender melhor a programação funcional.
 
 ### Assinatura de Tipos de Hindley-Milner
 Uma vez que você esteja fazendo tudo "sem pontos" (*pointfree*), isso deixa uma dúvida, como comunicar outros programadores qual tipo de parâmetro eles devem passar para sua função. Para facilitar isso, programadores funcionais desenvolveram uma notação especial para especificar quais tipos de parâmetro uma função recebe, e o que ela retorna. A notação é chamada *assinatura de tipos de Hindley-Milner*. Nós a escrevemos como comentários onde definimos a função. Vamos ver alguns exemplos:
@@ -162,7 +162,7 @@ var instruction = function(verb) {
 }
 ```
 
-A assinatura de tipo fiz que `instruction` recebe uma *String* como entrada e retorna outra *String*. Por enquanto, tudo bem. E se tivermos uma função que recebe dois parâmetros?
+A assinatura de tipo diz que `instruction` recebe uma *String* como entrada e retorna outra *String*. Por enquanto, tudo bem. E se tivermos uma função que recebe dois parâmetros?
 
 ```js
 // wrapWith :: String -> (String -> String)
@@ -171,7 +171,7 @@ var wrapWith = curry(function(tag, str) {
 });
 ```
 
-Isso é um pouco mais complicado, mas não tão difícil. Essa notação diz que `wrapWith` recebe uma *String* e retorna uma *Função*, e essa função recebe uma *String* e retorna uma *String*. Note que isso funciona porque nós aplicamos *curry* na função. Quando estivermos usando esse estilo, está assumidoque você vai sempre usar *curry* em todas suas funções.
+Isso é um pouco mais complicado, mas não tão difícil. Essa notação diz que `wrapWith` recebe uma *String* e retorna uma *Função*, e essa função recebe uma *String* e retorna uma *String*. Note que isso funciona porque nós aplicamos *curry* na função. Quando estivermos usando esse estilo, está assumido que você sempre vai usar *curry* em todas suas funções.
 
 E algo com três parâmetros ao invés de dois? Uma forma de escrever isso seria:
 
@@ -206,7 +206,7 @@ Aqui temos uma função sem pontos (*pointfree*), e se torna claro porque as ass
 var sum = reduce(add, 0);
 ```
 
-Esse recebe um array de números e retorna um número (assumindo que aplicamos *curry* na função `reduce` do segundo artigo).
+Essa recebe um array de números e retorna um número (assumindo que aplicamos *curry* na função `reduce` do segundo artigo).
 
 Alguns exemplos finais:
 
