@@ -1,29 +1,25 @@
 ![traduz ai](img/traduz-ai.png)
 
-## Objetivo
-
-Com este projeto, tenho como objetivo **traduzir o máximo de artigos** para que os mesmos fiquem disponíveis para todos os desenvolvedores, principalmente os iniciantes que são os que mais sofrem com o problema da falta de conteúdo em português, encontrando uma dupla barreira em relação às linguagens, tanto a escrita/falada, quanto a que quer realmente ser aprendida (linguagem de programação/marcação/etc).
+> Coleção de artigos sobre desenvolvimento web traduzidos para pt-br
 
 ## Como Ajudar
 
 Além dos materiais separados para tradução, você pode contribuir através da indicação de novos artigos para as traduções e/ou com as traduções/revisões. Deixe sua contribuição **[aqui](https://github.com/ericdouglas/traduz-ai/issues)**.
 
-Espero que seja de bom proveito este material, para que juntos possamos aprender e crescer! Bons estudos e um forte abraço!
+## Tópicos
 
-
-## Artigos
-
+* [AngularJS](#angularjs) (04)
+* [Behaviour Driven Development](#behaviour-driven-development) (01)
+* [Handlebars](#handlebarsjs) (01)
 * [JavaScript](#javascript) (12)
-* [AngularJS](#angularjs) (05)
+* [MongoDB](#mongodb) (01)
 * [Node.js](#nodejs) (02)
 * [React](#react) (02)
-* [Handlebars](#handlebarsjs) (01)
-* [MongoDB](#mongodb) (01)
 
 ## Séries
 
-* [Você não precisa de jQuery](series/voce-nao-precisa-de-jquery)
-* [Então você quer ser um Programador Funcional?](series/entao-voce-quer-ser-um-programador-funcional)
+* [Você não precisa de jQuery](series/voce-nao-precisa-de-jquery) `javascript`
+* [Então você quer ser um Programador Funcional?](series/entao-voce-quer-ser-um-programador-funcional) `javascript` `programação funcional`
 
 ## Outros Projetos
 
@@ -31,6 +27,18 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
  * [Wisdom of the elePHPant](https://github.com/reginaldojunior/wisdom-of-the-elephant)
 
 ---
+
+## AngularJS
+
+1. **Guia Definitivo para Aprender AngularJS em Um Dia** - [`Tradução`](angularjs/001-guia-definitivo-para-aprender-angularjs.md) [`Original`](http://toddmotto.com/ultimate-guide-to-learning-angular-js-in-one-day/)
+1. **Aprenda AngularJS com estes 5 exemplos práticos** - [`Tradução`](angularjs/002-aprenda-angularjs-com-5-exemplos.md) [`Original`](http://tutorialzine.com/2013/08/learn-angularjs-5-examples/)
+1. **Use AngularJS para Potencializar sua Aplicação Web** - [`Tradução`](angularjs/003-use-angularjs-para-potencializar-sua-webapp.md#use-angularjs-para-potencializar-suas-aplica%C3%A7%C3%B5es-web) [`Original`](http://www.yearofmoo.com/2012/08/use-angularjs-to-power-your-web-application.html)
+1. **Mais mágicas do AngularJS para turbinar sua Webapp** - [`Tradução`](angularjs/004-mais-magicas-angularjs-para-turbinar-sua-webapp.md#mais-m%C3%A1gicas-do-angularjs-para-turbinar-sua-webapp) [`Original`](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html)
+
+## Behaviour Driven Development
+
+|nº|Artigo|Link para tradução|Link para original|
+|:---:|---|:---:|:---:|
 
 ## JavaScript
 
@@ -49,15 +57,7 @@ Espero que seja de bom proveito este material, para que juntos possamos aprender
 |11.|**Uma Suave Introdução ao JavaScript Funcional: Parte 3**|[Tradução](javascript/011-uma-suave-introducao-ao-javascript-parte-3.md)|[Original](http://jrsinclair.com/articles/2016/gentle-introduction-to-functional-javascript-functions/)|
 |12.|**Uma Suave Introdução ao JavaScript Funcional: Parte 4**|[Tradução](javascript/012-uma-suave-introducao-ao-javascript-parte-4.md)|[Original](http://jrsinclair.com/articles/2016/gentle-introduction-to-functional-javascript-style/)|
 
-## AngularJS
 
-|nº|Artigo|Link para tradução|Link para original|
-|:---:|---|:---:|:---:|
-|01.|**Guia de Estilos AngularJS**|[Tradução](https://github.com/ericdouglas/angularjs-style-guide/blob/master/README-pt-br.md)|[Original](https://github.com/mgechev/angularjs-style-guide)|
-|02.|**Guia Definitivo para Aprender AngularJS em Um Dia**|[Tradução](angularjs/001-guia-definitivo-para-aprender-angularjs.md)|[Original](http://toddmotto.com/ultimate-guide-to-learning-angular-js-in-one-day/)|
-|03.|**Aprenda AngularJS com estes 5 exemplos práticos**|[Tradução](angularjs/002-aprenda-angularjs-com-5-exemplos.md)|[Original](http://tutorialzine.com/2013/08/learn-angularjs-5-examples/)| 
-|04.|**Use AngularJS para Potencializar sua Aplicação Web**|[Tradução](angularjs/003-use-angularjs-para-potencializar-sua-webapp.md#use-angularjs-para-potencializar-suas-aplica%C3%A7%C3%B5es-web)|[Original](http://www.yearofmoo.com/2012/08/use-angularjs-to-power-your-web-application.html)|
-|05.|**Mais mágicas do AngularJS para turbinar sua Webapp**|[Tradução](angularjs/004-mais-magicas-angularjs-para-turbinar-sua-webapp.md#mais-m%C3%A1gicas-do-angularjs-para-turbinar-sua-webapp)|[Original](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html)|
 
 ## React
 
