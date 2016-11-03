@@ -26,4 +26,63 @@ A evolução de um programador que está aprendendo TDD é um bom guia para ente
 1. Eventualmente eles percebem que TDD não é sobre testes. TDD é sobre definir comportamento e escrever especificações que servem como documentações vivas. Eles também descobrem *mocks* e desenvolvimento *outside-in*.
 
 ## Princípios do BDD
-## *Baby steps* - passos de bebê
+### *Baby steps* (passos de bebê)
+Uma funcionalidade característica do BDD é a utilização de *"baby steps"* para obter um ciclo de *feedback* rápido. Na prática, isso significa escrever uma especificação simples que vai falhar, escrever a lógica do código faltante e retornar para a especificação. Essa troca contínua entre código e casos de teste resulta em menos verificações do código.
+
+### *Red/Green/Refactor* (Vermelho/Verde/Refatorar)
+Você quer alcançar essa rotina *Red/Green/Refactor*:
+
+- Todas as especificações estão verde (depois da fase da implementação)?
+- Tem uma especificação vermelha (depois de codificar outra especificação)?
+
+A ideia é assegurar que o teste realmente funciona e pode pegar um erro.
+
+### Triangulação
+Ao invés de criar uma implementação real, você pode retornar um valor estático.
+
+```js
+var productBasket = function (products) {
+    return {
+        total: function () {
+            return 0;
+        }
+    }
+};
+
+describe('Product basket', function () {
+    describe('#total()', function () {
+        it('returns 0 when basket is empty', function () {
+            expect(productBasket([]).total()).toEqual(0);
+        });
+    })
+});
+```
+
+Você sabe que sua implementação não está pronta, mas todas as especificações estão verdes. Isso implica que existe alguma espeficação faltando.
+
+```js
+var productBasket = function (products) {
+    return {
+        total: function () {
+            if (!products.length) {
+                return 0;
+            } else {
+                return products[0]
+            }
+        }
+    }
+};
+
+describe('Product basket', function () {
+    describe('#total()', function () {
+        it('returns 0 when basket is empty', function () {
+            expect(productBasket([]).total()).toEqual(0);
+        });
+        it('returns price of a single product in the basket', function () {
+            expect(productBasket([10]).total()).toEqual(10);
+        });
+    })
+});
+```
+
+You proceed until you've covered just enough
