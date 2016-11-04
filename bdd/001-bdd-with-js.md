@@ -85,4 +85,53 @@ describe('Product basket', function () {
 });
 ```
 
-You proceed until you've covered just enough
+Você prossegue até que tenha coberto casos de teste suficientes para produzir uma solução geral.
+
+```js
+var productBasket = function (products) {
+    return {
+        total: function () {
+            return products.reduce(function (prev, curr) {
+                return prev + curr;
+            }, 0);
+        }
+    }
+};
+
+describe('Product basket', function () {
+    describe('#total()', function () {
+        it('returns 0 when basket is empty', function () {
+            expect(productBasket([]).total()).toEqual(0);
+        });
+        it('returns price of a single product in the basket', function () {
+            expect(productBasket([10]).total()).toEqual(10);
+        });
+        it('returns price of multiple products in the basket', function () {
+            expect(productBasket([10, 20, 30]).total()).toEqual(60);
+        });
+    })
+});
+```
+
+A ideia é ganhar um entendimento de como o algoritmo deve se comportar.
+
+#### Resumo
+*Behaviour Driven Development* é caracterizado por:
+
+- Código orientado por especificação/erro.
+- Uso de *"baby steps"* para alcançar um ciclo de *feedback* rápido.
+- Adoção do ciclo *Red-Green-Refactor (RGR)* para evitar falsos positivos.
+
+O resultado:
+
+- Projeto de software orientado pelas necessidades.
+- O ciclo RGR melhora a separação da carga de trabalho. *Red* é para a interface, *Green* é para a implementação.
+- Especificações permitem refatoração de código.
+- Testes automatizados que podem ser lidos como documentação. Prefira DAMP ao invés de DRY.
+
+> **Refatoração**: alteração da estrutura do código interno sem prejuízo de comportamento externo.
+>
+> **DAMP**: **D**escriptive **a**nd **M**eaningful **P**hrases. (Frases descritivas e significativas)
+
+## BDD na Prática
+### Usando *Test Doubles*
