@@ -135,3 +135,31 @@ O resultado:
 
 ## BDD na Prática
 ### Usando *Test Doubles*
+#### *Dummies*
+Objeto vazio que não faz nada.
+
+- Objetos são passados mas nunca são utilizados de fato. Normalmente apenas são usados para completar uma lista de parâmetros. <a href="http://martinfowler.com/articles/mocksArentStubs.html"><sup>1</sup></a>
+
+```js
+describe('Product basket', function () {
+    var productBasket;
+
+    beforeEach(function () {
+        productBasket = new ProductBasket();
+    });
+
+    describe('.productCount()', function () {
+        it('returns number of products in the basket', function () {
+            var productDummy1 = {},
+                productDummy2 = {};
+
+            productBasket.add(productDummy1);
+            productBasket.add(productDummy2);
+
+            expect(productBasket.productCount()).toEqual(2);
+        });
+    });
+});
+```
+
+#### Stubs
