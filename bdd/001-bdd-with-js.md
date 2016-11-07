@@ -162,4 +162,9 @@ describe('Product basket', function () {
 });
 ```
 
-#### Stubs
+#### *Stubs*
+Método projetado apenas para teste.
+
+- Objetos *stub* fornecem uma resposta válida, mas ela é estática - não importa o valor que você passar, você sempre receberá a mesma resposta. <a href="http://stackoverflow.com/a/1830000/368691"><sup>2</sup></a>
+- Um objeto que oferece respostas pré-definidas para chamadas de um método. <a href="http://stackoverflow.com/a/5180286/368691"><sup>3</sup></a>
+- Stubs provide canned answers
