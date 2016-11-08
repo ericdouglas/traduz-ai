@@ -131,7 +131,7 @@ O resultado:
 
 > **Refatoração**: alteração da estrutura do código interno sem prejuízo de comportamento externo.
 >
-> **DAMP**: **D**escriptive **a**nd **M**eaningful **P**hrases. (Frases descritivas e significativas)
+> **DAMP**: Descriptive and Meaningful Phrases. (Frases descritivas e significativas)
 
 ## BDD na Prática
 ### Usando *Test Doubles*
@@ -167,4 +167,29 @@ Método projetado apenas para teste.
 
 - Objetos *stub* fornecem uma resposta válida, mas ela é estática - não importa o valor que você passar, você sempre receberá a mesma resposta. <a href="http://stackoverflow.com/a/1830000/368691"><sup>2</sup></a>
 - Um objeto que oferece respostas pré-definidas para chamadas de um método. <a href="http://stackoverflow.com/a/5180286/368691"><sup>3</sup></a>
-- Stubs provide canned answers
+- *Stubs* fornecem *canned answers* (respostas enlatadas) para chamadas feitas durante o teste, normalmente não respondendo a nada fora do que foi programado para o teste. *Stubs* também podem registrar informações sobre chamadas, como um *email gateway stub* que lembra as mensagens que ele "enviou", ou talvez apenas a quantidade de mensagens que ele "enviou". <a href="http://martinfowler.com/articles/mocksArentStubs.html"><sup>4</sup></a>
+- Um *stub* nunca vai fazer um teste falhar. <a href="http://ayende.com/Wiki/Rhino+Mocks+3.5.ashx"><sup>5</sup></a>
+- Um *stub* é um objeto artificial simples. Ele apenas assegura que os testes rodem suavemente/facilmente. <a href="http://stackoverflow.com/a/3459431/368691"><sup>6</sup></a>
+
+```js
+describe('Product', function () {
+    var product;
+
+    beforeEach(function () {
+        product = new Product({name: 'foo'});
+    });
+
+    describe('.getName()', function () {
+        it('returns name formatted using format function', function () {
+            var formatFunctionStub = function (productName) { return productName + '-bar'; }
+
+            expect(product.getName(formatFunctionStub)).toEqual('foo-bar');
+        });
+    });
+});
+```
+
+#### *Mocks*
+Objeto projetado apenas para teste.
+
+- Objetos *mock* são usados em casos de teste de simulação - they validate that certain methods
