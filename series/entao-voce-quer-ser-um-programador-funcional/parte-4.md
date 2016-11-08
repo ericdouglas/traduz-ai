@@ -147,14 +147,132 @@ for (var i = 0; i < something.length; ++i) {
 }
 ```
 
+Existe um problema com este código. Não é um bug. O problema é que este código é um boilerplate, isto é, código que é escrito de novo e de novo.
 
+Se você programa em Linguagens imperativas como, Java, C#, Javascript, PHP, Python, etc., você se verá escrevendo este boilerplate mais que qualquer um.
+
+É isso que está errado nele.
+
+Então vamos matá-lo. Vamos colocá-lo em uma função (ou em um par de funções) e nunca mais escrever um loop for novamente. Bem, quase nunca. Pelo menos até mudarmos para uma linguagem funcional.
+
+Vamos começar modificando um Array chamado **things**:
+
+```
+var things = [1, 2, 3, 4];
+for (var i = 0; i < things.length; ++i) {
+    things[i] = things[i] * 10; // MUTATION ALERT !!!!
+}
+console.log(things); // [10, 20, 30, 40]
+```
+
+UGH!! Mutabilidade!
+
+Vamos tentar novamente. Desta vez não vamos mudar **things**:
+
+```
+var things = [1, 2, 3, 4];
+var newThings = [];
+for (var i = 0; i < things.length; ++i) {
+    newThings[i] = things[i] * 10;
+}
+console.log(newThings); // [10, 20, 30, 40]
+```
+
+Beleza, não modificamos **things** mas tecnicamente nós mudamos **newThings**. Por enquanto, deixaremos isto passar, afinal de contas estamos em Javascript. Uma vez que mudarmos para uma Linguagem Funcional, nós não vamos conseguir modificar.
+
+O objetivo aqui é entender como estas funções funcionam e nos ajudam a "reduzir barulho" em nosso código.
+
+Vamos pegar este código e colocá-lo em uma função. Nós vamos chamar nossa primeira função comum de **map**, agora que ela mapeia cada valor no array antigo para novos valores no novo array.
+
+```
+var map = (f, array) => {
+    var newArray = [];
+    for (var i = 0; i < array.length; ++i) {
+        newArray[i] = f(array[i]);
+    }
+    return newArray;
+};
+```
+
+Perceba que passamos como parâmetro uma função **f**, para que nosso **map** possa fazer qualquer coisa que quisermos com cada item do **array**.
+
+Agora podemos reescrever nosso código anterior para usar o **map**:
+
+```
+var things = [1, 2, 3, 4];
+var newThings = map(v => v * 10, things);
+```
+
+Olha mãe. Sem loops for. E muito mais fácil de ler e portanto, descobrir sobre o que é.
+
+Bem, tecnicamente existem loops for na função **map**. Mas pelo menos nós não temos mais que escrever aquele código boilerplate.
+
+Agora vamos escrever outra função comum para **filtrar** coisas de um array:
+
+```
+var filter = (pred, array) => {
+    var newArray = [];
+for (var i = 0; i < array.length; ++i) {
+        if (pred(array[i]))
+            newArray[newArray.length] = array[i];
+    }
+    return newArray;
+};
+```
+
+Note como a função pressuposta **pred** retorna TRUE se mantivermos o item ou FALSE se o removermos.
+
+Aqui está como usamos **filter** para filtrar números ímpares:
+
+```
+var isOdd = x => x % 2 !== 0;
+var numbers = [1, 2, 3, 4, 5];
+var oddNumbers = filter(isOdd, numbers);
+console.log(oddNumbers); // [1, 3, 5]
+```
+
+Utilizar nossa nova função **filter** é tão mais simples que codificar na mão com um loop for.
+
+A função comum final é chamada de **reduce**. Tipicamente é usada para receber uma lista e reduzí-la a um único valor mas ela pode na verdade fazer muito mais.
+
+Esta função é comumente chamada de **fold** em Linguagens Funcionais.
+
+```
+var reduce = (f, start, array) => {
+    var acc = start;
+    for (var i = 0; i < array.length; ++i)
+        acc = f(array[i], acc); // f() takes 2 parameters
+    return acc;
+});
+```
+
+A função **reduce** recebe uma função de redução, **f**, um valor **start** inicial e um **array**.
+
+Perceba que a função de redução, **f**, aceita 2 parâmetros, o item atual do **array**, e o acumulador, **acc**. A função vai usar estes parâmetros para produzir um novo acumulador a cada interação. O acumulador da interação final é retornado.
+
+Um exemplo vai nos ajudar a entender como isto funciona:
+
+```
+var add = (x, y) => x + y;
+var values = [1, 2, 3, 4, 5];
+var sumOfValues = reduce(add, 0, values);
+console.log(sumOfValues); // 15
+```
+
+Veja que a função **add** soma seus 2 parâmetros recebidos. Nossa função **reduce** espera uma função que recebe 2 parâmetros então elas funcionarão bem juntas.
+
+Começamos com um valor **start** de zero e passamos nosso array, **values**, para ser somado. Dentro da função **reduce**, a soma é acumulada à medida que intera sobre os valores. O valor final acumulado é retornado como **sumOfValues**.
+
+Cada uma destas funções, **map**, **filter** e **reduce** nos permite fazer operações de manipulação comuns em arrays sem precisar escrever boilerplate de loops for.
+
+Mas em Linguagens Funcionais, elas são ainda mais úteis uma vez que não existem construtores de loop, somente recursão. Funções de iteração não são somente extremamente úteis. Elas são necessárias.
 
 ### Meu cérebro!!!
 
 Por enquanto chega.
 
-Nas próximas partes deste artigo, eu vou falar sobre Currying, funções funcionais comuns (ex: map, filter, fold etc.), Transparência Referencial e mais.
+Nas próximas partes deste artigo, eu vou falar sobre Integridade referencial, ordem de execução, tipos e mais.
 
 A seguir:
 
-[Parte 5](https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-5-c70adc9cf56a#.1hjllzi8t) (em inglês)
+[Parte 5](https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-5-c70adc9cf56a#.nyj0fmsk3) (em inglês)
