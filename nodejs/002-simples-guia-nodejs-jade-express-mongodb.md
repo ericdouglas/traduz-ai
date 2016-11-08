@@ -132,13 +132,13 @@ $ npm install
 
 ```
 
-Será impresso uma tonelada de coisas. Isto por causa que está sendo lido nosso arquivo JSON que acabamos de editar e a instalação de todas as coisas listadas no objeto *dependencies* (sim, incluindo o Express - nós instalamos o material de alto nível usando a flag `-g`, mas ainda temos que instalar algum código que será necessário para este projeto em particular). Uma vez que o NPM percorreu seu caminho, você terá um diretório `node_modules` que contém todas as suas dependências para este tutorial.
+Será impresso uma tonelada de coisas. Isto porque está sendo lido nosso arquivo JSON que acabamos de editar e a instalação de todas as coisas listadas no objeto *dependencies* (sim, incluindo o Express - nós instalamos o material de alto nível usando a flag `-g`, mas ainda temos que instalar algum código que será necessário para este projeto em particular). Uma vez que o NPM percorreu seu caminho, você terá um diretório `node_modules` que contém todas as suas dependências para este tutorial.
 
 Agora você tem uma aplicação em pleno funcionamento e esperando para ser rodada. Vamos testá-la! **Vá para o diretório nodetest1** e digite:
 
 ```sh
 
-$ node app.js
+$ npm start
 
 ```
 
