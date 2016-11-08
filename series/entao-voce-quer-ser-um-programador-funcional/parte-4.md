@@ -63,6 +63,90 @@ Sintaticamente falando, Elm supera linguagens imperativas como Javascript porque
 
 ### Currying e Refatoração
 
+Outro ponto em que Currying brilha é durante a refatoração, quando criamos uma versão genérica de uma função com um monte de parâmetros e então a usamos para criar versões específicas com menos parâmetros.
+
+Por exemplo, quando temos as seguintes funções que colocam colchetes e colchetes duplos ao redor de strings:
+
+```
+bracket str =
+    "{" ++ str ++ "}"
+
+doubleBracket str =
+    "{{" ++ str ++ "}}"
+```
+
+Aqui está como utilizamos:
+
+```
+bracketedJoe =
+    bracket "Joe"
+
+doubleBracketedJoe =
+    doubleBracket "Joe"
+```
+
+Nós podemos generalizar **bracket** e **doubleBracket**:
+
+```
+generalBracket prefix str suffix =
+    prefix ++ str ++ suffix
+```
+
+Mas agora toda vez que usarmos **generalBracket** temos que passar os colchetes:
+
+```
+bracketedJoe =
+    generalBracket "{" "Joe" "}"
+
+doubleBracketedJoe =
+    generalBracket "{{" "Joe" "}}"
+```
+
+O que realmente queremos é o melhor dos dois mundos.
+
+Se nós reordenarmos os parâmetros de **generalBracket**, podemos criar **bracket** e **doubleBracket** aproveitando o fato de que as funções são curried:
+
+```
+generalBracket prefix suffix str =
+    prefix ++ str ++ suffix
+
+bracket =
+    generalBracket "{" "}"
+
+doubleBracket =
+    generalBracket "{{" "}}"
+```
+
+Note que colocando os parâmetros que eram mais suscetíveis de serem estáticos, por exemplo **prefix** e **suffix**, e colocando os parâmetros mais propensos a mudar por último, por exemplo **str**, podemos facilmente criar versões especializadas de **generalBracket**.
+
+> A ordem dos parâmetros é importante para aproveitar completamente o currying.
+
+Note também que **bracket** e **doubleBracket** são escritos em notação point-free, por exemplo o parâmetro **str** é implícito. Ambos **bracket** e **doubleBracket** são funções esperando pelo seu parâmetro final.
+
+Agora podemos usá-las como antes:
+
+```
+bracketedJoe =
+    bracket "Joe"
+
+doubleBracketedJoe =
+    doubleBracket "Joe"
+```
+
+Mas desta vez estamos usando uma função *curried* genérica, **generalBracket**.
+
+### Funções funcionais comuns
+
+Vamos dar uma olhada em 3 funções comuns que são usadas em linguagens funcionais.
+
+Mas primeiro, vejamos o seguinte código Javascript:
+
+```
+for (var i = 0; i < something.length; ++i) {
+    // do stuff
+}
+```
+
 
 
 ### Meu cérebro!!!
