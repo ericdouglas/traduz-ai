@@ -5,7 +5,7 @@
 
 Dar o primeiro passo para entender os conceitos de Programação Funcional é o mais importante e algumas vezes o passo mais díficil. Mas isto não tem de ser assim. Não com a perspectiva correta.
 
-Parte anterior: 
+Parte anterior:
 
 [Parte 2](parte-2.md) (em português)
 [Parte 2](https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-2-7005682cec4a#.q2xydwfne) (em inglês)
@@ -127,7 +127,7 @@ Ok, se você levou um tempo pensando sobre isto, pode ser que tenha chegado a um
 ```
 -- Está errado !!!!
 mult5AfterAdd10 =
-	(mult5 << add) 10 
+	(mult5 << add) 10
 ```
 
 Isto não funciona. Por que? Porque **add** recebe 2 parâmetros.
@@ -162,6 +162,7 @@ Por enquanto chega.
 
 Nas próximas partes deste artigo, eu vou falar sobre Currying, funções funcionais comuns (ex: map, filter, fold etc.), Transparência Referencial e mais.
 
-A seguir: 
+A seguir:
 
+[Parte 4](parte-4.md) (em português)
 [Parte 4](https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-4-18fbe3ea9e49#.j22a5ccmb) (em inglês)

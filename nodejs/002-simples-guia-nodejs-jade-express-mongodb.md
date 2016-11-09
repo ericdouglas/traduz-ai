@@ -132,13 +132,13 @@ $ npm install
 
 ```
 
-Será impresso uma tonelada de coisas. Isto por causa que está sendo lido nosso arquivo JSON que acabamos de editar e a instalação de todas as coisas listadas no objeto *dependencies* (sim, incluindo o Express - nós instalamos o material de alto nível usando a flag `-g`, mas ainda temos que instalar algum código que será necessário para este projeto em particular). Uma vez que o NPM percorreu seu caminho, você terá um diretório `node_modules` que contém todas as suas dependências para este tutorial.
+Será impresso uma tonelada de coisas. Isto porque está sendo lido nosso arquivo JSON que acabamos de editar e a instalação de todas as coisas listadas no objeto *dependencies* (sim, incluindo o Express - nós instalamos o material de alto nível usando a flag `-g`, mas ainda temos que instalar algum código que será necessário para este projeto em particular). Uma vez que o NPM percorreu seu caminho, você terá um diretório `node_modules` que contém todas as suas dependências para este tutorial.
 
 Agora você tem uma aplicação em pleno funcionamento e esperando para ser rodada. Vamos testá-la! **Vá para o diretório nodetest1** e digite:
 
 ```sh
 
-$ node app.js
+$ npm start
 
 ```
 
@@ -329,9 +329,7 @@ Ok! Agora temos nossa rota nos levando para nossa view. Vamos fazer alguma model
 
 ### PASSO 1 - INSTALAR MONGODB
 
-Vamos deixar um pouco nosso editor de texto e ir para nosso terminal. Bem, primeiro vamos para nosso browser, no endereço http://mongodb.org/ e fazer o download do Mongo. Click no link de downloads no menu principal e pegue a versão de produção que se encaixa com seu sistema. Para o Windows 8 com um processador 64-bit, nós vamos usar o "64-bit *2008R2+". Isso irá lhe fornecer um arquivo `.zip`, que você deve descompactar para um diretório temporário. Então você pode criar um diretório no qual o Mongo vai permanecer pra sempre depois de armazenar o Mongo. Você pode usar `c:\mongo` ou `c:\program files\mongo` ou qualquer outra coisa louca que você quiser. Isso não importa na verdade - O Mongo é bem pequeno, e vamos armazenar nosso banco de dados no nosso diretório `nodetest1`.
-
-De qualquer forma, copie os arquivos da pasta bin dentro do seu diretório temporário para onde você quer que o Mongo fique, e você está pronto. Você instalou o Mongo. Agora vamos fazer isso funcionar.
+Vamos deixar um pouco nosso editor de texto e ir para nosso terminal. Bem, primeiro vamos para nosso browser, no endereço http://mongodb.com/ e fazer o download do Mongo. Click no link de downloads no menu principal e pegue a versão de produção que se encaixa com seu sistema. Para o Windows 8 com um processador 64-bit, nós vamos usar o "64-bit *2008R2+". Isso irá lhe fornecer um arquivo `.msi`, que você irá instalar como qualquer software no Windows (usando Next > Next). O Mongo é bem pequeno, e vamos armazenar nosso banco de dados no nosso diretório `nodetest1`. Quando o instalador chegar ao fim, você terá concluido a instalação do MongoDB.
 
 ### PASSO 2 - RODANDO MONGOD e MONGO
 
