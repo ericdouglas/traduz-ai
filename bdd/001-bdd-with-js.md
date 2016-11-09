@@ -192,4 +192,64 @@ describe('Product', function () {
 #### *Mocks*
 Objeto projetado apenas para teste.
 
-- Objetos *mock* são usados em casos de teste de simulação - they validate that certain methods
+- Objetos *mock* são usados em simulações de casos de teste - eles validam se certos métodos foram chamados nesses objetos.
+- Um objeto no qual você define expectativas.
+
+```js
+describe('Product basket', function () {
+    var productBasket;
+
+    beforeEach(function () {
+        productBasket = new ProductBasket();
+    });
+
+    describe('.getTotal()', function () {
+        it('returns sum of product.getPrice()', function () {
+            var productDummy1 = {getPrice: function () { return 10; }},
+                productDummy2 = {getPrice: function () { return 20; }};
+
+            productBasket.add(productDummy1);
+            productBasket.add(productDummy2);
+
+            expect(productBasket.getTotal()).toEqual(30);
+        });
+    });
+});
+```
+
+### *Example Factory*
+Método usado para instanciar o objeto SUT (*System Under Test* - sistema em teste) com valores canônicos, sobrescrevendo apenas as propriedades relevantes para o caso em teste.
+
+```js
+var SeminarFactory = {
+    create: function (overwrite) {
+        var defaultData,
+            objectData;
+
+        defaultData = {
+            name: 'JavaScript basics',
+            price: 100
+        };
+
+        objectData = Object.extend(defaultData, overwrite);
+
+        return Seminar.create(objectData.name, objectData.price);
+    }
+};
+
+describe('Seminar', function () {
+    it('has a name', function () {
+        var seminar = SeminarFactory.create({name: 'JavaScript'});
+
+        expect(seminar.getName()).toEqual('JavaScript');
+    });
+
+    it('has a price', function () {
+        var seminar = SeminarFactory.create({price: 10});
+
+        expect(seminar.getPrice()).toEqual(10);
+    });
+});
+```
+
+### SEE Pattern
