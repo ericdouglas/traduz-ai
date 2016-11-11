@@ -252,4 +252,38 @@ describe('Seminar', function () {
 });
 ```
 
-### SEE Pattern
+###  Padrão SEE
+Toda especificação precisa destas três partes e nada mais - nessa ordem:
+
+1. *Setup* (configurar), e.g. criar um objeto.
+1. *Execute* (executar), i.e introduzir mudanças estado do objeto.
+1. *Expect* (esperar), i.e. declarar uma expectativa do que deveria ter ocorrido.
+
+Você pode ter ouvido também sobre **Given, When, Then** (GWT):
+
+- *Given* (dado) uma condição.
+- *When* (quando) eu faço algo.
+- *Then* (então) eu espero que algo aconteça.
+
+Os dois são idênticos. O fraseado da última pode ser mais fácil de entender.
+
+```js
+describe('Division by Zero', function () {
+    // Setup (or Given)
+    var number;
+
+    beforeEach(function () {
+        number = 10;
+    });
+
+    describe('when dividing a number by zero', function () {
+        // Execute (or When)
+        it('we get Infinity', function () {
+            // Expect (or Then)
+            expect(number/0).toEqual(Infinity);
+        });
+    });
+});
+```
+
+As a result, your specs must
