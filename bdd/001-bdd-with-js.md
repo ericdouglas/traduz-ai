@@ -286,4 +286,13 @@ describe('Division by Zero', function () {
 });
 ```
 
-As a result, your specs must
+Como resultado, suas especificações devem aderir às seguintes regras:
+
+- A especificação não deve implementar mais de uma execução.
+- A especificação deve se abster de muitas expectativas.
+- Não escreva declarações `if` que levem a múltiplas execuções e prováveis bifurcações - escreva várias especificações ao invés.
+
+No mundo TDD isso é conhecido como o padrão AAA (*Arrange, Act, Assert*).
+
+## Organizando Especificações
+
