@@ -8,7 +8,7 @@ Além dos materiais separados para tradução, você pode contribuir através da
 
 ## Tópicos
 
-* [AngularJS](#angularjs) (04)
+* [AngularJS](#angularjs) (05)
 * [Behaviour Driven Development](#behaviour-driven-development) (01)
 * [Handlebars](#handlebarsjs) (01)
 * [JavaScript](#javascript) (12)
@@ -27,6 +27,7 @@ Além dos materiais separados para tradução, você pode contribuir através da
 1. Aprenda AngularJS com estes 5 exemplos práticos - [`Tradução`](angularjs/002-aprenda-angularjs-com-5-exemplos.md) [`Original`](http://tutorialzine.com/2013/08/learn-angularjs-5-examples/)
 1. Use AngularJS para Potencializar sua Aplicação Web - [`Tradução`](angularjs/003-use-angularjs-para-potencializar-sua-webapp.md#use-angularjs-para-potencializar-suas-aplica%C3%A7%C3%B5es-web) [`Original`](http://www.yearofmoo.com/2012/08/use-angularjs-to-power-your-web-application.html)
 1. Mais mágicas do AngularJS para turbinar sua Webapp - [`Tradução`](angularjs/004-mais-magicas-angularjs-para-turbinar-sua-webapp.md#mais-m%C3%A1gicas-do-angularjs-para-turbinar-sua-webapp) [`Original`](http://www.yearofmoo.com/2012/10/more-angularjs-magic-to-supercharge-your-webapp.html)
+1. Entendendo Diretivas - [`Tradução`](angularjs/005-entendendo-diretivas.md) [`Original`](https://github.com/angular/angular.js/wiki/Understanding-Directives)
 
 ### Behaviour Driven Development
 
