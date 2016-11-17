@@ -295,4 +295,81 @@ Como resultado, suas especificações devem aderir às seguintes regras:
 No mundo TDD isso é conhecido como o padrão AAA (*Arrange, Act, Assert*).
 
 ## Organizando Especificações
+As especificações são organizadas ou por *Feature* (por tópico) ou por *Fixture* (por dados de exemplo).
 
+### Por *Feature* 
+Essa forma de organizar uma especificação também é chamada "por tópico".
+
+O benefício de organizar sua especificação por tópico é fazê-la mais fácil de ser escrita.
+
+```js
+// Os símbolos hash (#) e ponto (.) são uma convenção para sinalizar se um método
+// é chamado em um objeto individual ou no prototype. ".create" é
+// chamado no prototype Cart. #add é chamado nos objetos derivados.
+ 
+describe('Cart', function () {
+
+    var cart;
+
+    beforeEach(function () {
+        cart = Cart.create();
+    });
+
+    describe('.create', function () {
+        it('must create a cart that contains 0 products', function () {
+            var cart = Cart.create();
+
+            expect(cart.numProducts()).toEqual(0);
+        });
+    });
+
+    describe('#add', function () {
+        it('must add a product to the cart', function () {
+            var product = {};
+
+            cart.add(product);
+
+            expect(cart.doesContain(product)).toBeTruthy();
+        });
+    });
+
+    describe('#doesContain', function () {
+        it('must return false for a product that is not contained', function () {
+            var product = {};
+
+            cart.add({});
+            
+            expect(cart.doesContain(product)).toBeFalsy();
+        });
+    });
+
+    describe('#grossPriceSum', function () {
+        it('must return 0 for an empty cart', function () {
+            expect(cart.grossPriceSum()).toBe(0);
+        });
+
+        it('must return price for a single product in the cart', function () {
+            var product;
+            
+            product = {
+                grossPrice: function () { return 0; }
+            };
+            
+            spyOn(product, 'grossPrice').and.returnValue(10);
+            
+            cart.add(product);
+            
+            expect(cart.grossPriceSum()).toBe(10);
+        });
+
+        it('must return price for two products in the cart', function () {
+            cart.add({grossPrice: function () { return 10; }});
+            cart.add({grossPrice: function () { return 20; }});
+            
+            expect(cart.grossPriceSum()).toBe(30);
+        });
+    });
+});
+```
+
+### Por Fixture
