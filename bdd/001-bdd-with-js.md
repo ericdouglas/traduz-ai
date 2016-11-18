@@ -373,3 +373,46 @@ describe('Cart', function () {
 ```
 
 ### Por Fixture
+Essa forma de organizar uma especificação também é chamada "por dados de exemplo".
+
+O benefício de organizar sua especificação por *fixture* faz sua especificação resultante ser mais descritiva e fácil de ler. O benefício adicional é que por todos seus exemplos compartilharem os mesmos dados, você precisa definí-los apenas uma vez (e.g. usando `beforeEach` na configuração da função).
+
+```js
+describe('Seminar', function () {
+    it('has a name', function () {
+        var seminar = SeminarFactory.create({name: 'JavaScript'});
+ 
+        expect(seminar.getName()).toEqual('JavaScript');
+    });
+ 
+    it('has a price', function () {
+        var seminar = SeminarFactory.create({price: 10});
+ 
+        expect(seminar.getPrice()).toEqual(10);
+    });
+ 
+    it('has a gross price that adds 20% to the net price', function () {
+        var seminar = SeminarFactory.create({price: 10});
+ 
+        expect(seminar.getGrossPrice()).toEqual(12);
+    });
+});
+ 
+describe('A tax-free Seminar', function () {
+    var seminar;
+ 
+    beforeEach(function () {
+        seminar = SeminarFactory.create({taxFree: true, price: 100});
+    });
+ 
+    it('must be tax-free', function () {
+        expect(seminar.isTaxFree()).toBeTruthy();
+    });
+ 
+    it('must have a gross price thats matches the net price', function () {
+        expect(seminar.getPrice()).toEqual(seminar.getGrossPrice());
+    });
+});
+```
+
+## Especificação de Alto e Baixo Nível
