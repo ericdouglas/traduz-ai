@@ -416,3 +416,29 @@ describe('A tax-free Seminar', function () {
 ```
 
 ## Especificação de Alto e Baixo Nível
+Um projeto BDD geralmente começa com a definição do círculo exterior (especificações de alto nível) e então se procede a implementação do círculo interior (especificações de baixo nível).
+
+### Desenvolvimento *Outside-In* (de fora para dentro)
+Você começa com a implementação das especificações que tem significado para o negócio usando componentes hipotéticos (também conhecido como *acceptance test* - teste de aceitação):
+
+```js
+describe('A Cart with a several different products', function () {
+    var cart;
+ 
+    beforeEach(function () {
+        cart = Cart.create();
+    });
+ 
+    it('must have a #grossPriceSum() of the contained products', function () {
+        var product = Product.create('A', 10),
+            book = Book.create('B', 100);
+ 
+        cart.add(product);
+        cart.add(book);
+ 
+        expect(cart.grossPriceSum()).toEqual(132);
+    });
+});
+```
+
+Acceptance test is a high level
