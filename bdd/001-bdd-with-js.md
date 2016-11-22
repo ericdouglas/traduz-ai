@@ -441,4 +441,28 @@ describe('A Cart with a several different products', function () {
 });
 ```
 
-Acceptance test is a high level
+Teste de aceitação é uma especificação de alto nível que descreve um cenário do ponto de vista de um usuário da aplicação. Em contraste a especificação de baixo nível, uma especificação de alto nível não tem um SUT.
+
+O lado positivo do desenvolvimento *outside-in* é que você nunca escreve código que vai se tornar redundante (o requerimento pode ser rastreado até a especificação). O lado negativo é que você não consegue rodar os casos de teste até que a implementação esteja completa.
+
+- Eles ajudam a ficarmos cientes de *bugs* - todas as violações das especificações são consideradas bugs (consciência do defeito).
+- Eles mais úteis quando mostrados aos *stakeholders* (partes interessadas).
+- Existem geralmente apenas alguns. Eles não incluem todos os casos especiais. Seu propósito principal é fornecer uma visão geral da funcionalidade requerida.
+
+### Desenvolvimento *Inside-Out* (De dentro para fora) 
+Você começa com os componentes básicos para construir a aplicação:
+
+```js
+describe('Product', function () {
+    it('must calculate its gross price by adding the VAT', function () {
+        var product = Product.create('A', 10);
+        expect(product.grossPrice()).toEqual(12);
+    });
+});
+```
+
+- Eles ajudam a encontrar bugs específicos (localização).
+- Eles são mais úteis aos desenvolvedores que vão manter o código futuramente.
+- Existem geralmente muitas especificações de baixo nível uma vez que elas precisam cobrir todos os detalhes de baixo nível, casos especiais e casos extremos.
+
+## Leia Mais
