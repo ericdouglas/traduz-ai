@@ -321,7 +321,7 @@ return (
 Existem duas coisas que você precisa estar atento:
 
 - **Não use `class`**. Ao invés, use `className`. Isso é devido ao fato do JSX ser traduzido para JS, e `class` é uma palavra reservada na nova versão do JS.
-- **Se você usar `<br>` ao invés de `<br/>`, isso não vai funcionar**. Certifique-se de colocar um `/` em tags "autor fechantes".
+- **Se você usar `<br>` ao invés de `<br/>`, isso não vai funcionar**. Certifique-se de colocar um `/` em tags "auto fechantes".
 
 Todo o resto deve ser o mesmo com o exemplo jQuery anterior.
 
