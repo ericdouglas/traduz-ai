@@ -3,7 +3,7 @@
 * **Artigo original**: [Build a Simple Persistent Key-Value Store in Elixir, using Logs – Part 1](https://www.poeticoding.com/build-a-simple-persistent-key-value-store-in-elixir-using-logs-part-1/)
 * **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
-![Estrutura do log](https://imgur.com/a/xM6zsZb)
+![Capa do artigo](https://i.imgur.com/fxj86xv.png)
 
 ## ⚠ WIP ⚠
 
