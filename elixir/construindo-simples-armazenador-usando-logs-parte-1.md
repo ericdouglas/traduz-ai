@@ -68,3 +68,40 @@ Pudemos ver a grande diferença entre acesso aleatório e sequencial em ambos di
 ## Using a Log to implement a simple KV store
 
 ## Usando um Log para implementar um simples armazenador CV (chave-valor)
+
+Let’s start with a simple example. Let’s consider a realtime application where we have to store the last price in dollars of the Bitcoin (BTC), Ethereum (ETH) and Litecoin (LTC).
+
+| Key | Value   |
+| --- | ------- |
+| BTC | 4478.12 |
+| ETH | 133.62  |
+| LTC | 33.19   |
+
+If we just need to keep this snapshot in memory, in Elixir we can use a Map. But persistence is another story. There are many different ways and technologies we could use to store this map and make it persistent.
+
+If this snapshot would be updated just few times in a day, with just few currencies, then serialising the map into a file would be fine and easy to do, but this is obviously not our case! Our imaginary crypto application needs to keep track of any market’s movement with hundreds of updates per second for hundreds of currencies.
+
+But how can we use an append-only file, where data written is immutable by nature, to store the mutable data of a key-value store, to leverage sequential access and to keep our map persistent?
+
+The idea is pretty simple:
+
+- append to our log each single price update (value) for any currency (key)
+- use our Map as an index, keeping track of the position and size of the values within our logfile.
+
+![Concept of key-value persistence using a log](https://i.imgur.com/06A0ViN.png)
+
+> Concept of key-value persistence using a log
+
+1. 17:14:59 – LTC trades at 32.85$. We append the string "32.85" to the log and we update the "LTC" key of our index (implemented with a Map) with value’s offset (0 since it’s the first value in the file) and it’s size (5 bytes, since it’s a string).
+2. 17:15:00 – ETH trades at 130.98$. We append the string "130.98" to the log and we update the "ETH" key of our index with offset 5 and size 6 bytes.
+3. 17:15:01 – BTC trades at 4411.99$. We append the string "4411.99" to the log and we update the "BTC" key of our index with offset 11 and size 7 bytes.
+
+What happens if we receive a new price for ETH? How can we overwrite the value in the log since the value we wrote is immutable and we can just append?
+
+4. 17:15:09 – ETH trades at 131.00$.
+
+![Transação ETH](https://i.imgur.com/DiWczpP.png)
+
+Since to leverage sequential writes we can just append, we then just append the new value updating the index with the new offset and size.
+
+The read is efficient too. To retrieve the values from the log, we just use offset and size in the index and with need one seek of the disk to load our value into memory.
