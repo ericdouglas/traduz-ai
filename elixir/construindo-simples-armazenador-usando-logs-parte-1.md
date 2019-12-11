@@ -71,13 +71,17 @@ Pudemos ver a grande diferença entre acesso aleatório e sequencial em ambos di
 
 Let’s start with a simple example. Let’s consider a realtime application where we have to store the last price in dollars of the Bitcoin (BTC), Ethereum (ETH) and Litecoin (LTC).
 
-| Key | Value   |
-| --- | ------- |
-| BTC | 4478.12 |
-| ETH | 133.62  |
-| LTC | 33.19   |
+Vamos começar com um simples exemplo. Vamos considerar uma aplicação em tempo real onde nós temos que armazenar o último preço em dólares do Bitcoin (BTC), Ethereum (ETH) e Litecoin (LTC).
+
+| Chave | Valor   |
+| ----- | ------- |
+| BTC   | 4478.12 |
+| ETH   | 133.62  |
+| LTC   | 33.19   |
 
 If we just need to keep this snapshot in memory, in Elixir we can use a Map. But persistence is another story. There are many different ways and technologies we could use to store this map and make it persistent.
+
+
 
 If this snapshot would be updated just few times in a day, with just few currencies, then serialising the map into a file would be fine and easy to do, but this is obviously not our case! Our imaginary crypto application needs to keep track of any market’s movement with hundreds of updates per second for hundreds of currencies.
 
