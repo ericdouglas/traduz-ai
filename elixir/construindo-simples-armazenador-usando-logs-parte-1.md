@@ -81,16 +81,25 @@ Vamos começar com um simples exemplo. Vamos considerar uma aplicação em tempo
 
 If we just need to keep this snapshot in memory, in Elixir we can use a Map. But persistence is another story. There are many different ways and technologies we could use to store this map and make it persistent.
 
-
+Se nós apenas precisássemos manter esse retrato em memória, com Elixir poderíamos usar um `Map`. Mas persistência é outra história. Existem várias formas diferentes e tecnologias que poderíamos usar para armazenar esse mapa e fazer isso persistente.
 
 If this snapshot would be updated just few times in a day, with just few currencies, then serialising the map into a file would be fine and easy to do, but this is obviously not our case! Our imaginary crypto application needs to keep track of any market’s movement with hundreds of updates per second for hundreds of currencies.
 
+Se esse retrato fosse atualizado apenas algumas vezes por dia, com apenas algumas moedas, então serializar o mapa dentro de um arquivo seria bom e fácil de fazer, mas isso obviamente não é o nosso caso! Nossa aplicação imaginária de criptomoedas precisa acompanhar qualquer movimento do mercado com centenas de atualizações por segundo para centenas de moedas.
+
 But how can we use an append-only file, where data written is immutable by nature, to store the mutable data of a key-value store, to leverage sequential access and to keep our map persistent?
+
+Mas como nós podemos usar um arquivo *append-only* (apenas anexando informações a ele), onde os dados escritos são imutáveis por natureza, para armazenar dados mutáveis de um armazenador chave-valor, potencializar o acesso sequencial e manter nosso mapa persistente?
 
 The idea is pretty simple:
 
+A ideia é muito simples:
+
 - append to our log each single price update (value) for any currency (key)
 - use our Map as an index, keeping track of the position and size of the values within our logfile.
+
+- anexar ao nosso log cada simples atualização de preço (valor) para qualquer moeda (chave)
+- usar nosso `Map` como um índice, mantendo o controle da posição e tamanho dos valores dentro do arquivo de log.
 
 ![Concept of key-value persistence using a log](https://i.imgur.com/06A0ViN.png)
 
