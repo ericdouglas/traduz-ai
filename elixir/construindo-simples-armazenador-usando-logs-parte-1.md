@@ -5,13 +5,7 @@
 
 ![Capa do artigo](https://i.imgur.com/fxj86xv.png)
 
-- [Construindo um Simples Armazenador de Chave-Valor em Elixir, usando Logs - Parte 1](#construindo-um-simples-armazenador-de-chave-valor-em-elixir-usando-logs---parte-1)
-	- [⚠ WIP ⚠](#%e2%9a%a0-wip-%e2%9a%a0)
-	- [Introdução](#introdu%c3%a7%c3%a3o)
-	- [What is a log?](#what-is-a-log)
-	- [O que é um log?](#o-que-%c3%a9-um-log)
-	- [Using a Log to implement a simple KV store](#using-a-log-to-implement-a-simple-kv-store)
-	- [Usando um Log para implementar um simples armazenador CV (chave-valor)](#usando-um-log-para-implementar-um-simples-armazenador-cv-chave-valor)
+-   [Construindo um Simples Armazenador de Chave-Valor em Elixir, usando Logs - Parte 1](#construindo-um-simples-armazenador-de-chave-valor-em-elixir-usando-logs---parte-1) - [⚠ WIP ⚠](#%e2%9a%a0-wip-%e2%9a%a0) - [Introdução](#introdu%c3%a7%c3%a3o) - [What is a log?](#what-is-a-log) - [O que é um log?](#o-que-%c3%a9-um-log) - [Using a Log to implement a simple KV store](#using-a-log-to-implement-a-simple-kv-store) - [Usando um Log para implementar um simples armazenador CV (chave-valor)](#usando-um-log-para-implementar-um-simples-armazenador-cv-chave-valor)
 
 ## ⚠ WIP ⚠
 
@@ -89,32 +83,49 @@ Se esse retrato fosse atualizado apenas algumas vezes por dia, com apenas alguma
 
 But how can we use an append-only file, where data written is immutable by nature, to store the mutable data of a key-value store, to leverage sequential access and to keep our map persistent?
 
-Mas como nós podemos usar um arquivo *append-only* (apenas anexando informações a ele), onde os dados escritos são imutáveis por natureza, para armazenar dados mutáveis de um armazenador chave-valor, potencializar o acesso sequencial e manter nosso mapa persistente?
+Mas como nós podemos usar um arquivo _append-only_ (apenas anexando informações a ele), onde os dados escritos são imutáveis por natureza, para armazenar dados mutáveis de um armazenador chave-valor, potencializar o acesso sequencial e manter nosso mapa persistente?
 
 The idea is pretty simple:
 
 A ideia é muito simples:
 
-- append to our log each single price update (value) for any currency (key)
-- use our Map as an index, keeping track of the position and size of the values within our logfile.
+-   append to our log each single price update (value) for any currency (key)
+-   use our Map as an index, keeping track of the position and size of the values within our logfile.
 
-- anexar ao nosso log cada simples atualização de preço (valor) para qualquer moeda (chave)
-- usar nosso `Map` como um índice, mantendo o controle da posição e tamanho dos valores dentro do arquivo de log.
+-   anexar ao nosso log cada simples atualização de preço (valor) para qualquer moeda (chave)
+-   usar nosso `Map` como um índice, mantendo o controle da posição e tamanho dos valores dentro do arquivo de log.
 
 ![Concept of key-value persistence using a log](https://i.imgur.com/06A0ViN.png)
 
 > Concept of key-value persistence using a log
+> Conceito de persistência chave-valor usando um log
 
-1. 17:14:59 – LTC trades at 32.85$. We append the string "32.85" to the log and we update the "LTC" key of our index (implemented with a Map) with value’s offset (0 since it’s the first value in the file) and it’s size (5 bytes, since it’s a string).
-2. 17:15:00 – ETH trades at 130.98$. We append the string "130.98" to the log and we update the "ETH" key of our index with offset 5 and size 6 bytes.
-3. 17:15:01 – BTC trades at 4411.99$. We append the string "4411.99" to the log and we update the "BTC" key of our index with offset 11 and size 7 bytes.
+1. 17:14:59 – LTC trades at 32.85\$. We append the string "32.85" to the log and we update the "LTC" key of our index (implemented with a Map) with value’s offset (0 since it’s the first value in the file) and it’s size (5 bytes, since it’s a string).
+2. 17:15:00 – ETH trades at 130.98\$. We append the string "130.98" to the log and we update the "ETH" key of our index with offset 5 and size 6 bytes.
+3. 17:15:01 – BTC trades at 4411.99\$. We append the string "4411.99" to the log and we update the "BTC" key of our index with offset 11 and size 7 bytes.
+
+4. 17:14:59 - LTC comercializado a \$32.85. Nós adicionamos a string `"32.85"` ao log e atualizamos a chave `"LTC"` do nosso índice (implementado com um [Map](https://hexdocs.pm/elixir/Map.html)) com o valor do _offset_ (deslocamento) (0 já que é o primeiro valor no arquivo) e seu tamanho (5 bytes, pois é uma string).
+5. 17:15:00 - ETC comercializado a \$130.98. Nós adicionamos a string `130.98` ao log e atualizamos a chave "ETH" ao nosso índice com deslocamento 5 e tamanho 6 bytes.
+6. 17:15:01 - BTC comercializado a \$4411.99. Nós adicionamos a string `4411.99` ao log e atualizamos a chave "BTC" do nosso índice com deslocamento 11 e tamanho 7 bytes.
 
 What happens if we receive a new price for ETH? How can we overwrite the value in the log since the value we wrote is immutable and we can just append?
 
-4. 17:15:09 – ETH trades at 131.00$.
+O que acontece se nós recebermos um novo preço para ETH? Como podemos sobrescrever o valor no log uma vez que o valor que escrevemos é imutável e só podemos adicionar?
+
+4. 17:15:09 – ETH trades at 131.00\$.
+
+5. 17:15:09 - ETH comercializado a \$131.00.
 
 ![Transação ETH](https://i.imgur.com/DiWczpP.png)
 
 Since to leverage sequential writes we can just append, we then just append the new value updating the index with the new offset and size.
 
+Já que para aumentar a velocidade da escrita sequencial nós só podemos adicionar, nós então apenas adicionamos o novo valor atualizando o índice com o novo deslocamento e tamanho.
+
 The read is efficient too. To retrieve the values from the log, we just use offset and size in the index and with need one seek of the disk to load our value into memory.
+
+A **leitura** é eficiente também. Para recuperar os valores do log, nós só precisamos usar **offset** (deslocamento) e **size** (tamanho) no _index_ (índice) e com uma "olhada" no disco para carregar nossos valores para memória.
+
+## LogKV in Elixir
+
+## LogKV em Elixir
