@@ -9,8 +9,8 @@ Além dos materiais separados para tradução, você pode contribuir através da
 ## Tópicos
 
 - [Como Ajudar](#como-ajudar)
-- [Tópicos](#t%c3%b3picos)
-- [Séries](#s%c3%a9ries)
+- [Tópicos](#tópicos)
+- [Séries](#séries)
 - [AngularJS](#angularjs)
 - [Behaviour Driven Development](#behaviour-driven-development)
 - [Elixir](#elixir)
@@ -22,8 +22,9 @@ Além dos materiais separados para tradução, você pode contribuir através da
 
 ## Séries
 
-* [Você não precisa de jQuery](series/voce-nao-precisa-de-jquery) `javascript`
-* [Então você quer ser um Programador Funcional?](series/entao-voce-quer-ser-um-programador-funcional) `javascript` `programação funcional`
+-   [Você não precisa de jQuery](series/voce-nao-precisa-de-jquery) `javascript`
+-   [Então você quer ser um Programador Funcional?](series/entao-voce-quer-ser-um-programador-funcional) `javascript` `programação funcional`
+-   [Perguntas desconfortáveis](series/perguntas-desconfortaveis)
 
 ## AngularJS
 
@@ -40,7 +41,6 @@ Além dos materiais separados para tradução, você pode contribuir através da
 ## Elixir
 
 1. Construindo um Simples Armazenador de Chave-Valor em Elixir, usando Logs - Parte 1 - [`Tradução`](elixir/construindo-simples-armazenador-usando-logs-parte-1.md) [`Original`](https://www.poeticoding.com/build-a-simple-persistent-key-value-store-in-elixir-using-logs-part-1/)
-
 
 ## Handlebars.js
 
