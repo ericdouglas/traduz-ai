@@ -73,7 +73,7 @@ Além dos materiais separados para tradução, você pode contribuir através da
 
 ## Programação Funcional
 
-1. A beleza da recursão e pattern matching em linguagens de programação funcionais - [`Tradução`](programacao-funcional/beleza-da-programacao-funcional.md) [`Original`]()
+1. A beleza da recursão e pattern matching em linguagens de programação funcionais - [`Tradução`](programacao-funcional/beleza-da-programacao-funcional.md) [`Original`](https://dev.to/ericdouglas/the-beauty-of-recursion-and-pattern-matching-in-functional-programming-languages-hmn)
 
 
 ## React

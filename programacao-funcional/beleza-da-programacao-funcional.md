@@ -2,6 +2,9 @@
 
 ![Função lookup para retornar valor de uma árvore binária](https://i.imgur.com/lFXKbhd.png)
 
+* **Artigo original**: [The beauty of recursion and pattern matching in functional programming languages](https://dev.to/ericdouglas/the-beauty-of-recursion-and-pattern-matching-in-functional-programming-languages-hmn)
+* **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
+
 ```erl
 %% Função lookup recebe uma Key e um Node
 lookup(_, {node, 'nil'}) ->
