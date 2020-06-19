@@ -18,6 +18,7 @@ Além dos materiais separados para tradução, você pode contribuir através da
 - [JavaScript](#javascript)
 - [MongoDB](#mongodb)
 - [Node.js](#nodejs)
+- [Programação Funcional](#programação-funcional)
 - [React](#react)
 
 ## Séries
@@ -69,6 +70,11 @@ Além dos materiais separados para tradução, você pode contribuir através da
 
 1. Guia Para Absolutos Iniciantes em Node.js - [`Tradução`](nodejs/001-guia-para-iniciantes-absolutos-em-nodejs.md) [`Original`](http://blog.modulus.io/absolute-beginners-guide-to-nodejs)
 1. Guia para um dev. front-end iniciar Com Node.js, Express, Jade e MongoDB - [`Tradução`](nodejs/002-simples-guia-nodejs-jade-express-mongodb.md) [`Original`](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)
+
+## Programação Funcional
+
+1. A beleza da recursão e pattern matching em linguagens de programação funcionais - [`Tradução`](programacao-funcional/beleza-da-programacao-funcional.md) [`Original`]()
+
 
 ## React
 
