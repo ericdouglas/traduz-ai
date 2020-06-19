@@ -1,4 +1,4 @@
-# A Beleza da Recursão e Pattern Matching em Linguagens de Programação Funcionais
+# A Beleza da Recursão e Pattern Matching (Casamento de Padrões) em Linguagens de Programação Funcionais
 
 ![Função lookup para retornar valor de uma árvore binária](https://i.imgur.com/lFXKbhd.png)
 
@@ -18,8 +18,8 @@ lookup(Key, {node, {_, _, _, Larger}}) ->
 %% Nó vazio -> {node, 'nil'}
 %% Nó não vazio -> {node, {Key, Val, Smaller, Larger}}
 %% node -> é apenas um atom, como uma constante
-%% Key and Val -> podem ser de tipos diferentes
-%% Smaller and Larger -> Pode ser estruturas de nós vazios ou não vazios,
+%% Key e Val -> podem ser de tipos diferentes
+%% Smaller e Larger -> Pode ser estruturas de nós vazios ou não vazios,
 %%                       então você pode ter sua árvore binária
 ```
 
@@ -35,7 +35,7 @@ O código foi escrito em **Erlang**.
 
 ## Explicação detalhada
 
-Essa função vai buscar em uma árvore binária pela chave `key` passada para ela, e vai retornar uma tupla com o valor `value` associado com a chave passada, ou `undefined` se a chave não for encontrada.
+Essa função vai buscar em uma árvore binária pela chave `Key` passada para ela, e vai retornar uma tupla com o valor `Val` (valor) associado com a chave passada, ou `undefined` se a chave não for encontrada.
 
 Uma grande vantagem que temos no Erlang e Elixir é a possibilidade de criar mais casos para a mesma função apenas mudando o padrão em seus parâmetros.
 
@@ -51,13 +51,13 @@ O primeiro `lookup` vai ignorar o primeiro valor passado para ele (`_`), e se o 
 
 ### `lookup(Key, {node, {Key, Val, _, _}})`
 
-O segundo `lookup` vai ver se a chave `Key` que passamos é a mesma `Key` no nó passado. Se for, nós acabamos de encontrar o nó que contém o valor que queremos retornar.
+O segundo `lookup` vai ver se a chave `Key` que passamos é a mesma `Key` do nó passado. Se for, nós acabamos de encontrar o nó que contém o valor que queremos retornar.
 
 Nesse caso, `lookup` retorna `{ok, Val}`, onde `Val` é o valor que estávamos interessados.
 
 ### `lookup(Key, {node, {NodeKey, _, Smaller, _}}) when Key < NodeKey`
 
-O terceiro `lookup` vai identificar com o caso onde a chave que passamos é diferente da chave no nó passado.
+O terceiro `lookup` vai identificar com o caso onde a chave que passamos é diferente da chave do nó passado.
 
 Também temos uma _cláusula de guarda_ na assinatura da função, para deixá-la mais específica. A cláusula de guarda `when Key < NodeKey` é importante para decidirmos em que direção devemos ir para buscar o valor que esperamos.
 
@@ -69,13 +69,13 @@ _Isso é **recursão** e **casamento de padrões** em ação! ❤_
 
 ### `lookup(Key, {node, {_, _, _, Larger}})`
 
-No último caso, e o mais geral, é quando todas das prévias funções `lookup` não foram "casadas". Nós sabemos que isso só vai acontecer quando a chave `Key`  passada é diferente da `Key` no nó atual, e a `Key` passada é maior que a chave no nó atual, então temos que continuar a buscar no nó maior `Larger`.
+No último caso, e o mais geral, é quando todas as prévias funções `lookup` não foram "casadas". Nós sabemos que isso só vai acontecer quando a chave `Key`  passada é diferente da `Key` do nó atual, e a `Key` passada é maior que a chave no nó atual, então temos que continuar a buscar no nó maior `Larger`.
 
 Nesse caso, vamos chamar `lookup` recursivamente com os seguintes dados `lookup(Key, Larger)`.
 
 **E é isso!**
 
-Com ZERO instruções sobre COMO fazer, nós temos uma super simples, declarativa, e completa função que retorna um valor de uma árvore binária! Isso é absolutamente incrível e surpreendente <3.
+Com ZERO instruções sobre COMO fazer, nós temos uma função super simples, declarativa e completa, que retorna um valor de uma árvore binária! Isso é absolutamente incrível e surpreendente <3.
 
 Espero que tenha gostado!
 
