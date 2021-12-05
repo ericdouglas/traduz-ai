@@ -64,7 +64,7 @@ Além dos materiais separados para tradução, você pode contribuir através da
 
 ## MongoDB
 
-1. Uma introdução ao MongoDB - [`Tradução`](mongodb/001-uma-introdução-ao-mongodb.md) [`Original`](https://scotch.io/tutorials/an-introduction-to-mongodb)
+1. Uma introdução ao MongoDB - [`Tradução`](mongodb/001-uma-introducao-ao-mongodb.md) [`Original`](https://scotch.io/tutorials/an-introduction-to-mongodb)
 
 ## Node.js
 
@@ -74,7 +74,6 @@ Além dos materiais separados para tradução, você pode contribuir através da
 ## Programação Funcional
 
 1. A beleza da recursão e pattern matching em linguagens de programação funcionais - [`Tradução`](programacao-funcional/beleza-da-programacao-funcional.md) [`Original`](https://dev.to/ericdouglas/the-beauty-of-recursion-and-pattern-matching-in-functional-programming-languages-hmn)
-
 
 ## React
 
