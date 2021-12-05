@@ -10,6 +10,7 @@ Além dos materiais separados para tradução, você pode contribuir através da
 
 - [Como Ajudar](#como-ajudar)
 - [Tópicos](#tópicos)
+- [Roteiros](#roteiros)
 - [Séries](#séries)
 - [AngularJS](#angularjs)
 - [Behaviour Driven Development](#behaviour-driven-development)
@@ -20,6 +21,10 @@ Além dos materiais separados para tradução, você pode contribuir através da
 - [Node.js](#nodejs)
 - [Programação Funcional](#programação-funcional)
 - [React](#react)
+
+## Roteiros
+
+1. [Design de Sistemas](roteiros/design-de-sistemas/README.md) `engenharia de software`
 
 ## Séries
 
