@@ -3,7 +3,7 @@
 * **Artigo Original**: [Ultimate guide to learning AngularJS in one day](http://toddmotto.com/ultimate-guide-to-learning-angular-js-in-one-day/)
 * **Tradução**: [Eric Douglas](https://github.com/ericdouglas)
 
-##O que é AngularJS?
+## O que é AngularJS?
 
 Angular é um framework client-side MVC/MVVM feito em JavaScript, essencial para modernas *single page web applications - SPA* (aplicações em uma página) e até mesmo sites. É um grande salto para o futuro do HTML e para o que o HTML5 traz, e é um sopro de ar fresco quando se está lidando com a web moderna. Este post é um curso completo *do início ao fim*, feito a partir de minhas experiências, conselhos e melhores práticas, aprendidas usando-o.
 
